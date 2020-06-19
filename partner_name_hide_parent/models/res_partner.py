@@ -24,3 +24,10 @@ class ResPartner(models.Model):
                     res.remove(item)
             res.append((partner.id, name))
         return res
+
+    # Just add "hide_parent" as a trigger.
+    @api.depends(
+        "is_company", "name", "parent_id.name", "type", "company_name", "hide_parent"
+    )
+    def _compute_display_name(self):
+        return super(ResPartner, self)._compute_display_name()
