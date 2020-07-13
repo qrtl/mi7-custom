@@ -10,6 +10,7 @@ exclude: |
   ^docs/_templates/.*\.html$|
   # You don't usually want a bot to modify your legal texts
   (LICENSE.*|COPYING.*)|
+  .travis.yml|
   auditlog/|
   base_technical_features/|
   stock_inventory_valuation_flat/|
