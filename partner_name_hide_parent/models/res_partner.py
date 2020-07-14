@@ -12,18 +12,14 @@ class ResPartner(models.Model):
         "display name of self."
     )
 
-    @api.multi
-    def name_get(self):
-        res = super(ResPartner, self).name_get()
-        for partner in self:
-            name = partner._get_name()
-            if partner.hide_parent and partner.parent_id:
-                name = name.replace(partner.parent_id.name + ", ", "")
-            for item in res:
-                if item[0] == partner.id:
-                    res.remove(item)
-            res.append((partner.id, name))
-        return res
+    # Override the standard method
+    def _get_contact_name(self, partner, name):
+        # Following two lines are inserted. (QRTL)
+        if partner.hide_parent:
+            return name
+        return "{}, {}".format(
+            partner.commercial_company_name or partner.parent_id.name, name,
+        )
 
     # Just add "hide_parent" as a trigger.
     @api.depends(
