@@ -13,6 +13,7 @@ exclude: |
   .travis.yml|
   auditlog/|
   base_technical_features/|
+  stock_history_adj/|
   stock_inventory_valuation_flat/|
   stock_no_negative/|
   web_environment_ribbon/|
