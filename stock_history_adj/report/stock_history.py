@@ -80,7 +80,7 @@ def read_group(
             ):
                 history_data = stock_history_data[stock_history.id]
                 product_id = history_data["product_id"]
-                if self.env["product.product"].browse(product_id).cost_method == "real":
+                if self.env["product.product"].sudo().browse(product_id).cost_method == "real":
                     price = history_data["price_unit_on_quant"]
                 else:
                     price = histories_dict.get(
