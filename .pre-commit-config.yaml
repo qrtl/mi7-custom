@@ -18,7 +18,8 @@ exclude: |
   stock_no_negative/|
   web_environment_ribbon/|
   web_favicon/|
-  web_m2x_options/
+  web_m2x_options/|
+  website_no_crawler/
 default_language_version:
   python: python3
 repos:
