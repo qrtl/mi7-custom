@@ -12,6 +12,7 @@ exclude: |
   (LICENSE.*|COPYING.*)|
   .travis.yml|
   auditlog/|
+  auth_user_case_insensitive/|
   base_technical_features/|
   stock_history_adj/|
   stock_inventory_valuation_flat/|
