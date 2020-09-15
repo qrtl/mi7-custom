@@ -1,7 +1,7 @@
 # Copyright 2020 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 {
-    "name": "Sale Order Line Total Price Adj",
+    "name": "Sale Order Show Price Subtotal",
     "category": "Sales",
     "license": "LGPL-3",
     "author": "Quartile Limited",
