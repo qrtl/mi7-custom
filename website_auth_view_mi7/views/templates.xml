@@ -16,7 +16,7 @@
         </xpath>
     </template>
     <!-- QRTL Edit: Custom login_layout to add parent div to the login template -->
-    <template id="website_auth_views_adj.custom_login_layout">
+    <template id="custom_login_layout">
         <t t-call="web.login_layout">
             <h2>My Page</h2>
             <hr class="page-header-hr" />
@@ -66,7 +66,7 @@
         </t>
     </template>
     <!-- QRTL Edit: Custom layout to add parent div to the signup template -->
-    <template id="website_auth_views_adj.custom_signup_layout">
+    <template id="custom_signup_layout">
         <t t-call="web.login_layout">
             <h2>Register an account</h2>
             <hr class="page-header-hr" />
@@ -84,7 +84,7 @@
         </t>
     </template>
     <!-- QRTL Edit: Custom layout to add parent div to the signup template -->
-    <template id="website_auth_views_adj.custom_reset_password_layout">
+    <template id="custom_reset_password_layout">
         <t t-call="web.login_layout">
             <h2>Reset Password</h2>
             <hr class="page-header-hr" />
