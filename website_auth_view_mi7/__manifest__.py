@@ -7,9 +7,7 @@
     "author": "Quartile Limited",
     "website": "https://www.quartile.co",
     "version": "10.0.1.0.0",
-    "depends": [
-        "auth_signup",
-    ],
+    "depends": ["auth_signup", "website"],
     "data": ["views/templates.xml"],
     "installable": True,
 }
