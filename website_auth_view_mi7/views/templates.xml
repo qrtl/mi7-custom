@@ -72,6 +72,8 @@
             <hr class="page-header-hr" />
             <p
             >お客様の新規アカウントを作成します。Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph.</p>
+            <p class="text-muted o_small_caps"
+            ><span style="color:red">*</span> Required fields.</p>
             <div class="oe_signup_form" style="max-width:600px">
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -115,7 +117,7 @@
             <a
                 t-if="reset_password_enabled"
                 t-attf-href="/web/reset_password?{{ keep_query() }}"
-                class="btn btn-link pull-right"
+                class="btn btn-link"
             >Reset Password</a>
         </xpath>
     </template>
@@ -124,7 +126,7 @@
         <xpath expr="//t[@t-call='web.login_layout']" position="attributes">
             <attribute
                 name="t-call"
-            >website_auth_views_adj.custom_login_layout</attribute>
+            >website_auth_view_mi7.custom_login_layout</attribute>
         </xpath>
         <xpath expr="//form" position="attributes">
             <attribute name="class" />
@@ -141,7 +143,7 @@
         <xpath expr="//t[@t-call='web.login_layout']" position="attributes">
             <attribute
                 name="t-call"
-            >website_auth_views_adj.custom_signup_layout</attribute>
+            >website_auth_view_mi7.custom_signup_layout</attribute>
         </xpath>
         <xpath expr="//form" position="attributes">
             <attribute name="class" />
@@ -168,12 +170,20 @@
             </label>
         </xpath>
     </template>
+    <template id="fields" inherit_id="auth_signup.fields">
+        <xpath expr="//label[@for='login']" position="after">
+            <span style="color:red">*</span>
+        </xpath>
+        <xpath expr="//label[@for='name']" position="after">
+            <span style="color:red">*</span>
+        </xpath>
+    </template>
     <!-- QRTL Edit: Adjust layout of the signup template -->
     <template id="reset_password" inherit_id="auth_signup.reset_password">
         <xpath expr="//t[@t-call='web.login_layout']" position="attributes">
             <attribute
                 name="t-call"
-            >website_auth_views_adj.custom_reset_password_layout</attribute>
+            >website_auth_view_mi7.custom_reset_password_layout</attribute>
         </xpath>
         <xpath expr="//form" position="attributes">
             <attribute name="class" />
