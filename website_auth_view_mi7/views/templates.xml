@@ -72,8 +72,9 @@
             <hr class="page-header-hr" />
             <p
             >お客様の新規アカウントを作成します。Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph.</p>
-            <p class="text-muted o_small_caps"
-            ><span style="color:red">*</span> Required fields.</p>
+            <p class="text-muted o_small_caps"><span
+                    style="color:red"
+                >*</span> Required fields.</p>
             <div class="oe_signup_form" style="max-width:600px">
                 <div class="panel panel-default">
                     <div class="panel-body">
