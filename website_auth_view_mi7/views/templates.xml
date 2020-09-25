@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="website.login_layout"
+        inherit_id="web.login_layout"
+        name="Website Login Layout"
+    >
+        <xpath expr="t" position="replace">
+            <t t-call="website.layout">
+                <div class="container">
+                    <div class="row">
+                        <div class="oe_website_login_container" t-raw="0" />
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+    <!-- QRTL Edit: Custom login_layout to add parent div to the login template -->
+    <template id="custom_login_layout">
+        <t t-call="web.login_layout">
+            <h2>My Page</h2>
+            <hr class="page-header-hr" />
+            <p
+            >Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph.</p>
+            <div class="col-md-6">
+                <div class="panel panel-default" style="min-height: 400px;">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>Sign in</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class='row'>
+                            <div class="col-md-12" t-raw="0" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default" style="min-height: 400px;">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4> Register an account</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class='row'>
+                            <div class="col-md-12">
+                                <p
+                                >Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph.</p>
+                                <div class="form-group">
+                                    <a
+                                        t-attf-href="/web/signup?{{ keep_query() }}"
+                                        class="form-control btn btn-primary common-btn"
+                                    >Sign up</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <!-- QRTL Edit: Custom layout to add parent div to the signup template -->
+    <template id="custom_signup_layout">
+        <t t-call="web.login_layout">
+            <h2>Register an account</h2>
+            <hr class="page-header-hr" />
+            <p
+            >お客様の新規アカウントを作成します。Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph.</p>
+            <p class="text-muted o_small_caps"><span
+                    style="color:red"
+                >*</span> Required fields.</p>
+            <div class="oe_signup_form" style="max-width:600px">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class='row'>
+                            <div class="col-md-12" t-raw="0" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <!-- QRTL Edit: Custom layout to add parent div to the signup template -->
+    <template id="custom_reset_password_layout">
+        <t t-call="web.login_layout">
+            <h2>Reset Password</h2>
+            <hr class="page-header-hr" />
+            <p>
+                メールアドレスを入力して「完了」ボタンを押してください。
+                登録されているアドレス宛にメールが送信されます。
+                送信されたメールにURLが記載されていますので、リンクをクリックしパスワード変更画面からパスワードを変更してください。
+            </p>
+            <div class="oe_signup_form" style="max-width:600px">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class='row'>
+                            <div class="col-md-12" t-raw="0" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <!-- QRTL Edit: Hide 'Sign Up' button from the original template -->
+    <template
+        id="auth_signup.login"
+        inherit_id="web.login"
+        name="Sign up - Reset Password"
+    >
+        <xpath expr="//button[@type='submit']" position="after">
+            <!-- <a t-if="signup_enabled" t-attf-href="/web/signup?{{ keep_query() }}" class="btn btn-link pull-right">Sign up</a> -->
+            <a
+                t-if="reset_password_enabled"
+                t-attf-href="/web/reset_password?{{ keep_query() }}"
+                class="btn btn-link"
+            >Reset Password</a>
+        </xpath>
+    </template>
+    <!-- QRTL Edit: Adjust the class of the login button div -->
+    <template id="login" inherit_id="web.login">
+        <xpath expr="//t[@t-call='web.login_layout']" position="attributes">
+            <attribute
+                name="t-call"
+            >website_auth_view_mi7.custom_login_layout</attribute>
+        </xpath>
+        <xpath expr="//form" position="attributes">
+            <attribute name="class" />
+        </xpath>
+        <xpath expr="//div[@class='clearfix oe_login_buttons']" position="attributes">
+            <attribute name="class">form-group</attribute>
+        </xpath>
+        <xpath expr="//button[@type='submit']" position="attributes">
+            <attribute name="class">form-control btn btn-primary</attribute>
+        </xpath>
+    </template>
+    <!-- QRTL Edit: Adjust layout of the signup template -->
+    <template id="signup" inherit_id="auth_signup.signup">
+        <xpath expr="//t[@t-call='web.login_layout']" position="attributes">
+            <attribute
+                name="t-call"
+            >website_auth_view_mi7.custom_signup_layout</attribute>
+        </xpath>
+        <xpath expr="//form" position="attributes">
+            <attribute name="class" />
+        </xpath>
+        <xpath expr="//div[@class='clearfix oe_login_buttons']" position="attributes">
+            <attribute name="class">form-group</attribute>
+        </xpath>
+        <xpath expr="//button[@type='submit']" position="attributes">
+            <attribute name="class">form-control btn btn-primary</attribute>
+        </xpath>
+        <xpath expr="//a" position="before">
+            <label style="margin-top: 10px;">
+                <input
+                    type="checkbox"
+                    id="terms"
+                    autofocus="autofocus"
+                    required="required"
+                    style="opacity: unset; position: initial;"
+                />
+                <span>Please read and understand the <a
+                        href="/web/register"
+                        target="_blank"
+                    >Membership Terms and Conditions</a>. If you agree to the Membership Terms, click the checkbox on the left and you can further proceed with the signup.</span>
+            </label>
+        </xpath>
+    </template>
+    <template id="fields" inherit_id="auth_signup.fields">
+        <xpath expr="//label[@for='login']" position="after">
+            <span style="color:red">*</span>
+        </xpath>
+        <xpath expr="//label[@for='name']" position="after">
+            <span style="color:red">*</span>
+        </xpath>
+    </template>
+    <!-- QRTL Edit: Adjust layout of the signup template -->
+    <template id="reset_password" inherit_id="auth_signup.reset_password">
+        <xpath expr="//t[@t-call='web.login_layout']" position="attributes">
+            <attribute
+                name="t-call"
+            >website_auth_view_mi7.custom_reset_password_layout</attribute>
+        </xpath>
+        <xpath expr="//form" position="attributes">
+            <attribute name="class" />
+        </xpath>
+        <xpath expr="//div[@class='clearfix oe_login_buttons']" position="attributes">
+            <attribute name="class">form-group</attribute>
+        </xpath>
+        <xpath expr="//button[@type='submit']" position="attributes">
+            <attribute name="class">form-control btn btn-primary</attribute>
+        </xpath>
+    </template>
+</odoo>
