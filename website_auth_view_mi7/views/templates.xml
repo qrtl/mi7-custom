@@ -20,8 +20,7 @@
         <t t-call="web.login_layout">
             <h2>My Page</h2>
             <hr class="page-header-hr" />
-            <p
-            >Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph.</p>
+            <t t-raw="website.login_page_header_text"/>
             <div class="col-md-6">
                 <div class="panel panel-default" style="min-height: 400px;">
                     <div class="panel-heading">
@@ -50,8 +49,7 @@
                     <div class="panel-body">
                         <div class='row'>
                             <div class="col-md-12">
-                                <p
-                                >Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph.</p>
+                                <t t-raw="website.login_page_signup_text"/>
                                 <div class="form-group">
                                     <a
                                         t-attf-href="/web/signup?{{ keep_query() }}"
@@ -70,8 +68,7 @@
         <t t-call="web.login_layout">
             <h2>Register an account</h2>
             <hr class="page-header-hr" />
-            <p
-            >お客様の新規アカウントを作成します。Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph.</p>
+            <t t-raw="website.signup_page_header_text"/>
             <p class="text-muted o_small_caps"><span
                     style="color:red"
                 >*</span> Required fields.</p>
@@ -91,11 +88,7 @@
         <t t-call="web.login_layout">
             <h2>Reset Password</h2>
             <hr class="page-header-hr" />
-            <p>
-                メールアドレスを入力して「完了」ボタンを押してください。
-                登録されているアドレス宛にメールが送信されます。
-                送信されたメールにURLが記載されていますので、リンクをクリックしパスワード変更画面からパスワードを変更してください。
-            </p>
+            <t t-raw="website.password_reset_page_header_text"/>
             <div class="oe_signup_form" style="max-width:600px">
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -164,6 +157,7 @@
                     required="required"
                     style="opacity: unset; position: initial;"
                 />
+                <t t-raw="website.signup_page_terms_text"/>
                 <span>Please read and understand the <a
                         href="/web/register"
                         target="_blank"

@@ -17,11 +17,6 @@ msgstr ""
 
 #. module: website_auth_view_mi7
 #: model:ir.ui.view,arch_db:website_auth_view_mi7.signup
-msgid ". If you agree to the Membership Terms, click the checkbox on the left and you can further proceed with the signup."
-msgstr "をよくお読みの上、全ての項目に同意頂ける場合は、左のチェックボックスにチェックをいれ、下の「アカウントを作成」ボタンを押してください。"
-
-#. module: website_auth_view_mi7
-#: model:ir.ui.view,arch_db:website_auth_view_mi7.signup
 msgid "Membership Terms and Conditions"
 msgstr "会員規約"
 
@@ -29,11 +24,6 @@ msgstr "会員規約"
 #: model:ir.ui.view,arch_db:website_auth_view_mi7.custom_login_layout
 msgid "My Page"
 msgstr "マイページ"
-
-#. module: website_auth_view_mi7
-#: model:ir.ui.view,arch_db:website_auth_view_mi7.signup
-msgid "Please read and understand the"
-msgstr " "
 
 #. module: website_auth_view_mi7
 #: model:ir.ui.view,arch_db:website_auth_view_mi7.custom_login_layout
@@ -55,25 +45,6 @@ msgstr "ログイン"
 #: model:ir.ui.view,arch_db:website_auth_view_mi7.custom_login_layout
 msgid "Sign up"
 msgstr "アカウントを作成"
-
-#. module: website_auth_view_mi7
-#: model:ir.ui.view,arch_db:website_auth_view_mi7.custom_login_layout
-msgid "Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph."
-msgstr "テキスト/テキスト/テキスト/テキスト/テキスト/テキスト"
-
-#. module: website_auth_view_mi7
-#: model:ir.ui.view,arch_db:website_auth_view_mi7.custom_signup_layout
-msgid "お客様の新規アカウントを作成します。Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph. Text paragraph."
-msgstr "お客様の新規アカウントを作成します。テキスト/テキスト/テキスト/テキスト/テキスト/テキスト"
-
-#. module: website_auth_view_mi7
-#: model:ir.ui.view,arch_db:website_auth_view_mi7.custom_reset_password_layout
-msgid "メールアドレスを入力して「完了」ボタンを押してください。\n"
-"                登録されているアドレス宛にメールが送信されます。\n"
-"                送信されたメールにURLが記載されていますので、リンクをクリックしパスワード変更画面からパスワードを変更してください。"
-msgstr "メールアドレスを入力して「完了」ボタンを押してください。\n"
-"                登録されているアドレス宛にメールが送信されます。\n"
-"                送信されたメールにURLが記載されていますので、リンクをクリックしパスワード変更画面からパスワードを変更してください。"
 
 #. module: auth_signup
 #: model:ir.ui.view,arch_db:auth_signup.login
