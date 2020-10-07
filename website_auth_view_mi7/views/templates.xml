@@ -158,10 +158,6 @@
                     style="opacity: unset; position: initial;"
                 />
                 <t t-raw="website.signup_page_terms_text" />
-                <span>Please read and understand the <a
-                        href="/web/register"
-                        target="_blank"
-                    >Membership Terms and Conditions</a>. If you agree to the Membership Terms, click the checkbox on the left and you can further proceed with the signup.</span>
             </label>
         </xpath>
     </template>
