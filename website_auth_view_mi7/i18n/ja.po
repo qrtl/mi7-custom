@@ -24,13 +24,13 @@ msgstr "<span style=\"color:red\">*</span> 入力必須のフィールド"
 #: model:ir.model.fields,field_description:website_auth_view_mi7.field_website_config_settings_login_page_header_text
 #: model:ir.model.fields,field_description:website_auth_view_mi7.field_website_login_page_header_text
 msgid "Login Page Header Text"
-msgstr "ログインページのヘッダテキスト"
+msgstr "ログインページヘッダーテキスト"
 
 #. module: website_auth_view_mi7
 #: model:ir.model.fields,field_description:website_auth_view_mi7.field_website_config_settings_login_page_signup_text
 #: model:ir.model.fields,field_description:website_auth_view_mi7.field_website_login_page_signup_text
 msgid "Login Page User Register Text"
-msgstr "ログインページのアカウント作成テキスト"
+msgstr "ログインページユーザ登録テキスト"
 
 #. module: website_auth_view_mi7
 #: model:ir.ui.view,arch_db:website_auth_view_mi7.signup
@@ -46,7 +46,7 @@ msgstr "マイページ"
 #: model:ir.model.fields,field_description:website_auth_view_mi7.field_website_config_settings_password_reset_page_header_text
 #: model:ir.model.fields,field_description:website_auth_view_mi7.field_website_password_reset_page_header_text
 msgid "Password Reset Page Header Text"
-msgstr "パスワードリセットのページヘッダテキスト"
+msgstr "パスワードリセットページヘッダーテキスト"
 
 #. module: website_auth_view_mi7
 #: model:ir.ui.view,arch_db:website_auth_view_mi7.custom_login_layout
@@ -73,13 +73,13 @@ msgstr "アカウントを作成"
 #: model:ir.model.fields,field_description:website_auth_view_mi7.field_website_config_settings_signup_page_header_text
 #: model:ir.model.fields,field_description:website_auth_view_mi7.field_website_signup_page_header_text
 msgid "Signup Page Header Text"
-msgstr "アカウント作成ページのヘッダテキスト"
+msgstr "サインアップページヘッダーテキスト"
 
 #. module: website_auth_view_mi7
 #: model:ir.model.fields,field_description:website_auth_view_mi7.field_website_config_settings_signup_page_terms_text
 #: model:ir.model.fields,field_description:website_auth_view_mi7.field_website_signup_page_terms_text
 msgid "Signup Page Terms and Conditions Text"
-msgstr "アカウント作成ページの会員規約テキスト"
+msgstr "サインアップページ会員規約テキスト"
 
 #. module: website_auth_view_mi7
 #: model:ir.ui.view,arch_db:website_auth_view_mi7.view_website_config_settings
