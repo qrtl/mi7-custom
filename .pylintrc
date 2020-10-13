@@ -79,7 +79,7 @@ enable=anomalous-backslash-in-string,
     old-api7-method-defined,
     redefined-builtin,
     too-complex,
-    unnecessary-utf8-coding-comment
+    missing-utf8-coding-comment
 
 [REPORTS]
 msg-template={path}:{line}: [{msg_id}({symbol}), {obj}] {msg}
