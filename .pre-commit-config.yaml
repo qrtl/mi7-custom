@@ -10,17 +10,7 @@ exclude: |
   ^docs/_templates/.*\.html$|
   # You don't usually want a bot to modify your legal texts
   (LICENSE.*|COPYING.*)|
-  .travis.yml|
-  auditlog/|
-  auth_user_case_insensitive/|
-  base_technical_features/|
-  stock_history_adj/|
-  stock_inventory_valuation_flat/|
-  stock_no_negative/|
-  web_environment_ribbon/|
-  web_favicon/|
-  web_m2x_options/|
-  website_no_crawler/
+  .travis.yml
 default_language_version:
   python: python2.7
 repos:
