@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-07 02:23+0000\n"
-"PO-Revision-Date: 2020-10-07 02:23+0000\n"
+"POT-Creation-Date: 2021-02-10 13:55+0000\n"
+"PO-Revision-Date: 2021-02-10 13:55+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -27,15 +27,16 @@ msgid "Login Page Header Text"
 msgstr "ログインページヘッダーテキスト"
 
 #. module: website_auth_view_mi7
+#: model:ir.model.fields,field_description:website_auth_view_mi7.field_website_config_settings_login_page_signin_bottom_text
+#: model:ir.model.fields,field_description:website_auth_view_mi7.field_website_login_page_signin_bottom_text
+msgid "Login Page Sign-in Bottom Text"
+msgstr "ログインページログイン下部テキスト"
+
+#. module: website_auth_view_mi7
 #: model:ir.model.fields,field_description:website_auth_view_mi7.field_website_config_settings_login_page_signup_text
 #: model:ir.model.fields,field_description:website_auth_view_mi7.field_website_login_page_signup_text
 msgid "Login Page User Register Text"
 msgstr "ログインページユーザ登録テキスト"
-
-#. module: website_auth_view_mi7
-#: model:ir.ui.view,arch_db:website_auth_view_mi7.signup
-msgid "Membership Terms and Conditions"
-msgstr "会員規約"
 
 #. module: website_auth_view_mi7
 #: model:ir.ui.view,arch_db:website_auth_view_mi7.custom_login_layout

@@ -113,6 +113,7 @@
                 t-attf-href="/web/reset_password?{{ keep_query() }}"
                 class="btn btn-link"
             >Reset Password</a>
+            <t t-raw="website.login_page_signin_bottom_text" />
         </xpath>
     </template>
     <!-- QRTL Edit: Adjust the class of the login button div -->
