@@ -107,13 +107,12 @@
         name="Sign up - Reset Password"
     >
         <xpath expr="//button[@type='submit']" position="after">
+            <!-- Following links are disabled, and the texts/links should be provided in website.login_page_signin_bottom_text. -->
             <!-- <a t-if="signup_enabled" t-attf-href="/web/signup?{{ keep_query() }}" class="btn btn-link pull-right">Sign up</a> -->
-            <a
-                t-if="reset_password_enabled"
-                t-attf-href="/web/reset_password?{{ keep_query() }}"
-                class="btn btn-link"
-            >Reset Password</a>
-            <t t-raw="website.login_page_signin_bottom_text" />
+            <!-- <a t-if="reset_password_enabled" t-attf-href="/web/reset_password?{{ keep_query() }}" class="btn btn-link">Reset Password</a> -->
+            <p>
+                <t t-raw="website.login_page_signin_bottom_text" />
+            </p>
         </xpath>
     </template>
     <!-- QRTL Edit: Adjust the class of the login button div -->
