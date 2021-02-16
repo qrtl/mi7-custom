@@ -11,6 +11,10 @@ class WebsiteConfigSettings(models.TransientModel):
     login_page_header_text = fields.Html(
         "Login Page Header Text", related="website_id.login_page_header_text"
     )
+    login_page_signin_bottom_text = fields.Html(
+        "Login Page Sign-in Bottom Text",
+        related="website_id.login_page_signin_bottom_text",
+    )
     login_page_signup_text = fields.Html(
         "Login Page User Register Text", related="website_id.login_page_signup_text"
     )

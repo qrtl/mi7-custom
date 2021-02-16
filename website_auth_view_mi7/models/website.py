@@ -11,6 +11,9 @@ class Website(models.Model):
     login_page_header_text = fields.Html(
         "Login Page Header Text", translate=True, sanitize=False
     )
+    login_page_signin_bottom_text = fields.Html(
+        "Login Page Sign-in Bottom Text", translate=True, sanitize=False
+    )
     login_page_signup_text = fields.Html(
         "Login Page User Register Text", translate=True, sanitize=False
     )
