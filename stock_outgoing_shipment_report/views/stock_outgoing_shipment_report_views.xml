@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_stock_outgoing_shipment_report_tree" model="ir.ui.view">
+        <field name="name">stock.outgoing.shipment.report.tree</field>
+        <field name="model">stock.outgoing.shipment.report</field>
+        <field name="arch" type="xml">
+            <tree string="Stock Outgoing Shipment Report" editable="top" >
+                <field name="move_id" />
+                <field name="name" attrs="{'readonly': [('is_exported', '=',  True)]}"/>
+                <field name="is_exported" />
+                <!-- <field name="dispatch_date" />
+                <field name="delivery_date" />
+                <field name="shipping_mode" />
+                <field name="carrier_name" />
+                <field name="partner_ref" />
+                <field name="partner_name" />
+                <field name="partner_zip" />
+                <field name="partner_address" />
+                <field name="partner_phone" />
+                <field name="product_code" />
+                <field name="product_name" />
+                <field name="case_qty" />
+                <field name="separate_qty" />
+                <field name="expiry_date_edit" widget="date" string='Expiry Date' />
+                <field name="expiry_date" invisible="1" />
+                <field name="lot_num" />
+                <field name="lot_branch_num" />
+                <field name="delivery_division" />
+                <field name="customer_delivery_note" />
+                <field name="memo" /> -->
+            </tree>
+        </field>
+    </record>
+    <record id="action_stock_outgoing_shipment_report" model="ir.actions.act_window">
+        <field name="name">Stock Outgoing Shipment Report</field>
+        <field name="res_model">stock.outgoing.shipment.report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <menuitem
+        action="action_stock_outgoing_shipment_report"
+        id="stock_outgoing_shipment_report_menu"
+        parent="stock.menu_warehouse_report"
+        sequence="170"
+    />
+</odoo>
