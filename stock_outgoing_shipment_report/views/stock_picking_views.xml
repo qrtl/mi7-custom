@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="stock.view_picking_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='min_date']" position="before">
-            	<field name="is_exported"/>
+                <field name="is_exported" />
             </xpath>
         </field>
     </record>
@@ -16,9 +16,17 @@
         <field name="inherit_id" ref="stock.view_picking_internal_search" />
         <field name="arch" type="xml">
             <xpath expr="//filter[@name='late']" position="before">
-            	<filter name="exported" string="Exported" domain="[('is_exported','=',True)]" />
-            	<filter name="unexported" string="Unexported" domain="[('is_exported','=',False)]" />
-                <separator/>
+                <filter
+                    name="exported"
+                    string="Exported"
+                    domain="[('is_exported','=',True)]"
+                />
+                <filter
+                    name="unexported"
+                    string="Unexported"
+                    domain="[('is_exported','=',False)]"
+                />
+                <separator />
             </xpath>
         </field>
     </record>

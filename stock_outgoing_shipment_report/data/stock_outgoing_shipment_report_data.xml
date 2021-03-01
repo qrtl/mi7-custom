@@ -12,12 +12,14 @@ if records:
     action = records.generate_stock_outgoing_shipment_report()
         </field>
     </record>
-
     <record model="ir.values" id="generate_stock_outgoing_shipment_report">
         <field name="model_id" ref="stock.model_stock_picking" />
         <field name="name">Generate Delivery Data</field>
         <field name="key2">client_action_multi</field>
-        <field name="value" eval="'ir.actions.server,' +str(ref('action_generate_stock_outgoing_shipment_report'))" />
+        <field
+            name="value"
+            eval="'ir.actions.server,' +str(ref('action_generate_stock_outgoing_shipment_report'))"
+        />
         <field name="key">action</field>
         <field name="model">stock.picking</field>
     </record>

@@ -2,8 +2,9 @@
 # Copyright 2021 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo import _, api, fields, models
-from odoo.exceptions import ValidationError
+from odoo import fields, models
+
+# from odoo.exceptions import ValidationError
 
 FIELDS_PROPERTIES = {
     # "shipping_mode": ["Char", 2],
@@ -29,7 +30,7 @@ class StockOutgoingShipmentReport(models.Model):
 
     move_id = fields.Many2one("stock.move", string="Stock Move", readonly=True,)
     name = fields.Char("Test Field")
-    is_exported = fields.Boolean('Exported')
+    is_exported = fields.Boolean("Exported")
 
     # @api.constrains(
     #     "shipping_mode",
@@ -74,5 +75,5 @@ class StockOutgoingShipmentReport(models.Model):
     #                         )
 
     _sql_constraints = [
-        ('move_id_uniq', 'unique(move_id)', "The stock data already exists.")
+        ("move_id_uniq", "unique(move_id)", "The stock data already exists.")
     ]

@@ -4,9 +4,12 @@
         <field name="name">stock.outgoing.shipment.report.tree</field>
         <field name="model">stock.outgoing.shipment.report</field>
         <field name="arch" type="xml">
-            <tree string="Stock Outgoing Shipment Report" editable="top" >
+            <tree string="Stock Outgoing Shipment Report" editable="top">
                 <field name="move_id" />
-                <field name="name" attrs="{'readonly': [('is_exported', '=',  True)]}"/>
+                <field
+                    name="name"
+                    attrs="{'readonly': [('is_exported', '=',  True)]}"
+                />
                 <field name="is_exported" />
                 <!-- <field name="dispatch_date" />
                 <field name="delivery_date" />

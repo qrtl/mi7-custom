@@ -4,17 +4,15 @@
 {
     "name": "Stock Outgoing Shipment Report",
     "summary": "",
-    "version": "12.0.1.0.0",
+    "version": "10.0.1.0.0",
     "category": "Stock",
     "website": "https://www.quartile.co/",
     "author": "Quartile Limited",
     "license": "LGPL-3",
     "installable": True,
-    "depends": [
-        "stock",
-    ],
+    "depends": ["stock"],
     "data": [
-        'security/ir.model.access.csv',
+        "security/ir.model.access.csv",
         "data/stock_outgoing_shipment_report_data.xml",
         "views/stock_outgoing_shipment_report_views.xml",
         "views/stock_picking_views.xml",

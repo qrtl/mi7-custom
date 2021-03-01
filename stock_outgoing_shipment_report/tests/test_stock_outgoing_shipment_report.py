@@ -3,8 +3,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 
-from odoo.tests import SavepointCase, tagged
-
+# from odoo.tests import SavepointCase, tagged
 
 # @tagged("post_install", "-at_install")
 # class TestAccountPaymentImportSbt(SavepointCase):
