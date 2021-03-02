@@ -4,6 +4,7 @@
 
 import json
 
+from odoo.http import request
 from odoo.addons.web.controllers.main import CSVExport, ExcelExport
 
 
@@ -19,6 +20,11 @@ class CSVExportInherit(CSVExport):
         if params["model"] == "stock.outgoing.shipment.report":
             params["fields"].pop(0)
             data = json.dumps(params)
+            report = request.env["stock.outgoing.shipment.report"]
+            records = report.browse(params["ids"]) or report.search(params["domain"], offset=0, limit=False, order=False)
+            records.update({
+                'is_exported': True
+            })
         return super(CSVExportInherit, self).base(data, token)
 
 
@@ -34,4 +40,9 @@ class ExcelExportInherit(ExcelExport):
         if params["model"] == "stock.outgoing.shipment.report":
             params["fields"].pop(0)
             data = json.dumps(params)
+            report = request.env["stock.outgoing.shipment.report"]
+            records = report.browse(params["ids"]) or report.search(params["domain"], offset=0, limit=False, order=False)
+            records.update({
+                'is_exported': True
+            })
         return super(ExcelExportInherit, self).base(data, token)

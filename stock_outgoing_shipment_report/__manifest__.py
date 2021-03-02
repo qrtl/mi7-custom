@@ -10,7 +10,7 @@
     "author": "Quartile Limited",
     "license": "LGPL-3",
     "installable": True,
-    "depends": ["stock"],
+    "depends": ["sale_stock"],
     "data": [
         "security/ir.model.access.csv",
         "data/stock_outgoing_shipment_report_data.xml",
