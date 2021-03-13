@@ -2,7 +2,7 @@
 # Copyright 2020 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo import fields, models
+from odoo import models
 
 
 class ResPartner(models.Model):
@@ -24,9 +24,9 @@ class ResPartner(models.Model):
 
     def write(self, vals):
         if vals.get("email"):
-            mail_ex_id =\
-                "notify_login_email_changed.email_template_notify_email_change"
-            mail_template = self.env.ref(mail_ex_id)
+            module = "notify_login_email_changed"
+            mail_ex_id = "email_template_notify_email_change"
+            mail_template = self.env.ref("{}.{}".format(module, mail_ex_id))
             new_email = vals["email"]
             for partner in self:
                 partner._send_email(mail_template, partner.email, new_email)
