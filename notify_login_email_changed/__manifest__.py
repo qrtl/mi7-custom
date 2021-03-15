@@ -7,7 +7,7 @@
     "license": "LGPL-3",
     "author": "Quartile Limited",
     "website": "https://www.quartile.co",
-    "version": "10.0.1.0.1",
+    "version": "10.0.1.0.0",
     "depends": ["base", "website_portal"],
     "data": ["views/templates.xml", "views/email_templates.xml"],
     "installable": True,
