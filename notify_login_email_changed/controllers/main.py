@@ -15,6 +15,6 @@ class WebsiteAccount(website_account):
         old_email = partner.email
         response = super(WebsiteAccount, self).details(redirect=redirect, **post)
         if post and post["email"] and old_email != post["email"]:
+            partner._update_login_email(post["email"])
             partner._send_email(old_email, post["email"])
-
         return response
