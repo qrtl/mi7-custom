@@ -15,7 +15,7 @@ class ResPartner(models.Model):
         users = self.env["res.users"].search([("partner_id", "=", self.id)])
         if users:
             users.write({"login": new_email})
-        return True
+        return users
 
     def _send_email(self, old_email="", new_email=""):
         self.ensure_one()
