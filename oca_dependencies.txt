@@ -19,4 +19,5 @@
 # sale-workflow https://github.com/OCA/sale-workflow branchname f848e37
 
 mi7-oca https://github.com/qrtl/mi7-oca st1
+pro_spire-temp https://github.com/qrtl/pro_spire-temp.git st1
 pro_mi7-temp https://github.com/qrtl/pro_mi7-temp.git st1
