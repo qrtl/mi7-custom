@@ -7,7 +7,7 @@ from odoo.tests.common import TransactionCase
 
 class TestAccountInvoiceAutoDispatch(TransactionCase):
     def setUp(self):
-        super(TestAccountInvoiceNotification, self).setUp()
+        super(TestAccountInvoiceAutoDispatch, self).setUp()
 
     def test_send_notify(self):
         IrModelData = self.env["ir.model.data"]
