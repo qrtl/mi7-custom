@@ -60,7 +60,7 @@ class AccountInvoice(models.Model):
 
         ctx = dict(
             mark_invoice_as_sent=True,
-            custom_layout="account.mail_template_data_notification_email_account_invoice",
+            # custom_layout="account.mail_template_data_notification_email_account_invoice",
         )
         ctx.update(
             {
