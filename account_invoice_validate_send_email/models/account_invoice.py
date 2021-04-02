@@ -8,23 +8,21 @@ from odoo import api, fields, models
 class AccountInvoice(models.Model):
     _inherit = "account.invoice"
 
-    invoice_sent = fields.Boolean(default=False)
+    invoice_sent = fields.Boolean(
+        readonly=True,
+        states={'draft': [('readonly', False)]},
+        help="When this field is selected, no email will be automatically sent to the customer.",
+    )
     web_url = fields.Char()
-
-    @api.multi
-    def action_invoice_draft(self):
-        res = super(AccountInvoice, self).action_invoice_draft()
-        self.update({"invoice_sent": False})
-        return res
 
     @api.multi
     def action_invoice_open(self):
         res = super(AccountInvoice, self).action_invoice_open()
-        self.update({"invoice_sent": True})
+        base_url = self.env["ir.config_parameter"].get_param("web.base.url")
         for invoice in self:
-            base_url = self.env["ir.config_parameter"].get_param("web.base.url")
-            invoice.web_url = base_url + "/my/invoices/pdf/" + str(invoice.id)
-            invoice.action_send()
+            if not invoice.invoice_sent:
+                invoice.web_url = base_url + "/my/invoices/pdf/" + str(invoice.id)
+                invoice.action_send()
         return res
 
     @api.multi
@@ -38,6 +36,7 @@ class AccountInvoice(models.Model):
                 self.with_context(email_ctx).message_post_with_template(
                     email_ctx.get("default_template_id")
                 )
+                self.invoice_sent = True
         return True
 
     @api.multi
@@ -46,7 +45,7 @@ class AccountInvoice(models.Model):
         ir_model_data = self.env["ir.model.data"]
         try:
             template_id = ir_model_data.get_object_reference(
-                "account_invoice_auto_dispatch",
+                "account_invoice_validate_send_email",
                 "email_template_customer_invoice_validated",
             )[1]
         except ValueError:

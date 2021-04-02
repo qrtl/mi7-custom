@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="account.invoice_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='move_id']" position="after">
-                <field name="invoice_sent" readonly="1" />
+                <field name="invoice_sent" />
                 <field name="web_url" invisible="1" />
             </xpath>
         </field>
