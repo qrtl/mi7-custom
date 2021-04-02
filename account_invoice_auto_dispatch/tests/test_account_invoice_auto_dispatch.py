@@ -5,7 +5,7 @@
 from odoo.tests.common import TransactionCase
 
 
-class TestAccountInvoiceNotification(TransactionCase):
+class TestAccountInvoiceAutoDispatch(TransactionCase):
     def setUp(self):
         super(TestAccountInvoiceNotification, self).setUp()
 
