@@ -9,6 +9,7 @@ class AccountInvoice(models.Model):
     _inherit = "account.invoice"
 
     invoice_sent = fields.Boolean(
+        string="Invoice Sent",
         readonly=True,
         states={"draft": [("readonly", False)]},
         help="When this field is selected, no email will be automatically sent to the customer.",
