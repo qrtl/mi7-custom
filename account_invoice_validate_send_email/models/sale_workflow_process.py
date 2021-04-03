@@ -8,6 +8,4 @@ from odoo import fields, models
 class SaleWorkflowProcess(models.Model):
     _inherit = "sale.workflow.process"
 
-    send_invoice = fields.Boolean(
-        string="Send Invoice upon Validation",
-    )
+    send_invoice = fields.Boolean(string="Send Invoice upon Validation")

@@ -16,12 +16,6 @@ class AccountInvoice(models.Model):
     web_url = fields.Char()
 
     def _get_mail_template_id(self):
-        # ir_model_data = self.env["ir.model.data"]
-        # try:
-        #     template_id = ir_model_data.get_object_reference(
-        #         "account_invoice_validate_send_email",
-        #         "email_template_customer_invoice_validated",
-        #     )[1]
         try:
             res = self.env.ref(
                 "account_invoice_validate_send_email.email_template_customer_invoice_validated"
@@ -33,24 +27,14 @@ class AccountInvoice(models.Model):
     @api.multi
     def get_mail_compose_message(self):
         self.ensure_one()
-        # ir_model_data = self.env["ir.model.data"]
-        # try:
-        #     template_id = ir_model_data.get_object_reference(
-        #         "account_invoice_validate_send_email",
-        #         "email_template_customer_invoice_validated",
-        #     )[1]
-        # except ValueError:
-        #     template_id = False
         template_id = self._get_mail_template_id()
         try:
-            # compose_form_id = ir_model_data.get_object_reference(
-            #     "mail", "email_compose_message_wizard_form"
-            # )[1]
             compose_form_id = self.env.ref("mail.email_compose_message_wizard_form").id
         except ValueError:
             compose_form_id = False
         ctx = dict(
             mark_invoice_as_sent=True,
+            # We choose not to use the custom layout here for now.
             # custom_layout="account.mail_template_data_notification_email_account_invoice",
         )
         ctx.update(
