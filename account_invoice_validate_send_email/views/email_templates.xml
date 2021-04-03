@@ -15,7 +15,7 @@
             search="[('model','=','account.invoice')]"
             model="ir.model"
         />
-        <field name="auto_delete" eval="True" />
+        <field name="auto_delete" eval="False" />
         <field name="lang">${object.partner_id.lang}</field>
         <field
             name="body_html"
