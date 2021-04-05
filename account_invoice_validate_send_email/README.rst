@@ -32,6 +32,13 @@ The module depends on the OCA module sale_automatic_workflow.
 .. contents::
    :local:
 
+Configuration
+=============
+
+Go to *Sales > Settings > Automatic Workflow > Automatic Workflow*, open a
+workflow process of your concern and select 'Send Invoice upon Validation' to
+use the functions of this module.
+
 Bug Tracker
 ===========
 
