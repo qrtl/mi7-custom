@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="account_invoice_auto_dispatch_inherit" model="ir.ui.view">
+        <field name="name">account.invoic.notificaton.inherit</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='move_id']" position="after">
+                <field name="invoice_sent" />
+                <field name="web_url" invisible="1" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
