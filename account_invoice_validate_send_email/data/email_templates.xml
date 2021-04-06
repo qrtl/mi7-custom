@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="email_template_customer_invoice_validated" model="mail.template">
+        <field name="name">Invoice Notification</field>
+        <field
+            name="email_from"
+        ><![CDATA["${object.company_id.name}" <${(object.company_id.email or user.email)|safe}>]]></field>
+        <field name="reply_to">${object.company_id.email}</field>
+        <field name="subject">Validated Invoice (Ref: ${object.number or 'N/A'})</field>
+        <field name="partner_to">${ctx['notify_partner_ids']|safe}</field>
+        <field
+            name="model_id"
+            search="[('model','=','account.invoice')]"
+            model="ir.model"
+        />
+        <field name="auto_delete" eval="True" />
+        <field
+            name="report_template"
+            ref="pro_mi7_account.print_detailed_account_invoice"
+        />
+        <field
+            name="report_name"
+        >Invoice_${(object.number or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}</field>
+        <field name="lang">${object.partner_id.lang}</field>
+        <field
+            name="body_html"
+        ><![CDATA[
+<p>Dear ${object.partner_id.name}
+% if object.partner_id.parent_id:
+    (<i>${object.partner_id.parent_id.name}</i>)
+% endif
+,</p>
+<p>
+This is to inform you that your invoice <a href="${object.web_url}"><strong>${object.number or 'N/A'}</strong></a> has been validated (our reference: ${object.name or 'N/A'}).
+</p>
+<p>
+<p>If you have any queries, please reach us at ${object.company_id.email}.</p>
+<p>Thank you,</p>
+]]>
+        </field>
+    </record>
+</odoo>
