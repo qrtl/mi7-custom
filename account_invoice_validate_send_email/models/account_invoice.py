@@ -8,6 +8,8 @@ from odoo import api, fields, models
 class AccountInvoice(models.Model):
     _inherit = "account.invoice"
 
+    send_invoice = fields.Boolean(related="workflow_process_id.send_invoice")
+    # not_send_invoice = fields.Boolean(related="payment_term_id.not_send_invoice")
     invoice_sent = fields.Boolean(
         string="Invoice Sent",
         readonly=True,
@@ -66,10 +68,9 @@ class AccountInvoice(models.Model):
         res = super(AccountInvoice, self).action_invoice_open()
         base_url = self.env["ir.config_parameter"].get_param("web.base.url")
         for invoice in self:
+            term = invoice.payment_term_id
             if (
-                invoice.workflow_process_id
-                and invoice.workflow_process_id.send_invoice
-                and not invoice.invoice_sent
+                invoice.send_invoice and not (term and term.not_send_invoice) and not invoice.invoice_sent
             ):
                 # TODO We may want to adjust/remove web_url - the value points
                 # to the standard report which is not what we want to print

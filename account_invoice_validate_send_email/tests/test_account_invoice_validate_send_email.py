@@ -2,91 +2,96 @@
 # Copyright 2021 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo.tests.common import TransactionCase
+from odoo.tests.common import SavepointCase
 
 
-class TestAccountInvoiceValidateSendEmail(TransactionCase):
-    def setUp(self):
-        super(TestAccountInvoiceValidateSendEmail, self).setUp()
-        self.account_rev = self.env["account.account"].create(
+class TestAccountInvoiceValidateSendEmail(SavepointCase):
+    @classmethod
+    def setUpClass(cls):
+        super(TestAccountInvoiceValidateSendEmail, cls).setUpClass()
+        account_rev = cls.env["account.account"].create(
             {
                 "code": "X2020",
                 "name": "Sales Test",
-                "user_type_id": self.ref("account.data_account_type_revenue"),
+                "user_type_id": cls.env.ref("account.data_account_type_revenue").id,
             }
         )
-        self.journal = self.env["account.journal"].create(
+        journal = cls.env["account.journal"].create(
             {"name": "Sale Journal - Test", "code": "STSJ", "type": "sale"}
         )
-        receivable_id = self.env["account.account"].create(
+        receivable_id = cls.env["account.account"].create(
             {
                 "code": "X4040",
                 "name": "Debtors Test",
-                "user_type_id": self.ref("account.data_account_type_receivable"),
+                "user_type_id": cls.env.ref("account.data_account_type_receivable").id,
                 "reconcile": True,
             }
         )
-        self.partner = self.env["res.partner"].create(
+        partner = cls.env["res.partner"].create(
             {
                 "name": "Test Partner",
                 "email": "test01@gmail.com",
                 "property_account_receivable_id": receivable_id,
             }
         )
-        self.workflow = self.env["sale.workflow.process"].create(
+        cls.workflow = cls.env["sale.workflow.process"].create(
             {"name": "Send Invoice Test", "send_invoice": True}
         )
-
-    def test_01_validate_invoice_no_send(self):
-        invoice = self.env["account.invoice"].create(
+        cls.payment_term = cls.env["account.payment.term"].create(
+            {
+                "name": "Immediate Payment",
+                # "not_send_invoice": True,
+            }
+        )
+        cls.invoice = cls.env["account.invoice"].create(
             {
                 "origin": "Test Invoice",
                 "type": "out_invoice",
-                "partner_id": self.partner.id,
-                "journal_id": self.journal.id,
+                "partner_id": partner.id,
+                "journal_id": journal.id,
             }
         )
-        self.env["account.invoice.line"].create(
+        cls.env["account.invoice.line"].create(
             {
                 "name": "Test 01",
-                "account_id": self.account_rev.id,
+                "account_id": account_rev.id,
                 "price_unit": 100,
                 "quantity": 1,
-                "invoice_id": invoice.id,
+                "invoice_id": cls.invoice.id,
             }
         )
-        self.assertEqual(invoice.invoice_sent, False)
-        invoice.sudo().action_invoice_open()
-        # No invoice email should be sent at this point with no workflow
-        # assignment.
-        self.assertEqual(invoice.invoice_sent, False)
-
-    def test_02_validate_invoice_send(self):
         # Remove report template from the email template to lighten the test load.
-        template = self.env.ref(
+        template = cls.env.ref(
             "account_invoice_validate_send_email.email_template_customer_invoice_validated"
         )
         template.report_template = False
-        invoice = self.env["account.invoice"].create(
-            {
-                "origin": "Test Invoice",
-                "type": "out_invoice",
-                "account_id": self.partner.property_account_receivable_id.id,
-                "partner_id": self.partner.id,
-                "journal_id": self.journal.id,
-            }
-        )
-        self.env["account.invoice.line"].create(
-            {
-                "name": "Test 01",
-                "account_id": self.account_rev.id,
-                "price_unit": 100,
-                "quantity": 1,
-                "invoice_id": invoice.id,
-            }
-        )
-        self.assertEqual(invoice.invoice_sent, False)
-        invoice.workflow_process_id = self.workflow
-        invoice.sudo().action_invoice_open()
-        # With workflow with send_invoice true, invoice email should be sent.
-        self.assertEqual(invoice.invoice_sent, True)
+
+    def test_01_validate_invoice_no_workflow(self):
+        # Without workflow
+        self.assertEqual(self.invoice.invoice_sent, False)
+        self.invoice.sudo().action_invoice_open()
+        self.assertEqual(self.invoice.invoice_sent, False)
+
+    def test_02_validate_invoice_workflow_no_term(self):
+        # With workflow, without payment term
+        self.assertEqual(self.invoice.invoice_sent, False)
+        self.invoice.workflow_process_id = self.workflow
+        self.invoice.sudo().action_invoice_open()
+        self.assertEqual(self.invoice.invoice_sent, True)
+
+    def test_03_validate_invoice_workflow_term_not_send(self):
+        # With workflow, with payment term (no_send_invoice is true)
+        self.assertEqual(self.invoice.invoice_sent, False)
+        self.invoice.workflow_process_id = self.workflow
+        self.payment_term.not_send_invoice = True
+        self.invoice.payment_term_id = self.payment_term
+        self.invoice.sudo().action_invoice_open()
+        self.assertEqual(self.invoice.invoice_sent, False)
+
+    def test_04_validate_invoice_workflow_term_send(self):
+        # With workflow, with payment term (no_send_invoice is false)
+        self.assertEqual(self.invoice.invoice_sent, False)
+        self.invoice.workflow_process_id = self.workflow
+        self.invoice.payment_term_id = self.payment_term
+        self.invoice.sudo().action_invoice_open()
+        self.assertEqual(self.invoice.invoice_sent, True)
