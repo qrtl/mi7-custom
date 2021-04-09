@@ -70,7 +70,9 @@ class AccountInvoice(models.Model):
         for invoice in self:
             term = invoice.payment_term_id
             if (
-                invoice.send_invoice and not (term and term.not_send_invoice) and not invoice.invoice_sent
+                invoice.send_invoice
+                and not (term and term.not_send_invoice)
+                and not invoice.invoice_sent
             ):
                 # TODO We may want to adjust/remove web_url - the value points
                 # to the standard report which is not what we want to print
