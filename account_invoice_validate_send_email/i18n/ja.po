@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-10 04:15+0000\n"
-"PO-Revision-Date: 2021-04-10 04:15+0000\n"
+"POT-Creation-Date: 2021-04-10 06:26+0000\n"
+"PO-Revision-Date: 2021-04-10 06:26+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,31 +18,45 @@ msgstr ""
 #. module: account_invoice_validate_send_email
 #: model:mail.template,body_html:account_invoice_validate_send_email.email_template_customer_invoice_validated
 msgid "\n"
-"<p>Dear ${object.partner_id.name}\n"
+"<p>${object.partner_id.name}\n"
 "% if object.partner_id.parent_id:\n"
 "    (<i>${object.partner_id.parent_id.name}</i>)\n"
 "% endif\n"
-",</p>\n"
+"様</p>\n"
 "<p>\n"
-"This is to inform you that your invoice <a href=\"${object.web_url}\"><strong>${object.number or 'N/A'}</strong></a> has been validated (our reference: ${object.name or 'N/A'}).\n"
+"お世話になっております。<br>\n"
+"以下のとおり、請求書を送付いたしますので、ご査収の程よろしくお願いいたします。\n"
 "</p>\n"
 "<p>\n"
-"<p>If you have any queries, please reach us at ${object.company_id.email}.</p>\n"
-"<p>Thank you,</p>\n"
+"<strong>${object.number or 'N/A'}</strong>\n"
+"</p>\n"
+"<p>\n"
+"宜しくお願い致します。\n"
+"</p>\n"
+"<p>\n"
+"${object.company_id.name}<br>\n"
+"</p>\n"
 "\n"
 "        "
 msgstr "\n"
-"<p>Dear ${object.partner_id.name}\n"
+"<p>${object.partner_id.name}\n"
 "% if object.partner_id.parent_id:\n"
 "    (<i>${object.partner_id.parent_id.name}</i>)\n"
 "% endif\n"
-",</p>\n"
+"様</p>\n"
 "<p>\n"
-"This is to inform you that your invoice <a href=\"${object.web_url}\"><strong>${object.number or 'N/A'}</strong></a> has been validated (our reference: ${object.name or 'N/A'}).\n"
+"お世話になっております。<br>\n"
+"以下のとおり、請求書を送付いたしますので、ご査収の程よろしくお願いいたします。\n"
 "</p>\n"
 "<p>\n"
-"<p>If you have any queries, please reach us at ${object.company_id.email}.</p>\n"
-"<p>Thank you,</p>\n"
+"<strong>${object.number or 'N/A'}</strong>\n"
+"</p>\n"
+"<p>\n"
+"宜しくお願い致します。\n"
+"</p>\n"
+"<p>\n"
+"${object.company_id.name}<br>\n"
+"</p>\n"
 "\n"
 "        "
 
@@ -83,14 +97,14 @@ msgid "Send Invoice upon Validation"
 msgstr "検証時に請求書送信"
 
 #. module: account_invoice_validate_send_email
-#: model:mail.template,subject:account_invoice_validate_send_email.email_template_customer_invoice_validated
-msgid "Validated Invoice (Ref: ${object.number or 'N/A'})"
-msgstr "Validated Invoice (Ref: ${object.number or 'N/A'})"
-
-#. module: account_invoice_validate_send_email
 #: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_invoice_web_url
 msgid "Web url"
 msgstr "Web url"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,help:account_invoice_validate_send_email.field_account_invoice_invoice_sent
+msgid "When this field is selected, no email will be automatically sent to the customer."
+msgstr "この項目が選択されている場合、検証時の自動メール送信は無効化されます。"
 
 #. module: account_invoice_validate_send_email
 #: model:ir.model.fields,help:account_invoice_validate_send_email.field_account_payment_term_not_send_invoice
@@ -98,7 +112,7 @@ msgid "When this field is selected, the invoices that use this payment term will
 msgstr "ワークフロープロセス設定にかかわらず、この項目が選択されていると請求書は自動メール送信対象外となります。"
 
 #. module: account_invoice_validate_send_email
-#: model:ir.model.fields,help:account_invoice_validate_send_email.field_account_invoice_invoice_sent
-msgid "When this field is selected, no email will be automatically sent to the customer."
-msgstr "この項目が選択されている場合、検証時の自動メール送信は無効化されます。"
+#: model:mail.template,subject:account_invoice_validate_send_email.email_template_customer_invoice_validated
+msgid "【請求書】送付のご案内　${object.company_id.name}　${object.number or \"N/A\"}"
+msgstr "【請求書】送付のご案内　${object.company_id.name}　${object.number or \"N/A\"}"
 
