@@ -9,11 +9,11 @@ class AccountInvoice(models.Model):
     _inherit = "account.invoice"
 
     send_invoice = fields.Boolean(related="workflow_process_id.send_invoice")
-    # not_send_invoice = fields.Boolean(related="payment_term_id.not_send_invoice")
     invoice_sent = fields.Boolean(
         string="Invoice Sent",
         readonly=True,
         states={"draft": [("readonly", False)]},
+        copy=False,
         help="When this field is selected, no email will be automatically sent to the customer.",
     )
     web_url = fields.Char()
@@ -37,8 +37,9 @@ class AccountInvoice(models.Model):
             compose_form_id = False
         ctx = dict(
             mark_invoice_as_sent=True,
-            # We choose not to use the custom layout here for now.
-            # custom_layout="account.mail_template_data_notification_email_account_invoice",
+            # We choose to use the custom layout here, or there will be a link
+            # button to the backend form.
+            custom_layout="account.mail_template_data_notification_email_account_invoice",
         )
         ctx.update(
             {

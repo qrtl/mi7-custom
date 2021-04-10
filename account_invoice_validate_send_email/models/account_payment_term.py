@@ -10,5 +10,7 @@ class AccountPaymentTerm(models.Model):
 
     not_send_invoice = fields.Boolean(
         string="Not Auto-send Invoice",
-        help="When this field is selected, no email will be automatically sent to the customer despite the settings of the linked workflow process.",
+        help="When this field is selected, the invoices that use this payment "
+        "term will be outside the scope of automated invoice email despite "
+        "the settings of the linked workflow process.",
     )

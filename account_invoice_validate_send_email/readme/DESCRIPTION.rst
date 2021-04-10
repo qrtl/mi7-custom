@@ -1,7 +1,8 @@
 This module does the following:
 
-- When customer invoice that meets the following condition is validated, Odoo will print and send the invoice to the followers of the document.
-  - 'Invoice Sent' is not flagged (the field is flagged when the invoice is sent by the module logic).
+- When customer invoice that meets all of the following conditions is validated, Odoo will print and send the invoice to the followers of the document.
   - 'Send Invoice upon Validation' is set in the workflow process linked to the invoice.
+  - 'Not Auto-send Invoice' of the payment term assigned to the invoice is not selected.
+  - 'Invoice Sent' is not flagged (the field is flagged when the invoice is sent by the module logic).
 
 The module depends on the OCA module sale_automatic_workflow.

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-03 08:54+0000\n"
-"PO-Revision-Date: 2021-04-03 08:54+0000\n"
+"POT-Creation-Date: 2021-04-10 04:15+0000\n"
+"PO-Revision-Date: 2021-04-10 04:15+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -62,11 +62,22 @@ msgid "Invoice_${(object.number or '').replace('/','_')}_${object.state == 'draf
 msgstr "Invoice_${(object.number or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}"
 
 #. module: account_invoice_validate_send_email
-#: model:ir.model,name:account_invoice_validate_send_email.model_sale_workflow_process
-msgid "Sale Workflow Process"
-msgstr "Sale Workflow Process"
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_payment_term_not_send_invoice
+msgid "Not Auto-send Invoice"
+msgstr "請求書自動送信対象外"
 
 #. module: account_invoice_validate_send_email
+#: model:ir.model,name:account_invoice_validate_send_email.model_account_payment_term
+msgid "Payment Term"
+msgstr "支払条件"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model,name:account_invoice_validate_send_email.model_sale_workflow_process
+msgid "Sale Workflow Process"
+msgstr "販売ワークフロープロセス"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_invoice_send_invoice
 #: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_sale_workflow_process_send_invoice
 msgid "Send Invoice upon Validation"
 msgstr "検証時に請求書送信"
@@ -80,6 +91,11 @@ msgstr "Validated Invoice (Ref: ${object.number or 'N/A'})"
 #: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_invoice_web_url
 msgid "Web url"
 msgstr "Web url"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,help:account_invoice_validate_send_email.field_account_payment_term_not_send_invoice
+msgid "When this field is selected, the invoices that use this payment term will be outside the scope of automated invoice email despite the settings of the linked workflow process."
+msgstr "ワークフロープロセス設定にかかわらず、この項目が選択されていると請求書は自動メール送信対象外となります。"
 
 #. module: account_invoice_validate_send_email
 #: model:ir.model.fields,help:account_invoice_validate_send_email.field_account_invoice_invoice_sent
