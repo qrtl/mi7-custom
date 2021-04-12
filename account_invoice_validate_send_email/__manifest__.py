@@ -12,6 +12,7 @@
     "data": [
         "data/email_templates.xml",
         "views/account_invoice_view.xml",
+        "views/account_payment_term_views.xml",
         "views/sale_workflow_process_views.xml",
     ],
     "installable": True,
