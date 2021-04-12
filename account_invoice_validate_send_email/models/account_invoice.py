@@ -8,10 +8,12 @@ from odoo import api, fields, models
 class AccountInvoice(models.Model):
     _inherit = "account.invoice"
 
+    send_invoice = fields.Boolean(related="workflow_process_id.send_invoice")
     invoice_sent = fields.Boolean(
         string="Invoice Sent",
         readonly=True,
         states={"draft": [("readonly", False)]},
+        copy=False,
         help="When this field is selected, no email will be automatically sent to the customer.",
     )
     web_url = fields.Char()
@@ -35,8 +37,9 @@ class AccountInvoice(models.Model):
             compose_form_id = False
         ctx = dict(
             mark_invoice_as_sent=True,
-            # We choose not to use the custom layout here for now.
-            # custom_layout="account.mail_template_data_notification_email_account_invoice",
+            # We choose to use the custom layout here, or there will be a link
+            # button to the backend form.
+            custom_layout="account.mail_template_data_notification_email_account_invoice",
         )
         ctx.update(
             {
@@ -66,9 +69,10 @@ class AccountInvoice(models.Model):
         res = super(AccountInvoice, self).action_invoice_open()
         base_url = self.env["ir.config_parameter"].get_param("web.base.url")
         for invoice in self:
+            term = invoice.payment_term_id
             if (
-                invoice.workflow_process_id
-                and invoice.workflow_process_id.send_invoice
+                invoice.send_invoice
+                and not (term and term.not_send_invoice)
                 and not invoice.invoice_sent
             ):
                 # TODO We may want to adjust/remove web_url - the value points
