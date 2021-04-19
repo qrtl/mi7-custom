@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <report
+        id="stock_picking_export_report_csv"
+        model="stock.picking.export.report"
+        string="Print to CSV"
+        report_type="csv"
+        name="report_csv.stock_picking_export_csv"
+        file="stock_picking_export_report"
+        attachment_use="False"
+    />
+</odoo>
