@@ -40,4 +40,13 @@
             </xpath>
         </field>
     </record>
+    <report
+        id="report_yamato_csv"
+        model="stock.picking"
+        string="Yamato CSV"
+        report_type="csv"
+        name="stock_picking_yamato_csv.report_yamato_csv"
+        file="report_yamato_csv"
+        attachment_use="False"
+    />
 </odoo>
