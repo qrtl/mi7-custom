@@ -32,6 +32,11 @@ class StockPickingYamatoCSV(models.AbstractModel):
                 val = unicode(val).encode("cp932")
         return val
 
+    def _get_date(self, datetime):
+        """This method converts datetime to date in user's timezone.
+        """
+        return fields.Datetime.context_timestamp(self, fields.Datetime.from_string(datetime)).strftime("%Y%m%d")
+
     def _get_field_dict(self):
         field_dict = {
             1: _("送信ID"),
@@ -183,8 +188,10 @@ class StockPickingYamatoCSV(models.AbstractModel):
         today_formatted = fields.Date.from_string(fields.Date.context_today(self)).strftime("%Y%m%d")
         writer.writeheader()
         field_dict = self._get_field_dict()
+        item_num = 1
         for picking in pickings:
-            pick_create_date = fields.Datetime.context_timestamp(self, fields.Datetime.from_string(picking.date)).strftime("%Y%m%d")
+            pick_create_date = self._get_date(picking.date)
+            scheduled_date = self._get_date(picking.min_date)
             partner_shipping = picking.partner_id
             if not partner_shipping:
                 raise UserError(
@@ -197,7 +204,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
                 )
             for move in picking.move_lines:
                 writer.writerow({
-                    field_dict[2]: "1",
+                    field_dict[2]: "1",  # Newly create
                     field_dict[3]: picking.company_id.shipper_code,
                     field_dict[4]: "10",
                     field_dict[5]: "YTC01",
@@ -210,11 +217,19 @@ class StockPickingYamatoCSV(models.AbstractModel):
                     field_dict[48]: partner_shipping.zip,
                     field_dict[49]: self._encode_sjis(self._get_address(partner_shipping)),
                     field_dict[50]: partner_shipping.phone,
+                    field_dict[52]: scheduled_date,
                     field_dict[53]: today_formatted,
                     field_dict[54]: order.name,
                     field_dict[59]: picking.name,
                     field_dict[60]: pick_create_date,
+                    field_dict[104]: "1",  # Allow edit on screen
+                    field_dict[105]: "0",
+                    field_dict[106]: "1",  # Mewly create
+                    field_dict[107]: item_num,
+                    field_dict[108]: move.product_id.default_code,
+                    field_dict[128]: move.product_uom_qty,
                 })
+                item_num += 1
             picking.is_exported = True
 
     def csv_report_options(self):
