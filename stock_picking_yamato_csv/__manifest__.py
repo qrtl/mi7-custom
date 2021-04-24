@@ -9,7 +9,7 @@
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,
-    "depends": ["sale_stock", "pro_mi7_sale", "pro_mi7_website_sale_ec", "report_csv"],
+    "depends": ["sale_stock", "pro_mi7_website_sale_product_list", "pro_mi7_sale", "pro_mi7_website_sale_ec", "report_csv"],
     "data": [
         # "security/ir.model.access.csv",
         # "data/stock_picking_export_report_data.xml",

@@ -225,6 +225,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
                     field_dict[39]: self._encode_sjis(self._get_address(company)),
                     field_dict[40]: company.phone,
                     field_dict[45]: self._encode_sjis(partner_shipping.display_name),
+                    field_dict[47]: self._encode_sjis(order.person) or "",
                     field_dict[48]: partner_shipping.zip,
                     field_dict[49]: self._encode_sjis(self._get_address(partner_shipping)),
                     field_dict[50]: partner_shipping.phone,
@@ -233,11 +234,13 @@ class StockPickingYamatoCSV(models.AbstractModel):
                     field_dict[54]: order.name,
                     field_dict[59]: picking.name,
                     field_dict[60]: pick_create_date,
+                    field_dict[72]: self._encode_sjis(order.store_order) or "",
                     field_dict[104]: "1",  # Allow edit on screen
                     field_dict[105]: "0",
                     field_dict[106]: "1",  # Mewly create
                     field_dict[107]: item_num,
                     field_dict[108]: move.product_id.default_code,
+                    field_dict[109]: "00",  # Fixed as 'bara'
                     field_dict[128]: move.product_uom_qty,
                 })
                 item_num += 1
