@@ -15,7 +15,7 @@
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.vpicktree" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='state']" position="after">
+            <xpath expr="//field[@name='state']" position="before">
                 <field name="is_exported" />
             </xpath>
         </field>
@@ -32,8 +32,8 @@
                     domain="[('is_exported','=',True)]"
                 />
                 <filter
-                    name="unexported"
-                    string="Unexported"
+                    name="not_exported"
+                    string="Not exported"
                     domain="[('is_exported','=',False)]"
                 />
                 <separator />
@@ -49,4 +49,7 @@
         file="report_yamato_csv"
         attachment_use="False"
     />
+    <record id="report_yamato_csv" model="ir.actions.report.xml">
+        <field name="print_report_name">'Yamato_%s' % (time.strftime('%Y%m%d'))</field>
+    </record>
 </odoo>

@@ -11,12 +11,8 @@
     "installable": True,
     "depends": ["sale_stock", "pro_mi7_website_sale_product_list", "pro_mi7_sale", "pro_mi7_website_sale_ec", "report_csv"],
     "data": [
-        # "security/ir.model.access.csv",
-        # "data/stock_picking_export_report_data.xml",
-        # "data/stock_picking_yamato_csv_report.xml",
         "views/res_company_views.xml",
         "views/shipping_timerange_views.xml",
-        # "views/stock_picking_export_report_views.xml",
         "views/stock_picking_views.xml",
     ],
 }

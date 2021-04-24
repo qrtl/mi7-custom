@@ -191,6 +191,14 @@ class StockPickingYamatoCSV(models.AbstractModel):
         return fields.Datetime.context_timestamp(self, fields.Datetime.from_string(datetime)).strftime("%Y%m%d")
 
     def generate_csv_report(self, writer, data, pickings):
+        exported_pickings = pickings.filtered(lambda x: x.is_exported)
+        if exported_pickings:
+            raise UserError(
+                _(
+                    "Following records have been exported already. Please "
+                    "unselect 'Exported' as necessary to export them again.\n%s"
+                ) % ("\n".join(exported_pickings.mapped("name")))
+            )
         today_formatted = fields.Date.from_string(fields.Date.context_today(self)).strftime("%Y%m%d")
         writer.writeheader()
         field_dict = self._get_field_dict()
