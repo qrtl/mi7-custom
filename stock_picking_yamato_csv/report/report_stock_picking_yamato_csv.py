@@ -4,7 +4,7 @@
 
 import csv
 
-from odoo import _, models, fields
+from odoo import _, fields, models
 from odoo.exceptions import UserError
 
 
@@ -188,15 +188,20 @@ class StockPickingYamatoCSV(models.AbstractModel):
     def _get_date(self, datetime):
         """This method converts datetime to date in user's timezone.
         """
-        return fields.Datetime.context_timestamp(self, fields.Datetime.from_string(datetime)).strftime("%Y%m%d")
+        return fields.Datetime.context_timestamp(
+            self, fields.Datetime.from_string(datetime)
+        ).strftime("%Y%m%d")
 
     def _check_pickings(self, pickings):
-        invalid_picks = pickings.filtered(lambda x: x.state in ("draft", "cancel", "done"))
+        invalid_picks = pickings.filtered(
+            lambda x: x.state in ("draft", "cancel", "done")
+        )
         if invalid_picks:
             raise UserError(
                 _(
                     "Following records are in invalid state (draft/done/cancel) for an export.\n%s"
-                ) % ("\n".join(invalid_picks.mapped("name")))
+                )
+                % ("\n".join(invalid_picks.mapped("name")))
             )
         exported_picks = pickings.filtered(lambda x: x.is_exported)
         if exported_picks:
@@ -204,26 +209,27 @@ class StockPickingYamatoCSV(models.AbstractModel):
                 _(
                     "Following records have been exported already. Please "
                     "unselect 'Exported' as necessary to export them again.\n%s"
-                ) % ("\n".join(exported_picks.mapped("name")))
+                )
+                % ("\n".join(exported_picks.mapped("name")))
             )
         no_order_picks = pickings.filtered(lambda x: not x.sale_id)
         if no_order_picks:
             raise UserError(
-                _(
-                    "Following records have no sales orders linked to them.\n%s"
-                ) % ("\n".join(no_order_picks.mapped("name")))
+                _("Following records have no sales orders linked to them.\n%s")
+                % ("\n".join(no_order_picks.mapped("name")))
             )
         no_partner_picks = pickings.filtered(lambda x: not x.partner_id)
         if no_partner_picks:
             raise UserError(
-                _(
-                    "Following records have no partners linked to them.\n%s"
-                ) % ("\n".join(no_partner_picks.mapped("name")))
+                _("Following records have no partners linked to them.\n%s")
+                % ("\n".join(no_partner_picks.mapped("name")))
             )
 
     def generate_csv_report(self, writer, data, pickings):
         self._check_pickings(pickings)
-        today_formatted = fields.Date.from_string(fields.Date.context_today(self)).strftime("%Y%m%d")
+        today_formatted = fields.Date.from_string(
+            fields.Date.context_today(self)
+        ).strftime("%Y%m%d")
         writer.writeheader()
         field_dict = self._get_field_dict()
         item_num = 1
@@ -234,39 +240,49 @@ class StockPickingYamatoCSV(models.AbstractModel):
             scheduled_date = self._get_date(picking.min_date)
             partner_shipping = picking.partner_id
             for move in picking.move_lines:
-                writer.writerow({
-                    field_dict[2]: "1",  # Newly create
-                    field_dict[3]: company.shipper_code,
-                    field_dict[4]: "10",
-                    field_dict[5]: "YTC01",
-                    field_dict[9]: "S001",
-                    field_dict[12]: order.delivery_time_id and order.delivery_time_id.dlv_rqstd_time_categ or "",
-                    field_dict[13]: "20" if order.is_cod else "10",
-                    field_dict[16]: int(order.amount_untaxed),
-                    field_dict[17]: int(order.amount_tax),
-                    field_dict[35]: self._encode_sjis(self._get_company_name(order, company)),
-                    field_dict[38]: company.zip,
-                    field_dict[39]: self._encode_sjis(self._get_address(company)),
-                    field_dict[40]: company.phone,
-                    field_dict[45]: self._encode_sjis(partner_shipping.display_name),
-                    field_dict[47]: self._encode_sjis(order.person) or "",
-                    field_dict[48]: partner_shipping.zip,
-                    field_dict[49]: self._encode_sjis(self._get_address(partner_shipping)),
-                    field_dict[50]: partner_shipping.phone,
-                    field_dict[52]: scheduled_date,
-                    field_dict[53]: today_formatted,
-                    field_dict[54]: order.name,
-                    field_dict[59]: picking.name,
-                    field_dict[60]: pick_create_date,
-                    field_dict[72]: self._encode_sjis(order.store_order) or "",
-                    field_dict[104]: "1",  # Allow edit on screen
-                    field_dict[105]: "0",
-                    field_dict[106]: "1",  # Mewly create
-                    field_dict[107]: item_num,
-                    field_dict[108]: move.product_id.default_code,
-                    field_dict[109]: "00",  # Fixed as 'bara'
-                    field_dict[128]: move.product_uom_qty,
-                })
+                writer.writerow(
+                    {
+                        field_dict[2]: "1",  # Newly create
+                        field_dict[3]: company.shipper_code,
+                        field_dict[4]: "10",
+                        field_dict[5]: "YTC01",
+                        field_dict[9]: "S001",
+                        field_dict[12]: order.delivery_time_id
+                        and order.delivery_time_id.dlv_rqstd_time_categ
+                        or "",
+                        field_dict[13]: "20" if order.is_cod else "10",
+                        field_dict[16]: int(order.amount_untaxed),
+                        field_dict[17]: int(order.amount_tax),
+                        field_dict[35]: self._encode_sjis(
+                            self._get_company_name(order, company)
+                        ),
+                        field_dict[38]: company.zip,
+                        field_dict[39]: self._encode_sjis(self._get_address(company)),
+                        field_dict[40]: company.phone,
+                        field_dict[45]: self._encode_sjis(
+                            partner_shipping.display_name
+                        ),
+                        field_dict[47]: self._encode_sjis(order.person) or "",
+                        field_dict[48]: partner_shipping.zip,
+                        field_dict[49]: self._encode_sjis(
+                            self._get_address(partner_shipping)
+                        ),
+                        field_dict[50]: partner_shipping.phone,
+                        field_dict[52]: scheduled_date,
+                        field_dict[53]: today_formatted,
+                        field_dict[54]: order.name,
+                        field_dict[59]: picking.name,
+                        field_dict[60]: pick_create_date,
+                        field_dict[72]: self._encode_sjis(order.store_order) or "",
+                        field_dict[104]: "1",  # Allow edit on screen
+                        field_dict[105]: "0",
+                        field_dict[106]: "1",  # Mewly create
+                        field_dict[107]: item_num,
+                        field_dict[108]: move.product_id.default_code,
+                        field_dict[109]: "00",  # Fixed as 'bara'
+                        field_dict[128]: move.product_uom_qty,
+                    }
+                )
                 item_num += 1
             picking.is_exported = True
 
@@ -275,6 +291,6 @@ class StockPickingYamatoCSV(models.AbstractModel):
         field_dict = self._get_field_dict()
         for k, v in field_dict.items():
             res["fieldnames"].append(v)
-        res['delimiter'] = ','
-        res['quoting'] = csv.QUOTE_MINIMAL
+        res["delimiter"] = ","
+        res["quoting"] = csv.QUOTE_MINIMAL
         return res
