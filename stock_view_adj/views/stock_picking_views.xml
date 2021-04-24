@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_picking_form" model="ir.ui.view">
+        <field name="name">stock.picking.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='origin']" position="before">
+                <field name="sale_id" />
+            </xpath>
+        </field>
+    </record>
+    <record id="view_picking_internal_search" model="ir.ui.view">
+        <field name="name">stock.picking.internal.search</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='late']" position="before">
+                <filter
+                    name="ship_today"
+                    string="To Ship Today"
+                    domain="[
+                        ('min_date', '&gt;', datetime.datetime.combine(context_today(), datetime.time(0,0,0))),
+                        ('min_date', '&lt;', datetime.datetime.combine(context_today(), datetime.time(23,59,59))),
+                    ]"
+                />
+                <separator />
+            </xpath>
+        </field>
+    </record>
+</odoo>
