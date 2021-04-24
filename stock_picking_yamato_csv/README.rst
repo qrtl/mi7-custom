@@ -30,6 +30,14 @@ This module depends on report_csv module from OCA.
 .. contents::
    :local:
 
+Configuration
+=============
+
+Following settings should be updated:
+
+- Shipper Code (in company)
+- Delivery Time Category (in delivery time)
+
 Usage
 =====
 
