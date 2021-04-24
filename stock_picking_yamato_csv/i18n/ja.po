@@ -1,0 +1,165 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* stock_picking_yamato_csv
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-24 08:52+0000\n"
+"PO-Revision-Date: 2021-04-24 08:52+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_picking_yamato_csv
+#: code:addons/stock_picking_yamato_csv/report/report_stock_picking_yamato_csv.py:33
+#, python-format
+msgid "B2連携用消費税額"
+msgstr "B2連携用消費税額"
+
+#. module: stock_picking_yamato_csv
+#: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_sale_order_is_cod
+msgid "Cash on Delivery"
+msgstr "代引"
+
+#. module: stock_picking_yamato_csv
+#: model:ir.model,name:stock_picking_yamato_csv.model_res_company
+msgid "Companies"
+msgstr "会社"
+
+#. module: stock_picking_yamato_csv
+#: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_shipping_timerange_ec_dlv_rqstd_time_categ
+msgid "Delivery Time Category"
+msgstr "配送指定時間帯区分"
+
+#. module: stock_picking_yamato_csv
+#: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_report_stock_picking_yamato_csv_report_yamato_csv_display_name
+msgid "Display Name"
+msgstr "表示名"
+
+#. module: stock_picking_yamato_csv
+#: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_stock_picking_is_exported
+#: model:ir.ui.view,arch_db:stock_picking_yamato_csv.view_picking_internal_search
+msgid "Exported"
+msgstr "出力済"
+
+#. module: stock_picking_yamato_csv
+#: code:addons/stock_picking_yamato_csv/report/report_stock_picking_yamato_csv.py:201
+#, python-format
+msgid "Following records are in invalid state (draft/done/cancel) for an export.\n"
+"%s"
+msgstr "次のレコードは出力対象外のステータス(ドラフト/完了/取消済)です。\n"
+"%s"
+
+#. module: stock_picking_yamato_csv
+#: code:addons/stock_picking_yamato_csv/report/report_stock_picking_yamato_csv.py:209
+#, python-format
+msgid "Following records have been exported already. Please unselect 'Exported' as necessary to export them again.\n"
+"%s"
+msgstr "次のレコードは既に出力済です。必要に応じて「出力済」の選択を外した上で、再度出力してください。\n"
+"%s"
+
+#. module: stock_picking_yamato_csv
+#: code:addons/stock_picking_yamato_csv/report/report_stock_picking_yamato_csv.py:224
+#, python-format
+msgid "Following records have no partners linked to them.\n"
+"%s"
+msgstr "次のレコードには取引先が設定されていません。\n"
+"%s"
+
+#. module: stock_picking_yamato_csv
+#: code:addons/stock_picking_yamato_csv/report/report_stock_picking_yamato_csv.py:218
+#, python-format
+msgid "Following records have no sales orders linked to them.\n"
+"%s"
+msgstr "次のレコードは販売オーダに紐付いていません。\n"
+"%s"
+
+#. module: stock_picking_yamato_csv
+#: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_report_stock_picking_yamato_csv_report_yamato_csv_id
+msgid "ID"
+msgstr "ID"
+
+#. module: stock_picking_yamato_csv
+#: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_report_stock_picking_yamato_csv_report_yamato_csv___last_update
+msgid "Last Modified on"
+msgstr "最終更新日"
+
+#. module: stock_picking_yamato_csv
+#: model:ir.ui.view,arch_db:stock_picking_yamato_csv.view_picking_internal_search
+msgid "Not exported"
+msgstr "未出力"
+
+#. module: stock_picking_yamato_csv
+#: code:addons/stock_picking_yamato_csv/report/report_stock_picking_yamato_csv.py:102
+#, python-format
+msgid "OCR情報１行目"
+msgstr "OCR情報１行目"
+
+#. module: stock_picking_yamato_csv
+#: code:addons/stock_picking_yamato_csv/report/report_stock_picking_yamato_csv.py:103
+#, python-format
+msgid "OCR情報２行目"
+msgstr "OCR情報２行目"
+
+#. module: stock_picking_yamato_csv
+#: model:ir.model,name:stock_picking_yamato_csv.model_sale_order
+msgid "Sales Order"
+msgstr "販売オーダ"
+
+#. module: stock_picking_yamato_csv
+#: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_res_company_shipper_code
+msgid "Shipper Code"
+msgstr "荷主コード"
+
+#. module: stock_picking_yamato_csv
+#: model:ir.model,name:stock_picking_yamato_csv.model_shipping_timerange_ec
+msgid "Shipping Time Range Ec"
+msgstr "お届け時間"
+
+#. module: stock_picking_yamato_csv
+#: model:ir.model.fields,help:stock_picking_yamato_csv.field_shipping_timerange_ec_dlv_rqstd_time_categ
+msgid "This field is used for shipping instruction data export."
+msgstr "この項目は出荷指示データ出力に使用されます。"
+
+#. module: stock_picking_yamato_csv
+#: model:ir.model,name:stock_picking_yamato_csv.model_stock_picking
+msgid "Transfer"
+msgstr "移動"
+
+#. module: stock_picking_yamato_csv
+#: model:ir.actions.report.xml,name:stock_picking_yamato_csv.report_yamato_csv
+msgid "Yamato CSV"
+msgstr "ヤマトCSV"
+
+#. module: stock_picking_yamato_csv
+#: model:ir.ui.view,arch_db:stock_picking_yamato_csv.view_company_form
+msgid "Yamato Settings"
+msgstr "ヤマト関連設定"
+
+#. module: stock_picking_yamato_csv
+#: model:ir.model,name:stock_picking_yamato_csv.model_report_stock_picking_yamato_csv_report_yamato_csv
+msgid "report.stock_picking_yamato_csv.report_yamato_csv"
+msgstr "report.stock_picking_yamato_csv.report_yamato_csv"
+
+#. module: stock_picking_yamato_csv
+#: model:ir.model,name:stock_picking_yamato_csv.model_stock_picking_export_report
+msgid "stock.picking.export.report"
+msgstr "stock.picking.export.report"
+
+#. module: stock_picking_yamato_csv
+#: code:addons/stock_picking_yamato_csv/report/report_stock_picking_yamato_csv.py:101
+#, python-format
+msgid "請求No"
+msgstr "請求No"
+
+#. module: stock_picking_yamato_csv
+#: code:addons/stock_picking_yamato_csv/report/report_stock_picking_yamato_csv.py:17
+#, python-format
+msgid "送信ID"
+msgstr "送信ID"
+
