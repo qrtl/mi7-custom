@@ -32,7 +32,7 @@ msgid "Companies"
 msgstr "会社"
 
 #. module: stock_picking_yamato_csv
-#: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_shipping_timerange_ec_dlv_rqstd_time_categ
+#: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_shipping_timerange_ec_delivery_time_categ
 msgid "Delivery Time Category"
 msgstr "配送指定時間帯区分"
 
@@ -122,7 +122,7 @@ msgid "Shipping Time Range Ec"
 msgstr "お届け時間"
 
 #. module: stock_picking_yamato_csv
-#: model:ir.model.fields,help:stock_picking_yamato_csv.field_shipping_timerange_ec_dlv_rqstd_time_categ
+#: model:ir.model.fields,help:stock_picking_yamato_csv.field_shipping_timerange_ec_delivery_time_categ
 msgid "This field is used for shipping instruction data export."
 msgstr "この項目は出荷指示データ出力に使用されます。"
 

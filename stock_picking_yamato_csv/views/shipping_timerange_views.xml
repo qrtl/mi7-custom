@@ -9,7 +9,7 @@
         />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="after">
-                <field name="dlv_rqstd_time_categ" />
+                <field name="delivery_time_categ" />
             </xpath>
         </field>
     </record>

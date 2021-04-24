@@ -248,7 +248,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
                         field_dict[5]: "YTC01",
                         field_dict[9]: "S001",
                         field_dict[12]: order.delivery_time_id
-                        and order.delivery_time_id.dlv_rqstd_time_categ
+                        and order.delivery_time_id.delivery_time_categ
                         or "",
                         field_dict[13]: "20" if order.is_cod else "10",
                         field_dict[16]: int(order.amount_untaxed),

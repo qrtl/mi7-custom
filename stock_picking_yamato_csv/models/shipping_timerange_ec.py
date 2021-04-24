@@ -8,7 +8,7 @@ from odoo import fields, models
 class ShippingTimerangeEc(models.Model):
     _inherit = "shipping.timerange.ec"
 
-    dlv_rqstd_time_categ = fields.Char(
+    delivery_time_categ = fields.Char(
         "Delivery Time Category",
         required=True,
         help="This field is used for shipping instruction data export.",
