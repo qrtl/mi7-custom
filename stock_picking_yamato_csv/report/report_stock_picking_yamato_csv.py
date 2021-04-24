@@ -190,15 +190,39 @@ class StockPickingYamatoCSV(models.AbstractModel):
         """
         return fields.Datetime.context_timestamp(self, fields.Datetime.from_string(datetime)).strftime("%Y%m%d")
 
-    def generate_csv_report(self, writer, data, pickings):
-        exported_pickings = pickings.filtered(lambda x: x.is_exported)
-        if exported_pickings:
+    def _check_pickings(self, pickings):
+        invalid_picks = pickings.filtered(lambda x: x.state in ("draft", "cancel", "done"))
+        if invalid_picks:
+            raise UserError(
+                _(
+                    "Following records are in invalid state (draft/done/cancel) for an export.\n%s"
+                ) % ("\n".join(invalid_picks.mapped("name")))
+            )
+        exported_picks = pickings.filtered(lambda x: x.is_exported)
+        if exported_picks:
             raise UserError(
                 _(
                     "Following records have been exported already. Please "
                     "unselect 'Exported' as necessary to export them again.\n%s"
-                ) % ("\n".join(exported_pickings.mapped("name")))
+                ) % ("\n".join(exported_picks.mapped("name")))
             )
+        no_order_picks = pickings.filtered(lambda x: not x.sale_id)
+        if no_order_picks:
+            raise UserError(
+                _(
+                    "Following records have no sales orders linked to them.\n%s"
+                ) % ("\n".join(no_order_picks.mapped("name")))
+            )
+        no_partner_picks = pickings.filtered(lambda x: not x.partner_id)
+        if no_partner_picks:
+            raise UserError(
+                _(
+                    "Following records have no partners linked to them.\n%s"
+                ) % ("\n".join(no_partner_picks.mapped("name")))
+            )
+
+    def generate_csv_report(self, writer, data, pickings):
+        self._check_pickings(pickings)
         today_formatted = fields.Date.from_string(fields.Date.context_today(self)).strftime("%Y%m%d")
         writer.writeheader()
         field_dict = self._get_field_dict()
@@ -206,17 +230,9 @@ class StockPickingYamatoCSV(models.AbstractModel):
         for picking in pickings:
             company = picking.company_id
             order = picking.sale_id
-            if not order:
-                raise UserError(
-                    _("There is no sales order linked to the picking: %s") % (picking.name)
-                )
             pick_create_date = self._get_date(picking.date)
             scheduled_date = self._get_date(picking.min_date)
             partner_shipping = picking.partner_id
-            if not partner_shipping:
-                raise UserError(
-                    _("There is no partner linked to the picking: %s") % (picking.name)
-                )
             for move in picking.move_lines:
                 writer.writerow({
                     field_dict[2]: "1",  # Newly create
