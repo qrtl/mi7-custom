@@ -12,31 +12,6 @@ class StockPickingYamatoCSV(models.AbstractModel):
     _name = "report.stock_picking_yamato_csv.report_yamato_csv"
     _inherit = "report.report_csv.abstract"
 
-    def _get_address(self, partner):
-        address = ""
-        if partner.state_id:
-            address += partner.state_id.name
-        if partner.city:
-            address += partner.city
-        if partner.street:
-            address += partner.street
-        if partner.street2:
-            address += " " + partner.street2
-        return address
-
-    def _encode_sjis(self, val):
-        if val:
-            if isinstance(val, unicode):
-                val = val.encode("cp932")
-            elif isinstance(val, str):
-                val = unicode(val).encode("cp932")
-        return val
-
-    def _get_date(self, datetime):
-        """This method converts datetime to date in user's timezone.
-        """
-        return fields.Datetime.context_timestamp(self, fields.Datetime.from_string(datetime)).strftime("%Y%m%d")
-
     def _get_field_dict(self):
         field_dict = {
             1: _("送信ID"),
@@ -183,13 +158,50 @@ class StockPickingYamatoCSV(models.AbstractModel):
         }
         field_dict = {k: self._encode_sjis(v) for k, v in field_dict.items()}
         return field_dict
-    
+
+    def _get_address(self, partner):
+        address = ""
+        if partner.state_id:
+            address += partner.state_id.name
+        if partner.city:
+            address += partner.city
+        if partner.street:
+            address += partner.street
+        if partner.street2:
+            address += " " + partner.street2
+        return address
+
+    def _get_company_name(self, order, company):
+        if order.order_type == "b2c":
+            return company.musicecosystems_name
+        else:
+            return company.name
+
+    def _encode_sjis(self, val):
+        if val:
+            if isinstance(val, unicode):
+                val = val.encode("cp932")
+            elif isinstance(val, str):
+                val = unicode(val).encode("cp932")
+        return val
+
+    def _get_date(self, datetime):
+        """This method converts datetime to date in user's timezone.
+        """
+        return fields.Datetime.context_timestamp(self, fields.Datetime.from_string(datetime)).strftime("%Y%m%d")
+
     def generate_csv_report(self, writer, data, pickings):
         today_formatted = fields.Date.from_string(fields.Date.context_today(self)).strftime("%Y%m%d")
         writer.writeheader()
         field_dict = self._get_field_dict()
         item_num = 1
         for picking in pickings:
+            company = picking.company_id
+            order = picking.sale_id
+            if not order:
+                raise UserError(
+                    _("There is no sales order linked to the picking: %s") % (picking.name)
+                )
             pick_create_date = self._get_date(picking.date)
             scheduled_date = self._get_date(picking.min_date)
             partner_shipping = picking.partner_id
@@ -197,15 +209,10 @@ class StockPickingYamatoCSV(models.AbstractModel):
                 raise UserError(
                     _("There is no partner linked to the picking: %s") % (picking.name)
                 )
-            order = picking.sale_id
-            if not order:
-                raise UserError(
-                    _("There is no sales order linked to the picking: %s") % (picking.name)
-                )
             for move in picking.move_lines:
                 writer.writerow({
                     field_dict[2]: "1",  # Newly create
-                    field_dict[3]: picking.company_id.shipper_code,
+                    field_dict[3]: company.shipper_code,
                     field_dict[4]: "10",
                     field_dict[5]: "YTC01",
                     field_dict[9]: "S001",
@@ -213,6 +220,10 @@ class StockPickingYamatoCSV(models.AbstractModel):
                     field_dict[13]: "20" if order.is_cod else "10",
                     field_dict[16]: int(order.amount_untaxed),
                     field_dict[17]: int(order.amount_tax),
+                    field_dict[35]: self._encode_sjis(self._get_company_name(order, company)),
+                    field_dict[38]: company.zip,
+                    field_dict[39]: self._encode_sjis(self._get_address(company)),
+                    field_dict[40]: company.phone,
                     field_dict[45]: self._encode_sjis(partner_shipping.display_name),
                     field_dict[48]: partner_shipping.zip,
                     field_dict[49]: self._encode_sjis(self._get_address(partner_shipping)),

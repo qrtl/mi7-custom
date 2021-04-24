@@ -23,7 +23,6 @@ class StockPicking(models.Model):
         for picking in self:
             company = picking.company_id
             order = picking.sale_id
-            # moves = self.mapped("move_lines")
             moves = picking.move_lines
             report_obj.search(
                 [("move_id", "in", moves.ids), ("is_exported", "=", False)]
