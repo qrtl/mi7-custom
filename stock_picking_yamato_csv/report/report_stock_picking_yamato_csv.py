@@ -227,9 +227,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
 
     def generate_csv_report(self, writer, data, pickings):
         self._check_pickings(pickings)
-        today_formatted = fields.Date.from_string(
-            fields.Date.context_today(self)
-        ).strftime("%Y%m%d")
+        today_date = self._get_date(fields.Datetime.now())
         writer.writeheader()
         field_dict = self._get_field_dict()
         item_num = 1
@@ -269,7 +267,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
                         ),
                         field_dict[50]: partner_shipping.phone,
                         field_dict[52]: scheduled_date,
-                        field_dict[53]: today_formatted,
+                        field_dict[53]: today_date,
                         field_dict[54]: order.name,
                         field_dict[59]: picking.name,
                         field_dict[60]: pick_create_date,
@@ -280,7 +278,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
                         field_dict[107]: item_num,
                         field_dict[108]: move.product_id.default_code,
                         field_dict[109]: "00",  # Fixed as 'bara'
-                        field_dict[128]: move.product_uom_qty,
+                        field_dict[128]: int(move.product_uom_qty),
                     }
                 )
                 item_num += 1
