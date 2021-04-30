@@ -268,7 +268,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
                         field_dict[50]: partner_shipping.phone,
                         field_dict[52]: scheduled_date,
                         field_dict[53]: today_date,
-                        field_dict[54]: order.name,
+                        field_dict[54]: picking.name,
                         field_dict[59]: picking.name,
                         field_dict[60]: pick_create_date,
                         field_dict[72]: self._encode_sjis(order.store_order) or "",
