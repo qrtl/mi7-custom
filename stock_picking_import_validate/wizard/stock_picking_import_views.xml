@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_stock_picking_import" model="ir.ui.view">
+        <field name="name">Picking CSV File</field>
+        <field name="model">stock.picking.import</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="file_name" invisible="1" />
+                            <field
+                                name="import_file"
+                                widget="binary"
+                                filename="file_name"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button
+                        string="Import"
+                        name="import_stock_picking"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_stock_picking_import_wizard" model="ir.actions.act_window">
+        <field name="name">Picking CSV File</field>
+        <field name="res_model">stock.picking.import</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_stock_picking_import" />
+        <field name="target">new</field>
+        <field name="context">{}</field>
+    </record>
+    <menuitem
+        id="stock_picking_import_wizard_menu"
+        name="Picking Import"
+        parent="stock.menu_stock_warehouse_mgmt"
+        action="action_stock_picking_import_wizard"
+        sequence="10"
+    />
+    <menuitem
+        id="picking_import_log_menu"
+        name="Picking Import Log"
+        parent="stock.menu_stock_warehouse_mgmt"
+        action="base_import_log.error_log_action"
+        sequence="20"
+    />
+</odoo>

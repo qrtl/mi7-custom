@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="import_error_log_form">
+        <field name="name">error.log.form</field>
+        <field name="model">error.log</field>
+        <field name="inherit_id" ref="base_import_log.import_error_log_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='log_line_ids']//field[@name='row_no']"
+                position="after"
+            >
+                <field name="picking_ref" />
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page
+                    string="Imported Pickings"
+                    attrs="{'invisible': [('picking_ids', '=', [])]}"
+                >
+                    <field name="picking_ids" />
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
