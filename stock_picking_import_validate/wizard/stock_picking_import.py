@@ -6,12 +6,14 @@ import csv
 import io
 from base64 import b64decode
 from datetime import datetime
+from collections import OrderedDict
 
 from odoo import _, fields, models
-# from odoo.exceptions import UserError
 
-IMPORT_FIELDS = [
-    ["picking_ref", "出荷指示番号", "char"],
+FIELD_KEYS = {0: "field", 1: "label", 2: "field_type", 3: "required"}
+# Prepare values corresponding with the keys
+FIELD_VALS = [
+    ["picking_ref", "出荷指示番号!", "char", True],
 ]
 
 
@@ -21,6 +23,16 @@ class StockPickingImport(models.TransientModel):
 
     import_file = fields.Binary(string="File")
     file_name = fields.Char(string="File Name")
+
+    def _get_field_defs(self):
+        ordered_index = OrderedDict(sorted(FIELD_KEYS.items()))
+        field_defs = []
+        field_def = {}
+        for field in FIELD_VALS:
+            for k, v in ordered_index.iteritems():
+                field_def[v] = field[k]
+            field_defs.append(field_def)
+        return field_defs
 
     def _get_picking_vals(
         self, row_dict, log, company
@@ -32,13 +44,13 @@ class StockPickingImport(models.TransientModel):
         }
 
     def import_stock_picking(self):
-        sheet_fields, csv_iterator, error_log = self._load_import_file(IMPORT_FIELDS, ["shift-jis", "utf-8"])
-        model = "stock.picking"
+        field_defs = self._get_field_defs()
+        sheet_fields, csv_iterator, error_log = self._load_import_file("stock.picking", field_defs, ["shift-jis", "utf-8"])
         company = self.env.user.company_id
         import_error = False
         picking_vals_list = []
         for row in csv_iterator:
-            row_dict, error_list = self._check_field_vals(row, sheet_fields)
+            row_dict, error_list = self._check_field_vals(field_defs, row, sheet_fields)
             # Create error log
             if error_list:
                 import_error = True
@@ -75,30 +87,3 @@ class StockPickingImport(models.TransientModel):
             "view_id": self.env.ref("base_data_import.data_import_log_form").id,
             "target": "current",
         }
-
-    #TODO Move this method to base_import_log
-    def _check_field_vals(self, row, sheet_fields):
-        error_list = []
-        row_dict = {}
-        for field in IMPORT_FIELDS:
-            field_key = field[0]
-            field_value = row[sheet_fields.index(field[1])]
-            field_type = field[2]
-            row_dict[field_key] = field_value
-            # missing field value
-            if not field_value:
-                error_list.append(_("%s is required." % field[1]))
-            # numeric fields
-            elif field_type == "float":
-                try:
-                    row_dict[field_key] = float(field_value)
-                except Exception:
-                    row_dict[field_key] = 0.0
-                    error_list.append(_("%s only accepts numeric value." % field[1]))
-            # date fields
-            elif field_type == "date":
-                try:
-                    datetime.strptime(field_value, "%Y/%m/%d")
-                except Exception:
-                    error_list.append(_("Incorrect date format."))
-        return row_dict, error_list
