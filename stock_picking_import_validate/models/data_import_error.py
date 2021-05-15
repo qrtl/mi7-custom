@@ -5,8 +5,8 @@
 from odoo import fields, models
 
 
-class ErrorLogLine(models.Model):
-    _inherit = "error.log.line"
+class DataImportError(models.Model):
+    _inherit = "data.import.error"
 
     picking_ref = fields.Char(string="Picking Reference")
     # warning_log_id = fields.Many2one("error.log", string="Log")

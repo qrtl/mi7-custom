@@ -2,4 +2,4 @@
 
 from . import data_import_error
 from . import data_import_log
-from . import stock_picking
+from . import data_import_mixin

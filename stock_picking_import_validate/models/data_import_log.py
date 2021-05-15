@@ -5,8 +5,8 @@
 from odoo import fields, models
 
 
-class ErrorLog(models.Model):
-    _inherit = "error.log"
+class DataImportLog(models.Model):
+    _inherit = "data.import.log"
 
     picking_ids = fields.One2many(
         "stock.picking", "log_id", string="Processed Pickings"

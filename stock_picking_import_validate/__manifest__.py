@@ -8,9 +8,9 @@
     "license": "LGPL-3",
     "author": "Quartile Limited",
     "website": "https://www.quartile.co/",
-    "depends": ["stock", "base_import_log", "queue_job"],
+    "depends": ["stock", "base_data_import", "queue_job"],
     "data": [
-        "views/error_log_views.xml",
+        "views/data_import_log_views.xml",
         "wizard/stock_picking_import_views.xml",
     ],
     "installable": True,

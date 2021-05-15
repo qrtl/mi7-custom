@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
-    <record model="ir.ui.view" id="import_error_log_form">
-        <field name="name">error.log.form</field>
-        <field name="model">error.log</field>
+    <record model="ir.ui.view" id="data_import_log_form">
+        <field name="name">data.import.log.form</field>
+        <field name="model">data.import.log</field>
         <field name="arch" type="xml">
-            <form string="Error Logs" create="false" edit="false">
+            <form string="Import Log" create="false" edit="false">
                 <header>
                     <field name="state" widget="statusbar" />
                 </header>
@@ -22,10 +22,10 @@
                             <field name="model_name" invisible="1" />
                         </group>
                     </group>
-                    <notebook string='Logs'>
-                        <page string='Error Logs'>
-                            <field name="log_line_ids" attrs="{'invisible': [('log_line_ids', '=', [])]}">
-                                <tree string='Error Logs'>
+                    <notebook string="Logs">
+                        <page string="Error Lines">
+                            <field name="error_ids" attrs="{'invisible': [('error_ids', '=', [])]}">
+                                <tree string="Error Lines">
                                     <field name="row_no" />
                                     <field name="error_message" />
                                 </tree>
@@ -36,16 +36,15 @@
             </form>
         </field>
     </record>
-
-    <record model="ir.ui.view" id="error_log_tree">
-        <field name="name">error.log.tree</field>
-        <field name="model">error.log</field>
+    <record model="ir.ui.view" id="data_import_log_tree">
+        <field name="name">data.import.log.tree</field>
+        <field name="model">data.import.log</field>
         <field name="arch" type="xml">
             <tree
-                string="Error Logs"
+                string="Import Logs"
                 create="false"
                 edit="false"
-                colors="red:state == 'failed';"
+                colors="red:state=='failed';"
                 default_order="import_date desc"
             >
                 <field name="import_date" />
@@ -56,10 +55,9 @@
             </tree>
         </field>
     </record>
-
-    <record id="error_log_filter" model="ir.ui.view">
-        <field name="name">error.log.select</field>
-        <field name="model">error.log</field>
+    <record id="import_log_filter" model="ir.ui.view">
+        <field name="name">data.import.log.select</field>
+        <field name="model">data.import.log</field>
         <field name="arch" type="xml">
             <search string="Search Logs">
                 <group>
@@ -93,32 +91,25 @@
             </search>
         </field>
     </record>
-
-    <record id='error_log_action' model='ir.actions.act_window'>
-        <field name='name'>Import Logs</field>
-        <field name='res_model'>error.log</field>
-        <field name='view_type'>form</field>
-        <field name='view_mode'>tree,form</field>
+    <record id="data_import_log_action" model="ir.actions.act_window">
+        <field name="name">Data Import Logs</field>
+        <field name="res_model">data.import.log</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
     </record>
-
+    <!-- This menu is to have a place to aggregate all the import history.
+    Let users have access to the menu by assigning the 'Data Import Log' group
+    to them as necessary. -->
     <menuitem
-        id="import_data_main_menu"
-        name="Import"
-        groups="base_import_log.group_data_importing"
+        id="data_import_main_menu"
+        name="Data Import"
+        groups="base_data_import.group_data_import_log"
     />
     <menuitem
-        id="import_error_log_menu"
+        id="data_import_log_menu"
         name="Data Import Log"
-        parent="import_data_main_menu"
-        sequence="1"
+        parent="data_import_main_menu"
+        action="data_import_log_action"
+        sequence="10"
     />
-    <menuitem
-        id="error_log_sub_menu"
-        name="Import Log"
-        parent="import_error_log_menu"
-        action="error_log_action"
-        sequence="1"
-    />
-    <menuitem id="import_data_menu" name="Data Import" parent="import_data_main_menu" />
-
 </odoo>

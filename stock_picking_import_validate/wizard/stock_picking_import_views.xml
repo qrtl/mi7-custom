@@ -49,7 +49,7 @@
         id="picking_import_log_menu"
         name="Picking Import Log"
         parent="stock.menu_stock_warehouse_mgmt"
-        action="base_import_log.error_log_action"
+        action="base_data_import.data_import_log_action"
         sequence="20"
     />
 </odoo>
