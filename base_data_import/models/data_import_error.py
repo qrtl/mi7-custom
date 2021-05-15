@@ -9,5 +9,6 @@ class DataImportError(models.Model):
     _name = "data.import.error"
 
     row_no = fields.Integer("Row Number")
-    error_message = fields.Text("message")
+    reference = fields.Char()
+    error_message = fields.Text("Message")
     log_id = fields.Many2one("data.import.log", string="Log")

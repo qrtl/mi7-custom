@@ -5,16 +5,10 @@
         <field name="model">data.import.log</field>
         <field name="inherit_id" ref="base_data_import.data_import_log_form" />
         <field name="arch" type="xml">
-            <xpath
-                expr="//field[@name='error_ids']//field[@name='row_no']"
-                position="after"
-            >
-                <field name="picking_ref" />
-            </xpath>
             <xpath expr="//notebook" position="inside">
                 <page
                     string="Imported Deliveries"
-                    attrs="{'invisible': [('picking_ids', '=', [])]}"
+                    attrs="{'invisible':[('picking_ids','=',[])]}"
                 >
                     <field name="picking_ids" />
                 </page>

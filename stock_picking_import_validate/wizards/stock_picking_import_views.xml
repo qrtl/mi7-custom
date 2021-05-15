@@ -1,32 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+    <!-- <record id="view_data_import" model="ir.ui.view">
+        <field name="name">view.data.import</field>
+        <field name="model">data.import</field>
+        <field name="arch" type="xml"> -->
+
     <record id="view_stock_picking_import" model="ir.ui.view">
-        <field name="name">Picking CSV File</field>
+        <field name="name">view.stock.picking.import</field>
         <field name="model">stock.picking.import</field>
+        <field name="inherit_id" ref="base_data_import.view_data_import"/>
         <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <group>
-                        <group>
-                            <field name="file_name" invisible="1" />
-                            <field
-                                name="import_file"
-                                widget="binary"
-                                filename="file_name"
-                            />
-                        </group>
-                    </group>
-                </sheet>
-                <footer>
-                    <button
-                        string="Import"
-                        name="import_stock_picking"
-                        type="object"
-                        class="btn-primary"
-                    />
-                    <button string="Cancel" special="cancel" />
-                </footer>
-            </form>
+            <xpath expr="//button[@name='cancel']" position="before">
+                <button
+                    string="Import Data"
+                    name="import_stock_picking"
+                    type="object"
+                    class="btn-primary"
+                    attrs="{'invisible':[('import_file','=',False)]}"
+                />
+            </xpath>
         </field>
     </record>
     <record id="action_stock_picking_import_wizard" model="ir.actions.act_window">

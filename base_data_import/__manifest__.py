@@ -11,6 +11,7 @@
         "security/data_import_group.xml",
         "security/ir.model.access.csv",
         "views/data_import_log_views.xml",
+        "wizards/data_import_views.xml",
     ],
     "installable": True,
 }

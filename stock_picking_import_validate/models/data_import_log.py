@@ -9,8 +9,5 @@ class DataImportLog(models.Model):
     _inherit = "data.import.log"
 
     picking_ids = fields.One2many(
-        "stock.picking", "log_id", string="Processed Pickings"
+        "stock.picking", "log_id", string="Imported Deliveries"
     )
-    # warning_log_line_ids = fields.One2many(
-    #     "error.log.line", "warning_log_id", string="Warning Log Lines"
-    # )

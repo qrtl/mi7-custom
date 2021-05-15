@@ -6,13 +6,30 @@ import csv
 import io
 from base64 import b64decode
 from datetime import datetime
+from collections import OrderedDict
 
-from odoo import _, models
+from odoo import _, fields, models
 from odoo.exceptions import UserError
 
 
-class DataImportMixin(models.AbstractModel):
-    _name = "data.import.mixin"
+class DataImport(models.TransientModel):
+    _name = "data.import"
+
+    import_file = fields.Binary(string="File")
+    file_name = fields.Char(string="File Name")
+
+    def import_data(self):
+        return
+
+    def _get_field_defs(self, FIELD_KEYS, FIELD_VALS):
+        ordered_index = OrderedDict(sorted(FIELD_KEYS.items()))
+        field_defs = []
+        field_def = {}
+        for field in FIELD_VALS:
+            for k, v in ordered_index.iteritems():
+                field_def[v] = field[k]
+            field_defs.append(field_def)
+        return field_defs
 
     def _load_import_file(self, model_name, field_defs, encodings=["utf-8"]):
         """We assume that there is a header line in the imported CSV.
@@ -46,7 +63,7 @@ class DataImportMixin(models.AbstractModel):
                 "datas_fname": self.file_name,
             }
         )
-        error_log = self.env["data.import.log"].create(
+        import_log = self.env["data.import.log"].create(
             {
                 "input_file": ir_attachment.id,
                 "import_user_id": self.env.user.id,
@@ -55,7 +72,7 @@ class DataImportMixin(models.AbstractModel):
                 "model_id": model.id,
             }
         )
-        return sheet_fields, csv_iterator, error_log
+        return sheet_fields, csv_iterator, import_log
 
     def _check_field_vals(self, field_defs, row, sheet_fields, date_formats=["%Y-%m-%d", "%Y/%m/%d"]):
         error_list = []
