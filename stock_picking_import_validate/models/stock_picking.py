@@ -13,18 +13,20 @@ class StockPicking(models.Model):
 
 
     @job()
-    def _assign_and_validate(self, line_num):
+    def _validate_picking(self):
         self.ensure_one()
-        self.action_assign()
-        if self.state != "assigned":
-            message = _("The delivery is not ready to be processed.")
-            self.env["data.import.error"].create(
-                {
-                    "log_id": self.log_id.id,
-                    "row_no": line_num,
-                    "picking_ref": self.name,
-                    "error_message": message,
-                }
-            )
-        else:
-            self.action_done()
+        # self.action_assign()
+        # if self.state != "assigned":
+        #     message = _("Not enough stock is available.")
+        #     self.env["data.import.error"].create(
+        #         {
+        #             "log_id": self.log_id.id,
+        #             "row_no": line_num,
+        #             "reference": self.name,
+        #             "error_message": message,
+        #         }
+        #     )
+        # else:
+        self.action_done()
+        if not self.log_id.picking_ids.filtered(lambda x: x.state != "done"):
+            self.log_id.sudo().write({"state": "done"})

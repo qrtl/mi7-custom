@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record model="ir.ui.view" id="data_import_log_form">
         <field name="name">data.import.log.form</field>
         <field name="model">data.import.log</field>
@@ -45,7 +44,8 @@
                 string="Import Logs"
                 create="false"
                 edit="false"
-                colors="red:state=='failed';"
+                decoration-danger="state=='failed'"
+                decoration-success="state=='done'"
                 default_order="import_date desc"
             >
                 <field name="import_date" />
