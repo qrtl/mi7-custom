@@ -25,8 +25,9 @@ class StockPickingImport(models.TransientModel):
         }
 
     def import_stock_picking(self):
+        import_log = self._create_import_log("stock.picking")
         field_defs = self._get_field_defs(FIELD_KEYS, FIELD_VALS)
-        sheet_fields, csv_iterator, import_log = self._load_import_file("stock.picking", field_defs, ["shift-jis", "utf-8"])
+        sheet_fields, csv_iterator = self._load_import_file(field_defs, ["shift-jis", "utf-8"])
         company = self.env.user.company_id
         import_error = False
         picking_vals_list = []
@@ -58,6 +59,7 @@ class StockPickingImport(models.TransientModel):
                     picking.log_id = import_log
                     picking.with_delay(description=_("%s: Validate Delivery") % picking.name)._assign_and_validate(csv_iterator.line_num)
             import_log.sudo().write({"state": "done"})
+        #TODO move this to base_data_import
         return {
             "type": "ir.actions.act_window",
             "name": _("Import Result"),

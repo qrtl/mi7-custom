@@ -31,7 +31,27 @@ class DataImport(models.TransientModel):
             field_defs.append(field_def)
         return field_defs
 
-    def _load_import_file(self, model_name, field_defs, encodings=["utf-8"]):
+    def _create_import_log(self, model_name):
+        model = self.env["ir.model"].search([("model", "=", model_name)])
+        ir_attachment = self.env["ir.attachment"].create(
+            {
+                "name": self.file_name,
+                "datas": self.import_file,
+                "datas_fname": self.file_name,
+            }
+        )
+        import_log = self.env["data.import.log"].create(
+            {
+                "input_file": ir_attachment.id,
+                "import_user_id": self.env.user.id,
+                "import_date": datetime.now(),
+                "state": "failed",
+                "model_id": model.id,
+            }
+        )
+        return import_log
+    
+    def _load_import_file(self, field_defs, encodings=["utf-8"]):
         """We assume that there is a header line in the imported CSV.
         """
         csv_data = b64decode(self.import_file)
@@ -55,24 +75,7 @@ class DataImport(models.TransientModel):
             raise UserError(
                 _("Following columns are missing: \n %s" % ("\n".join(missing_columns)))
             )
-        model = self.env["ir.model"].search([("model", "=", model_name)])
-        ir_attachment = self.env["ir.attachment"].create(
-            {
-                "name": self.file_name,
-                "datas": self.import_file,
-                "datas_fname": self.file_name,
-            }
-        )
-        import_log = self.env["data.import.log"].create(
-            {
-                "input_file": ir_attachment.id,
-                "import_user_id": self.env.user.id,
-                "import_date": datetime.now(),
-                "state": "failed",
-                "model_id": model.id,
-            }
-        )
-        return sheet_fields, csv_iterator, import_log
+        return sheet_fields, csv_iterator
 
     def _check_field_vals(self, field_defs, row, sheet_fields, date_formats=["%Y-%m-%d", "%Y/%m/%d"]):
         error_list = []
