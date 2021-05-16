@@ -46,7 +46,6 @@
                 edit="false"
                 decoration-danger="state=='failed'"
                 decoration-success="state=='done'"
-                default_order="import_date desc"
             >
                 <field name="import_date" />
                 <field name="import_user_id" />

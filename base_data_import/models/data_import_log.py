@@ -7,7 +7,8 @@ from odoo import fields, models
 
 class DataImportLog(models.Model):
     _name = "data.import.log"
-    _rec_name = "model_id"
+    _rec_name = "file_name"
+    _order = "id DESC"
 
     import_date = fields.Datetime("Imported On")
     import_user_id = fields.Many2one("res.users", "Imported By")
