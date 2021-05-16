@@ -11,11 +11,11 @@ FIELD_VALS = [
 ]
 
 
-class StockPickingImport(models.TransientModel):
-    _name = "stock.picking.import"
+class StockDeliveryResultImport(models.TransientModel):
+    _name = "stock.delivery.result.import"
     _inherit = "data.import"
 
-    def import_stock_picking(self):
+    def import_stock_delivery_result(self):
         picking_obj = self.env["stock.picking"]
         import_log = self._create_import_log("stock.picking")
         field_defs = self._get_field_defs(FIELD_KEYS, FIELD_VALS)
