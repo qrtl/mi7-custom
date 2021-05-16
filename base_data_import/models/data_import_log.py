@@ -17,7 +17,8 @@ class DataImportLog(models.Model):
     file_path = fields.Binary(related="input_file.datas", string="Imported File")
     file_name = fields.Char(related="input_file.datas_fname", string="File")
     state = fields.Selection(
-        [("failed", "Failed"), ("imported", "Imported"), ("done", "Done")], string="Status"
+        [("failed", "Failed"), ("imported", "Imported"), ("done", "Done")],
+        string="Status",
     )
     model_id = fields.Many2one("ir.model", string="Model")
     model_name = fields.Char(related="model_id.model", string="Model Name")

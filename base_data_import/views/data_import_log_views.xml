@@ -22,7 +22,10 @@
                         </group>
                     </group>
                     <notebook string="Logs">
-                        <page string="Error Lines" attrs="{'invisible':[('error_ids','=',[])]}">
+                        <page
+                            string="Error Lines"
+                            attrs="{'invisible':[('error_ids','=',[])]}"
+                        >
                             <field name="error_ids">
                                 <tree string="Error Lines">
                                     <field name="row_no" />

@@ -5,8 +5,8 @@
 import csv
 import io
 from base64 import b64decode
-from datetime import datetime
 from collections import OrderedDict
+from datetime import datetime
 
 from odoo import _, fields, models
 from odoo.exceptions import UserError
@@ -40,7 +40,7 @@ class DataImport(models.TransientModel):
             }
         )
         return import_log
-    
+
     def _get_field_defs(self, FIELD_KEYS, FIELD_VALS):
         ordered_index = OrderedDict(sorted(FIELD_KEYS.items()))
         field_defs = []
@@ -51,9 +51,11 @@ class DataImport(models.TransientModel):
             field_defs.append(field_def)
         return field_defs
 
-    def _load_import_file(self, field_defs, encodings=["utf-8"]):
+    def _load_import_file(self, field_defs, encodings=None):
         """We assume that there is a header line in the imported CSV.
         """
+        if encodings is None:
+            encodings = ["utf-8"]
         csv_data = b64decode(self.import_file)
         for encoding in encodings:
             try:
@@ -96,7 +98,9 @@ class DataImport(models.TransientModel):
                     pass
             return field_type if not date else False
 
-    def _check_field_vals(self, field_defs, row, sheet_fields, date_formats=["%Y-%m-%d", "%Y/%m/%d"]):
+    def _check_field_vals(self, field_defs, row, sheet_fields, date_formats=None):
+        if date_formats is None:
+            date_formats = ["%Y-%m-%d", "%Y/%m/%d"]
         error_list = []
         row_dict = {}
         for field_def in field_defs:

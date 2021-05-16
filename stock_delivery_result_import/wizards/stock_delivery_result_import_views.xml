@@ -3,7 +3,7 @@
     <record id="view_stock_delivery_result_import" model="ir.ui.view">
         <field name="name">view.stock.delivery.result.import</field>
         <field name="model">stock.delivery.result.import</field>
-        <field name="inherit_id" ref="base_data_import.view_data_import"/>
+        <field name="inherit_id" ref="base_data_import.view_data_import" />
         <field name="arch" type="xml">
             <xpath expr="//button[@name='cancel']" position="before">
                 <button
@@ -16,7 +16,10 @@
             </xpath>
         </field>
     </record>
-    <record id="action_stock_delivery_result_import_wizard" model="ir.actions.act_window">
+    <record
+        id="action_stock_delivery_result_import_wizard"
+        model="ir.actions.act_window"
+    >
         <field name="name">Delivery Result CSV Import</field>
         <field name="res_model">stock.delivery.result.import</field>
         <field name="view_type">form</field>

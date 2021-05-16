@@ -2,7 +2,8 @@
 # Copyright 2021 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo import _, fields, models
+from odoo import fields, models
+
 from odoo.addons.queue_job.job import job
 
 
@@ -10,7 +11,6 @@ class StockPicking(models.Model):
     _inherit = "stock.picking"
 
     log_id = fields.Many2one("data.import.log", string="Log")
-
 
     @job()
     def _validate_picking(self):
