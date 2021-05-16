@@ -18,9 +18,6 @@ class DataImport(models.TransientModel):
     import_file = fields.Binary(string="File")
     file_name = fields.Char(string="File Name")
 
-    def import_data(self):
-        return
-
     def _create_import_log(self, model_name):
         model = self.env["ir.model"].search([("model", "=", model_name)])
         ir_attachment = self.env["ir.attachment"].create(
