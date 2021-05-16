@@ -54,7 +54,7 @@ msgstr "データインポートログ"
 #. module: base_data_import
 #: model:ir.actions.act_window,name:base_data_import.data_import_log_action
 msgid "Data Import Logs"
-msgstr "Data Import Logs"
+msgstr "データインポートログ"
 
 #. module: base_data_import
 #: model:ir.model.fields,field_description:base_data_import.field_data_import_display_name
