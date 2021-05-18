@@ -54,6 +54,7 @@ class DataImport(models.TransientModel):
         if encodings is None:
             encodings = ["utf-8"]
         csv_data = b64decode(self.import_file)
+        sheet_fields = []
         for encoding in encodings:
             try:
                 csv_iterator = csv.reader(
