@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="res_partner_form_view_sale_ec" model="ir.ui.view">
-        <field name="name">res.partner.form.view.sale.ec</field>
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">view.partner.form</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
