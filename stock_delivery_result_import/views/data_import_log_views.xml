@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="data_import_log_form">
+        <field name="name">data.import.log.form</field>
+        <field name="model">data.import.log</field>
+        <field name="inherit_id" ref="base_data_import.data_import_log_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page
+                    string="Imported Deliveries"
+                    attrs="{'invisible':[('picking_ids','=',[])]}"
+                >
+                    <field name="picking_ids" />
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_stock_delivery_result_import" model="ir.ui.view">
+        <field name="name">view.stock.delivery.result.import</field>
+        <field name="model">stock.delivery.result.import</field>
+        <field name="inherit_id" ref="base_data_import.view_data_import" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='cancel']" position="before">
+                <button
+                    string="Import Data"
+                    name="import_stock_delivery_result"
+                    type="object"
+                    class="btn-primary"
+                    attrs="{'invisible':[('import_file','=',False)]}"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record
+        id="action_stock_delivery_result_import_wizard"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Delivery Result CSV Import</field>
+        <field name="res_model">stock.delivery.result.import</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_stock_delivery_result_import" />
+        <field name="target">new</field>
+        <field name="context">{}</field>
+    </record>
+    <menuitem
+        id="stock_delivery_result_import_wizard_menu"
+        name="Delivery Result Import"
+        parent="stock.menu_stock_warehouse_mgmt"
+        action="action_stock_delivery_result_import_wizard"
+        sequence="10"
+    />
+    <menuitem
+        id="delivery_result_import_log_menu"
+        name="Delivery Result Import Log"
+        parent="stock.menu_stock_warehouse_mgmt"
+        action="base_data_import.data_import_log_action"
+        sequence="20"
+    />
+</odoo>
