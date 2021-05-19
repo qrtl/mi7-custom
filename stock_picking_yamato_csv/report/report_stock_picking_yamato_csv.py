@@ -257,9 +257,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
                         field_dict[38]: company.zip,
                         field_dict[39]: self._encode_sjis(self._get_address(company)),
                         field_dict[40]: company.phone,
-                        field_dict[45]: self._encode_sjis(
-                            partner_shipping.display_name
-                        ),
+                        field_dict[45]: self._encode_sjis(partner_shipping.name),
                         field_dict[47]: self._encode_sjis(order.person) or "",
                         field_dict[48]: partner_shipping.zip,
                         field_dict[49]: self._encode_sjis(
