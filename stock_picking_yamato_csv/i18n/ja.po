@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 08:52+0000\n"
-"PO-Revision-Date: 2021-04-24 08:52+0000\n"
+"POT-Creation-Date: 2021-05-26 13:48+0000\n"
+"PO-Revision-Date: 2021-05-26 13:48+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -22,6 +22,14 @@ msgid "B2連携用消費税額"
 msgstr "B2連携用消費税額"
 
 #. module: stock_picking_yamato_csv
+#: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_res_partner_yamato_carrier_code
+#: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_res_users_yamato_carrier_code
+#: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_stock_picking_yamato_carrier_code
+#: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_stock_warehouse_yamato_carrier_code
+msgid "Carrier Code"
+msgstr "Carrier Code"
+
+#. module: stock_picking_yamato_csv
 #: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_sale_order_is_cod
 msgid "Cash on Delivery"
 msgstr "代引"
@@ -30,6 +38,11 @@ msgstr "代引"
 #: model:ir.model,name:stock_picking_yamato_csv.model_res_company
 msgid "Companies"
 msgstr "会社"
+
+#. module: stock_picking_yamato_csv
+#: model:ir.model.fields,help:stock_picking_yamato_csv.field_stock_warehouse_yamato_carrier_code
+msgid "Default Carrier Code for Yamato shipping instructions."
+msgstr "ヤマト出荷指示にて使用するデフォルトの運送会社コード。"
 
 #. module: stock_picking_yamato_csv
 #: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_shipping_timerange_ec_delivery_time_categ
@@ -80,6 +93,13 @@ msgstr "次のレコードは販売オーダに紐付いていません。\n"
 "%s"
 
 #. module: stock_picking_yamato_csv
+#: model:ir.model.fields,help:stock_picking_yamato_csv.field_res_partner_yamato_carrier_code
+#: model:ir.model.fields,help:stock_picking_yamato_csv.field_res_users_yamato_carrier_code
+#: model:ir.model.fields,help:stock_picking_yamato_csv.field_stock_picking_yamato_carrier_code
+msgid "For Yamato shipping instructions."
+msgstr "ヤマト出荷指示にて使用。"
+
+#. module: stock_picking_yamato_csv
 #: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_report_stock_picking_yamato_csv_report_yamato_csv_id
 msgid "ID"
 msgstr "ID"
@@ -107,12 +127,17 @@ msgid "OCR情報２行目"
 msgstr "OCR情報２行目"
 
 #. module: stock_picking_yamato_csv
+#: model:ir.model,name:stock_picking_yamato_csv.model_res_partner
+msgid "Partner"
+msgstr "取引先"
+
+#. module: stock_picking_yamato_csv
 #: model:ir.model,name:stock_picking_yamato_csv.model_sale_order
 msgid "Sales Order"
 msgstr "販売オーダ"
 
 #. module: stock_picking_yamato_csv
-#: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_res_company_shipper_code
+#: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_stock_warehouse_yamato_shipper_code
 msgid "Shipper Code"
 msgstr "荷主コード"
 
@@ -132,12 +157,18 @@ msgid "Transfer"
 msgstr "移動"
 
 #. module: stock_picking_yamato_csv
+#: model:ir.model,name:stock_picking_yamato_csv.model_stock_warehouse
+msgid "Warehouse"
+msgstr "倉庫"
+
+#. module: stock_picking_yamato_csv
 #: model:ir.actions.report.xml,name:stock_picking_yamato_csv.report_yamato_csv
 msgid "Yamato CSV"
 msgstr "ヤマトCSV"
 
 #. module: stock_picking_yamato_csv
-#: model:ir.ui.view,arch_db:stock_picking_yamato_csv.view_company_form
+#: model:ir.ui.view,arch_db:stock_picking_yamato_csv.view_picking_form
+#: model:ir.ui.view,arch_db:stock_picking_yamato_csv.view_warehouse
 msgid "Yamato Settings"
 msgstr "ヤマト関連設定"
 
@@ -145,11 +176,6 @@ msgstr "ヤマト関連設定"
 #: model:ir.model,name:stock_picking_yamato_csv.model_report_stock_picking_yamato_csv_report_yamato_csv
 msgid "report.stock_picking_yamato_csv.report_yamato_csv"
 msgstr "report.stock_picking_yamato_csv.report_yamato_csv"
-
-#. module: stock_picking_yamato_csv
-#: model:ir.model,name:stock_picking_yamato_csv.model_stock_picking_export_report
-msgid "stock.picking.export.report"
-msgstr "stock.picking.export.report"
 
 #. module: stock_picking_yamato_csv
 #: code:addons/stock_picking_yamato_csv/report/report_stock_picking_yamato_csv.py:101
