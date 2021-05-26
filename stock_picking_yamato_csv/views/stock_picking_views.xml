@@ -12,7 +12,10 @@
                 />
             </xpath>
             <xpath expr="//notebook" position="inside">
-                <page string="Yamato Settings" attrs="{'invisible':[('picking_type_code','!=','outgoing')]}">
+                <page
+                    string="Yamato Settings"
+                    attrs="{'invisible':[('picking_type_code','!=','outgoing')]}"
+                >
                     <group>
                         <group>
                             <field name="yamato_carrier_code" />

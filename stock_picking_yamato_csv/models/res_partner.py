@@ -8,4 +8,6 @@ from odoo import fields, models
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
-    yamato_carrier_code = fields.Char("Carrier Code", help="For Yamato shipping instructions.")
+    yamato_carrier_code = fields.Char(
+        "Carrier Code", help="For Yamato shipping instructions."
+    )

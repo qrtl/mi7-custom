@@ -244,7 +244,9 @@ class StockPickingYamatoCSV(models.AbstractModel):
                         field_dict[2]: "1",  # Newly create
                         field_dict[3]: warehouse.yamato_shipper_code,
                         field_dict[4]: "10",
-                        field_dict[5]: picking.yamato_carrier_code or partner_shipping.yamato_carrier_code or warehouse.yamato_carrier_code,
+                        field_dict[5]: picking.yamato_carrier_code
+                        or partner_shipping.yamato_carrier_code
+                        or warehouse.yamato_carrier_code,
                         field_dict[9]: "S001",
                         field_dict[12]: order.delivery_time_id
                         and order.delivery_time_id.delivery_time_categ
