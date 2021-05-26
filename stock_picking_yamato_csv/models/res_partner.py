@@ -5,7 +5,7 @@
 from odoo import fields, models
 
 
-class ResCompany(models.Model):
-    _inherit = "res.company"
+class ResPartner(models.Model):
+    _inherit = "res.partner"
 
-    shipper_code = fields.Char("Shipper Code")
+    yamato_carrier_code = fields.Char("Carrier Code", help="For Yamato shipping instructions.")

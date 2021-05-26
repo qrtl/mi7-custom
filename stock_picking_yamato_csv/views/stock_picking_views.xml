@@ -11,6 +11,15 @@
                     attrs="{'invisible':[('picking_type_code','!=','outgoing')]}"
                 />
             </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Yamato Settings" attrs="{'invisible':[('picking_type_code','!=','outgoing')]}">
+                    <group>
+                        <group>
+                            <field name="yamato_carrier_code" />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
         </field>
     </record>
     <record id="vpicktree_outgoing" model="ir.ui.view">
