@@ -27,7 +27,7 @@ msgstr "B2連携用消費税額"
 #: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_stock_picking_yamato_carrier_code
 #: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_stock_warehouse_yamato_carrier_code
 msgid "Carrier Code"
-msgstr "Carrier Code"
+msgstr "運送会社コード"
 
 #. module: stock_picking_yamato_csv
 #: model:ir.model.fields,field_description:stock_picking_yamato_csv.field_sale_order_is_cod
