@@ -17,8 +17,9 @@
         "report_csv",
     ],
     "data": [
-        "views/res_company_views.xml",
+        "views/res_partner_views.xml",
         "views/shipping_timerange_views.xml",
         "views/stock_picking_views.xml",
+        "views/stock_warehouse_views.xml",
     ],
 }
