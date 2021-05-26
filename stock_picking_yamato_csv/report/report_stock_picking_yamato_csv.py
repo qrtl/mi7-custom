@@ -232,6 +232,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
         field_dict = self._get_field_dict()
         item_num = 1
         for picking in pickings:
+            warehouse = picking.picking_type_id.warehouse_id
             company = picking.company_id
             order = picking.sale_id
             pick_create_date = self._get_date(picking.date)
@@ -241,9 +242,11 @@ class StockPickingYamatoCSV(models.AbstractModel):
                 writer.writerow(
                     {
                         field_dict[2]: "1",  # Newly create
-                        field_dict[3]: company.shipper_code,
+                        field_dict[3]: warehouse.yamato_shipper_code,
                         field_dict[4]: "10",
-                        field_dict[5]: "YTC01",
+                        field_dict[5]: picking.yamato_carrier_code
+                        or partner_shipping.yamato_carrier_code
+                        or warehouse.yamato_carrier_code,
                         field_dict[9]: "S001",
                         field_dict[12]: order.delivery_time_id
                         and order.delivery_time_id.delivery_time_categ
@@ -269,6 +272,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
                         field_dict[54]: picking.name,
                         field_dict[59]: picking.name,
                         field_dict[60]: pick_create_date,
+                        field_dict[61]: self._encode_sjis(order.store_order) or "",
                         field_dict[72]: self._encode_sjis(order.store_order) or "",
                         field_dict[104]: "1",  # Allow edit on screen
                         field_dict[105]: "0",
