@@ -238,7 +238,11 @@ class StockPickingYamatoCSV(models.AbstractModel):
             pick_create_date = self._get_date(picking.date)
             scheduled_date = self._get_date(picking.min_date)
             partner_shipping = picking.partner_id
-            carrier_code = picking.yamato_carrier_code or partner_shipping.yamato_carrier_code or warehouse.yamato_carrier_code
+            carrier_code = (
+                picking.yamato_carrier_code
+                or partner_shipping.yamato_carrier_code
+                or warehouse.yamato_carrier_code
+            )
             # 伝票区分 '00' means that 送り状 will not be issued.
             slip_categ = "00"
             if carrier_code != "ZZZ01":
