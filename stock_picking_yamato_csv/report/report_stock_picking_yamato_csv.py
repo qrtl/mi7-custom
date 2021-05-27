@@ -238,20 +238,23 @@ class StockPickingYamatoCSV(models.AbstractModel):
             pick_create_date = self._get_date(picking.date)
             scheduled_date = self._get_date(picking.min_date)
             partner_shipping = picking.partner_id
+            carrier_code = picking.yamato_carrier_code or partner_shipping.yamato_carrier_code or warehouse.yamato_carrier_code
+            # 伝票区分 '00' means that 送り状 will not be issued.
+            slip_categ = "00"
+            if carrier_code != "ZZZ01":
+                slip_categ = "20" if order.is_cod else "10"
             for move in picking.move_lines:
                 writer.writerow(
                     {
                         field_dict[2]: "1",  # Newly create
                         field_dict[3]: warehouse.yamato_shipper_code,
                         field_dict[4]: "10",
-                        field_dict[5]: picking.yamato_carrier_code
-                        or partner_shipping.yamato_carrier_code
-                        or warehouse.yamato_carrier_code,
+                        field_dict[5]: carrier_code,
                         field_dict[9]: "S001",
                         field_dict[12]: order.delivery_time_id
                         and order.delivery_time_id.delivery_time_categ
                         or "",
-                        field_dict[13]: "20" if order.is_cod else "10",
+                        field_dict[13]: slip_categ,
                         field_dict[16]: int(order.amount_untaxed),
                         field_dict[17]: int(order.amount_tax),
                         field_dict[35]: self._encode_sjis(
