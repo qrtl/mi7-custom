@@ -6,7 +6,8 @@
         <field name="inherit_id" ref="stock.view_picking_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="not_send_invoice"
+                <field
+                    name="not_send_invoice"
                     attrs="{'invisible':[('picking_type_code','!=','outgoing')]}"
                 />
             </xpath>
