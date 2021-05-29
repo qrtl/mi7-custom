@@ -73,6 +73,7 @@ class AccountInvoice(models.Model):
             if (
                 invoice.send_invoice
                 and not (term and term.not_send_invoice)
+                and not invoice.picking_ids.filtered(lambda x: x.not_send_invoice)
                 and not invoice.invoice_sent
             ):
                 # TODO We may want to adjust/remove web_url - the value points
