@@ -8,6 +8,9 @@ from odoo import api, fields, models
 class StockPicking(models.Model):
     _inherit = "stock.picking"
 
+    yamato_carrier_code = fields.Char(
+        "Carrier Code", help="For Yamato shipping instructions."
+    )
     is_exported = fields.Boolean("Exported")
 
     @api.model
@@ -26,3 +29,13 @@ class StockPicking(models.Model):
         return super(StockPicking, self).fields_view_get(
             view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu
         )
+
+    @api.model
+    def create(self, vals):
+        res = super(StockPicking, self).create(vals)
+        res.yamato_carrier_code = (
+            res.partner_id.yamato_carrier_code
+            if res.partner_id and res.partner_id.yamato_carrier_code
+            else res.picking_type_id.warehouse_id.yamato_carrier_code
+        )
+        return res
