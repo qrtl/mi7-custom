@@ -15,6 +15,12 @@ class StockPicking(models.Model):
     @job()
     def _validate_picking(self):
         self.ensure_one()
-        self.action_done()
+        for pack in self.pack_operation_ids:
+            if pack.product_qty > 0:
+                pack.write({"qty_done": pack.product_qty})
+            else:
+                pack.unlink()
+        self.do_transfer()
+        # self.action_done()
         if not self.log_id.picking_ids.filtered(lambda x: x.state != "done"):
             self.log_id.sudo().write({"state": "done"})
