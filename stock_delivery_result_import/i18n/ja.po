@@ -1,0 +1,122 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* stock_delivery_result_import
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-16 13:39+0000\n"
+"PO-Revision-Date: 2021-05-16 13:39+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_delivery_result_import
+#: code:addons/stock_delivery_result_import/wizards/stock_delivery_result_import.py:64
+#, python-format
+msgid "%s: Validate Delivery"
+msgstr "%s: 配送検証"
+
+#. module: stock_delivery_result_import
+#: model:ir.model.fields,field_description:stock_delivery_result_import.field_stock_delivery_result_import_create_uid
+msgid "Created by"
+msgstr "作成者"
+
+#. module: stock_delivery_result_import
+#: model:ir.model.fields,field_description:stock_delivery_result_import.field_stock_delivery_result_import_create_date
+msgid "Created on"
+msgstr "作成日"
+
+#. module: stock_delivery_result_import
+#: model:ir.actions.act_window,name:stock_delivery_result_import.action_stock_delivery_result_import_wizard
+msgid "Delivery Result CSV Import"
+msgstr "出荷実績CSVインポート"
+
+#. module: stock_delivery_result_import
+#: model:ir.ui.menu,name:stock_delivery_result_import.stock_delivery_result_import_wizard_menu
+msgid "Delivery Result Import"
+msgstr "出荷実績インポート"
+
+#. module: stock_delivery_result_import
+#: model:ir.ui.menu,name:stock_delivery_result_import.delivery_result_import_log_menu
+msgid "Delivery Result Import Log"
+msgstr "出荷実績インポートログ"
+
+#. module: stock_delivery_result_import
+#: code:addons/stock_delivery_result_import/wizards/stock_delivery_result_import.py:40
+#, python-format
+msgid "Delivery is not in the right state (Draft/Done/Cancelled)."
+msgstr "配送が処理可能なステータスではありません(ドラフト/完了/取消済は処理できません)。"
+
+#. module: stock_delivery_result_import
+#: code:addons/stock_delivery_result_import/wizards/stock_delivery_result_import.py:36
+#, python-format
+msgid "Designated delivery does not exist."
+msgstr "指定の配送が見つかりません。"
+
+#. module: stock_delivery_result_import
+#: model:ir.model.fields,field_description:stock_delivery_result_import.field_stock_delivery_result_import_display_name
+msgid "Display Name"
+msgstr "表示名"
+
+#. module: stock_delivery_result_import
+#: model:ir.model.fields,field_description:stock_delivery_result_import.field_stock_delivery_result_import_id
+msgid "ID"
+msgstr "ID"
+
+#. module: stock_delivery_result_import
+#: model:ir.ui.view,arch_db:stock_delivery_result_import.view_stock_delivery_result_import
+msgid "Import Data"
+msgstr "データインポート"
+
+#. module: stock_delivery_result_import
+#: model:ir.model.fields,field_description:stock_delivery_result_import.field_data_import_log_picking_ids
+#: model:ir.ui.view,arch_db:stock_delivery_result_import.data_import_log_form
+msgid "Imported Deliveries"
+msgstr "インポート済配送"
+
+#. module: stock_delivery_result_import
+#: model:ir.model.fields,field_description:stock_delivery_result_import.field_stock_delivery_result_import___last_update
+msgid "Last Modified on"
+msgstr "最終更新日"
+
+#. module: stock_delivery_result_import
+#: model:ir.model.fields,field_description:stock_delivery_result_import.field_stock_delivery_result_import_write_uid
+msgid "Last Updated by"
+msgstr "最終更新者"
+
+#. module: stock_delivery_result_import
+#: model:ir.model.fields,field_description:stock_delivery_result_import.field_stock_delivery_result_import_write_date
+msgid "Last Updated on"
+msgstr "最終更新日"
+
+#. module: stock_delivery_result_import
+#: model:ir.model.fields,field_description:stock_delivery_result_import.field_stock_picking_log_id
+msgid "Log"
+msgstr "ログ"
+
+#. module: stock_delivery_result_import
+#: code:addons/stock_delivery_result_import/wizards/stock_delivery_result_import.py:48
+#, python-format
+msgid "Not enough stock is available."
+msgstr "在庫が足りません。"
+
+#. module: stock_delivery_result_import
+#: model:ir.model,name:stock_delivery_result_import.model_stock_picking
+msgid "Transfer"
+msgstr "運送"
+
+#. module: stock_delivery_result_import
+#: model:ir.model,name:stock_delivery_result_import.model_data_import_log
+msgid "data.import.log"
+msgstr "data.import.log"
+
+#. module: stock_delivery_result_import
+#: model:ir.model,name:stock_delivery_result_import.model_stock_delivery_result_import
+msgid "stock.delivery.result.import"
+msgstr "stock.delivery.result.import"
+

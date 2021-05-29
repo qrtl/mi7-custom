@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-10 06:26+0000\n"
-"PO-Revision-Date: 2021-04-10 06:26+0000\n"
+"POT-Creation-Date: 2021-05-29 07:23+0000\n"
+"PO-Revision-Date: 2021-05-29 07:23+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -77,6 +77,7 @@ msgstr "Invoice_${(object.number or '').replace('/','_')}_${object.state == 'dra
 
 #. module: account_invoice_validate_send_email
 #: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_payment_term_not_send_invoice
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_stock_picking_not_send_invoice
 msgid "Not Auto-send Invoice"
 msgstr "請求書自動送信対象外"
 
@@ -97,6 +98,11 @@ msgid "Send Invoice upon Validation"
 msgstr "検証時に請求書送信"
 
 #. module: account_invoice_validate_send_email
+#: model:ir.model,name:account_invoice_validate_send_email.model_stock_picking
+msgid "Transfer"
+msgstr "移動"
+
+#. module: account_invoice_validate_send_email
 #: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_invoice_web_url
 msgid "Web url"
 msgstr "Web url"
@@ -105,6 +111,11 @@ msgstr "Web url"
 #: model:ir.model.fields,help:account_invoice_validate_send_email.field_account_invoice_invoice_sent
 msgid "When this field is selected, no email will be automatically sent to the customer."
 msgstr "この項目が選択されている場合、検証時の自動メール送信は無効化されます。"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,help:account_invoice_validate_send_email.field_stock_picking_not_send_invoice
+msgid "When this field is selected, the invoice that is related to this picking will be outside the scope of automated invoice email despite the settings of the linked workflow process."
+msgstr "ワークフロープロセス設定にかかわらず、この項目が選択されていると、関連の請求書は自動メール送信対象外となります。"
 
 #. module: account_invoice_validate_send_email
 #: model:ir.model.fields,help:account_invoice_validate_send_email.field_account_payment_term_not_send_invoice
