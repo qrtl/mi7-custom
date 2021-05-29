@@ -21,6 +21,5 @@ class StockPicking(models.Model):
             else:
                 pack.unlink()
         self.do_transfer()
-        # self.action_done()
         if not self.log_id.picking_ids.filtered(lambda x: x.state != "done"):
             self.log_id.sudo().write({"state": "done"})
