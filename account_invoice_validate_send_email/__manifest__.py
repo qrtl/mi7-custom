@@ -8,12 +8,18 @@
     "author": "Quartile Limited",
     "website": "https://www.quartile.co",
     "version": "10.0.1.0.0",
-    "depends": ["pro_mi7_account", "sale_automatic_workflow", "website_portal_sale"],
+    "depends": [
+        "pro_mi7_account",
+        "sale_automatic_workflow",
+        "stock_picking_invoice_link",
+        "website_portal_sale",
+    ],
     "data": [
         "data/email_templates.xml",
         "views/account_invoice_view.xml",
         "views/account_payment_term_views.xml",
         "views/sale_workflow_process_views.xml",
+        "views/stock_picking_views.xml",
     ],
     "installable": True,
 }
