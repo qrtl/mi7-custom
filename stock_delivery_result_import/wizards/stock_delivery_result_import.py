@@ -34,7 +34,10 @@ class StockDeliveryResultImport(models.TransientModel):
                 )
                 if not picking:
                     error_list.append(_("Designated delivery does not exist."))
-                else:
+                # 伝票番号一覧 data may contain multiple lines for a picking. (i.e. the lines
+                # are as per the package). Therefore we need to avoid processing the same
+                # picking multiple times here.
+                elif picking not in pickings:
                     if picking.state in ("draft", "cancel", "done"):
                         error_list.append(
                             _(
