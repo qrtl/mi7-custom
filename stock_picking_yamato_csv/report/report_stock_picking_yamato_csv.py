@@ -230,7 +230,9 @@ class StockPickingYamatoCSV(models.AbstractModel):
         for move in picking.move_lines:
             sale_line = move.procurement_id.sale_line_id
             amt_taxinc += move.product_uom_qty * sale_line.price_reduce_taxinc
-            amt_tax += move.product_uom_qty * (sale_line.price_reduce_taxinc - sale_line.price_reduce_taxexcl)
+            amt_tax += move.product_uom_qty * (
+                sale_line.price_reduce_taxinc - sale_line.price_reduce_taxexcl
+            )
         return amt_taxinc, amt_tax
 
     def generate_csv_report(self, writer, data, pickings):
