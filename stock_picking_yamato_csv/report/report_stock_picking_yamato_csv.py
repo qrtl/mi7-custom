@@ -225,6 +225,16 @@ class StockPickingYamatoCSV(models.AbstractModel):
                 % ("\n".join(no_partner_picks.mapped("name")))
             )
 
+    def _get_amounts(self, picking):
+        amt_taxinc = amt_tax = 0.0
+        for move in picking.move_lines:
+            sale_line = move.procurement_id.sale_line_id
+            amt_taxinc += move.product_uom_qty * sale_line.price_reduce_taxinc
+            amt_tax += move.product_uom_qty * (
+                sale_line.price_reduce_taxinc - sale_line.price_reduce_taxexcl
+            )
+        return amt_taxinc, amt_tax
+
     def generate_csv_report(self, writer, data, pickings):
         self._check_pickings(pickings)
         today_date = self._get_date(fields.Datetime.now())
@@ -247,6 +257,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
             slip_categ = "00"
             if carrier_code != "ZZZ01":
                 slip_categ = "20" if order.is_cod else "10"
+            amt_taxinc, amt_tax = self._get_amounts(picking)
             for move in picking.move_lines:
                 writer.writerow(
                     {
@@ -259,8 +270,8 @@ class StockPickingYamatoCSV(models.AbstractModel):
                         and order.delivery_time_id.delivery_time_categ
                         or "",
                         field_dict[13]: slip_categ,
-                        field_dict[16]: int(order.amount_untaxed),
-                        field_dict[17]: int(order.amount_tax),
+                        field_dict[16]: int(amt_taxinc),
+                        field_dict[17]: int(amt_tax),
                         field_dict[35]: self._encode_sjis(
                             self._get_company_name(order, company)
                         ),
