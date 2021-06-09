@@ -233,6 +233,13 @@ class StockPickingYamatoCSV(models.AbstractModel):
             amt_tax += move.product_uom_qty * (
                 sale_line.price_reduce_taxinc - sale_line.price_reduce_taxexcl
             )
+        for sale_line in picking.sale_id.order_line:
+            # For cash-on-delivery and delivery fees
+            if sale_line.product_id.default_code == "COD" or sale_line.is_delivery:
+                amt_taxinc += sale_line.product_uom_qty * sale_line.price_reduce_taxinc
+                amt_tax += sale_line.product_uom_qty * (
+                    sale_line.price_reduce_taxinc - sale_line.price_reduce_taxexcl
+                )
         return amt_taxinc, amt_tax
 
     def generate_csv_report(self, writer, data, pickings):
@@ -258,6 +265,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
             if carrier_code != "ZZZ01":
                 slip_categ = "20" if order.is_cod else "10"
             amt_taxinc, amt_tax = self._get_amounts(picking)
+            # amt_delivery = self._get_delivery_amount(picking)
             for move in picking.move_lines:
                 writer.writerow(
                     {
