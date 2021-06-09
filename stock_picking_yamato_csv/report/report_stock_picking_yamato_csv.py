@@ -265,7 +265,6 @@ class StockPickingYamatoCSV(models.AbstractModel):
             if carrier_code != "ZZZ01":
                 slip_categ = "20" if order.is_cod else "10"
             amt_taxinc, amt_tax = self._get_amounts(picking)
-            # amt_delivery = self._get_delivery_amount(picking)
             for move in picking.move_lines:
                 writer.writerow(
                     {
