@@ -276,7 +276,11 @@ class StockPickingYamatoCSV(models.AbstractModel):
                         field_dict[4]: "10",
                         field_dict[5]: carrier_code,
                         field_dict[9]: "S001",
-                        field_dict[10]: order.delivery_date and datetime.strptime(order.delivery_date, DEFAULT_SERVER_DATE_FORMAT).strftime("%Y%m%d") or "",
+                        field_dict[10]: order.delivery_date
+                        and datetime.strptime(
+                            order.delivery_date, DEFAULT_SERVER_DATE_FORMAT
+                        ).strftime("%Y%m%d")
+                        or "",
                         field_dict[12]: order.delivery_time_id
                         and order.delivery_time_id.delivery_time_categ
                         or "",
