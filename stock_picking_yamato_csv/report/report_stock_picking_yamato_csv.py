@@ -3,9 +3,11 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import csv
+from datetime import datetime
 
 from odoo import _, fields, models
 from odoo.exceptions import UserError
+from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
 
 
 class StockPickingYamatoCSV(models.AbstractModel):
@@ -185,11 +187,11 @@ class StockPickingYamatoCSV(models.AbstractModel):
                 val = unicode(val).encode("cp932")
         return val
 
-    def _get_date(self, datetime):
+    def _get_date(self, dt_date):
         """This method converts datetime to date in user's timezone.
         """
         return fields.Datetime.context_timestamp(
-            self, fields.Datetime.from_string(datetime)
+            self, fields.Datetime.from_string(dt_date)
         ).strftime("%Y%m%d")
 
     def _check_pickings(self, pickings):
@@ -274,6 +276,11 @@ class StockPickingYamatoCSV(models.AbstractModel):
                         field_dict[4]: "10",
                         field_dict[5]: carrier_code,
                         field_dict[9]: "S001",
+                        field_dict[10]: order.delivery_date
+                        and datetime.strptime(
+                            order.delivery_date, DEFAULT_SERVER_DATE_FORMAT
+                        ).strftime("%Y%m%d")
+                        or "",
                         field_dict[12]: order.delivery_time_id
                         and order.delivery_time_id.delivery_time_categ
                         or "",
