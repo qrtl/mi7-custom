@@ -265,10 +265,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
             )
             if scheduled_date < today_date:
                 raise UserError(
-                    _(
-                        "Some items have an estimated shipping date before today.\n"
-                        "%s "
-                    )
+                    _("There is a delivery with a past scheduled date:\n%s")
                 )
             # 伝票区分 '00' means that 送り状 will not be issued.
             slip_categ = "00"

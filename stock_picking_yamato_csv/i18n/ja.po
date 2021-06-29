@@ -190,9 +190,7 @@ msgid "送信ID"
 msgstr "送信ID"
 
 #. module: stock_picking_yamato_csv
-#: code:addons/stock_picking_yamato_csv/report/report_stock_picking_yamato_csv.py:201
+#: code:addons/stock_picking_yamato_csv/report/report_stock_picking_yamato_csv.py:269
 #, python-format
-msgid "Some items have an estimated shipping date before today.\n"
-"%s"
-msgstr "出荷予定が過去の日付になっているれコードが存在します。\n"
-"%s"
+msgid "There is a delivery with a past scheduled date:\n%s"
+msgstr ""出荷予定日が過去日の配送が存在します:\n%s"
