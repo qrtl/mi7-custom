@@ -88,7 +88,7 @@ class AccountInvoice(models.Model):
     def action_send(self):
         # send notification email for follower
         self.ensure_one()
-        if self.type == "out_invoice" or "out_refund":
+        if self.type == "out_invoice" or self.type == "out_refund":
             email_act = self.get_mail_compose_message()
             if email_act and email_act.get("context"):
                 email_ctx = email_act["context"]
