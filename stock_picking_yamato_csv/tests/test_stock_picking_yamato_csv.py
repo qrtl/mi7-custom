@@ -6,6 +6,8 @@ from odoo.tests import SavepointCase, tagged
 
 @tagged("-standard", "-yamato_csv")
 class TestStockPickingYamatoCsv(SavepointCase):
+    post_install = True
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
