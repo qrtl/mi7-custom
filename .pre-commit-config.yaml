@@ -13,7 +13,7 @@ exclude: |
   ^\.travis\.yml$|
   ^pyproject\.toml$|
 default_language_version:
-  python: python2.7
+  python: python3
 repos:
   - repo: https://github.com/psf/black
     rev: 19.10b0
@@ -23,6 +23,9 @@ repos:
     rev: "v2.1.2"
     hooks:
       - id: prettier
+        name: prettier
+        additional_dependencies:
+          - "prettier@2.1.2"
   - repo: https://github.com/pre-commit/mirrors-eslint
     rev: v6.8.0
     hooks:
