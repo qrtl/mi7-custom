@@ -11,7 +11,7 @@ exclude: |
   # You don't usually want a bot to modify your legal texts
   (LICENSE.*|COPYING.*)|
   ^\.travis\.yml$|
-  ~pyproject\.toml$|
+  ^pyproject\.toml$|
 default_language_version:
   python: python2.7
 repos:
