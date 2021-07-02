@@ -68,18 +68,34 @@ repos:
         args: ["--extend-ignore=F401"] # ignore unused imports in __init__.py
         files: /__init__\.py$
         # additional_dependencies: ["flake8-bugbear==19.8.0"]
-  - repo: https://github.com/qrtl/pylint
-    rev: pylint-1.9.5-custom
+  - repo: https://github.com/PyCQA/pylint
+    rev: pylint-2.5.3
     hooks:
       - id: pylint
         name: pylint with optional checks
-        args: ["--rcfile=.pylintrc", "--exit-zero"]
+        args:
+          - --rcfile=.pylintrc
+          - --exit-zero
         verbose: true
-        additional_dependencies: ["pylint-odoo"]
+        additional_dependencies: &pylint_deps
+          - pylint-odoo==3.5.0
       - id: pylint
         name: pylint with mandatory checks
-        args: ["--rcfile=.pylintrc-mandatory"]
-        additional_dependencies: ["pylint-odoo"]
+        args:
+          - --rcfile=.pylintrc-mandatory
+        additional_dependencies: *pylint_deps
+  # - repo: https://github.com/qrtl/pylint
+  #   rev: pylint-1.9.5-custom
+  #   hooks:
+  #     - id: pylint
+  #       name: pylint with optional checks
+  #       args: ["--rcfile=.pylintrc", "--exit-zero"]
+  #       verbose: true
+  #       additional_dependencies: ["pylint-odoo"]
+  #     - id: pylint
+  #       name: pylint with mandatory checks
+  #       args: ["--rcfile=.pylintrc-mandatory"]
+  #       additional_dependencies: ["pylint-odoo"]
   - repo: https://github.com/asottile/pyupgrade
     rev: v1.26.2
     hooks:
