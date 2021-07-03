@@ -10,8 +10,7 @@ exclude: |
   ^docs/_templates/.*\.html$|
   # You don't usually want a bot to modify your legal texts
   (LICENSE.*|COPYING.*)|
-  ^\.travis\.yml$|
-  ^pyproject\.toml$|
+  ^\.travis\.yml$
 default_language_version:
   python: python3
 repos:
@@ -56,8 +55,8 @@ repos:
       - id: check-xml
       - id: mixed-line-ending
         args: ["--fix=lf"]
-  - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.7.9
+  - repo: https://gitlab.com/PyCQA/flake8
+    rev: 3.8.3
     hooks:
       - id: flake8
         name: flake8 except __init__.py
@@ -84,29 +83,15 @@ repos:
         args:
           - --rcfile=.pylintrc-mandatory
         additional_dependencies: *pylint_deps
-  # - repo: https://github.com/qrtl/pylint
-  #   rev: pylint-1.9.5-custom
-  #   hooks:
-  #     - id: pylint
-  #       name: pylint with optional checks
-  #       args: ["--rcfile=.pylintrc", "--exit-zero"]
-  #       verbose: true
-  #       additional_dependencies: ["pylint-odoo"]
-  #     - id: pylint
-  #       name: pylint with mandatory checks
-  #       args: ["--rcfile=.pylintrc-mandatory"]
-  #       additional_dependencies: ["pylint-odoo"]
   - repo: https://github.com/asottile/pyupgrade
-    rev: v1.26.2
+    rev: v2.7.2
     hooks:
       - id: pyupgrade
-  - repo: https://github.com/asottile/seed-isort-config
-    rev: v1.9.4
-    hooks:
-      - id: seed-isort-config
-  - repo: https://github.com/pre-commit/mirrors-isort
-    rev: v4.3.21
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.5.1
     hooks:
       - id: isort
         name: isort except __init__.py
+        args:
+          - --settings=.
         exclude: /__init__\.py$
