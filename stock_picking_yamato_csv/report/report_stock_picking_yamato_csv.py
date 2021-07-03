@@ -181,10 +181,10 @@ class StockPickingYamatoCSV(models.AbstractModel):
 
     def _encode_sjis(self, val):
         if val:
-            if isinstance(val, unicode):
+            if isinstance(val, unicode):  # noqa
                 val = val.encode("cp932")
             elif isinstance(val, str):
-                val = unicode(val).encode("cp932")
+                val = unicode(val).encode("cp932")  # noqa
         return val
 
     def _get_date(self, dt_date):
