@@ -8,7 +8,7 @@
             <xpath expr="//field[@name='partner_id']" position="after">
                 <field
                     name="not_send_invoice"
-                    attrs="{'invisible':[('picking_type_code','!=','outgoing')]}"
+                    attrs="{'invisible':[('sale_id','=',False)]}"
                 />
             </xpath>
         </field>
