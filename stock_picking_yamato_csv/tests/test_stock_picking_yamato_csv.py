@@ -1,10 +1,9 @@
 # Copyright 2021 Quartile Limited
 
 from odoo.exceptions import UserError
-from odoo.tests import SavepointCase, tagged
+from odoo.tests.common import SavepointCase
 
 
-@tagged("-standard", "-yamato_csv")
 class TestStockPickingYamatoCsv(SavepointCase):
     post_install = True
 
