@@ -19,18 +19,16 @@ class AccountInvoice(models.Model):
     web_url = fields.Char()
 
     def _get_mail_template_id(self):
-        try:
-            res = self.env.ref(
-                "account_invoice_validate_send_email.email_template_customer_invoice_validated"
-            ).id
-        except ValueError:
-            res = False
-        return res
+        self.ensure_one()
+        if self.company_id.invoice_mail_template_id:
+            return self.company_id.invoice_mail_template_id
+        else:
+            return False
 
     @api.multi
     def get_mail_compose_message(self):
         self.ensure_one()
-        template_id = self._get_mail_template_id()
+        template = self._get_mail_template_id()
         try:
             compose_form_id = self.env.ref("mail.email_compose_message_wizard_form").id
         except ValueError:
@@ -45,8 +43,8 @@ class AccountInvoice(models.Model):
             {
                 "default_model": "account.invoice",
                 "default_res_id": self.ids[0],
-                "default_use_template": bool(template_id),
-                "default_template_id": template_id,
+                "default_use_template": bool(template.id),
+                "default_template_id": template.id,
                 "default_composition_mode": "comment",
                 "notify_partner_ids": ",".join(
                     [str(partner_id) for partner_id in self.message_partner_ids.ids]
