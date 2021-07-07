@@ -18,7 +18,7 @@ class AccountInvoice(models.Model):
     )
     web_url = fields.Char()
 
-    def _get_mail_template_id(self):
+    def _get_mail_template(self):
         self.ensure_one()
         if self.company_id.invoice_mail_template_id:
             return self.company_id.invoice_mail_template_id
@@ -28,7 +28,9 @@ class AccountInvoice(models.Model):
     @api.multi
     def get_mail_compose_message(self):
         self.ensure_one()
-        template = self._get_mail_template_id()
+        template = self._get_mail_template()
+        if not template:
+            raise UserError("company_id cannot detected.")
         try:
             compose_form_id = self.env.ref("mail.email_compose_message_wizard_form").id
         except ValueError:
