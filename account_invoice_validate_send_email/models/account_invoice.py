@@ -2,7 +2,8 @@
 # Copyright 2021 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 
 class AccountInvoice(models.Model):
@@ -30,7 +31,7 @@ class AccountInvoice(models.Model):
         self.ensure_one()
         template = self._get_mail_template()
         if not template:
-            raise UserError("company_id cannot detected.")
+            raise UserError(_("company_id cannot detect"))
         try:
             compose_form_id = self.env.ref("mail.email_compose_message_wizard_form").id
         except ValueError:
