@@ -65,6 +65,7 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
             "account_invoice_validate_send_email.email_template_customer_invoice_validated"
         )
         template.report_template = False
+        cls.invoice.company_id.invoice_mail_template_id = template.id
 
     def test_01_validate_invoice_no_workflow(self):
         # Without workflow

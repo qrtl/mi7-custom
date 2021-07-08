@@ -78,7 +78,8 @@ class AccountInvoice(models.Model):
                 and not invoice.invoice_sent
             ):
                 # TODO We may want to adjust/remove web_url - the value points
-                # to the standard report which is not what we want to print
+                # to the standard report which is not what we want to printgit diff
+
                 # now, and as a result we are not using this field for the time
                 # being.
                 invoice.web_url = base_url + "/my/invoices/pdf/" + str(invoice.id)
