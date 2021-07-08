@@ -46,7 +46,7 @@ class AccountInvoice(models.Model):
             {
                 "default_model": "account.invoice",
                 "default_res_id": self.ids[0],
-                "default_use_template": bool(template.id),
+                "default_use_template": bool(template),
                 "default_template_id": template.id,
                 "default_composition_mode": "comment",
                 "notify_partner_ids": ",".join(
