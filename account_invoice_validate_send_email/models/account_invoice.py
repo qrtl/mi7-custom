@@ -31,7 +31,7 @@ class AccountInvoice(models.Model):
         self.ensure_one()
         template = self._get_mail_template()
         if not template:
-            raise UserError(_("company_id cannot detect"))
+            raise UserError(_('company_id cannot detect'))
         try:
             compose_form_id = self.env.ref("mail.email_compose_message_wizard_form").id
         except ValueError:
