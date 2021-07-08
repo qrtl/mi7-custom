@@ -263,6 +263,11 @@ class StockPickingYamatoCSV(models.AbstractModel):
                 or partner_shipping.yamato_carrier_code
                 or warehouse.yamato_carrier_code
             )
+            if scheduled_date < today_date:
+                raise UserError(
+                    _("There is a delivery with a past scheduled date: %s")
+                    % (picking.name)
+                )
             # 伝票区分 '00' means that 送り状 will not be issued.
             slip_categ = "00"
             if carrier_code != "ZZZ01":
