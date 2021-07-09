@@ -13,9 +13,9 @@ Account Invoice Validate Send Email
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
-    :target: https://github.com/qrtl/mi7-custom/tree/10.0/account_invoice_validate_send_email
-    :alt: qrtl/mi7-custom
+.. |badge3| image:: https://img.shields.io/badge/github-qtrl%2Fmi7--custom-lightgray.png?logo=github
+    :target: https://github.com/qtrl/mi7-custom/tree/1691-imp-separate-mail_servers-for-each-company/account_invoice_validate_send_email
+    :alt: qtrl/mi7-custom
 
 |badge1| |badge2| |badge3| 
 
@@ -45,13 +45,17 @@ Go to *Accounting > Settings > Management > Payment Terms*, open a payment term
 and select 'Not Auto-send Invoice' in case the invoices with the payment term
 should be outside the scope of the email notification despite the workflow process settings.
 
+Go to *Settings > Users > companies*, open your company information page
+and select a favorable template from 'Invoice Email Template'.
+Recommended one is 'Invoice - Send by Email' which fills company name automatically.
+
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/qrtl/mi7-custom/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/qtrl/mi7-custom/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/qrtl/mi7-custom/issues/new?body=module:%20account_invoice_validate_send_email%0Aversion:%2010.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/qtrl/mi7-custom/issues/new?body=module:%20account_invoice_validate_send_email%0Aversion:%201691-imp-separate-mail_servers-for-each-company%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -71,6 +75,6 @@ Contributors
 Maintainers
 ~~~~~~~~~~~
 
-This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/10.0/account_invoice_validate_send_email>`_ project on GitHub.
+This module is part of the `qtrl/mi7-custom <https://github.com/qtrl/mi7-custom/tree/1691-imp-separate-mail_servers-for-each-company/account_invoice_validate_send_email>`_ project on GitHub.
 
 You are welcome to contribute.
