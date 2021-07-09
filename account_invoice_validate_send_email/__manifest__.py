@@ -20,6 +20,7 @@
         "views/account_payment_term_views.xml",
         "views/sale_workflow_process_views.xml",
         "views/stock_picking_views.xml",
+        "views/res_company_views.xml",
     ],
     "installable": True,
 }
