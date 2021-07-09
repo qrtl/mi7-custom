@@ -7,5 +7,5 @@ and select 'Not Auto-send Invoice' in case the invoices with the payment term
 should be outside the scope of the email notification despite the workflow process settings.
 
 Go to *Settings > Users > companies*, open your company information page
-and select a favorable template from 'Invoice Email Template'.
-Recommended one is 'Invoice - Send by Email' which fills company name automatically.
+and select a template for 'Invoice Email Template'.
+No email will be sent out upon invoice validation if no template is set for the company.
