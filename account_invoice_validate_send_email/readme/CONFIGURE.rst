@@ -5,3 +5,7 @@ use the functions of this module.
 Go to *Accounting > Settings > Management > Payment Terms*, open a payment term
 and select 'Not Auto-send Invoice' in case the invoices with the payment term
 should be outside the scope of the email notification despite the workflow process settings.
+
+Go to *Settings > Users > companies*, open your company information page
+and select a favorable template from 'Invoice Email Template'.
+Recommending 'Invoice - Send by Email' template fills your company name automatically.
