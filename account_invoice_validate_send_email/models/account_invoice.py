@@ -26,6 +26,8 @@ class AccountInvoice(models.Model):
     def get_mail_compose_message(self):
         self.ensure_one()
         template = self._get_mail_template()
+        if not template:
+            return {}
         try:
             compose_form_id = self.env.ref("mail.email_compose_message_wizard_form").id
         except ValueError:
