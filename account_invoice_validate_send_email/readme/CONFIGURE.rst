@@ -8,4 +8,4 @@ should be outside the scope of the email notification despite the workflow proce
 
 Go to *Settings > Users > companies*, open your company information page
 and select a favorable template from 'Invoice Email Template'.
-Recommending 'Invoice - Send by Email' template fills your company name automatically.
+Recommended one is 'Invoice - Send by Email' which fills company name automatically.
