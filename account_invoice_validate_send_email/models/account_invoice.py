@@ -20,8 +20,6 @@ class AccountInvoice(models.Model):
 
     def _get_mail_template(self):
         self.ensure_one()
-        if not self.company_id.invoice_mail_template_id:
-            self.company_id.invoice_mail_template_id = {}
         return self.company_id.invoice_mail_template_id
 
     @api.multi
