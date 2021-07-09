@@ -5,7 +5,7 @@
         <field name="model">res.company</field>
         <field name="inherit_id" ref="base.view_company_form" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='website']" position="after">
+            <xpath expr="//field[@name='payment_approval_seal_stamp']" position="after">
                 <field name="invoice_mail_template_id" />
             </xpath>
         </field>

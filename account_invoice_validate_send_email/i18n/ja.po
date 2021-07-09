@@ -126,9 +126,3 @@ msgstr "ワークフロープロセス設定にかかわらず、この項目が
 #: model:mail.template,subject:account_invoice_validate_send_email.email_template_customer_invoice_validated
 msgid "【請求書】送付のご案内　${object.company_id.name}　${object.number or \"N/A\"}"
 msgstr "【請求書】送付のご案内　${object.company_id.name}　${object.number or \"N/A\"}"
-
-#. module: account_invoice_validate_send_email
-#: model:mail.template,subject:account_invoice_validate_send_email.email_template_customer_invoice_validated
-msgid "company_id cannot detect"
-msgstr "送付元の会社が特定できませんでした。"
-
