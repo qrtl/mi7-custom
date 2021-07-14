@@ -67,8 +67,10 @@ class AccountInvoice(models.Model):
         base_url = self.env["ir.config_parameter"].get_param("web.base.url")
         for invoice in self:
             term = invoice.payment_term_id
+            picking = invoice.picking_ids
             if (
                 invoice.send_invoice
+                and not (picking and picking.not_send_invoice)
                 and not (term and term.not_send_invoice)
                 and not invoice.picking_ids.filtered(lambda x: x.not_send_invoice)
                 and not invoice.invoice_sent
