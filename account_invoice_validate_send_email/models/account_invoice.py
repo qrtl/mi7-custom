@@ -68,7 +68,7 @@ class AccountInvoice(models.Model):
         for invoice in self:
             term = invoice.payment_term_id
             orders = invoice.invoice_line_ids.mapped("sale_order_id")
-            pickings = self.env["stock.picking"].search([('sale_id','in',orders.ids)])
+            pickings = self.env["stock.picking"].search([("sale_id", "in", orders.ids)])
             if (
                 invoice.send_invoice
                 and not (term and term.not_send_invoice)
