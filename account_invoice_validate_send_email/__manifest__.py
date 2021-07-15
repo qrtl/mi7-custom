@@ -13,7 +13,7 @@
         "sale_automatic_workflow",
         "stock_picking_invoice_link",
         "website_portal_sale",
-     ],
+    ],
     "data": [
         "data/email_templates.xml",
         "views/account_invoice_view.xml",
