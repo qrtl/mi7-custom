@@ -67,11 +67,12 @@ class AccountInvoice(models.Model):
         base_url = self.env["ir.config_parameter"].get_param("web.base.url")
         for invoice in self:
             term = invoice.payment_term_id
-            orders = invoice.invoice_line_ids.mapped("sale_order_id")
-            if orders:
+            if invoice.invoice_line_ids.mapped("sale_order_id"):
+                orders = invoice.invoice_line_ids.mapped("sale_order_id")
                 pickings = self.env["stock.picking"].search(
                     [("sale_id", "in", orders.ids)]
                 )
+
             if (
                 invoice.send_invoice
                 and not (term and term.not_send_invoice)
