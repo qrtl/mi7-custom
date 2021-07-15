@@ -12,7 +12,7 @@ class MailComposeMessage(models.TransientModel):
     def get_mail_values(self, res_ids):
         self.ensure_one()
         results = super(MailComposeMessage, self).get_mail_values(res_ids)
-        reply_to = self.reply_to
         for res_id in res_ids:
-            results[res_id]["reply_to"] = reply_to
+            if self.reply_to and not results[res_id].get("reply_to", False):
+                results[res_id]["reply_to"] = self.reply_to
         return results
