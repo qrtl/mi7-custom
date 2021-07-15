@@ -15,8 +15,8 @@ class MailComposeMessageReplyTo(models.TransientModel):
         for res_id in res_ids:
             if (
                 self.reply_to
-                and "reply_to" not in results[res_id]
-                and "@" not in results[res_id]["reply_to"]
+                and "reply_to" not in results[res_id].keys()
+                and "@" not in str(results[res_id]["reply_to"])
             ):
                 results[res_id]["reply_to"] = self.reply_to
         return results

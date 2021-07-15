@@ -17,25 +17,17 @@ Mail Compose Message Reply To
     :target: https://github.com/qrtl/mi7-custom/tree/10.0/mail_compose_message_reply_to
     :alt: qrtl/mi7-custom
 
-|badge1| |badge2| |badge3|
+|badge1| |badge2| |badge3| 
 
 This module does the following:
 
 - If a mail template was arranged, Odoo will automatically set the reply_to address when send mails.
 
-The module depends on the OCA module mail_compose_message.
 
 **Table of contents**
 
 .. contents::
    :local:
-
-Configuration
-=============
-
-Go to *Settings > Users > companies*, open your company information page
-and select a template for 'Invoice Email Template' or copy/edit to make a new template.
-When you arrange the template, your mail address will be automatically set to reply_to.
 
 Bug Tracker
 ===========
@@ -54,11 +46,6 @@ Authors
 ~~~~~~~
 
 * Quartile Limited
-
-Contributors
-~~~~~~~~~~~~
-
-* JackLe <lehoangan1988@gmail.com>
 
 Maintainers
 ~~~~~~~~~~~
