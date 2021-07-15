@@ -2,7 +2,7 @@
 # Copyright 2021 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
-    "name": "Account Invoice Validate Send Email",
+    "name": "Mail Compose Message Reply To",
     "category": "Accouting",
     "license": "AGPL-3",
     "author": "Quartile Limited",
@@ -10,18 +10,17 @@
     "version": "10.0.1.0.0",
     "depends": [
         "pro_mi7_account",
-        "sale_automatic_workflow",
-        "stock_picking_invoice_link",
-        "website_portal_sale",
-        "mail_compose_message_reply_to",
+        # "sale_automatic_workflow",
+        # "stock_picking_invoice_link",
+        # "website_portal_sale",
     ],
     "data": [
         "data/email_templates.xml",
-        "views/account_invoice_view.xml",
-        "views/account_payment_term_views.xml",
-        "views/sale_workflow_process_views.xml",
-        "views/stock_picking_views.xml",
-        "views/res_company_views.xml",
+        # "views/account_invoice_view.xml",
+        # "views/account_payment_term_views.xml",
+        # "views/sale_workflow_process_views.xml",
+        # "views/stock_picking_views.xml",
+        # "views/res_company_views.xml",
     ],
     "installable": True,
 }
