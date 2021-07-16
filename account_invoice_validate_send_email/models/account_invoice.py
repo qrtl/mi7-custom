@@ -70,13 +70,15 @@ class AccountInvoice(models.Model):
                 continue
             term = invoice.payment_term_id
             pickings = invoice.picking_ids
+            # Supposedly 返品伝票
             if not pickings:
                 orders = invoice.invoice_line_ids.mapped("sale_line_ids").mapped(
                     "order_id"
                 )
-                pickings = self.env["stock.picking"].search(
-                    [("sale_id", "in", orders.ids)]
-                )
+                if orders:
+                    pickings = self.env["stock.picking"].search(
+                        [("sale_id", "in", orders.ids)]
+                    )
             if not pickings:
                 continue
             if (
