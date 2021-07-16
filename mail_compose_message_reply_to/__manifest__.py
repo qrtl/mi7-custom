@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Mail Compose Message Reply To",
-    "category": "Accouting",
+    "category": "Discuss",
     "license": "AGPL-3",
     "author": "Quartile Limited",
     "website": "https://www.quartile.co",
