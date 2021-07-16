@@ -13,10 +13,6 @@ class MailComposeMessageReplyTo(models.TransientModel):
         self.ensure_one()
         results = super(MailComposeMessageReplyTo, self).get_mail_values(res_ids)
         for res_id in res_ids:
-            if (
-                self.reply_to
-                and "reply_to" not in results[res_id].keys()
-                and "@" not in str(results[res_id]["reply_to"])
-            ):
+            if self.reply_to and "reply_to" not in results[res_id]:
                 results[res_id]["reply_to"] = self.reply_to
         return results
