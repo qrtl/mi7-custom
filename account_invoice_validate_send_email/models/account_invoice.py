@@ -66,6 +66,8 @@ class AccountInvoice(models.Model):
         res = super(AccountInvoice, self).action_invoice_open()
         base_url = self.env["ir.config_parameter"].get_param("web.base.url")
         for invoice in self:
+            if invoice.type not in ("out_invoice", "out_refund"):
+                continue
             term = invoice.payment_term_id
             orders = invoice.invoice_line_ids.mapped("sale_line_ids").mapped("order_id")
             pickings = self.env["stock.picking"].search([("sale_id", "in", orders.ids)])
