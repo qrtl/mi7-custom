@@ -6,9 +6,15 @@ from odoo.tests.common import SavepointCase
 
 
 class TestAccountInvoiceValidateSendEmail(SavepointCase):
+    post_install = True
     @classmethod
     def setUpClass(cls):
         super(TestAccountInvoiceValidateSendEmail, cls).setUpClass()
+        picking = cls.env["stock.picking"].create(
+            {
+            'picking_type_id': cls.env.ref('stock.picking_type_out'),
+            }
+        )
         account_rev = cls.env["account.account"].create(
             {
                 "code": "X2020",
@@ -49,6 +55,7 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
                 "type": "out_invoice",
                 "partner_id": partner.id,
                 "journal_id": journal.id,
+                "picking_ids": picking.id,
             }
         )
         cls.env["account.invoice.line"].create(
