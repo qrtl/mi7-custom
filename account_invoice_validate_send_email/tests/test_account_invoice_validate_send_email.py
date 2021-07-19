@@ -10,11 +10,6 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
     @classmethod
     def setUpClass(cls):
         super(TestAccountInvoiceValidateSendEmail, cls).setUpClass()
-        picking = cls.env["stock.picking"].create(
-            {
-            'picking_type_id': cls.env.ref('stock.picking_type_out'),
-            }
-        )
         account_rev = cls.env["account.account"].create(
             {
                 "code": "X2020",
@@ -49,13 +44,35 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
                 # "not_send_invoice": True,
             }
         )
+        sale_order =cls.env[sale.order].create({
+            'partner_id': partner.id,
+            'partner_invoice_id': partner.id,
+            'partner_shipping_id': partner.id,
+            'order_line': [
+                (0, 0, {
+                    'name': "name1", 'product_id': prod_order.id,
+                    'product_uom_qty': 2, 'product_uom': prod_order.uom_id.id,
+                    'price_unit': prod_order.list_price
+                }),
+                (0, 0, {
+                    'name': "name2", 'product_id': prod_del.id,
+                    'product_uom_qty': 2, 'product_uom': prod_del.uom_id.id,
+                    'price_unit': prod_del.list_price
+                }),
+                (0, 0, {
+                    'name': "name3", 'product_id': serv_order.id,
+                    'product_uom_qty': 2, 'product_uom': serv_order.uom_id.id,
+                    'price_unit': serv_order.list_price
+                }),
+            ],
+            'picking_policy': 'direct',
+        })
         cls.invoice = cls.env["account.invoice"].create(
             {
                 "origin": "Test Invoice",
                 "type": "out_invoice",
                 "partner_id": partner.id,
                 "journal_id": journal.id,
-                "picking_ids": picking.id,
             }
         )
         cls.env["account.invoice.line"].create(
@@ -65,6 +82,7 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
                 "price_unit": 100,
                 "quantity": 1,
                 "invoice_id": cls.invoice.id,
+                "sale_line_ids":sale_order.mapped("order_line"),
             }
         )
         # Remove report template from the email template to lighten the test load.
