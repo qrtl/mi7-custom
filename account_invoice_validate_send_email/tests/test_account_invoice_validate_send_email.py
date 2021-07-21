@@ -43,11 +43,12 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
                 # "not_send_invoice": True,
             }
         )
-        cls.sale_order = cls.env["sale.order"].create({
-            'partner_id': partner.id,
-            'partner_invoice_id': partner.id,
-            'partner_shipping_id': partner.id,
-            'picking_policy': 'direct',
+        cls.sale_order = cls.env["sale.order"].create(
+            {
+                "partner_id": partner.id,
+                "partner_invoice_id": partner.id,
+                "partner_shipping_id": partner.id,
+                "picking_policy": "direct",
             }
         )
         cls.invoice = cls.env["account.invoice"].create(
