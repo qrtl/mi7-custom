@@ -43,14 +43,17 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
                 # "not_send_invoice": True,
             }
         )
-        cls.sale_order = cls.env["sale.order"].create(
+        location = cls.env["stock.location"].search([("usage", "=", "production")])
+        picking_type = cls.env["stock.picking.type"].search([("code", "=", "incoming")])
+        picking = cls.env["stock.picking"].create(
             {
                 "partner_id": partner.id,
-                "partner_invoice_id": partner.id,
-                "partner_shipping_id": partner.id,
-                "picking_policy": "direct",
+                "location_id": location.id,
+                "picking_type_id": picking_type.id,
+                "location_dest_id": location.id,
             }
         )
+
         cls.invoice = cls.env["account.invoice"].create(
             {
                 "origin": "Test Invoice",
@@ -74,6 +77,7 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
         )
         template.report_template = False
         cls.invoice.company_id.invoice_mail_template_id = template.id
+        cls.invoice.picking_ids = [picking.id]
 
     def test_01_validate_invoice_no_workflow(self):
         # Without workflow
@@ -83,7 +87,6 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
 
     def test_02_validate_invoice_workflow_no_term(self):
         # With workflow, without payment term
-        self.assertIn(self.invoice.picking_ids, self.sale_order.picking_ids)
         self.assertEqual(self.invoice.invoice_sent, False)
         self.invoice.workflow_process_id = self.workflow
         self.invoice.sudo().action_invoice_open()
@@ -100,7 +103,6 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
 
     def test_04_validate_invoice_workflow_term_send(self):
         # With workflow, with payment term (no_send_invoice is false)
-        self.assertIn(self.sale_order.picking_ids, self.invoice.picking_ids)
         self.assertEqual(self.invoice.invoice_sent, False)
         self.invoice.workflow_process_id = self.workflow
         self.invoice.payment_term_id = self.payment_term
