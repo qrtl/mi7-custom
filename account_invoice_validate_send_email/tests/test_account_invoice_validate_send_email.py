@@ -43,8 +43,12 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
                 # "not_send_invoice": True,
             }
         )
-        location = cls.env["stock.location"].search([("usage", "=", "production")])
-        picking_type = cls.env["stock.picking.type"].search([("code", "=", "incoming")])
+        location = cls.env["stock.location"].search(
+            [("usage", "=", "production")], limit=1
+        )
+        picking_type = cls.env["stock.picking.type"].search(
+            [("code", "=", "outgoing")], limit=1
+        )
         picking = cls.env["stock.picking"].create(
             {
                 "partner_id": partner.id,
