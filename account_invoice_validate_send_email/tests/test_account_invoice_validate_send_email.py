@@ -6,7 +6,6 @@ from odoo.tests.common import SavepointCase
 
 
 class TestAccountInvoiceValidateSendEmail(SavepointCase):
-    post_install = True
     @classmethod
     def setUpClass(cls):
         super(TestAccountInvoiceValidateSendEmail, cls).setUpClass()
@@ -44,29 +43,13 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
                 # "not_send_invoice": True,
             }
         )
-        sale_order =cls.env[sale.order].create({
+        cls.sale_order = cls.env["sale.order"].create({
             'partner_id': partner.id,
             'partner_invoice_id': partner.id,
             'partner_shipping_id': partner.id,
-            'order_line': [
-                (0, 0, {
-                    'name': "name1", 'product_id': prod_order.id,
-                    'product_uom_qty': 2, 'product_uom': prod_order.uom_id.id,
-                    'price_unit': prod_order.list_price
-                }),
-                (0, 0, {
-                    'name': "name2", 'product_id': prod_del.id,
-                    'product_uom_qty': 2, 'product_uom': prod_del.uom_id.id,
-                    'price_unit': prod_del.list_price
-                }),
-                (0, 0, {
-                    'name': "name3", 'product_id': serv_order.id,
-                    'product_uom_qty': 2, 'product_uom': serv_order.uom_id.id,
-                    'price_unit': serv_order.list_price
-                }),
-            ],
             'picking_policy': 'direct',
-        })
+            }
+        )
         cls.invoice = cls.env["account.invoice"].create(
             {
                 "origin": "Test Invoice",
@@ -82,7 +65,6 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
                 "price_unit": 100,
                 "quantity": 1,
                 "invoice_id": cls.invoice.id,
-                "sale_line_ids":sale_order.mapped("order_line"),
             }
         )
         # Remove report template from the email template to lighten the test load.
@@ -100,6 +82,7 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
 
     def test_02_validate_invoice_workflow_no_term(self):
         # With workflow, without payment term
+        self.assertIn(self.invoice.picking_ids, self.sale_order.picking_ids)
         self.assertEqual(self.invoice.invoice_sent, False)
         self.invoice.workflow_process_id = self.workflow
         self.invoice.sudo().action_invoice_open()
@@ -116,6 +99,7 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
 
     def test_04_validate_invoice_workflow_term_send(self):
         # With workflow, with payment term (no_send_invoice is false)
+        self.assertIn(self.sale_order.picking_ids, self.invoice.picking_ids)
         self.assertEqual(self.invoice.invoice_sent, False)
         self.invoice.workflow_process_id = self.workflow
         self.invoice.payment_term_id = self.payment_term
