@@ -57,6 +57,7 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
                 "partner_id": partner.id,
                 "payment_term_id": cls.payment_term.id,
                 "workflow_process_id": cls.workflow.id,
+                "picking_policy": "direct",
             }
         )
         cls.env["sale.order.line"].create(
