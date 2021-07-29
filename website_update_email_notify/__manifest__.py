@@ -8,7 +8,7 @@
     "author": "Quartile Limited",
     "website": "https://www.quartile.co",
     "version": "10.0.1.0.0",
-    "depends": ["mail", "pro_mi7_website_sale_ec"],
+    "depends": ["mail", "website_portal"],
     "data": ["views/templates.xml", "views/email_templates.xml"],
     "installable": True,
 }
