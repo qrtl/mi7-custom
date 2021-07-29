@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="email_change" inherit_id="website_portal.details">
+        <xpath expr="//input[@name='email']" position="attributes">
+            <attribute name="t-att-readonly">None</attribute>
+        </xpath>
+    </template>
+</odoo>
