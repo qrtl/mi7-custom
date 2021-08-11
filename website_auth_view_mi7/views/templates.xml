@@ -149,16 +149,12 @@
             <attribute name="class">form-control btn btn-primary</attribute>
         </xpath>
         <xpath expr="//a" position="before">
-            <label style="margin-top: 10px;">
-                <input
-                    type="checkbox"
-                    id="terms"
-                    autofocus="autofocus"
-                    required="required"
-                    style="opacity: unset; position: initial;"
-                />
-                <t t-raw="website.signup_page_terms_text" />
-            </label>
+            <div class="form-check">
+                <input type="checkbox" value="accepted" id="terms" name="terms" required="required" />
+                <label class="form-check-label" for="terms" style="margin-top: 10px;">
+                    <t t-raw="website.signup_page_terms_text"/>
+                </label>
+            </div>
         </xpath>
     </template>
     <template id="fields" inherit_id="auth_signup.fields">
