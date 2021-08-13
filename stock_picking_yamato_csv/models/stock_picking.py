@@ -12,6 +12,11 @@ class StockPicking(models.Model):
         "Carrier Code", help="For Yamato shipping instructions."
     )
     is_exported = fields.Boolean("Exported")
+    yamato_slip_number = fields.Char(
+        "Yamato Slip Number",
+        help="Delivery Slip Number of Yamato Transport CO.,.",
+        store=True,
+    )
 
     @api.model
     def fields_view_get(
