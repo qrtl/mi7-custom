@@ -8,7 +8,7 @@
     "license": "LGPL-3",
     "author": "Quartile Limited",
     "website": "https://www.quartile.co/",
-    "depends": ["stock", "base_data_import", "queue_job","stock_picking_yamato_csv"],
+    "depends": ["stock", "base_data_import", "queue_job", "stock_picking_yamato_csv"],
     "data": [
         "views/data_import_log_views.xml",
         "views/stock_picking_views.xml",

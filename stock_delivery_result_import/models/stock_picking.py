@@ -14,7 +14,7 @@ class StockPicking(models.Model):
     yamato_slip_number = fields.Char(
         "Yamato Slip Number",
         help="Delivery Slip Number of Yamato Transport CO.,.",
-        store=True
+        store=True,
     )
 
     @job()
