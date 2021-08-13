@@ -11,6 +11,11 @@ class StockPicking(models.Model):
     _inherit = "stock.picking"
 
     log_id = fields.Many2one("data.import.log", string="Log")
+    yamato_slip_number = fields.Char(
+        "Yamato Slip Number",
+        help="Delivery Slip Number of Yamato Transport CO.,.",
+        store=True
+    )
 
     @job()
     def _validate_picking(self):
