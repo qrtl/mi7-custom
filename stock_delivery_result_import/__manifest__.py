@@ -17,6 +17,7 @@
         "account",
     ],
     "data": [
+        "views/account_invoice_views.xml",
         "views/data_import_log_views.xml",
         "wizards/stock_delivery_result_import_views.xml",
     ],

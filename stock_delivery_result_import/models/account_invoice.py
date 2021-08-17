@@ -2,9 +2,7 @@
 # Copyright 2021 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo import fields, models
-
-from odoo.addons.queue_job.job import job
+from odoo import api,fields, models
 
 
 class AccountInvoice(models.Model):
@@ -16,7 +14,7 @@ class AccountInvoice(models.Model):
         compute="_compute_yamato_slip_number",
     )
 
-    @job()
+    @api.model
     def _compute_yamato_slip_number(self):
         for invoice in self:
             tracking_numbers = ""
