@@ -20,5 +20,5 @@ class AccountInvoice(models.Model):
             tracking_numbers = ""
             for picking in invoice.picking_ids:
                 if picking.carrier_tracking_ref:
-                    tracking_numbers += picking.carrier_tracking_ref + ",\n"
+                    tracking_numbers += picking.carrier_tracking_ref + "\n"
             invoice.yamato_slip_number = tracking_numbers

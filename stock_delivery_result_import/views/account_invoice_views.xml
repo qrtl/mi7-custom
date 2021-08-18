@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="account.invoice_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='date_due']" position="after">
-                <field name="yamato_slip_number" />
+                <field name="yamato_slip_number" invisible="1"/>
             </xpath>
         </field>
     </record>
