@@ -8,8 +8,8 @@ FIELD_KEYS = {0: "field", 1: "label", 2: "field_type", 3: "required"}
 # Prepare values corresponding with the keys
 FIELD_VALS = [
     ["picking_ref", "受注番号", "char", True],
-    ["carrier_tracking_ref", "伝票番号", "char", False],
 ]
+
 
 class StockDeliveryResultImport(models.TransientModel):
     _name = "stock.delivery.result.import"
@@ -22,21 +22,22 @@ class StockDeliveryResultImport(models.TransientModel):
         sheet_fields, csv_iterator = self._load_import_file(
             field_defs, ["shift-jis", "utf-8"]
         )
-        track_ref_field =  [["carrier_tracking_ref", "伝票番号", "char", False]]
+        track_ref_field = [["carrier_tracking_ref", "伝票番号", "char", False]]
         update_field = self._get_field_defs(FIELD_KEYS, track_ref_field)
-
         company = self.env.user.company_id
         pickings = picking_obj.browse([])
         for row in csv_iterator:
             row_dict, error_list = self._check_field_vals(field_defs, row, sheet_fields)
-            row_update, update_error_list = self._check_field_vals(update_field, row, sheet_fields)
+            row_update, update_error_list = self._check_field_vals(
+                update_field, row, sheet_fields
+            )
             # Here is the module specific logic
             if row_dict and not error_list and not update_error_list:
                 picking_ref = row_dict.get("picking_ref")
-                carrier_tracking_ref = row_update.get("carrier_tracking_ref")
                 picking = picking_obj.search(
                     [("name", "=", picking_ref), ("company_id", "=", company.id)]
                 )
+                carrier_tracking_ref = row_update.get("carrier_tracking_ref")
                 if not picking:
                     error_list.append(_("Designated delivery does not exist."))
                 # 伝票番号一覧 data may contain multiple lines for a picking. (i.e. the lines
@@ -55,6 +56,7 @@ class StockDeliveryResultImport(models.TransientModel):
                         if not picking.state == "assigned":
                             error_list.append(_("Not enough stock is available."))
                     if not error_list:
+                        picking.carrier_tracking_ref = carrier_tracking_ref
                         pickings += picking
             if error_list:
                 self.env["data.import.error"].create(
@@ -71,6 +73,5 @@ class StockDeliveryResultImport(models.TransientModel):
                 picking.with_delay(
                     description=_("%s: Validate Delivery") % picking.name
                 )._validate_picking()
-                picking.carrier_tracking_ref = carrier_tracking_ref
             import_log.sudo().write({"state": "imported"})
         return self._action_open_import_log(import_log)
