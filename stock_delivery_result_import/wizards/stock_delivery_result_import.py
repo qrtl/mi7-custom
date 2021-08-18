@@ -8,6 +8,7 @@ FIELD_KEYS = {0: "field", 1: "label", 2: "field_type", 3: "required"}
 # Prepare values corresponding with the keys
 FIELD_VALS = [
     ["picking_ref", "受注番号", "char", True],
+    ["carrier_tracking_ref", "伝票番号", "char", True],
 ]
 
 

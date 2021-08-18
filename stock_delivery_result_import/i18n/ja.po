@@ -111,11 +111,6 @@ msgid "Transfer"
 msgstr "運送"
 
 #. module: stock_delivery_result_import
-#: model:ir.model.fields,field_description:stock_delivery_result_import.field_account_invoice_yamato_slip_number
-msgid "Yamato Slip Number"
-msgstr "配送伝票番号"
-
-#. module: stock_delivery_result_import
 #: model:ir.model,name:stock_delivery_result_import.model_data_import_log
 msgid "data.import.log"
 msgstr "data.import.log"
