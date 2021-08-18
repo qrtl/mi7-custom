@@ -20,6 +20,7 @@ Account Invoice Validate Send Email
 |badge1| |badge2| |badge3| 
 
 This module does the following:
+- Add yamato_slip_number field in account_invoice model. Compute by stock_picking.carrier_tracking_ref field numbers.
 
 - When customer invoice that meets all of the following conditions is validated, Odoo will print and send the invoice to the followers of the document.
   - 'Send Invoice upon Validation' is set in the workflow process linked to the invoice.
@@ -49,6 +50,9 @@ Go to *Settings > Users > companies*, open your company information page
 and select a template for 'Invoice Email Template'.
 No email will be sent out upon invoice validation if no template is set for the company.
 
+Go to *Settings > Emails > Template*, open mail template for send invoice and edit it
+(e.g. ${object.yamato_slip_number} ) .
+
 Bug Tracker
 ===========
 
@@ -71,6 +75,8 @@ Contributors
 ~~~~~~~~~~~~
 
 * JackLe <lehoangan1988@gmail.com>
+* Yoshi Tashiro <tashiro@quartile.co>
+* Tomohiro Abe <tomohiro@quartile.co>
 
 Maintainers
 ~~~~~~~~~~~
