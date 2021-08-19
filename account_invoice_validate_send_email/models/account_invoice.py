@@ -18,19 +18,16 @@ class AccountInvoice(models.Model):
     )
     web_url = fields.Char()
 
-    def _get_mail_template_id(self):
-        try:
-            res = self.env.ref(
-                "account_invoice_validate_send_email.email_template_customer_invoice_validated"
-            ).id
-        except ValueError:
-            res = False
-        return res
+    def _get_mail_template(self):
+        self.ensure_one()
+        return self.company_id.invoice_mail_template_id
 
     @api.multi
     def get_mail_compose_message(self):
         self.ensure_one()
-        template_id = self._get_mail_template_id()
+        template = self._get_mail_template()
+        if not template:
+            return {}
         try:
             compose_form_id = self.env.ref("mail.email_compose_message_wizard_form").id
         except ValueError:
@@ -45,8 +42,8 @@ class AccountInvoice(models.Model):
             {
                 "default_model": "account.invoice",
                 "default_res_id": self.ids[0],
-                "default_use_template": bool(template_id),
-                "default_template_id": template_id,
+                "default_use_template": bool(template),
+                "default_template_id": template.id,
                 "default_composition_mode": "comment",
                 "notify_partner_ids": ",".join(
                     [str(partner_id) for partner_id in self.message_partner_ids.ids]
@@ -69,11 +66,26 @@ class AccountInvoice(models.Model):
         res = super(AccountInvoice, self).action_invoice_open()
         base_url = self.env["ir.config_parameter"].get_param("web.base.url")
         for invoice in self:
+            if invoice.type not in ("out_invoice", "out_refund"):
+                continue
             term = invoice.payment_term_id
+            pickings = invoice.picking_ids
+            # Supposedly 返品伝票
+            if not pickings:
+                orders = invoice.invoice_line_ids.mapped("sale_line_ids").mapped(
+                    "order_id"
+                )
+                if orders:
+                    pickings = self.env["stock.picking"].search(
+                        [("sale_id", "in", orders.ids)]
+                    )
+            if not pickings:
+                continue
             if (
                 invoice.send_invoice
                 and not (term and term.not_send_invoice)
                 and not invoice.picking_ids.filtered(lambda x: x.not_send_invoice)
+                and not pickings.filtered(lambda x: x.not_send_invoice)
                 and not invoice.invoice_sent
             ):
                 # TODO We may want to adjust/remove web_url - the value points
@@ -88,7 +100,7 @@ class AccountInvoice(models.Model):
     def action_send(self):
         # send notification email for follower
         self.ensure_one()
-        if self.type == "out_invoice":
+        if self.type in ("out_invoice", "out_refund"):
             email_act = self.get_mail_compose_message()
             if email_act and email_act.get("context"):
                 email_ctx = email_act["context"]

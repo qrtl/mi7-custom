@@ -9,17 +9,17 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
     @classmethod
     def setUpClass(cls):
         super(TestAccountInvoiceValidateSendEmail, cls).setUpClass()
-        account_rev = cls.env["account.account"].create(
+        cls.env["account.journal"].create(
+            {"name": "Sale Journal - Test", "code": "STSJ", "type": "sale"}
+        )
+        acc_revenue = cls.env["account.account"].create(
             {
                 "code": "X2020",
                 "name": "Sales Test",
                 "user_type_id": cls.env.ref("account.data_account_type_revenue").id,
             }
         )
-        journal = cls.env["account.journal"].create(
-            {"name": "Sale Journal - Test", "code": "STSJ", "type": "sale"}
-        )
-        receivable_id = cls.env["account.account"].create(
+        acc_receivable = cls.env["account.account"].create(
             {
                 "code": "X4040",
                 "name": "Debtors Test",
@@ -31,33 +31,40 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
             {
                 "name": "Test Partner",
                 "email": "test01@gmail.com",
-                "property_account_receivable_id": receivable_id,
+                "property_account_receivable_id": acc_receivable.id,
             }
         )
         cls.workflow = cls.env["sale.workflow.process"].create(
-            {"name": "Send Invoice Test", "send_invoice": True}
+            {
+                "name": "Send Invoice Test",
+                "create_invoice": True,
+                "validate_invoice": True,
+            }
         )
         cls.payment_term = cls.env["account.payment.term"].create(
+            {"name": "Immediate Payment"}
+        )
+        cls.product1 = cls.env["product.product"].create(
             {
-                "name": "Immediate Payment",
-                # "not_send_invoice": True,
+                "name": "test product",
+                "type": "consu",
+                "invoice_policy": "delivery",
+                "property_account_income_id": acc_revenue.id,
             }
         )
-        cls.invoice = cls.env["account.invoice"].create(
+        cls.order = cls.env["sale.order"].create(
             {
-                "origin": "Test Invoice",
-                "type": "out_invoice",
                 "partner_id": partner.id,
-                "journal_id": journal.id,
+                "payment_term_id": cls.payment_term.id,
+                "workflow_process_id": cls.workflow.id,
+                "picking_policy": "direct",
             }
         )
-        cls.env["account.invoice.line"].create(
+        cls.env["sale.order.line"].create(
             {
-                "name": "Test 01",
-                "account_id": account_rev.id,
-                "price_unit": 100,
-                "quantity": 1,
-                "invoice_id": cls.invoice.id,
+                "order_id": cls.order.id,
+                "product_id": cls.product1.id,
+                "price_unit": 10.0,
             }
         )
         # Remove report template from the email template to lighten the test load.
@@ -65,33 +72,80 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
             "account_invoice_validate_send_email.email_template_customer_invoice_validated"
         )
         template.report_template = False
+        company = cls.env.ref("base.main_company")
+        company.invoice_mail_template_id = template.id
 
-    def test_01_validate_invoice_no_workflow(self):
-        # Without workflow
-        self.assertEqual(self.invoice.invoice_sent, False)
-        self.invoice.sudo().action_invoice_open()
-        self.assertEqual(self.invoice.invoice_sent, False)
+    def test_01_validate_invoice_workflow_no_send(self):
+        # Workflow send_invoice is false
+        self.order.action_confirm()
+        picking = self.order.picking_ids
+        picking.validate_picking()
+        self.env["automatic.workflow.job"].run()
+        invoice = self.order.invoice_ids
+        self.assertEqual(invoice.invoice_sent, False)
 
-    def test_02_validate_invoice_workflow_no_term(self):
-        # With workflow, without payment term
-        self.assertEqual(self.invoice.invoice_sent, False)
-        self.invoice.workflow_process_id = self.workflow
-        self.invoice.sudo().action_invoice_open()
-        self.assertEqual(self.invoice.invoice_sent, True)
+    def test_02_validate_invoice_workflow_send(self):
+        # Workflow send_invoice is true
+        self.workflow.send_invoice = True
+        self.order.action_confirm()
+        picking = self.order.picking_ids
+        picking.validate_picking()
+        self.env["automatic.workflow.job"].run()
+        invoice = self.order.invoice_ids
+        self.assertEqual(invoice.invoice_sent, True)
 
-    def test_03_validate_invoice_workflow_term_not_send(self):
-        # With workflow, with payment term (no_send_invoice is true)
-        self.assertEqual(self.invoice.invoice_sent, False)
-        self.invoice.workflow_process_id = self.workflow
+    def test_03_validate_invoice_payment_term_no_send(self):
+        # Workflow send_invoice is true, payment term not_send_invoice is true
+        self.workflow.send_invoice = True
         self.payment_term.not_send_invoice = True
-        self.invoice.payment_term_id = self.payment_term
-        self.invoice.sudo().action_invoice_open()
-        self.assertEqual(self.invoice.invoice_sent, False)
+        self.order.action_confirm()
+        picking = self.order.picking_ids
+        picking.validate_picking()
+        self.env["automatic.workflow.job"].run()
+        invoice = self.order.invoice_ids
+        self.assertEqual(invoice.invoice_sent, False)
 
-    def test_04_validate_invoice_workflow_term_send(self):
-        # With workflow, with payment term (no_send_invoice is false)
-        self.assertEqual(self.invoice.invoice_sent, False)
-        self.invoice.workflow_process_id = self.workflow
-        self.invoice.payment_term_id = self.payment_term
-        self.invoice.sudo().action_invoice_open()
-        self.assertEqual(self.invoice.invoice_sent, True)
+    def test_04_validate_invoice_picking_no_send(self):
+        # Workflow send_invoice is true, picking not_send_invoice is true
+        self.workflow.send_invoice = True
+        self.order.action_confirm()
+        picking = self.order.picking_ids
+        picking.not_send_invoice = True
+        picking.validate_picking()
+        self.env["automatic.workflow.job"].run()
+        invoice = self.order.invoice_ids
+        self.assertEqual(invoice.picking_ids, picking)
+        self.assertEqual(invoice.invoice_sent, False)
+
+    def test_05_validate_invoice_no_picking_link(self):
+        # Workflow send_invoice is true, picking not_send_invoice is false
+        self.workflow.send_invoice = True
+        # No automatic processing of invoice validation
+        self.workflow.validate_invoice = False
+        self.order.action_confirm()
+        picking = self.order.picking_ids
+        picking.validate_picking()
+        self.env["automatic.workflow.job"].run()
+        invoice = self.order.invoice_ids
+        # Remove the direct link to the picking
+        invoice.picking_ids = False
+        self.assertEqual(invoice.picking_ids, self.env["stock.picking"].browse())
+        invoice.action_invoice_open()
+        self.assertEqual(invoice.invoice_sent, True)
+
+    def test_06_validate_invoice_no_picking_link(self):
+        # Workflow send_invoice is true, picking not_send_invoice is true
+        self.workflow.send_invoice = True
+        # No automatic processing of invoice validation
+        self.workflow.validate_invoice = False
+        self.order.action_confirm()
+        picking = self.order.picking_ids
+        picking.not_send_invoice = True
+        picking.validate_picking()
+        self.env["automatic.workflow.job"].run()
+        invoice = self.order.invoice_ids
+        # Remove the direct link to the picking
+        invoice.picking_ids = False
+        self.assertEqual(invoice.picking_ids, self.env["stock.picking"].browse())
+        invoice.action_invoice_open()
+        self.assertEqual(invoice.invoice_sent, False)
