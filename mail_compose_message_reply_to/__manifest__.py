@@ -8,5 +8,6 @@
     "author": "Quartile Limited",
     "website": "https://www.quartile.co",
     "version": "10.0.1.0.0",
+    "depends": ["mail"],
     "installable": True,
 }
