@@ -18,10 +18,10 @@ class AccountInvoice(models.Model):
     )
     web_url = fields.Char()
 
-    yamato_slip_number = fields.Text(
-        "Yamato Slip Number",
-        help="Delivery Slip Number of Yamato Transport CO.,.",
-        compute="_compute_yamato_slip_number",
+    slip_number = fields.Text(
+        "Slip Number",
+        help="Delivery Slip Number",
+        compute="_compute_slip_number",
     )
 
     def _get_mail_template(self):
@@ -117,10 +117,10 @@ class AccountInvoice(models.Model):
         return True
 
     @api.model
-    def _compute_yamato_slip_number(self):
+    def _compute_slip_number(self):
         for invoice in self:
             tracking_numbers = ""
             for picking in invoice.picking_ids:
                 if picking.carrier_tracking_ref:
                     tracking_numbers += picking.carrier_tracking_ref + "\n"
-            invoice.yamato_slip_number = tracking_numbers
+            invoice.slip_number = tracking_numbers
