@@ -19,9 +19,7 @@ class AccountInvoice(models.Model):
     web_url = fields.Char()
 
     slip_number = fields.Text(
-        "Slip Number",
-        help="Delivery Slip Number",
-        compute="_compute_slip_number",
+        "Slip Number", help="Delivery Slip Number", compute="_compute_slip_number",
     )
 
     def _get_mail_template(self):
