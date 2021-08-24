@@ -114,7 +114,8 @@ class AccountInvoice(models.Model):
                 self.invoice_sent = True
         return True
 
-    @api.model
+    # This method not supposed red_order. Because red_order haven't delivery of own company.
+    @api.depends("picking_ids")
     def _compute_slip_number(self):
         for invoice in self:
             tracking_numbers = ""
