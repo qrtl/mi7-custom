@@ -11,7 +11,7 @@
         ><![CDATA[
 <p>Dear ${object.name},</p>
 <p>
-The email is changed from: ${ctx['old_email']|safe} to ${object.login}
+The email is changed from: ${ctx['old_email']|safe} to ${ctx['new_email']}
 </p>
 ]]></field>
     </record>
