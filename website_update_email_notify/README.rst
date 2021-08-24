@@ -22,6 +22,7 @@ Portal Login Change
 This module does the following:
 
 -  Sent an email to the old email address to notify user about changing of the email.
+-  Enable to edit e-mail field in /my/account page.
 
 **Table of contents**
 
@@ -34,7 +35,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/qrtl/mi7-custom/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/qrtl/mi7-custom/issues/new?body=module:%20website_update_email_notify%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/qrtl/mi7-custom/issues/new?body=module:%20website_update_email_notify%0Aversion:%2010.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
