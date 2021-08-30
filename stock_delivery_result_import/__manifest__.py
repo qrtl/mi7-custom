@@ -3,7 +3,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 {
     "name": "Stock Delivery Result Import",
-    "version": "10.0.1.0.1",
+    "version": "10.0.1.1.0",
     "category": "Stock",
     "license": "LGPL-3",
     "author": "Quartile Limited",
