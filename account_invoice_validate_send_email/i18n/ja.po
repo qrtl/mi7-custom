@@ -128,6 +128,6 @@ msgid "【請求書】送付のご案内　${object.company_id.name}　${object.
 msgstr "【請求書】送付のご案内　${object.company_id.name}　${object.number or \"N/A\"}"
 
 #. module: stock_delivery_result_import
-#: model:ir.model.fields,field_description:stock_delivery_result_import.field_account_invoice_slip_number
-msgid "Slip Number"
+#: model:ir.model.fields,field_description:stock_delivery_result_import.field_account_invoice_carrier_tracking_refs
+msgid "Tracking References"
 msgstr "配送伝票番号"
