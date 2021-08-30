@@ -40,6 +40,13 @@
 <strong>${object.number or 'N/A'}</strong>
 </p>
 <p>
+<strong>
+% if object.carrier_tracking_refs:
+    <i>配送伝票：${object.carrier_tracking_refs}</i>
+% endif
+</strong>
+</p>
+<p>
 宜しくお願い致します。
 </p>
 <p>
