@@ -8,7 +8,6 @@
             <xpath expr="//field[@name='move_id']" position="after">
                 <field name="invoice_sent" />
                 <field name="web_url" invisible="1" />
-                <field name="slip_number" invisible="1" />
             </xpath>
         </field>
     </record>
