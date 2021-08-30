@@ -52,7 +52,9 @@ class StockDeliveryResultImport(models.TransientModel):
                             error_list.append(_("Not enough stock is available."))
                     if not error_list:
                         pick_dict[picking] = {"tracking_refs": []}
-                pick_dict[picking]["tracking_refs"].append(row_dict.get("tracking_ref"))
+                        pick_dict[picking]["tracking_refs"].append(
+                            row_dict.get("tracking_ref")
+                        )
             if error_list:
                 self.env["data.import.error"].create(
                     {
