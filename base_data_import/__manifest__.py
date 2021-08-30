@@ -3,7 +3,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 {
     "name": "Base Data Import",
-    "version": "10.0.1.0.0",
+    "version": "10.0.1.0.1",
     "author": "Quartile Limited",
     "website": "https://www.quartile.co",
     "license": "LGPL-3",
