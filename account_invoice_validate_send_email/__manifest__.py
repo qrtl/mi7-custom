@@ -7,7 +7,7 @@
     "license": "AGPL-3",
     "author": "Quartile Limited",
     "website": "https://www.quartile.co",
-    "version": "10.0.1.0.2",
+    "version": "10.0.1.1.0",
     "depends": [
         "pro_mi7_account",
         "sale_automatic_workflow",
