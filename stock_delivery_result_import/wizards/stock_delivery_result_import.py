@@ -39,7 +39,6 @@ class StockDeliveryResultImport(models.TransientModel):
                 # are as per the package). Therefore we need to avoid processing the same
                 # picking multiple times here.
                 elif picking not in pick_dict:
-                    pick_dict[picking] = {"tracking_refs": []}
                     if picking.state in ("draft", "cancel", "done"):
                         error_list.append(
                             _(
@@ -51,10 +50,9 @@ class StockDeliveryResultImport(models.TransientModel):
                             picking.action_assign()
                         if not picking.state == "assigned":
                             error_list.append(_("Not enough stock is available."))
-                if not error_list:
-                    pick_dict[picking]["tracking_refs"].append(
-                        row_dict.get("tracking_ref")
-                    )
+                    if not error_list:
+                        pick_dict[picking] = {"tracking_refs": []}
+                pick_dict[picking]["tracking_refs"].append(row_dict.get("tracking_ref"))
             if error_list:
                 self.env["data.import.error"].create(
                     {
