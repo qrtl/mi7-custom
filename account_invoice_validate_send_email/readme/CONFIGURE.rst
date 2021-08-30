@@ -9,6 +9,3 @@ should be outside the scope of the email notification despite the workflow proce
 Go to *Settings > Users > companies*, open your company information page
 and select a template for 'Invoice Email Template'.
 No email will be sent out upon invoice validation if no template is set for the company.
-
-Go to *Settings > Emails > Template*, open mail template for send invoice and edit it
-(e.g. ${object.carrier_tracking_refs} ) .

@@ -22,6 +22,7 @@ Account Invoice Validate Send Email
 This module does the following:
 
 - When customer invoice that meets all of the following conditions is validated, Odoo will print and send the invoice to the followers of the document.
+
   - 'Send Invoice upon Validation' is set in the workflow process linked to the invoice.
   - 'Not Auto-send Invoice' of the pikcing linked to the invoice is not selected.
   - 'Not Auto-send Invoice' of the payment term assigned to the invoice is not selected.
@@ -48,9 +49,6 @@ should be outside the scope of the email notification despite the workflow proce
 Go to *Settings > Users > companies*, open your company information page
 and select a template for 'Invoice Email Template'.
 No email will be sent out upon invoice validation if no template is set for the company.
-
-Go to *Settings > Emails > Template*, open mail template for send invoice and edit it
-(e.g. ${object.carrier_tracking_refs} ) .
 
 Bug Tracker
 ===========
