@@ -41,8 +41,8 @@ class DataImport(models.TransientModel):
     def _get_field_defs(self, FIELD_KEYS, FIELD_VALS):
         ordered_index = OrderedDict(sorted(FIELD_KEYS.items()))
         field_defs = []
-        field_def = {}
         for field in FIELD_VALS:
+            field_def = {}
             for k, v in ordered_index.iteritems():
                 field_def[v] = field[k]
             field_defs.append(field_def)

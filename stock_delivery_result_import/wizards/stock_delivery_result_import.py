@@ -8,6 +8,7 @@ FIELD_KEYS = {0: "field", 1: "label", 2: "field_type", 3: "required"}
 # Prepare values corresponding with the keys
 FIELD_VALS = [
     ["picking_ref", "受注番号", "char", True],
+    ["tracking_ref", "伝票番号", "char", False],
 ]
 
 
@@ -23,7 +24,7 @@ class StockDeliveryResultImport(models.TransientModel):
             field_defs, ["shift-jis", "utf-8"]
         )
         company = self.env.user.company_id
-        pickings = picking_obj.browse([])
+        pick_dict = {}
         for row in csv_iterator:
             row_dict, error_list = self._check_field_vals(field_defs, row, sheet_fields)
             # Here is the module specific logic
@@ -37,7 +38,7 @@ class StockDeliveryResultImport(models.TransientModel):
                 # 伝票番号一覧 data may contain multiple lines for a picking. (i.e. the lines
                 # are as per the package). Therefore we need to avoid processing the same
                 # picking multiple times here.
-                elif picking not in pickings:
+                elif picking not in pick_dict:
                     if picking.state in ("draft", "cancel", "done"):
                         error_list.append(
                             _(
@@ -50,7 +51,8 @@ class StockDeliveryResultImport(models.TransientModel):
                         if not picking.state == "assigned":
                             error_list.append(_("Not enough stock is available."))
                     if not error_list:
-                        pickings += picking
+                        pick_dict[picking] = {"tracking_refs": []}
+                pick_dict[picking]["tracking_refs"].append(row_dict.get("tracking_ref"))
             if error_list:
                 self.env["data.import.error"].create(
                     {
@@ -61,7 +63,9 @@ class StockDeliveryResultImport(models.TransientModel):
                     }
                 )
         if not import_log.error_ids:
-            for picking in pickings:
+            for picking, vals in pick_dict.items():
+                tracking_refs = list(set(vals["tracking_refs"]))
+                picking.carrier_tracking_ref = ", ".join(ref for ref in tracking_refs)
                 picking.log_id = import_log
                 picking.with_delay(
                     description=_("%s: Validate Delivery") % picking.name
