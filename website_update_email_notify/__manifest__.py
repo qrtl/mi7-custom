@@ -10,7 +10,7 @@
     "version": "10.0.1.0.0",
     # Need to have "pro_mi7_website_sale_ec" as a dependency,
     # since this module overrides the detail() controller:
-    # https://github.com/qrtl/pro-mi7/blob/2a6f015f8928fb5748052ac819dbc04dff0ae4b5/pro_mi7_website_sale_ec/controllers/website_portal_main.py#L71-L107
+    # https://github.com/qrtl/pro-mi7/blob/2a6f015f8928fb5748052ac819dbc04dff0ae4b5/pro_mi7_website_sale_ec/controllers/website_portal_main.py#L71-L107 # noqa
     "depends": ["mail", "pro_mi7_website_sale_ec"],
     "data": ["views/templates.xml", "views/email_templates.xml"],
     "installable": True,
