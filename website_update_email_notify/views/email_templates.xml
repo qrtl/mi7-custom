@@ -2,7 +2,7 @@
 <odoo noupdate="1">
     <record id="email_template_notify_email_change" model="mail.template">
         <field name="name">Email Changed</field>
-        <field name="email_to">${ctx['old_email']|safe}</field>
+        <field name="email_to">${ctx['old_email']|safe},${ctx['new_email']}</field>
         <field name="subject">Email changed</field>
         <field name="model_id" ref="base.model_res_partner" />
         <field name="auto_delete" eval="True" />
