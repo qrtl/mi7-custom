@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="delivery_master_form">
+        <field name="name">delivery.master.form</field>
+        <field name="model">delivery.master</field>
+        <field name="arch" type="xml">
+            <form string="Delivery Master">
+                <header>
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="carrier_code" />
+                        <field name="name" />
+                        <field name="site_url" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="delivery_master_tree">
+        <field name="name">delivery.master.tree</field>
+        <field name="model">delivery.master</field>
+        <field name="arch" type="xml">
+            <tree
+                string="Delivery Master"
+                create="false"
+                edit="false"
+            >
+                <field name="carrier_code" />
+                <field name="name" />
+                <field name="site_url" />
+            </tree>
+        </field>
+    </record>
+    <record id="delivery_master_action" model="ir.actions.act_window">
+        <field name="name">Delivery Master</field>
+        <field name="res_model">delivery.master</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This menu is to have a place to aggregate all the import history.
+    Let users have access to the menu by assigning the 'Data Import Log' group
+    to them as necessary. -->
+    <menuitem
+        id="delivery_master_main_menu"
+        name="Delivery Master"
+        groups="base_data_import.group_data_import_log"
+    />
+    <menuitem
+        id="data_import_log_menu"
+        name="Delivery Master"
+        parent="delivery_master_main_menu"
+        action="delivery_master_action"
+        sequence="10"
+    />
+</odoo>
