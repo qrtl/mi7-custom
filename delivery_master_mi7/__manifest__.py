@@ -7,9 +7,9 @@
     "version": "10.0.1.0.0",
     "category": "Stock",
     "license": "AGPL-3",
-    "author": "Akretion, Quartile Limited",
+    "author": "Quartile Limited",
     "website": "https://www.quartile.co/",
     "depends": ["stock"],
-    "data": ["views/delivery_master_views","views/stock_picking_view"],
+    "data": ["views/delivery_master_views.xml", "views/stock_picking_view.xml"],
     "installable": True,
 }
