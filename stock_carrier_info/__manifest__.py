@@ -9,7 +9,7 @@
     "license": "AGPL-3",
     "author": "Quartile Limited",
     "website": "https://www.quartile.co/",
-    "depends": ["sale_stock"],
+    "depends": ['queue_job', "sale_stock"],
     "data": [
         "security/carrier_info_group.xml",
         "security/ir.model.access.csv",

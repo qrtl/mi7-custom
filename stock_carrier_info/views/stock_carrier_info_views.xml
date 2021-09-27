@@ -32,15 +32,12 @@
         <field name="res_model">stock.carrier.info</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="view_stock_carrier_info_tree" />
-        <field name="target">new</field>
     </record>
     <menuitem
-        id="stock_carrier_info_wizard_menu"
+        id="stock_carrier_info_menu"
         name="Stock Carrier Info"
-        parent="stock.menu_stock_config_settings"
-        groups="stock.group_stock_manager"
+        parent="delivery.menu_delivery"
         action="stock_carrier_info_act"
-        sequence="10"
+        sequence="2"
     />
 </odoo>
