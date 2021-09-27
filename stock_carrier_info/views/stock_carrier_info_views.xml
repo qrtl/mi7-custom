@@ -17,11 +17,7 @@
         <field name="name">stock.carrier.info.tree</field>
         <field name="model">stock.carrier.info</field>
         <field name="arch" type="xml">
-            <tree
-                string="Stock Carrier Info"
-                create="false"
-                edit="false"
-            >
+            <tree string="Stock Carrier Info">
                 <field name="carrier_code" />
                 <field name="name" />
                 <field name="site_url" />
@@ -36,9 +32,8 @@
         <field name="res_model">stock.carrier.info</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="view_stock_carrier_info_form" />
+        <field name="view_id" ref="view_stock_carrier_info_tree" />
         <field name="target">new</field>
-        <field name="context">{}</field>
     </record>
     <menuitem
         id="stock_carrier_info_wizard_menu"

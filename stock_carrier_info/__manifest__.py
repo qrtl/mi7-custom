@@ -10,6 +10,11 @@
     "author": "Quartile Limited",
     "website": "https://www.quartile.co/",
     "depends": ["sale_stock"],
-    "data": ["views/stock_carrier_info_views.xml", "views/stock_picking_view.xml"],
+    "data": [
+        "security/carrier_info_group.xml",
+        "security/ir.model.access.csv",
+        "views/stock_carrier_info_views.xml",
+        "views/stock_picking_view.xml",
+    ],
     "installable": True,
 }
