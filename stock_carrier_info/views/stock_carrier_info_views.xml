@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record model="ir.ui.view" id="view_delivery_master_form">
-        <field name="name">delivery.master.form</field>
-        <field name="model">delivery.master</field>
+    <record model="ir.ui.view" id="view_stock_carrier_info_form">
+        <field name="name">stock.carrier.info.form</field>
+        <field name="model">stock.carrier.info</field>
         <field name="arch" type="xml">
-            <form string="Delivery Master">
+            <form string="Stock Carrier Info">
                 <group>
                     <field name="carrier_code" />
                     <field name="name" />
@@ -13,12 +13,12 @@
             </form>
         </field>
     </record>
-    <record model="ir.ui.view" id="view_delivery_master_tree">
-        <field name="name">delivery.master.tree</field>
-        <field name="model">delivery.master</field>
+    <record model="ir.ui.view" id="view_stock_carrier_info_tree">
+        <field name="name">stock.carrier.info.tree</field>
+        <field name="model">stock.carrier.info</field>
         <field name="arch" type="xml">
             <tree
-                string="Delivery Master"
+                string="Stock Carrier Info"
                 create="false"
                 edit="false"
             >
@@ -29,23 +29,23 @@
         </field>
     </record>
     <record
-        id="delivery_master_act"
+        id="stock_carrier_info_act"
         model="ir.actions.act_window"
     >
-        <field name="name">Delivery Master</field>
-        <field name="res_model">delivery.master</field>
+        <field name="name">Stock Carrier Info</field>
+        <field name="res_model">stock.carrier.info</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="view_delivery_master_form" />
+        <field name="view_id" ref="view_stock_carrier_info_form" />
         <field name="target">new</field>
         <field name="context">{}</field>
     </record>
     <menuitem
-        id="stock_delivery_result_import_wizard_menu"
-        name="Delivery Master"
+        id="stock_carrier_info_wizard_menu"
+        name="Stock Carrier Info"
         parent="stock.menu_stock_config_settings"
         groups="stock.group_stock_manager"
-        action="delivery_master_act"
-        sequence="30"
+        action="stock_carrier_info_act"
+        sequence="10"
     />
 </odoo>

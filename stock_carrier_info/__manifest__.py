@@ -9,7 +9,7 @@
     "license": "AGPL-3",
     "author": "Quartile Limited",
     "website": "https://www.quartile.co/",
-    "depends": ["stock"],
+    "depends": ["sale_stock"],
     "data": ["views/stock_carrier_info_views.xml", "views/stock_picking_view.xml"],
     "installable": True,
 }
