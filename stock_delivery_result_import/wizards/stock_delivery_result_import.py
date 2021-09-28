@@ -9,6 +9,7 @@ FIELD_KEYS = {0: "field", 1: "label", 2: "field_type", 3: "required"}
 FIELD_VALS = [
     ["picking_ref", "受注番号", "char", True],
     ["tracking_ref", "伝票番号", "char", False],
+    ["carrier_info_id", "運送会社コード", "char", False],
 ]
 
 

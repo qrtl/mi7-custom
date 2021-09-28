@@ -13,6 +13,7 @@
     "data": [
         "security/carrier_info_group.xml",
         "security/ir.model.access.csv",
+        "views/account_invoice_view.xml",
         "views/stock_carrier_info_views.xml",
         "views/stock_picking_view.xml",
     ],

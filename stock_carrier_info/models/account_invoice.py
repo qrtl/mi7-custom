@@ -10,13 +10,13 @@ class AccountInvoice(models.Model):
     carrier_info_name = fields.Char(
         "Delivery Carrier Name",
         help="Delivery Carrier Information for send a e-mail to customer.",
-        compute="_compute_carrier_info"
+        compute="_compute_carrier_info",
     )
 
     carrier_info_url = fields.Char(
         "Delivery Carrier URL",
         help="Delivery Carrier's URL for tracking.",
-        compute="_compute_carrier_info"
+        compute="_compute_carrier_info",
     )
 
     @api.multi
