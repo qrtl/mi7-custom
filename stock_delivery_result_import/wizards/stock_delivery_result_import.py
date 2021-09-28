@@ -9,7 +9,7 @@ FIELD_KEYS = {0: "field", 1: "label", 2: "field_type", 3: "required"}
 FIELD_VALS = [
     ["picking_ref", "受注番号", "char", True],
     ["tracking_ref", "伝票番号", "char", False],
-    ["carrier_info_id", "運送会社コード", "char", False],
+    ["carrier_info_name", "運送会社", "text", False],
 ]
 
 
@@ -24,6 +24,7 @@ class StockDeliveryResultImport(models.TransientModel):
         sheet_fields, csv_iterator = self._load_import_file(
             field_defs, ["shift-jis", "utf-8"]
         )
+        carrier_info_id = self.env["stock.carrier.info"]
         company = self.env.user.company_id
         pick_dict = {}
         for row in csv_iterator:
@@ -31,8 +32,12 @@ class StockDeliveryResultImport(models.TransientModel):
             # Here is the module specific logic
             if row_dict and not error_list:
                 picking_ref = row_dict.get("picking_ref")
+                carrier_info_name = row_dict.get("carrier_info_name")
                 picking = picking_obj.search(
                     [("name", "=", picking_ref), ("company_id", "=", company.id)]
+                )
+                carrier_info = carrier_info_id.search(
+                    [("name", "=", carrier_info_name)]
                 )
                 if not picking:
                     error_list.append(_("Designated delivery does not exist."))
@@ -67,6 +72,7 @@ class StockDeliveryResultImport(models.TransientModel):
             for picking, vals in pick_dict.items():
                 tracking_refs = list(set(vals["tracking_refs"]))
                 picking.carrier_tracking_ref = ", ".join(ref for ref in tracking_refs)
+                picking.carrier_info_id = carrier_info
                 picking.log_id = import_log
                 picking.with_delay(
                     description=_("%s: Validate Delivery") % picking.name
