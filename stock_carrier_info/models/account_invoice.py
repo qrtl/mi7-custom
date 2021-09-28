@@ -22,7 +22,7 @@ class AccountInvoice(models.Model):
     @api.multi
     def _compute_carrier_info(self):
         for invoice in self:
-            picking = invoice.picking_ids[1]
+            picking = invoice.picking_ids[0]
             if picking.carrier_info_id:
                 invoice.carrier_info_name = picking.carrier_info_id.name
                 invoice.carrier_info_url = picking.carrier_info_id.site_url
