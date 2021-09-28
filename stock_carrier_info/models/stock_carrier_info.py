@@ -1,7 +1,7 @@
 from odoo import fields, models
 
 
-class DeliveryMaster(models.Model):
+class StockCarrierInfo(models.Model):
     _name = "stock.carrier.info"
     _description = "Stock Carrier Info"
 

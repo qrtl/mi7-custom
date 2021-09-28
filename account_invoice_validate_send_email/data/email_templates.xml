@@ -39,9 +39,15 @@
 <p>
 <strong>${object.number or 'N/A'}</strong>
 </p>
-% if object.carrier_tracking_refs:
+% if object.carrier_info_name and object.carrier_info_url and object.carrier_tracking_refs:
 <p>
-<strong>配送伝票：${object.carrier_tracking_refs}</strong>
+<strong>配送業者：${object.carrier_info_name}</strong>
+<br/>
+<strong>送り状お問い合わせNo：${object.carrier_tracking_refs}</strong>
+<br/>
+配送状況を配達業者のWebサイトでご確認頂けます。
+<br/>
+${object.carrier_info_url}
 </p>
 % endif
 <p>

@@ -38,6 +38,6 @@
         name="Stock Carrier Info"
         parent="delivery.menu_delivery"
         action="stock_carrier_info_act"
-        sequence="2"
+        sequence="20"
     />
 </odoo>
