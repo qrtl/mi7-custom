@@ -11,7 +11,6 @@
     "website": "https://www.quartile.co/",
     "depends": ["sale_stock", "stock_picking_invoice_link"],
     "data": [
-        "security/carrier_info_group.xml",
         "security/ir.model.access.csv",
         "views/account_invoice_view.xml",
         "views/stock_carrier_info_views.xml",

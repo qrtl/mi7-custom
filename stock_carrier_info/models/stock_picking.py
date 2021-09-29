@@ -8,4 +8,4 @@ from odoo import fields, models
 class StockPicking(models.Model):
     _inherit = "stock.picking"
 
-    carrier_info_id = fields.Many2one("stock.carrier.info", string="Stock Carrier Info")
+    carrier_info_id = fields.Many2one("stock.carrier.info", string="Warehouse Carrier")

@@ -6,9 +6,9 @@
         <field name="arch" type="xml">
             <form string="Stock Carrier Info">
                 <group>
-                    <field name="carrier_code" />
+                    <field name="code" />
                     <field name="name" />
-                    <field name="site_url" />
+                    <field name="tracking_url" />
                 </group>
             </form>
         </field>
@@ -18,9 +18,9 @@
         <field name="model">stock.carrier.info</field>
         <field name="arch" type="xml">
             <tree string="Stock Carrier Info">
-                <field name="carrier_code" />
+                <field name="code" />
                 <field name="name" />
-                <field name="site_url" />
+                <field name="tracking_url" />
             </tree>
         </field>
     </record>
