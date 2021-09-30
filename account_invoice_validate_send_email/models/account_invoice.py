@@ -23,6 +23,17 @@ class AccountInvoice(models.Model):
         help="Delivery slip numbers taken from the linked deliveries.",
         compute="_compute_carrier_tracking_refs",
     )
+    carrier_info_name = fields.Char(
+        "Delivery Carrier Name",
+        help="Delivery Carrier Information for send a e-mail to customer.",
+        compute="_compute_carrier_info",
+    )
+
+    carrier_info_url = fields.Char(
+        "Delivery Carrier URL",
+        help="Delivery Carrier's URL for tracking.",
+        compute="_compute_carrier_info",
+    )
 
     def _get_mail_template(self):
         self.ensure_one()
@@ -126,3 +137,11 @@ class AccountInvoice(models.Model):
                 for x in invoice.picking_ids
                 if x.carrier_tracking_ref
             )
+
+    @api.multi
+    def _compute_carrier_info(self):
+        for invoice in self:
+            picking = invoice.picking_ids[0]
+            if picking.carrier_info_id:
+                invoice.carrier_info_name = picking.carrier_info_id.name
+                invoice.carrier_info_url = picking.carrier_info_id.tracking_url

@@ -9,10 +9,10 @@
     "license": "AGPL-3",
     "author": "Quartile Limited",
     "website": "https://www.quartile.co/",
-    "depends": ["sale_stock", "stock_picking_invoice_link"],
+    "depends": ["sale_stock"],
     "data": [
         "security/ir.model.access.csv",
-        "views/account_invoice_view.xml",
+        "security/carrier_info_group.xml",
         "views/stock_carrier_info_views.xml",
         "views/stock_picking_view.xml",
     ],
