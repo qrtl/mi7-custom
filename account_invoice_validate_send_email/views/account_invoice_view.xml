@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='move_id']" position="after">
                 <field name="invoice_sent" />
+                <field name="web_url" invisible="1" />
             </xpath>
         </field>
     </record>

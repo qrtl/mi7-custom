@@ -24,7 +24,6 @@ class AccountInvoice(models.Model):
         compute="_compute_carrier_info",
     )
     carrier_info_name = fields.Char(compute="_compute_carrier_info",)
-
     carrier_tracking_url = fields.Char(compute="_compute_carrier_info",)
 
     def _get_mail_template(self):
