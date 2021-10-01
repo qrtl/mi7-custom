@@ -53,7 +53,7 @@
 % if object.carrier_tracking_url
 <strong>配送状況を配達業者のWebサイトでご確認頂けます。
 <br>
-${object.carrier_tracking_url}}</strong>
+${object.carrier_tracking_url}</strong>
 <br>
 
 </p>
