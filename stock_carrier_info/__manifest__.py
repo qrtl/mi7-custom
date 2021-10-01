@@ -12,7 +12,6 @@
     "depends": ["sale_stock"],
     "data": [
         "security/ir.model.access.csv",
-        "security/carrier_info_group.xml",
         "views/stock_carrier_info_views.xml",
         "views/stock_picking_view.xml",
     ],
