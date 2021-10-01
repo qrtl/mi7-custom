@@ -21,11 +21,11 @@ class AccountInvoice(models.Model):
     carrier_tracking_refs = fields.Char(
         "Tracking References",
         help="Delivery slip numbers taken from the linked deliveries.",
-        compute="_compute_carrier_tracking_refs",
+        compute="_compute_carrier_info",
     )
     carrier_info_name = fields.Char(compute="_compute_carrier_info",)
 
-    carrier_info_url = fields.Char(compute="_compute_carrier_info",)
+    carrier_tracking_url = fields.Char(compute="_compute_carrier_info",)
 
     def _get_mail_template(self):
         self.ensure_one()
@@ -119,21 +119,13 @@ class AccountInvoice(models.Model):
                 self.invoice_sent = True
         return True
 
-    # Return cases, where there is no direct link from the invoice to the pickings,
-    # are outside of the scope of showing the tracking references to the customer.
-    @api.multi
-    def _compute_carrier_tracking_refs(self):
-        for invoice in self:
-            invoice.carrier_tracking_refs = ", ".join(
-                x.carrier_tracking_ref
-                for x in invoice.picking_ids
-                if x.carrier_tracking_ref
-            )
-
     @api.multi
     def _compute_carrier_info(self):
         for invoice in self:
-            picking = invoice.picking_ids[0]
-            if picking.carrier_info_id:
-                invoice.carrier_info_name = picking.carrier_info_id.name
-                invoice.carrier_info_url = picking.carrier_info_id.tracking_url
+            carrier_recs = invoice.picking_ids.mapped("carrier_info_id")
+            tracking_refs = invoice.picking_ids.mapped("carrier_tracking_ref")
+            invoice.carrier_info_name = ", ".join(x.name for x in carrier_recs)
+            invoice.carrier_tracking_url = ", ".join(
+                x.tracking_url for x in carrier_recs
+            )
+            invoice.carrier_tracking_refs = ", ".join(tracking_refs)
