@@ -13,6 +13,7 @@
         "sale_automatic_workflow",
         "stock_picking_invoice_link",
         "website_portal_sale",
+        "stock_carrier_info",
     ],
     "data": [
         "data/email_templates.xml",

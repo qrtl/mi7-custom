@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-29 07:23+0000\n"
-"PO-Revision-Date: 2021-05-29 07:23+0000\n"
+"POT-Creation-Date: 2021-09-30 05:03+0000\n"
+"PO-Revision-Date: 2021-09-30 05:03+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -30,6 +30,25 @@ msgid "\n"
 "<p>\n"
 "<strong>${object.number or 'N/A'}</strong>\n"
 "</p>\n"
+"% if object.carrier_info_name\n"
+"<p>\n"
+"<strong>配送業者：${object.carrier_info_name}</strong>\n"
+"<br>\n"
+"% endif\n"
+"<br>\n"
+"% if object.carrier_tracking_refs\n"
+"<br>\n"
+"<strong>送り状お問い合わせNo：${object.carrier_tracking_refs}</strong>\n"
+"<br>\n"
+"% endif\n"
+"% if object.carrier_info_url\n"
+"<strong>配送状況を配達業者のWebサイトでご確認頂けます。\n"
+"<br>\n"
+"${object.carrier_info_url}}</strong>\n"
+"<br>\n"
+"\n"
+"</p>\n"
+"% endif\n"
 "<p>\n"
 "宜しくお願い致します。\n"
 "</p>\n"
@@ -51,6 +70,25 @@ msgstr "\n"
 "<p>\n"
 "<strong>${object.number or 'N/A'}</strong>\n"
 "</p>\n"
+"% if object.carrier_info_name\n"
+"<p>\n"
+"<strong>配送業者：${object.carrier_info_name}</strong>\n"
+"<br>\n"
+"% endif\n"
+"<br>\n"
+"% if object.carrier_tracking_refs\n"
+"<br>\n"
+"<strong>送り状お問い合わせNo：${object.carrier_tracking_refs}</strong>\n"
+"<br>\n"
+"% endif\n"
+"% if object.carrier_info_url\n"
+"<strong>配送状況を配達業者のWebサイトでご確認頂けます。\n"
+"<br>\n"
+"${object.carrier_info_url}}</strong>\n"
+"<br>\n"
+"\n"
+"</p>\n"
+"% endif\n"
 "<p>\n"
 "宜しくお願い致します。\n"
 "</p>\n"
@@ -61,9 +99,44 @@ msgstr "\n"
 "        "
 
 #. module: account_invoice_validate_send_email
+#: model:ir.model,name:account_invoice_validate_send_email.model_res_company
+msgid "Companies"
+msgstr "会社"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,help:account_invoice_validate_send_email.field_account_invoice_carrier_info_name
+msgid "Delivery Carrier Information for send a e-mail to customer."
+msgstr "顧客へのメール送信のための運送会社情報。"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_invoice_carrier_info_name
+msgid "Delivery Carrier Name"
+msgstr "運送会社名"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_invoice_carrier_info_url
+msgid "Delivery Carrier URL"
+msgstr "運送会社URL"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,help:account_invoice_validate_send_email.field_account_invoice_carrier_info_url
+msgid "Delivery Carrier's URL for tracking."
+msgstr "運送会社 追跡用URL"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,help:account_invoice_validate_send_email.field_account_invoice_carrier_tracking_refs
+msgid "Delivery slip numbers taken from the linked deliveries."
+msgstr "運送会社から取得された追跡番号です。"
+
+#. module: account_invoice_validate_send_email
 #: model:ir.model,name:account_invoice_validate_send_email.model_account_invoice
 msgid "Invoice"
 msgstr "請求書"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_res_company_invoice_mail_template_id
+msgid "Invoice Email Template"
+msgstr "請求書メールテンプレート"
 
 #. module: account_invoice_validate_send_email
 #: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_invoice_invoice_sent
@@ -98,6 +171,11 @@ msgid "Send Invoice upon Validation"
 msgstr "検証時に請求書送信"
 
 #. module: account_invoice_validate_send_email
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_invoice_carrier_tracking_refs
+msgid "Tracking References"
+msgstr "追跡参照"
+
+#. module: account_invoice_validate_send_email
 #: model:ir.model,name:account_invoice_validate_send_email.model_stock_picking
 msgid "Transfer"
 msgstr "移動"
@@ -127,7 +205,3 @@ msgstr "ワークフロープロセス設定にかかわらず、この項目が
 msgid "【請求書】送付のご案内　${object.company_id.name}　${object.number or \"N/A\"}"
 msgstr "【請求書】送付のご案内　${object.company_id.name}　${object.number or \"N/A\"}"
 
-#. module: stock_delivery_result_import
-#: model:ir.model.fields,field_description:stock_delivery_result_import.field_account_invoice_carrier_tracking_refs
-msgid "Tracking References"
-msgstr "配送伝票番号"
