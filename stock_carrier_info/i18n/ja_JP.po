@@ -23,7 +23,7 @@ msgstr "運送会社コード"
 #. module: stock_carrier_info
 #: model:ir.model.fields,field_description:stock_carrier_info.field_stock_carrier_info_name
 msgid "Carrier Name"
-msgstr "Carrier Name"
+msgstr "運送会社名"
 
 #. module: stock_carrier_info
 #: model:ir.model.fields,field_description:stock_carrier_info.field_stock_carrier_info_create_uid
