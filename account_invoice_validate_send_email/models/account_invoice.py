@@ -119,6 +119,8 @@ class AccountInvoice(models.Model):
                 self.invoice_sent = True
         return True
 
+    # Return cases, where there is no direct link from the invoice to the pickings,
+    # are outside of the scope of showing the tracking references to the customer.
     @api.multi
     def _compute_carrier_info(self):
         for invoice in self:
