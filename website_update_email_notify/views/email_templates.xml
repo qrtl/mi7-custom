@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="email_template_notify_email_change" model="mail.template">
+        <field name="name">Email Changed</field>
+        <field name="email_to">${ctx['old_email']|safe}</field>
+        <field name="email_cc">${ctx['new_email']|safe}</field>
+        <field name="subject">Email changed</field>
+        <field name="model_id" ref="base.model_res_partner" />
+        <field name="auto_delete" eval="True" />
+        <field
+            name="body_html"
+        ><![CDATA[
+<p>Dear ${object.name},</p>
+<p>
+The email is changed from ${ctx['old_email']|safe} to ${ctx['new_email']}
+</p>
+]]></field>
+    </record>
+</odoo>
