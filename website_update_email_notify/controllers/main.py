@@ -13,9 +13,10 @@ from odoo.addons.pro_mi7_website_sale_ec.controllers.website_portal_main import 
 class WebsiteAccount(website_account):
     @http.route(["/my/account"], type="http", auth="user", website=True)
     def details(self, redirect=None, **post):
+        errors = self.details_form_validate(post)
         old_email = request.env.user.partner_id.email
         response = super(WebsiteAccount, self).details(redirect=redirect, **post)
-        if post and post["email"] and old_email != post["email"]:
+        if post and post["email"] and old_email != post["email"] and not errors[0]:
             request.env.user._update_login_email(old_email, post["email"])
         return response
 
