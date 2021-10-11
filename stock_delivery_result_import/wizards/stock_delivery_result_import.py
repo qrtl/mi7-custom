@@ -72,16 +72,24 @@ class StockDeliveryResultImport(models.TransientModel):
                 )
         if not import_log.error_ids:
             for picking, vals in pick_dict.items():
-                carrier_info = vals["carrier_info"]
+                if len(carrier_info) != 0:
+                    carrier_info_val = vals["carrier_info"]
+                else:
+                    carrier_info_val = False
                 tracking_refs = list(set(vals["tracking_refs"]))
                 tracking_refs = ", ".join(ref for ref in tracking_refs)
                 picking.write(
-                    {
-                        "carrier_info_id": carrier_info and carrier_info.id or False,
-                        "carrier_tracking_ref": tracking_refs,
-                        "log_id": import_log.id,
-                    }
+                    {"carrier_tracking_ref": tracking_refs, "log_id": import_log.id}
                 )
+                if carrier_info_val is not False:
+                    picking.write(
+                        {
+                            "carrier_info_id": carrier_info_val
+                            and carrier_info_val.id
+                            or False,
+                        }
+                    )
+
                 picking.with_delay(
                     description=_("%s: Validate Delivery") % picking.name
                 )._validate_picking()
