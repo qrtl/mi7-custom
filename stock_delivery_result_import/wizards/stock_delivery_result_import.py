@@ -53,16 +53,20 @@ class StockDeliveryResultImport(models.TransientModel):
                         if not picking.state == "assigned":
                             error_list.append(_("Not enough stock is available."))
                     if not error_list:
-                        carrier_info = self.env["stock.carrier.info"].search(
-                            [("code", "=", carrier_code)]
-                        )[:1]
-                        pick_dict[picking] = {
-                            "tracking_refs": [],
-                            "carrier_info": carrier_info,
-                        }
-                        pick_dict[picking]["tracking_refs"].append(
-                            row_dict.get("tracking_ref")
+                        carrier_info = (
+                            picking.carrier_info_id
+                            if picking.carrier_info_id
+                            else self.env["stock.carrier.info"].search(
+                                [("code", "=", carrier_code)]
+                            )[:1]
                         )
+                        pick_dict[picking] = {"tracking_refs": []}
+                if not error_list:
+                    if picking.carrier_tracking_ref:
+                        pick_dict[picking]["tracking_refs"].append(
+                            picking.carrier_tracking_ref
+                        )
+                    pick_dict[picking]["tracking_refs"].append(row_dict.get("tracking_ref"))
             if error_list:
                 self.env["data.import.error"].create(
                     {
@@ -72,24 +76,18 @@ class StockDeliveryResultImport(models.TransientModel):
                         "error_message": "\n".join(error_list),
                     }
                 )
+
         if not import_log.error_ids:
             for picking, vals in pick_dict.items():
-                carrier_info = (
-                    picking.carrier_info_id
-                    if picking.carrier_info_id
-                    else vals["carrier_info"]
-                )
                 tracking_refs = list(set(vals["tracking_refs"]))
-                if picking.carrier_tracking_ref:
-                    tracking_refs.append(picking.carrier_tracking_ref)
                 tracking_refs = ", ".join(ref for ref in tracking_refs)
-                picking.write(
-                    {
-                        "carrier_tracking_ref": tracking_refs,
-                        "log_id": import_log.id,
-                        "carrier_info_id": carrier_info and carrier_info.id or False,
-                    }
-                )
+                update_val = {
+                    "carrier_tracking_ref": tracking_refs,
+                    "log_id": import_log.id,
+                    "carrier_info_id": carrier_info and carrier_info.id or False,
+                }
+                picking.write(update_val)
+
                 picking.with_delay(
                     description=_("%s: Validate Delivery") % picking.name
                 )._validate_picking()
