@@ -66,7 +66,9 @@ class StockDeliveryResultImport(models.TransientModel):
                         pick_dict[picking]["tracking_refs"].append(
                             picking.carrier_tracking_ref
                         )
-                    pick_dict[picking]["tracking_refs"].append(row_dict.get("tracking_ref"))
+                    pick_dict[picking]["tracking_refs"].append(
+                        row_dict.get("tracking_ref")
+                    )
             if error_list:
                 self.env["data.import.error"].create(
                     {
