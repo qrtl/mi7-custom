@@ -61,7 +61,9 @@ class StockDeliveryResultImport(models.TransientModel):
                             )[:1]
                         )
                         pick_dict[picking] = {"tracking_refs": []}
+                # Added for error handling. If delete this line,occurs Server Error.
                 if not error_list:
+                    # This line added for prohibit update with blanks
                     if picking.carrier_tracking_ref:
                         pick_dict[picking]["tracking_refs"].append(
                             picking.carrier_tracking_ref
