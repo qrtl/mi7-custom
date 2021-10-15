@@ -37,25 +37,22 @@
 以下のとおり、請求書を送付いたしますので、ご査収の程よろしくお願いいたします。
 </p>
 <p>
-<strong>${object.number or 'N/A'}</strong>
+${object.number or 'N/A'}
 </p>
 % if object.carrier_info_name
 <p>
-<strong>配送業者：${object.carrier_info_name}</strong>
-<br>
+配送業者：${object.carrier_info_name}
+</p>
 % endif
-<br>
 % if object.carrier_tracking_refs
-<br>
-<strong>送り状お問い合わせNo：${object.carrier_tracking_refs}</strong>
-<br>
+<p>
+送り状お問い合わせNo：${object.carrier_tracking_refs}
+</p>
 % endif
 % if object.carrier_tracking_url
-<strong>配送状況を配達業者のWebサイトでご確認頂けます。
-<br>
-${object.carrier_tracking_url}</strong>
-<br>
-
+<p>
+配送状況を配達業者のWebサイトでご確認頂けます。<br>
+${object.carrier_tracking_url}
 </p>
 % endif
 <p>
