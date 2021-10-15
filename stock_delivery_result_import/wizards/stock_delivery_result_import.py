@@ -70,7 +70,7 @@ class StockDeliveryResultImport(models.TransientModel):
                 self._update_pick_dict_carrier_info(
                     row_dict["carrier_code"], error_list, pick_dict, picking
                 )
-        if pick_dict and row_dict.get("tracking_ref"):
+        if pick_dict and pick_dict.get(picking) and row_dict.get("tracking_ref"):
             # Avoid duplicates while respecting the existing carrier_tracking_ref value
             # in the picking if any.
             if row_dict["tracking_ref"] not in pick_dict[picking]["tracking_refs"]:
