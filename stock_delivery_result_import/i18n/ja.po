@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-16 13:39+0000\n"
-"PO-Revision-Date: 2021-05-16 13:39+0000\n"
+"POT-Creation-Date: 2021-10-13 12:39+0000\n"
+"PO-Revision-Date: 2021-10-13 12:39+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: stock_delivery_result_import
-#: code:addons/stock_delivery_result_import/wizards/stock_delivery_result_import.py:64
+#: code:addons/stock_delivery_result_import/wizards/stock_delivery_result_import.py:91
 #, python-format
 msgid "%s: Validate Delivery"
 msgstr "%s: 配送検証"
@@ -47,13 +47,13 @@ msgid "Delivery Result Import Log"
 msgstr "出荷実績インポートログ"
 
 #. module: stock_delivery_result_import
-#: code:addons/stock_delivery_result_import/wizards/stock_delivery_result_import.py:40
+#: code:addons/stock_delivery_result_import/wizards/stock_delivery_result_import.py:62
 #, python-format
 msgid "Delivery is not in the right state (Draft/Done/Cancelled)."
 msgstr "配送が処理可能なステータスではありません(ドラフト/完了/取消済は処理できません)。"
 
 #. module: stock_delivery_result_import
-#: code:addons/stock_delivery_result_import/wizards/stock_delivery_result_import.py:36
+#: code:addons/stock_delivery_result_import/wizards/stock_delivery_result_import.py:50
 #, python-format
 msgid "Designated delivery does not exist."
 msgstr "指定の配送が見つかりません。"
@@ -100,7 +100,7 @@ msgid "Log"
 msgstr "ログ"
 
 #. module: stock_delivery_result_import
-#: code:addons/stock_delivery_result_import/wizards/stock_delivery_result_import.py:48
+#: code:addons/stock_delivery_result_import/wizards/stock_delivery_result_import.py:67
 #, python-format
 msgid "Not enough stock is available."
 msgstr "在庫が足りません。"
@@ -109,6 +109,18 @@ msgstr "在庫が足りません。"
 #: model:ir.model,name:stock_delivery_result_import.model_stock_picking
 msgid "Transfer"
 msgstr "運送"
+
+#. module: stock_delivery_result_import
+#: code:addons/stock_delivery_result_import/wizards/stock_delivery_result_import.py:40
+#, python-format
+msgid "Warehouse Carrier cannot be found with the code provided."
+msgstr "運送会社情報が見つかりません。"
+
+#. module: stock_delivery_result_import
+#: code:addons/stock_delivery_result_import/wizards/stock_delivery_result_import.py:31
+#, python-format
+msgid "Warehouse Carrier is inconsistent between the current setting and the imported data."
+msgstr "配送の設定とインポートデータにて運送会社情報が不整合です。"
 
 #. module: stock_delivery_result_import
 #: model:ir.model,name:stock_delivery_result_import.model_data_import_log
