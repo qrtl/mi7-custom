@@ -23,8 +23,8 @@ class AccountInvoice(models.Model):
         help="Delivery slip numbers taken from the linked deliveries.",
         compute="_compute_carrier_info",
     )
-    carrier_info_name = fields.Char(compute="_compute_carrier_info",)
-    carrier_tracking_url = fields.Char(compute="_compute_carrier_info",)
+    carrier_info_name = fields.Char(compute="_compute_carrier_info")
+    carrier_tracking_url = fields.Char(compute="_compute_carrier_info")
 
     def _get_mail_template(self):
         self.ensure_one()
@@ -124,9 +124,14 @@ class AccountInvoice(models.Model):
     def _compute_carrier_info(self):
         for invoice in self:
             carrier_recs = invoice.picking_ids.mapped("carrier_info_id")
-            tracking_refs = invoice.picking_ids.mapped("carrier_tracking_ref")
-            invoice.carrier_info_name = ", ".join(x.name for x in carrier_recs)
-            invoice.carrier_tracking_url = ", ".join(
-                x.tracking_url for x in carrier_recs
-            )
-            invoice.carrier_tracking_refs = ", ".join(tracking_refs)
+            if carrier_recs:
+                invoice.carrier_info_name = ", ".join(x.name for x in carrier_recs)
+                invoice.carrier_tracking_url = ", ".join(
+                    x.tracking_url for x in carrier_recs
+                )
+            tracking_refs = []
+            for pick in invoice.picking_ids:
+                if pick.carrier_tracking_ref:
+                    tracking_refs.append(pick.carrier_tracking_ref)
+            if tracking_refs:
+                invoice.carrier_tracking_refs = ", ".join(tracking_refs)
