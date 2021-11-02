@@ -125,10 +125,10 @@ class AccountInvoice(models.Model):
         for invoice in self:
             carrier_recs = invoice.picking_ids.mapped("carrier_info_id")
             if carrier_recs:
-                for x in carrier_recs:
-                    invoice.carrier_info_name = ", ".join(x.name)
-                    if x.tracking_url:
-                        invoice.carrier_tracking_url = ", ".join(x.tracking_url)
+                invoice.carrier_info_name = ", ".join(x.name for x in carrier_recs)
+                tracking_urls = carrier_recs.mapped("tracking_url")
+                if tracking_urls:
+                    invoice.carrier_tracking_url = ", ".join(url for url in tracking_urls if url)
             tracking_refs = []
             for pick in invoice.picking_ids:
                 if pick.carrier_tracking_ref:
