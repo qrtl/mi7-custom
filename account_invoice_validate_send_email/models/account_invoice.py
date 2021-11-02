@@ -128,7 +128,9 @@ class AccountInvoice(models.Model):
                 invoice.carrier_info_name = ", ".join(x.name for x in carrier_recs)
                 tracking_urls = carrier_recs.mapped("tracking_url")
                 if tracking_urls:
-                    invoice.carrier_tracking_url = ", ".join(url for url in tracking_urls if url)
+                    invoice.carrier_tracking_url = ", ".join(
+                        url for url in tracking_urls if url
+                    )
             tracking_refs = []
             for pick in invoice.picking_ids:
                 if pick.carrier_tracking_ref:
