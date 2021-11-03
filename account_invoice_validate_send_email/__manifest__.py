@@ -7,7 +7,7 @@
     "license": "AGPL-3",
     "author": "Quartile Limited",
     "website": "https://www.quartile.co",
-    "version": "10.0.1.1.0",
+    "version": "10.0.1.2.0",
     "depends": [
         "pro_mi7_account",
         "sale_automatic_workflow",
@@ -20,6 +20,7 @@
         "views/account_invoice_view.xml",
         "views/account_payment_term_views.xml",
         "views/sale_workflow_process_views.xml",
+        "views/stock_carrier_info_views.xml",
         "views/stock_picking_views.xml",
         "views/res_company_views.xml",
     ],
