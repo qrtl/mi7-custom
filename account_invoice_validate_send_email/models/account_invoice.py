@@ -123,7 +123,9 @@ class AccountInvoice(models.Model):
     @api.multi
     def _compute_carrier_info(self):
         for invoice in self:
-            carrier_recs = invoice.picking_ids.mapped("carrier_info_id")
+            carrier_recs = invoice.picking_ids.mapped("carrier_info_id").filtered(
+                lambda x: not x.is_dummy
+            )
             if carrier_recs:
                 invoice.carrier_info_name = ", ".join(x.name for x in carrier_recs)
                 tracking_urls = carrier_recs.mapped("tracking_url")
