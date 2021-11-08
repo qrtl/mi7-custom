@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-29 07:23+0000\n"
-"PO-Revision-Date: 2021-05-29 07:23+0000\n"
+"POT-Creation-Date: 2021-11-03 08:56+0000\n"
+"PO-Revision-Date: 2021-11-03 08:56+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,54 +16,44 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: account_invoice_validate_send_email
-#: model:mail.template,body_html:account_invoice_validate_send_email.email_template_customer_invoice_validated
-msgid "\n"
-"<p>${object.partner_id.name}\n"
-"% if object.partner_id.parent_id:\n"
-"    (<i>${object.partner_id.parent_id.name}</i>)\n"
-"% endif\n"
-"様</p>\n"
-"<p>\n"
-"お世話になっております。<br>\n"
-"以下のとおり、請求書を送付いたしますので、ご査収の程よろしくお願いいたします。\n"
-"</p>\n"
-"<p>\n"
-"<strong>${object.number or 'N/A'}</strong>\n"
-"</p>\n"
-"<p>\n"
-"宜しくお願い致します。\n"
-"</p>\n"
-"<p>\n"
-"${object.company_id.name}<br>\n"
-"</p>\n"
-"\n"
-"        "
-msgstr "\n"
-"<p>${object.partner_id.name}\n"
-"% if object.partner_id.parent_id:\n"
-"    (<i>${object.partner_id.parent_id.name}</i>)\n"
-"% endif\n"
-"様</p>\n"
-"<p>\n"
-"お世話になっております。<br>\n"
-"以下のとおり、請求書を送付いたしますので、ご査収の程よろしくお願いいたします。\n"
-"</p>\n"
-"<p>\n"
-"<strong>${object.number or 'N/A'}</strong>\n"
-"</p>\n"
-"<p>\n"
-"宜しくお願い致します。\n"
-"</p>\n"
-"<p>\n"
-"${object.company_id.name}<br>\n"
-"</p>\n"
-"\n"
-"        "
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_invoice_carrier_info_name
+msgid "Carrier info name"
+msgstr "Carrier info name"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_invoice_carrier_tracking_url
+msgid "Carrier tracking url"
+msgstr "Carrier tracking url"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model,name:account_invoice_validate_send_email.model_res_company
+msgid "Companies"
+msgstr "会社"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,help:account_invoice_validate_send_email.field_account_invoice_carrier_tracking_refs
+msgid "Delivery slip numbers taken from the linked deliveries."
+msgstr "運送会社から取得された追跡番号です。"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_stock_carrier_info_is_dummy
+msgid "Dummy Carrier"
+msgstr "ダミー運送会社"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,help:account_invoice_validate_send_email.field_stock_carrier_info_is_dummy
+msgid "If selected, the carrier info will be ignored in email content preparation at the invoice validation."
+msgstr "選択された場合、運送会社情報は請求書検証時のEメール内容生成にて無視されます。"
 
 #. module: account_invoice_validate_send_email
 #: model:ir.model,name:account_invoice_validate_send_email.model_account_invoice
 msgid "Invoice"
 msgstr "請求書"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_res_company_invoice_mail_template_id
+msgid "Invoice Email Template"
+msgstr "請求書メールテンプレート"
 
 #. module: account_invoice_validate_send_email
 #: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_invoice_invoice_sent
@@ -89,13 +79,23 @@ msgstr "支払条件"
 #. module: account_invoice_validate_send_email
 #: model:ir.model,name:account_invoice_validate_send_email.model_sale_workflow_process
 msgid "Sale Workflow Process"
-msgstr "販売ワークフロープロセス"
+msgstr "Sale Workflow Process"
 
 #. module: account_invoice_validate_send_email
 #: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_invoice_send_invoice
 #: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_sale_workflow_process_send_invoice
 msgid "Send Invoice upon Validation"
 msgstr "検証時に請求書送信"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model,name:account_invoice_validate_send_email.model_stock_carrier_info
+msgid "Stock Carrier Info"
+msgstr "運送会社情報"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_invoice_carrier_tracking_refs
+msgid "Tracking References"
+msgstr "追跡参照"
 
 #. module: account_invoice_validate_send_email
 #: model:ir.model,name:account_invoice_validate_send_email.model_stock_picking
