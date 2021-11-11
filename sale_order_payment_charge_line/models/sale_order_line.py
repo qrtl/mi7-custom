@@ -5,10 +5,9 @@
 from odoo import fields, models
 
 
-class ProductTemplate(models.Model):
-    _inherit = "product.template"
+class SaleOrderLine(models.Model):
+    _inherit = "sale.order.line"
 
     is_payment_charge = fields.Boolean(
-        "Is Payment Charge.",
-        help="If this product is eligible for cash on delivery, please check here.",
+        "Payment Charge", related="product_id.is_payment_charge", readonly=True,
     )
