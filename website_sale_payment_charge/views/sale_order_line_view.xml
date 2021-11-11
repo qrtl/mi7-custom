@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_sale_line_upgrade_license_tree" model="ir.ui.view">
+        <field name="name">sale.line.is.payment.charge</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='price_unit']" position="after">
+                <field name="is_payment_charge"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
