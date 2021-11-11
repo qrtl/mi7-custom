@@ -10,5 +10,6 @@ class SaleOrderLine(models.Model):
     is_payment_charge = fields.Boolean(
         "Is Payment Charge.",
         related="product_id.is_payment_charge",
+        readonly=True,
         help="If this field is checked, this product is eligible for cash on delivery.",
     )

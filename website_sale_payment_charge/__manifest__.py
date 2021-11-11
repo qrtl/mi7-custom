@@ -8,7 +8,7 @@
     "license": "LGPL-3",
     "author": "Quartile Limited",
     "website": "https://www.quartile.co",
-    "depends": ["website_sale", "sale_stock"],
+    "depends": ["website_sale"],
     "data": ["views/product_template_view.xml", "views/sale_order_line_view.xml"],
     "installable": True,
 }
