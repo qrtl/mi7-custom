@@ -6,10 +6,10 @@ from odoo import api, fields, models
 import re
 
 
-class BaseUninstallModule(models.Model):
+class BaseUninstallModules(models.Model):
 
-    _name = "base.uninstall.module"
-    _description = "Base Uninstall Module"
+    _name = "base.uninstall.modules"
+    _description = "Base Uninstall Modules"
 
     uninstall_module_ids = fields.One2many("ir.module.module")
     target_db_ids = fields.One2Many("target.database")

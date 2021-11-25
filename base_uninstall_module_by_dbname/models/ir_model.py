@@ -8,4 +8,4 @@ from odoo import fields, models
 class IrModuleModule(models.Model):
     _name = "ir.module.module"
 
-    base_uninstall_module_id = fields.Many2one("base.uninstall.module")
+    base_uninstall_module_id = fields.Many2one("base.uninstall.modules")

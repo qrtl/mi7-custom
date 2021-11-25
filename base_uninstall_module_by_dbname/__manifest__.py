@@ -10,5 +10,5 @@
     "license": "LGPL-3",
     "installable": True,
     "depends": ["base"],
-    "data":["view/base_uninstall_module_views.xml"],
+    "data": ["view/base_uninstall_module_views.xml"],
 }
