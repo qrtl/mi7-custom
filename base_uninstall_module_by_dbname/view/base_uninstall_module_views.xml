@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="product_pricelist_item_form_view" model="ir.ui.view">
+    <record id="uninstall_module_form_view" model="ir.ui.view">
         <field name="name">base.uninstall.modules.form</field>
         <field name="model">base.uninstall.modules</field>
         <field name="arch" type="xml">
@@ -18,4 +18,19 @@
             </form>
         </field>
     </record>
+
+    <record model="ir.actions.act_window" id="action_base_uninstall_modules_form">
+        <field name="name">Uninstall Module List</field>
+        <field name="res_model">base.uninstall.modules</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="uninstall_module_form_view"/>
+    </record>
+
+    <menuitem id="menu_uninstall_module_list" name="Audit"
+        parent="base.menu_custom" sequence="50"
+        groups="base.group_system"
+    />
 </odoo>

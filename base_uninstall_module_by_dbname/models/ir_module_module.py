@@ -6,6 +6,6 @@ from odoo import fields, models
 
 
 class IrModuleModule(models.Model):
-    _name = "ir.module.module"
+    _inherit = "ir.module.module"
 
     base_uninstall_module_id = fields.Many2one("base.uninstall.modules")

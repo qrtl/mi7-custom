@@ -11,14 +11,14 @@ class BaseUninstallModules(models.Model):
     _name = "base.uninstall.modules"
     _description = "Base Uninstall Modules"
 
-    uninstall_module_ids = fields.One2many("ir.module.module")
-    target_db_ids = fields.One2Many("target.database")
+    module_ids = fields.One2many("ir.module.module")
+    target_database_ids = fields.One2many("target.database")
 
     @api.model
     def _get_db_name(self):
         db_name = self.env.cr.dbname
-        for database in self.target_db_ids:
+        for database in self.target_database_ids:
             db_regex = "^(?=.*" +str(database.name) + ").*$"
             if re.match(db_regex, db_name):
-                for module in self.uninstall_module_ids:
-                    self.env['ir.module.module'].search([('name', '=', str(module.name))]).button_immediate_uninstall()
+                for module in self.module_ids:
+                    self.env['ir.module.module'].search([('name', '=', str(module._name))]).button_immediate_uninstall()

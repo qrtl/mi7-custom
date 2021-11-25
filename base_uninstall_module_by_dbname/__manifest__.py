@@ -9,6 +9,6 @@
     "author": "Quartile Limited",
     "license": "LGPL-3",
     "installable": True,
-    "depends": ["base"],
+    "depends": ["account"],
     "data": ["view/base_uninstall_module_views.xml"],
 }
