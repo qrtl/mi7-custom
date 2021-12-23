@@ -5,10 +5,12 @@
 from datetime import timedelta
 
 from odoo import fields
-from odoo.addons.auth_signup_verify_email.controllers.main import \
-    SignupVerifyEmail  # noqa
-from odoo.addons.website_sale.controllers.main import WebsiteSale
 from odoo.http import request, route
+
+from odoo.addons.auth_signup_verify_email.controllers.main import (  # noqa
+    SignupVerifyEmail,
+)
+from odoo.addons.website_sale.controllers.main import WebsiteSale
 
 
 class SignupVerifyEmail(SignupVerifyEmail):
