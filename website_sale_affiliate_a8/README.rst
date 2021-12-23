@@ -10,21 +10,24 @@ Website Sale Affiliate A8
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--private-lightgray.png?logo=github
-    :target: https://github.com/qrtl/mi7-private/tree/10.0/website_sale_affiliate_a8
-    :alt: qrtl/mi7-private
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
+    :alt: License: AGPL-3
+.. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
+    :target: https://github.com/qrtl/mi7-custom/tree/10.0/website_sale_affiliate_a8
+    :alt: qrtl/mi7-custom
 
-|badge1| |badge2| 
+|badge1| |badge2| |badge3| 
 
 This module adds a script at the root of the website to pass the relevant sales data to A8, an affiliate service provider.
 - Adds script page for set affiliate provider's javascript.
 - Affiliate program's info defines in system parameter.
-- Save the URL parameter(a8_param) in a cookie.
-- Save the a8_param in res_partner.
-- Save the user's a8_params in a cookie at the time of checkout.
-- If save a8_params in a cookie, make a8_params blank.
+- Save the URL parameter (a8_param) in a cookie.
+- Save the a8_param in the partner.
+- Save the user's a8_param in a cookie at the time of checkout.
+- Clear the user's a8_param at the time of payment confirmation.
 
-Currencies supported by A8: EUR, USD and JPY
+Currencies supported by A8: JPY, USD, and EUR
 
 **Table of contents**
 
@@ -34,18 +37,18 @@ Currencies supported by A8: EUR, USD and JPY
 Configuration
 =============
 
-In first time, go to *Settings > Technical > System Parameters* and update 3 parameters like below:
-- affiliate.service.name: Affiliate service provider's name.
-- affiliate.pid: Program ID issued by affiliate vendor.
-- affiliate.script.src: URL to the conversion acquisition script.
+For the initial setup, go to *Settings > Technical > System Parameters* and update 3 parameters like below:
+- affiliate.service.name: Affiliate service provider's name
+- affiliate.pid: Program ID issued by affiliate vendor
+- affiliate.script.src: URL to the conversion acquisition script
 
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/qrtl/mi7-private/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/qrtl/mi7-custom/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/qrtl/mi7-private/issues/new?body=module:%20website_sale_affiliate_a8%0Aversion:%2010.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/qrtl/mi7-custom/issues/new?body=module:%20website_sale_affiliate_a8%0Aversion:%2010.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -60,6 +63,6 @@ Authors
 Maintainers
 ~~~~~~~~~~~
 
-This module is part of the `qrtl/mi7-private <https://github.com/qrtl/mi7-private/tree/10.0/website_sale_affiliate_a8>`_ project on GitHub.
+This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/10.0/website_sale_affiliate_a8>`_ project on GitHub.
 
 You are welcome to contribute.
