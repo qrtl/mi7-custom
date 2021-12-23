@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="affiliate_script_src" model="ir.config_parameter">
+            <field name="key">affiliate.script.src</field>
+            <field name="value">//statics.a8.net/a8sales/a8sales.js</field>
+        </record>
+        <record id="affiliate_program_id" model="ir.config_parameter">
+            <field name="key">affiliate.pid</field>
+            <field name="value">s000000[Please Define PID]</field>
+        </record>
+        <record id="affiliate_service_name" model="ir.config_parameter">
+            <field name="key">affiliate.service.name</field>
+            <field name="value">a8sales</field>
+        </record>
+    </data>
+</odoo>
