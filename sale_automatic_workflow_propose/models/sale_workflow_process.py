@@ -8,7 +8,7 @@ from odoo import fields, models
 class SaleWorkflowProcess(models.Model):
     _inherit = "sale.workflow.process"
 
-    # Keep the selectons consistent with order_type of sale.order
+    # Keep the selectons consistent with customer_class of sale.order
     apply_to = fields.Selection(
         [("b2c", "B2C"), ("b2b", "B2B")],
         string="Apply To",

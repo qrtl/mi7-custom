@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2020 Quartile Limited
+# Copyright 2021-2022 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import csv
@@ -174,7 +174,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
         return address
 
     def _get_company_name(self, order, company):
-        if order.order_type == "b2c":
+        if order.customer_class == "b2c":
             return company.musicecosystems_name
         else:
             return company.name
