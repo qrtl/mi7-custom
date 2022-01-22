@@ -9,9 +9,9 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     def _update_vals(self, vals):
-        if vals.get("customer_class"):
+        if vals.get("user_type"):
             process = self.env["sale.workflow.process"].search(
-                [("apply_to", "=", vals["customer_class"])]
+                [("apply_to", "=", vals["user_type"])]
             )[:1]
             if process:
                 vals["workflow_process_id"] = process.id

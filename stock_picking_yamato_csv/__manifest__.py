@@ -15,7 +15,7 @@
         "pro_mi7_sale",
         "pro_mi7_website_sale_ec",  # For delivery_date, delivery_time_id
         "report_csv",
-        "sale_customer_classification",  # For customer_class
+        "sale_user_type",  # For user_type
     ],
     "data": [
         "views/res_partner_views.xml",

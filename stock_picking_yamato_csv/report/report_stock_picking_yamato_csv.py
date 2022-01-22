@@ -174,7 +174,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
         return address
 
     def _get_company_name(self, order, company):
-        if order.customer_class == "b2c":
+        if order.user_type == "b2c":
             return company.musicecosystems_name
         else:
             return company.name
