@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="seq_saler_order_b2c" model="ir.sequence">
+        <field name="name">Sequence Sale Order B2C</field>
+        <field name="code">sale.b2c.sequence</field>
+        <field name="number_increment">1</field>
+        <field name="prefix">SO-B2C-</field>
+        <field name="padding">5</field>
+    </record>
+    <record id="seq_stock_picking_b2c" model="ir.sequence">
+        <field name="name">Sequence Stock Picking B2C</field>
+        <field name="code">picking.b2c.sequence</field>
+        <field name="number_increment">1</field>
+        <field name="prefix">SP-B2C-</field>
+        <field name="padding">5</field>
+    </record>
+</odoo>
