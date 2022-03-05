@@ -9,6 +9,3 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
 
     department_name = fields.Char("Department Name")
-    user_type = fields.Selection(
-        [("b2c", "B2C"), ("b2b", "B2B")], "User Type", default="b2c"
-    )
