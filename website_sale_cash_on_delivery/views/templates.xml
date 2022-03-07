@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="payment" inherit_id="website_sale.payment">
+        <xpath expr="//input[@name='acquirer'][1]/../.." position="attributes">
+            <attribute
+                name="t-if"
+            >not acquirer.is_cod or (order.has_physical_product and order.amount_total &lt;= acquirer.amount_limit)</attribute>
+        </xpath>
+    </template>
+</odoo>
