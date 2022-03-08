@@ -173,11 +173,10 @@ class StockPickingYamatoCSV(models.AbstractModel):
             address += " " + partner.street2
         return address
 
-    def _get_company_name(self, order, company):
+    def _get_sender_name(self, order, company, whs_partner):
         if order.user_type == "b2c":
             return company.musicecosystems_name
-        else:
-            return company.name
+        return whs_partner.display_name if whs_partner else company.name
 
     def _encode_sjis(self, val):
         if val:
@@ -294,7 +293,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
                         field_dict[16]: int(amt_taxinc),
                         field_dict[17]: int(amt_tax),
                         field_dict[35]: self._encode_sjis(
-                            self._get_company_name(order, company)
+                            self._get_sender_name(order, company, whs_partner)
                         ),
                         field_dict[38]: whs_partner.zip if whs_partner else company.zip,
                         field_dict[39]: self._encode_sjis(
