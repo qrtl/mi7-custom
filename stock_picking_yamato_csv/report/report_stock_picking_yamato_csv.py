@@ -253,6 +253,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
         item_num = 1
         for picking in pickings:
             warehouse = picking.picking_type_id.warehouse_id
+            whs_partner = warehouse.partner_id
             company = picking.company_id
             order = picking.sale_id
             pick_create_date = self._get_date(picking.date)
@@ -295,9 +296,13 @@ class StockPickingYamatoCSV(models.AbstractModel):
                         field_dict[35]: self._encode_sjis(
                             self._get_company_name(order, company)
                         ),
-                        field_dict[38]: company.zip,
-                        field_dict[39]: self._encode_sjis(self._get_address(company)),
-                        field_dict[40]: company.phone,
+                        field_dict[38]: whs_partner.zip if whs_partner else company.zip,
+                        field_dict[39]: self._encode_sjis(
+                            self._get_address(whs_partner or company)
+                        ),
+                        field_dict[40]: whs_partner.phone
+                        if whs_partner
+                        else company.phone,
                         field_dict[45]: self._encode_sjis(partner_shipping.name),
                         field_dict[47]: self._encode_sjis(order.person) or "",
                         field_dict[48]: partner_shipping.zip,
