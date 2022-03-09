@@ -176,7 +176,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
     def _get_sender_name(self, order, company, whs_partner):
         if order.user_type == "b2c":
             return company.musicecosystems_name
-        return whs_partner.display_name if whs_partner else company.name
+        return whs_partner.name if whs_partner else company.name
 
     def _encode_sjis(self, val):
         if val:
