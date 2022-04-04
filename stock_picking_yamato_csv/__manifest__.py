@@ -12,9 +12,8 @@
     "depends": [
         "sale_stock",
         "company_alternative_attribute",  # alt_name (res.company)
-        "pro_mi7_website_sale_product_list",  # TODO: Check why it's needed
         "report_csv",
-        "sale_customer_order_info",
+        "sale_customer_order_info",  # customer_order, customer_contact
         "sale_user_type",  # For user_type
         "stock_product_availability",  # person (sale.order)
         "website_sale_delivery_date",  # For delivery_date, delivery_time_id
