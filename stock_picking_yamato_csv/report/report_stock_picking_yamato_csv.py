@@ -311,8 +311,8 @@ class StockPickingYamatoCSV(models.AbstractModel):
                     field_dict[54]: picking.name,
                     field_dict[59]: picking.name,
                     field_dict[60]: pick_create_date,
-                    field_dict[61]: self._encode_sjis(order.store_order) or "",
-                    field_dict[72]: self._encode_sjis(order.store_order) or "",
+                    field_dict[61]: self._encode_sjis(order.customer_order) or "",
+                    field_dict[72]: self._encode_sjis(order.customer_order) or "",
                     field_dict[104]: "1",  # Allow edit on screen
                     field_dict[105]: "0",
                     field_dict[106]: "1",  # Mewly create
