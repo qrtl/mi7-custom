@@ -175,7 +175,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
 
     def _get_sender_name(self, order, company, whs_partner):
         if order.user_type == "b2c":
-            return company.musicecosystems_name
+            return company.alt_name
         return whs_partner.name if whs_partner else company.name
 
     def _encode_sjis(self, val):
@@ -274,57 +274,54 @@ class StockPickingYamatoCSV(models.AbstractModel):
                 slip_categ = "20" if order.is_cod else "10"
             amt_taxinc, amt_tax = self._get_amounts(picking)
             for move in picking.move_lines:
-                writer.writerow(
-                    {
-                        field_dict[2]: "1",  # Newly create
-                        field_dict[3]: warehouse.yamato_shipper_code,
-                        field_dict[4]: "10",
-                        field_dict[5]: carrier_code,
-                        field_dict[9]: "S001",
-                        field_dict[10]: order.delivery_date
-                        and datetime.strptime(
-                            order.delivery_date, DEFAULT_SERVER_DATE_FORMAT
-                        ).strftime("%Y%m%d")
-                        or "",
-                        field_dict[12]: order.delivery_time_id
-                        and order.delivery_time_id.delivery_time_categ
-                        or "",
-                        field_dict[13]: slip_categ,
-                        field_dict[16]: int(amt_taxinc),
-                        field_dict[17]: int(amt_tax),
-                        field_dict[35]: self._encode_sjis(
-                            self._get_sender_name(order, company, whs_partner)
-                        ),
-                        field_dict[38]: whs_partner.zip if whs_partner else company.zip,
-                        field_dict[39]: self._encode_sjis(
-                            self._get_address(whs_partner or company)
-                        ),
-                        field_dict[40]: whs_partner.phone
-                        if whs_partner
-                        else company.phone,
-                        field_dict[45]: self._encode_sjis(partner_shipping.name),
-                        field_dict[47]: self._encode_sjis(order.person) or "",
-                        field_dict[48]: partner_shipping.zip,
-                        field_dict[49]: self._encode_sjis(
-                            self._get_address(partner_shipping)
-                        ),
-                        field_dict[50]: partner_shipping.phone,
-                        field_dict[52]: scheduled_date,
-                        field_dict[53]: today_date,
-                        field_dict[54]: picking.name,
-                        field_dict[59]: picking.name,
-                        field_dict[60]: pick_create_date,
-                        field_dict[61]: self._encode_sjis(order.store_order) or "",
-                        field_dict[72]: self._encode_sjis(order.store_order) or "",
-                        field_dict[104]: "1",  # Allow edit on screen
-                        field_dict[105]: "0",
-                        field_dict[106]: "1",  # Mewly create
-                        field_dict[107]: item_num,
-                        field_dict[108]: move.product_id.default_code,
-                        field_dict[109]: "00",  # Fixed as 'bara'
-                        field_dict[128]: int(move.product_uom_qty),
-                    }
-                )
+                vals = {
+                    field_dict[2]: "1",  # Newly create
+                    field_dict[3]: warehouse.yamato_shipper_code,
+                    field_dict[4]: "10",
+                    field_dict[5]: carrier_code,
+                    field_dict[9]: "S001",
+                    field_dict[10]: order.delivery_date
+                    and datetime.strptime(
+                        order.delivery_date, DEFAULT_SERVER_DATE_FORMAT
+                    ).strftime("%Y%m%d")
+                    or "",
+                    field_dict[12]: order.delivery_time_id
+                    and order.delivery_time_id.delivery_time_categ
+                    or "",
+                    field_dict[13]: slip_categ,
+                    field_dict[16]: int(amt_taxinc),
+                    field_dict[17]: int(amt_tax),
+                    field_dict[35]: self._encode_sjis(
+                        self._get_sender_name(order, company, whs_partner)
+                    ),
+                    field_dict[38]: whs_partner.zip if whs_partner else company.zip,
+                    field_dict[39]: self._encode_sjis(
+                        self._get_address(whs_partner or company)
+                    ),
+                    field_dict[40]: whs_partner.phone if whs_partner else company.phone,
+                    field_dict[45]: self._encode_sjis(partner_shipping.name),
+                    field_dict[47]: self._encode_sjis(order.person) or "",
+                    field_dict[48]: partner_shipping.zip,
+                    field_dict[49]: self._encode_sjis(
+                        self._get_address(partner_shipping)
+                    ),
+                    field_dict[50]: partner_shipping.phone,
+                    field_dict[52]: scheduled_date,
+                    field_dict[53]: today_date,
+                    field_dict[54]: picking.name,
+                    field_dict[59]: picking.name,
+                    field_dict[60]: pick_create_date,
+                    field_dict[61]: self._encode_sjis(order.customer_order) or "",
+                    field_dict[72]: self._encode_sjis(order.customer_order) or "",
+                    field_dict[104]: "1",  # Allow edit on screen
+                    field_dict[105]: "0",
+                    field_dict[106]: "1",  # Mewly create
+                    field_dict[107]: item_num,
+                    field_dict[108]: move.product_id.default_code,
+                    field_dict[109]: "00",  # Fixed as 'bara'
+                    field_dict[128]: int(move.product_uom_qty),
+                }
+                writer.writerow(vals)
                 item_num += 1
             picking.is_exported = True
 
