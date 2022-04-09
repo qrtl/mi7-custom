@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="cart_total_tax_inclusive" inherit_id="website_sale.total">
+        <xpath expr="//div[@id='order_total_untaxed']" position="attributes">
+            <attribute name="groups">sale.group_show_price_subtotal</attribute>
+        </xpath>
+        <xpath expr="//div[@id='order_total_taxes']" position="attributes">
+            <attribute name="groups">sale.group_show_price_subtotal</attribute>
+        </xpath>
+        <xpath expr="//div[@id='order_total']" position="after">
+            <div class="row" id="order_total_taxes" groups="sale.group_show_price_total">
+                <span class="col-xs-6 text-right text-muted"
+                        title="Taxes may be updated after providing shipping address">(Taxes (Include):
+                </span>
+                <span class="col-xs-6 text-right text-muted">
+                    <span t-field="website_sale_order.amount_tax" style="white-space: nowrap;"
+                            t-options="{'widget': 'monetary', 'from_currency': website_sale_order.pricelist_id.currency_id, 'display_currency': website.currency_id}"/>
+                    <span>)</span>
+                </span>
+            </div>
+        </xpath>
+    </template>
+</odoo>
