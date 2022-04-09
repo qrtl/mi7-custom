@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="product_pricelist_item_view_search" model="ir.ui.view">
+		<field name="name">product.pricelist.item.search</field>
+		<field name="model">product.pricelist.item</field>
+		<field name="arch" type="xml">
+			<search string="Pricelist Item Search">
+				<field name="pricelist_id" />
+				<field name="product_tmpl_id" />
+				<field name="note" />
+			</search>
+		</field>
+	</record>
+	<record id="product_pricelist_item_action" model="ir.actions.act_window">
+		<field name="name">Pricelist Items</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">product.pricelist.item</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="search_view_id" ref="product_pricelist_item_view.product_pricelist_item_view_search" />
+	</record>
+	<menuitem
+		action="product_pricelist_item_view.product_pricelist_item_action"
+		id="menu_product_pricelist_item"
+		parent="sale.menu_product_pricelist_main"
+		sequence="2"
+		groups="product.group_sale_pricelist"
+	/>
+</odoo>

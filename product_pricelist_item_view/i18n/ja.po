@@ -1,0 +1,28 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* product_pricelist_item_view
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-09 08:38+0000\n"
+"PO-Revision-Date: 2022-04-09 08:38+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_pricelist_item_view
+#: model:ir.ui.view,arch_db:product_pricelist_item_view.product_pricelist_item_view_search
+msgid "Pricelist Item Search"
+msgstr "価格リスト項目検索"
+
+#. module: product_pricelist_item_view
+#: model:ir.actions.act_window,name:product_pricelist_item_view.product_pricelist_item_action
+#: model:ir.ui.menu,name:product_pricelist_item_view.menu_product_pricelist_item
+msgid "Pricelist Items"
+msgstr "価格リスト項目"
+
