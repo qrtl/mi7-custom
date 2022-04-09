@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- <record id="mi7_view_partners_newsletter" model="ir.ui.view">
+        <field name="name">res.partner.newsletter.fields"</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+        </field>
+    </record> -->
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_type']" position="after">
+                <div class="row">
+                    <div class="col-xs-6" >
+                        <field name="furigana" placeholder="Furigana Name"/>
+                    </div>
+                    <div class="col-xs-6 pull-right">
+                        <group style="margin-left: 150px">
+                            <field name="gender" options="{'horizontal':true}" widget="radio"
+                                   attrs="{'invisible': [('company_type', '!=', 'person')]}"/>
+                            <field name="birthday"
+                                   attrs="{'invisible': [('company_type', '!=', 'person')]}"/>
+                        </group>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="after">
+            <!-- <field name="category_id" position="after"> -->
+                <field name="newsletter" options="{'horizontal':true}" widget="radio"/>
+            <!-- </field> -->
+            </xpath>
+            <xpath expr="//field[@name='function']" position="before">
+            <!-- <xpath expr="//field[@name='user_ids']/../field[@name='function']" position="before"> -->
+                <field name="department" />
+            </xpath>
+        </field>
+    </record>
+    <record id="view_res_partner_filter" model="ir.ui.view">
+        <field name="name">res.partner.select</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='customer']" position="before">
+                <field name="birth_month"/>
+            </xpath>
+            <xpath expr="//filter[@name='group_country']" position="before">
+                <filter name="group_birth_month" string="Birth Month" context="{'group_by': 'group_birth_month'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
