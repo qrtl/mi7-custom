@@ -7,7 +7,7 @@
     "version": "10.0.1.0.0",
     "author": "MI Seven Japan, Quartile Limited",
     "license": "Other proprietary",
-    "depends": ["pro_mi7_product", "website_sale"],
+    "depends": ["website_sale"],
     "data": ["views/product_template_views.xml"],
     "installable": True,
 }

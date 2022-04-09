@@ -9,7 +9,7 @@
                 <page
                     string="Related Product"
                     name="alternative_product"
-                    groups="pro_mi7_product.group_product_manager"
+                    groups="sales_team.group_sale_manager"
                 >
                     <field name="alternative_product_ids">
                         <tree editable="bottom">
