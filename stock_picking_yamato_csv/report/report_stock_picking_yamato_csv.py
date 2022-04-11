@@ -300,7 +300,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
                     ),
                     field_dict[40]: whs_partner.phone if whs_partner else company.phone,
                     field_dict[45]: self._encode_sjis(partner_shipping.name),
-                    field_dict[47]: self._encode_sjis(order.person) or "",
+                    field_dict[47]: self._encode_sjis(order.customer_contact) or "",
                     field_dict[48]: partner_shipping.zip,
                     field_dict[49]: self._encode_sjis(
                         self._get_address(partner_shipping)
