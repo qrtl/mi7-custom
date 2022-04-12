@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="view_stock_carrier_info_form">
+        <field name="name">stock.carrier.info.form</field>
+        <field name="model">stock.carrier.info</field>
+        <field name="arch" type="xml">
+            <form string="Stock Carrier Info">
+                <group>
+                    <field name="code" />
+                    <field name="name" />
+                    <field name="tracking_url" />
+                </group>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_stock_carrier_info_tree">
+        <field name="name">stock.carrier.info.tree</field>
+        <field name="model">stock.carrier.info</field>
+        <field name="arch" type="xml">
+            <tree string="Stock Carrier Info">
+                <field name="code" />
+                <field name="name" />
+                <field name="tracking_url" />
+            </tree>
+        </field>
+    </record>
+    <record
+        id="stock_carrier_info_act"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Stock Carrier Info</field>
+        <field name="res_model">stock.carrier.info</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        id="stock_carrier_info_menu"
+        name="Stock Carrier Info"
+        parent="stock.menu_delivery"
+        action="stock_carrier_info_act"
+        sequence="20"
+    />
+</odoo>
