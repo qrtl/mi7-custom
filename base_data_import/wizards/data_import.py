@@ -11,6 +11,7 @@ from datetime import datetime
 from odoo import _, fields, models
 from odoo.exceptions import UserError
 
+#### in V15 need to add security also for transientModel
 
 class DataImport(models.TransientModel):
     _name = "data.import"
@@ -117,6 +118,8 @@ class DataImport(models.TransientModel):
                     error_list.append(message)
         return row_dict, error_list
 
+
+    ### remove view_type for v15
     def _action_open_import_log(self, import_log):
         return {
             "type": "ir.actions.act_window",

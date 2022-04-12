@@ -97,7 +97,6 @@
     <record id="data_import_log_action" model="ir.actions.act_window">
         <field name="name">Data Import Logs</field>
         <field name="res_model">data.import.log</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
     <!-- This menu is to have a place to aggregate all the import history.
