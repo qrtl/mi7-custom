@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # © 2017 Akretion (http://www.akretion.com)
 # @author Alexis de Lattre <alexis.delattre@akretion.com>
 # Copyright 2021 Quartile Limited
@@ -11,7 +10,7 @@
     "license": "AGPL-3",
     "summary": "Always send a copy of the mail to the sender",
     "author": "Akretion, Quartile Limited",
-    "website": "http://www.akretion.com, https://www.quartile.co/",
+    "website": "https://github.com/qrtl/mi7-custom",
     "depends": ["base"],
     "installable": True,
 }
