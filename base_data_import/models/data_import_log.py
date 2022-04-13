@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2020-2021 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
@@ -18,7 +17,7 @@ class DataImportLog(models.Model):
 
     ### in v15 there is no datas_fname field, so I just related with name for file name
     file_name = fields.Char(related="input_file.name", string="File")
-    
+
     state = fields.Selection(
         [("failed", "Failed"), ("imported", "Imported"), ("done", "Done")],
         string="Status",
