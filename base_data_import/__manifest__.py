@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 # Copyright 2020-2021 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 {
     "name": "Base Data Import",
-    "version": "10.0.1.0.1",
+    "version": "15.0.1.0.1",
     "author": "Quartile Limited",
-    "website": "https://github.com/qrtl/mi7-custom",
+    "website": "https://www.quartile.co",
     "license": "LGPL-3",
     "data": [
         "security/data_import_group.xml",

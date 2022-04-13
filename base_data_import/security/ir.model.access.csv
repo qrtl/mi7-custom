@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_data_import_log,data.import.log,model_data_import_log,base.group_user,1,0,1,0
 access_data_import_error,data.import.error,model_data_import_error,base.group_user,1,0,1,0
+
+access_data_import,data.import,model_data_import,base.group_user,1,1,1,0

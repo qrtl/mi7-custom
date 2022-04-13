@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright 2020-2021 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
@@ -10,6 +11,7 @@ from datetime import datetime
 from odoo import _, fields, models
 from odoo.exceptions import UserError
 
+#### in V15 need to add security also for transientModel
 
 class DataImport(models.TransientModel):
     _name = "data.import"
@@ -48,7 +50,8 @@ class DataImport(models.TransientModel):
         return field_defs
 
     def _load_import_file(self, field_defs, encodings=None):
-        """We assume that there is a header line in the imported CSV."""
+        """We assume that there is a header line in the imported CSV.
+        """
         if encodings is None:
             encodings = ["utf-8"]
         csv_data = b64decode(self.import_file)
@@ -115,6 +118,8 @@ class DataImport(models.TransientModel):
                     error_list.append(message)
         return row_dict, error_list
 
+
+    ### remove view_type for v15
     def _action_open_import_log(self, import_log):
         return {
             "type": "ir.actions.act_window",
