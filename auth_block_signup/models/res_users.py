@@ -11,4 +11,4 @@ class ResUsers(models.Model):
     def action_reset_password(self):
         if "http" in self.name:
             raise UserError(_("Invalid name!"))
-        super(ResUsers, self).action_reset_password()
+        return super().action_reset_password()
