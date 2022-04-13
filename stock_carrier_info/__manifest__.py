@@ -3,12 +3,12 @@
 
 {
     "name": "Stock Carrier Info",
-    "version": "10.0.1.0.0",
+    "version": "15.0.1.0.0",
     "category": "Stock",
     "license": "AGPL-3",
     "author": "Quartile Limited",
-    "website": "https://github.com/qrtl/mi7-custom",
-    "depends": ["delivery"],
+    "website": "https://www.quartile.co/",
+    "depends": ["delivery","stock"],
     "data": [
         "security/ir.model.access.csv",
         "views/stock_carrier_info_views.xml",

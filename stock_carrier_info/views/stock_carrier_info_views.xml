@@ -24,16 +24,18 @@
             </tree>
         </field>
     </record>
-    <record id="stock_carrier_info_act" model="ir.actions.act_window">
+    <record
+        id="stock_carrier_info_act"
+        model="ir.actions.act_window"
+    >
         <field name="name">Stock Carrier Info</field>
         <field name="res_model">stock.carrier.info</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
     <menuitem
         id="stock_carrier_info_menu"
         name="Stock Carrier Info"
-        parent="delivery.menu_delivery"
+        parent="stock.menu_delivery"
         action="stock_carrier_info_act"
         sequence="20"
     />
