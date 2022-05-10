@@ -7,8 +7,8 @@
     "license": "LGPL-3",
     "author": "Quartile Limited",
     "website": "https://www.quartile.co",
-    "version": "10.0.1.0.2",
-    "depends": ["auth_signup", "website"],
+    "version": "10.0.1.1.0",
+    "depends": ["auth_signup", "clarico_layout", "website"],
     "data": ["views/templates.xml", "views/website_config_settings_views.xml"],
     "installable": True,
 }

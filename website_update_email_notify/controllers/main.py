@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
-# Copyright 2021 Quartile Limited
+# Copyright 2021-2022 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 from odoo import _, http
 from odoo.http import request
 
-from odoo.addons.pro_mi7_website_sale_ec.controllers.website_portal_main import (
-    website_account,
-)
+from odoo.addons.website_portal.controllers.main import website_account
 
 
 class WebsiteAccount(website_account):
