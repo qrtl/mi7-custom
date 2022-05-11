@@ -6,14 +6,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-10 13:55+0000\n"
-"PO-Revision-Date: 2021-02-10 13:55+0000\n"
+"POT-Creation-Date: 2022-05-11 13:46+0000\n"
+"PO-Revision-Date: 2022-05-11 13:46+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: website_auth_view_mi7
+#: model:ir.ui.view,arch_db:website_auth_view_mi7.header_register
+msgid "<b>Register</b>"
+msgstr "<b>会員登録</b>"
 
 #. module: website_auth_view_mi7
 #: model:ir.ui.view,arch_db:website_auth_view_mi7.custom_signup_layout
