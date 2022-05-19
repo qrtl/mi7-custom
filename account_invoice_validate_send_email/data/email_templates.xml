@@ -18,7 +18,7 @@
         <field name="auto_delete" eval="False" />
         <field
             name="report_template"
-            ref="pro_mi7_account.print_detailed_account_invoice"
+            ref="account.account_invoices"
         />
         <field
             name="report_name"
