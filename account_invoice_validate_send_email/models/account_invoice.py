@@ -17,7 +17,6 @@ class AccountInvoice(models.Model):
         help="When this field is selected, no email will be automatically sent to the customer.",
     )
     web_url = fields.Char()
-
     carrier_tracking_refs = fields.Char(
         "Tracking References",
         help="Delivery slip numbers taken from the linked deliveries.",
