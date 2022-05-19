@@ -2,10 +2,15 @@
 # Copyright 2022 Quartile Limited
 
 import pytz
+from datetime import datetime
+
+from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as DATETIME_FORMAT
 
 
 def convert_datetime_tz(date_time, tz_from, tz_to):
     # basestring should be replaced with str in python 3.x
+    if isinstance(date_time, basestring):
+        date_time = datetime.strptime(date_time, DATETIME_FORMAT)
     if isinstance(tz_from, basestring):
         tz_from = pytz.timezone(tz_from)
     if isinstance(tz_to, basestring):
