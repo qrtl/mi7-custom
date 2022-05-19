@@ -9,5 +9,9 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
 
     user_type = fields.Selection(
-        [("b2c", "B2C"), ("b2b", "B2B")], "User Type", default="b2c"
+        [("b2c", "B2C"), ("b2b", "B2B")],
+        "User Type",
+        default="b2c",
+        help="The setting of the parent is used for the sales order if there is a "
+        "parent.",
     )

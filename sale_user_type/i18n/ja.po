@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-22 05:53+0000\n"
-"PO-Revision-Date: 2022-01-22 05:53+0000\n"
+"POT-Creation-Date: 2022-05-14 10:54+0000\n"
+"PO-Revision-Date: 2022-05-14 10:54+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,27 +16,31 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: sale_user_type
+#: model:ir.ui.view,arch_db:sale_user_type.view_res_partner_filter
+#: selection:res.partner,user_type:0
 #: selection:sale.order,user_type:0
 msgid "B2B"
 msgstr "B2B"
 
 #. module: sale_user_type
+#: model:ir.ui.view,arch_db:sale_user_type.view_res_partner_filter
+#: selection:res.partner,user_type:0
 #: selection:sale.order,user_type:0
 msgid "B2C"
 msgstr "B2C"
 
 #. module: sale_user_type
-#: code:addons/sale_user_type/models/sale_order.py:37
 #: code:addons/sale_user_type/models/sale_order.py:41
 #: code:addons/sale_user_type/models/sale_order.py:45
+#: code:addons/sale_user_type/models/sale_order.py:49
 #, python-format
 msgid "New"
 msgstr "新規"
 
 #. module: sale_user_type
-#: model:ir.model.fields,field_description:sale_user_type.field_sale_order_user_type
-msgid "User Type"
-msgstr "ユーザタイプ"
+#: model:ir.model,name:sale_user_type.model_res_partner
+msgid "Partner"
+msgstr "取引先"
 
 #. module: sale_user_type
 #: model:ir.model,name:sale_user_type.model_sale_order
@@ -44,12 +48,20 @@ msgid "Sales Order"
 msgstr "販売オーダ"
 
 #. module: sale_user_type
+#: model:ir.model.fields,help:sale_user_type.field_res_partner_user_type
+#: model:ir.model.fields,help:sale_user_type.field_res_users_user_type
+msgid "The setting of the parent is used for the sales order if there is a parent."
+msgstr "親がある場合は親の設定が販売オーダに適用されます。"
+
+#. module: sale_user_type
 #: model:ir.model,name:sale_user_type.model_stock_picking
 msgid "Transfer"
 msgstr "移動"
 
 #. module: sale_user_type
-#: model:ir.model,name:sale_user_type.model_ir_mail_server
-msgid "ir.mail_server"
-msgstr "ir.mail_server"
+#: model:ir.model.fields,field_description:sale_user_type.field_res_partner_user_type
+#: model:ir.model.fields,field_description:sale_user_type.field_res_users_user_type
+#: model:ir.model.fields,field_description:sale_user_type.field_sale_order_user_type
+msgid "User Type"
+msgstr "ユーザタイプ"
 

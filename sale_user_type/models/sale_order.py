@@ -17,12 +17,16 @@ class SaleOrder(models.Model):
         required=True,
         default="b2b",
         oldname="order_type",
+        copy=False,
     )
 
     @api.onchange("partner_id")
     def onchange_partner_id(self):
         super(SaleOrder, self).onchange_partner_id()
-        self.user_type = self.partner_id.user_type if self.partner_id else False
+        if self.partner_id:
+            self.user_type = self.partner_id.commercial_partner_id.user_type
+        else:
+            self.user_type = False
 
     @api.model
     def create(self, vals):
@@ -30,7 +34,7 @@ class SaleOrder(models.Model):
             # EC orders should fall into this case unless the logic is adjusted in the
             # controller side.
             partner = self.env["res.partner"].browse(vals.get("partner_id"))
-            vals["user_type"] = partner.user_type
+            vals["user_type"] = partner.commercial_partner_id.user_type
         if vals["user_type"] != "b2c":
             return super(SaleOrder, self).create(vals)
         # Apply the b2c sequence for b2c orders.
