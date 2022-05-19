@@ -9,9 +9,7 @@
     "license": "Other proprietary",
     "author": "MI Seven Japan, Quartile Limited",
     "website": "https://www.quartile.co",
-    "depends": [
-        "sale",
-    ],
+    "depends": ["sale"],
     "data": ["views/sale_order_views.xml",],
     "installable": True,
 }
