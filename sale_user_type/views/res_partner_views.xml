@@ -15,7 +15,7 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_res_partner_filter" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='parent_id']" position="after">
+            <xpath expr="//filter[@name='inactive']" position="after">
                 <separator />
                 <filter string="B2C" name="b2c" domain="[('user_type','=','b2c')]" />
                 <filter string="B2B" name="b2b" domain="[('user_type','=','b2b')]" />

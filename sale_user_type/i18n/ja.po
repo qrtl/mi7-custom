@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* sale_user_type
+# 	* sale_user_type
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 10.0+e\n"
+"Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-14 10:54+0000\n"
-"PO-Revision-Date: 2022-05-14 10:54+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2022-05-26 07:48+0000\n"
+"PO-Revision-Date: 2022-05-26 07:48+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,31 +16,31 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: sale_user_type
-#: model:ir.ui.view,arch_db:sale_user_type.view_res_partner_filter
-#: selection:res.partner,user_type:0
-#: selection:sale.order,user_type:0
+#: model:ir.model.fields.selection,name:sale_user_type.selection__res_partner__user_type__b2b
+#: model:ir.model.fields.selection,name:sale_user_type.selection__sale_order__user_type__b2b
+#: model_terms:ir.ui.view,arch_db:sale_user_type.view_res_partner_filter
 msgid "B2B"
 msgstr "B2B"
 
 #. module: sale_user_type
-#: model:ir.ui.view,arch_db:sale_user_type.view_res_partner_filter
-#: selection:res.partner,user_type:0
-#: selection:sale.order,user_type:0
+#: model:ir.model.fields.selection,name:sale_user_type.selection__res_partner__user_type__b2c
+#: model:ir.model.fields.selection,name:sale_user_type.selection__sale_order__user_type__b2c
+#: model_terms:ir.ui.view,arch_db:sale_user_type.view_res_partner_filter
 msgid "B2C"
 msgstr "B2C"
 
 #. module: sale_user_type
-#: code:addons/sale_user_type/models/sale_order.py:41
-#: code:addons/sale_user_type/models/sale_order.py:45
-#: code:addons/sale_user_type/models/sale_order.py:49
+#: model:ir.model,name:sale_user_type.model_res_partner
+msgid "Contact"
+msgstr "連絡先"
+
+#. module: sale_user_type
+#: code:addons/sale_user_type/models/sale_order.py:0
+#: code:addons/sale_user_type/models/sale_order.py:0
+#: code:addons/sale_user_type/models/sale_order.py:0
 #, python-format
 msgid "New"
 msgstr "新規"
-
-#. module: sale_user_type
-#: model:ir.model,name:sale_user_type.model_res_partner
-msgid "Partner"
-msgstr "取引先"
 
 #. module: sale_user_type
 #: model:ir.model,name:sale_user_type.model_sale_order
@@ -48,20 +48,20 @@ msgid "Sales Order"
 msgstr "販売オーダ"
 
 #. module: sale_user_type
-#: model:ir.model.fields,help:sale_user_type.field_res_partner_user_type
-#: model:ir.model.fields,help:sale_user_type.field_res_users_user_type
-msgid "The setting of the parent is used for the sales order if there is a parent."
+#: model:ir.model.fields,help:sale_user_type.field_res_partner__user_type
+#: model:ir.model.fields,help:sale_user_type.field_res_users__user_type
+msgid ""
+"The setting of the parent is used for the sales order if there is a parent."
 msgstr "親がある場合は親の設定が販売オーダに適用されます。"
 
 #. module: sale_user_type
 #: model:ir.model,name:sale_user_type.model_stock_picking
 msgid "Transfer"
-msgstr "移動"
+msgstr "運送"
 
 #. module: sale_user_type
-#: model:ir.model.fields,field_description:sale_user_type.field_res_partner_user_type
-#: model:ir.model.fields,field_description:sale_user_type.field_res_users_user_type
-#: model:ir.model.fields,field_description:sale_user_type.field_sale_order_user_type
+#: model:ir.model.fields,field_description:sale_user_type.field_res_partner__user_type
+#: model:ir.model.fields,field_description:sale_user_type.field_res_users__user_type
+#: model:ir.model.fields,field_description:sale_user_type.field_sale_order__user_type
 msgid "User Type"
 msgstr "ユーザタイプ"
-
