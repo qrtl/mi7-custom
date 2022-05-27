@@ -1,0 +1,83 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* product_maker
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-27 14:27+0000\n"
+"PO-Revision-Date: 2022-05-27 14:27+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_maker
+#: model:ir.model.fields,field_description:product_maker.field_product_maker__create_uid
+msgid "Created by"
+msgstr "作成者"
+
+#. module: product_maker
+#: model:ir.model.fields,field_description:product_maker.field_product_maker__create_date
+msgid "Created on"
+msgstr "作成日"
+
+#. module: product_maker
+#: model:ir.model.fields,field_description:product_maker.field_product_maker__display_name
+msgid "Display Name"
+msgstr "表示名"
+
+#. module: product_maker
+#: model:ir.model.fields,field_description:product_maker.field_product_maker__id
+msgid "ID"
+msgstr ""
+
+#. module: product_maker
+#: model:ir.model.fields,field_description:product_maker.field_product_maker____last_update
+msgid "Last Modified on"
+msgstr "最終更新日"
+
+#. module: product_maker
+#: model:ir.model.fields,field_description:product_maker.field_product_maker__write_uid
+msgid "Last Updated by"
+msgstr "最終更新者"
+
+#. module: product_maker
+#: model:ir.model.fields,field_description:product_maker.field_product_maker__write_date
+msgid "Last Updated on"
+msgstr "最終更新日"
+
+#. module: product_maker
+#: model:ir.model.fields,field_description:product_maker.field_product_product__maker_id
+#: model:ir.model.fields,field_description:product_maker.field_product_template__maker_id
+msgid "Maker"
+msgstr "メーカー"
+
+#. module: product_maker
+#: model:ir.model.fields,field_description:product_maker.field_product_maker__name
+msgid "Maker Name"
+msgstr "メーカー名"
+
+#. module: product_maker
+#: model_terms:ir.ui.view,arch_db:product_maker.view_product_maker_form
+msgid "Product Maker"
+msgstr "プロダクトメーカー"
+
+#. module: product_maker
+#: model:ir.actions.act_window,name:product_maker.action_product_maker_view
+#: model:ir.ui.menu,name:product_maker.sales_product_maker
+msgid "Product Makers"
+msgstr "プロダクトメーカー"
+
+#. module: product_maker
+#: model:ir.model,name:product_maker.model_product_template
+msgid "Product Template"
+msgstr "プロダクトテンプレート"
+
+#. module: product_maker
+#: model:ir.model,name:product_maker.model_product_maker
+msgid "product.maker"
+msgstr ""
