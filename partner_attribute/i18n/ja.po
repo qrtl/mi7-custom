@@ -1,0 +1,88 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* partner_attribute
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-27 06:24+0000\n"
+"PO-Revision-Date: 2022-05-27 06:24+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: partner_attribute
+#: model:ir.model.fields,field_description:partner_attribute.field_res_partner__birth_month
+#: model:ir.model.fields,field_description:partner_attribute.field_res_users__birth_month
+#: model_terms:ir.ui.view,arch_db:partner_attribute.view_res_partner_filter
+msgid "Birth Month"
+msgstr "生年月"
+
+#. module: partner_attribute
+#: model:ir.model.fields,field_description:partner_attribute.field_res_partner__birthday
+#: model:ir.model.fields,field_description:partner_attribute.field_res_users__birthday
+msgid "Birthday"
+msgstr "生年月日"
+
+#. module: partner_attribute
+#: model:ir.model,name:partner_attribute.model_res_partner
+msgid "Contact"
+msgstr "連絡先"
+
+#. module: partner_attribute
+#: model:ir.model.fields,field_description:partner_attribute.field_res_partner__department
+#: model:ir.model.fields,field_description:partner_attribute.field_res_users__department
+msgid "Department"
+msgstr "部署"
+
+#. module: partner_attribute
+#: model:ir.model.fields.selection,name:partner_attribute.selection__res_partner__gender__female
+msgid "Female"
+msgstr "女性"
+
+#. module: partner_attribute
+#: model:ir.model.fields,field_description:partner_attribute.field_res_partner__furigana
+#: model:ir.model.fields,field_description:partner_attribute.field_res_users__furigana
+msgid "Furigana"
+msgstr "フリガナ"
+
+#. module: partner_attribute
+#: model_terms:ir.ui.view,arch_db:partner_attribute.view_partner_form
+msgid "Furigana Name"
+msgstr "フリガナ"
+
+#. module: partner_attribute
+#: model:ir.model.fields,field_description:partner_attribute.field_res_partner__gender
+#: model:ir.model.fields,field_description:partner_attribute.field_res_users__gender
+msgid "Gender"
+msgstr "性別"
+
+#. module: partner_attribute
+#: model:ir.model.fields.selection,name:partner_attribute.selection__res_partner__gender__male
+msgid "Male"
+msgstr "男性"
+
+#. module: partner_attribute
+#: model:ir.model.fields,field_description:partner_attribute.field_res_partner__newsletter
+#: model:ir.model.fields,field_description:partner_attribute.field_res_users__newsletter
+msgid "Newsletter"
+msgstr "メールマガジン"
+
+#. module: partner_attribute
+#: model:ir.model.fields.selection,name:partner_attribute.selection__res_partner__gender__others
+msgid "Others"
+msgstr "その他"
+
+#. module: partner_attribute
+#: model:ir.model.fields.selection,name:partner_attribute.selection__res_partner__newsletter__subscribe
+msgid "Subscribe"
+msgstr "希望"
+
+#. module: partner_attribute
+#: model:ir.model.fields.selection,name:partner_attribute.selection__res_partner__newsletter__unsubscribe
+msgid "Unsubscribe"
+msgstr "希望しない"

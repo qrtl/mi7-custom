@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_type']" position="after">
+                <div class="row">
+                    <div>
+                        <field name="furigana" placeholder="Furigana Name" />
+                    </div>
+                    <div class="pull-right">
+                        <group style="margin-left: 60px;">
+                            <field
+                                name="gender"
+                                options="{'horizontal':true}"
+                                widget="radio"
+                                attrs="{'invisible': [('company_type', '!=', 'person')]}"
+                            />
+                            <field
+                                name="birthday"
+                                attrs="{'invisible': [('company_type', '!=', 'person')]}"
+                            />
+                        </group>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='function']" position="before">
+                <field name="department" />
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="newsletter" options="{'horizontal':true}" widget="radio" />
+            </xpath>
+        </field>
+    </record>
+    <record id="view_res_partner_filter" model="ir.ui.view">
+        <field name="name">res.partner.select</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='type_person']" position="before">
+                <field name="birth_month" />
+            </xpath>
+            <xpath expr="//filter[@name='group_country']" position="before">
+                <filter
+                    name="group_birth_month"
+                    string="Birth Month"
+                    context="{'group_by': 'birth_month'}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
