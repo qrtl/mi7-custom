@@ -15,25 +15,23 @@ class ResPartner(models.Model):
     gender = fields.Selection(
         [("male", "Male"), ("female", "Female"), ("others", "Others")]
     )
-    birthday = fields.Date(oldname="birth_date")
+    birthday = fields.Date()
     birth_month = fields.Integer(
-        "Birth Month",
         compute="_compute_birth_month",
         store=True,
-        oldname="birth_date_month",
     )
     newsletter = fields.Selection(
         [("subscribe", "Subscribe"), ("unsubscribe", "Unsubscribe")],
         default="subscribe",
     )
-    department = fields.Char("Department", oldname="department_name")
+    department = fields.Char()
 
-    @api.one
     @api.depends("birthday")
     def _compute_birth_month(self):
-        if self.birthday:
-            self.birth_month = int(
-                datetime.strptime(self.birthday, DEFAULT_SERVER_DATE_FORMAT).strftime(
-                    "%m"
+        for partner in self:
+            if partner.birthday:
+                partner.birth_month = int(
+                    datetime.strptime(
+                        str(partner.birthday), DEFAULT_SERVER_DATE_FORMAT
+                    ).strftime("%m")
                 )
-            )
