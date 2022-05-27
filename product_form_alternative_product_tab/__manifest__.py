@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2018-2021 MI Seven Japan
 # Copyright 2022 Quartile Limited
 {
