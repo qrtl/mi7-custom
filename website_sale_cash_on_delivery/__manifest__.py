@@ -8,8 +8,9 @@
     "author": "MI Seven Japan, Quartile Limited",
     "license": "Other proprietary",
     "depends": [
-        "sale_physical_product",  # For is_physical (product.template)
         "website_sale",
+        "sale_physical_product",  # For is_physical (product.template)
+        "website_sale_charge_payment_fee",  # update_fee_line()
     ],
     "data": ["views/payment_acquirer_views.xml", "views/templates.xml",],
     "installable": True,

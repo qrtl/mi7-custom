@@ -13,5 +13,8 @@ class PaymentTransaction(models.Model):
             "confirm_so",
             "generate_and_pay_invoice",
         ):
+            if self.sale_order_id:
+                tx = self
+                self.sale_order_id.sudo().update_fee_line(tx)
             return self.write({"state": "done"})
-        return self.write({"state": "pending"})
+        return super(PaymentTransaction, self)._transfer_form_validate(data)
