@@ -7,5 +7,5 @@ from odoo import fields, models
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    customer_order = fields.Char("Store Order", oldname="store_order")
-    customer_contact = fields.Char("Person", oldname="person")
+    customer_order = fields.Char()
+    customer_contact = fields.Char()

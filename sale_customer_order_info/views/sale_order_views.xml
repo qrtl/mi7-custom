@@ -8,9 +8,9 @@
             <xpath expr="//notebook/page[last()]" position="after">
                 <page name="customer_order_comment" string="Customer Order Info">
                     <group>
-                    	<group>
-	                        <field name="customer_order" />
-	                        <field name="customer_contact" />
+                        <group>
+                            <field name="customer_order" />
+                            <field name="customer_contact" />
                         </group>
                     </group>
                 </page>
