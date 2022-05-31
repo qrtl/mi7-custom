@@ -9,9 +9,6 @@ class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
     delivery_date = fields.Date(
-        "Delivery Date",
-        track_visibility="onchange",
         help="Delivery date for internal reference only. Input value does not affect "
         "anything.",
-        oldname="delivery_deadline",
     )

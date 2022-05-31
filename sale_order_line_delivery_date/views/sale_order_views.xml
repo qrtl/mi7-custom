@@ -9,13 +9,13 @@
                 expr="//field[@name='order_line']/form//field[@name='route_id']"
                 position="after"
             >
-            	<field name="delivery_date" attrs="{'readonly':[('state','=','done')]}" />
+                <field name="delivery_date" />
             </xpath>
             <xpath
                 expr="//field[@name='order_line']/tree/field[@name='route_id']"
                 position="after"
             >
-            	<field name="delivery_date" attrs="{'readonly':[('state','=','done')]}" />
+                <field name="delivery_date" />
             </xpath>
         </field>
     </record>
