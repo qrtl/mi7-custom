@@ -8,4 +8,4 @@ from odoo import fields, models
 class ResCompany(models.Model):
     _inherit = "res.company"
 
-    company_chop = fields.Binary("Company Chop", attachment=True, oldname="stamp_image")
+    company_chop = fields.Binary(attachment=True)

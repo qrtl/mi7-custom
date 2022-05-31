@@ -4,12 +4,11 @@
 {
     "name": "Company Chop",
     "category": "Tools",
-    "version": "10.0.1.0.0",
+    "version": "15.0.1.0.0",
     "author": "MI Seven Japan, Quartile Limited",
+    "website": "https://www.quartile.co",
     "license": "LGPL-3",
     "depends": ["base"],
-    "data": [
-        "views/res_company_views.xml",
-    ],
+    "data": ["views/res_company_views.xml"],
     "installable": True,
 }
