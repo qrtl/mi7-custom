@@ -16,7 +16,10 @@ class WebsiteSale(WebsiteSale):
     def cart(self, **post):
         res = super(WebsiteSale, self).cart(**post)
         order = request.website.sale_get_order()
-        res.qcontext["error_message"] = self.cart_content_validate(order)
+        res.qcontext.setdefault("error_message", [])
+        error_message = self.cart_content_validate(order)
+        if error_message:
+            res.qcontext["error_message"].extend(error_message)
         return res
 
     @http.route()
