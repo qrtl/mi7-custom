@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- <template id="product_error" inherit_id="website_sale.product"> -->
+    <template id="product_error" inherit_id="clarico_product.clarico_product_product">
+        <!-- <xpath expr="//div[@id='product_details']" position="before"> -->
+        <xpath expr="//div[hasclass('product_name_rating')]" position="before">
+            <div t-if="error_message" class="alert alert-danger">
+                <t t-foreach="error_message" t-as="err">
+                    <t t-esc="err" />
+                    <br />
+                </t>
+            </div>
+        </xpath>
+        <xpath expr="//div[@class='product_quantity']" position="attributes">
+            <attribute name="t-if">not error_message</attribute>
+        </xpath>
+        <xpath expr="//a[@id='add_to_cart']/.." position="attributes">
+            <attribute name="t-if">not error_message</attribute>
+        </xpath>
+    </template>
+</odoo>
