@@ -4,6 +4,8 @@ This module does the following:
   on the given conditions which should be provided another module by extending the
   _need_round_down() method.
 
+Installing the module does not do anything by itself.
+
 Background:
 
 In Japan there is sometimes a tacit industry-wide convention of rounding down the tax
