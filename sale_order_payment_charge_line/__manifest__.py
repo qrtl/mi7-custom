@@ -6,7 +6,7 @@
     "category": "Sale",
     "license": "LGPL-3",
     "author": "Quartile Limited",
-    "website": "https://github.com/qrtl/mi7-custom",
+    "website": "https://www.quartile.co",
     "depends": ["sale"],
     "data": ["views/product_template_views.xml"],
     "installable": True,

@@ -7,5 +7,6 @@ from odoo import fields, models
 
 class ProductMaker(models.Model):
     _name = "product.maker"
+    _description = "Product Maker"
 
     name = fields.Char("Maker Name")
