@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2022 Quartile Limited
 {
     "name": "Website Sale Product Check",

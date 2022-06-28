@@ -1,20 +1,21 @@
-# -*- coding: utf-8 -*-
 # Copyright 2022 Quartile Limited
 
-from odoo import _, http
-from odoo.addons.website_sale.controllers.main import WebsiteSale
+from odoo import http
 from odoo.http import request
+
 from odoo.addons.website.models.website import slug
+from odoo.addons.website_sale.controllers.main import WebsiteSale
 
 
 class WebsiteSale(WebsiteSale):
-
     def product_validate(self, product):
         return []
 
     @http.route()
-    def product(self, product, category='', search='', **kwargs):
-        res = super(WebsiteSale, self).product(product, category=category, search=search, **kwargs)
+    def product(self, product, category="", search="", **kwargs):
+        res = super(WebsiteSale, self).product(
+            product, category=category, search=search, **kwargs
+        )
         res.qcontext.setdefault("error_message", [])
         error_message = self.product_validate(product)
         if error_message:
