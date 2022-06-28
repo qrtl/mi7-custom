@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="product_error" inherit_id="website_sale.product">
+        <xpath expr="//h1[@t-field='product.name']" position="after">
+            <div t-if="error_message" class="alert alert-danger">
+                <t t-foreach="error_message" t-as="err">
+                    <t t-esc="err" />
+                    <br />
+                </t>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='add_to_cart_wrap']" position="attributes">
+            <attribute name="t-if">not error_message</attribute>
+        </xpath>
+    </template>
+</odoo>
