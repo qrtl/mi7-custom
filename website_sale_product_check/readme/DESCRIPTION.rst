@@ -3,3 +3,5 @@ page.
 
 This module does not do anything by itself, and product_validate() method must be
 extended by the inheriting module to add custom checking on the cart content.
+
+Note that stay-on-page way of adding to cart is currently not supported.
