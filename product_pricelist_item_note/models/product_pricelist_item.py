@@ -7,4 +7,4 @@ from odoo import fields, models
 class ProductPriceListItem(models.Model):
     _inherit = "product.pricelist.item"
 
-    note = fields.Text("Comment", oldname="comment")
+    note = fields.Text("Comment")

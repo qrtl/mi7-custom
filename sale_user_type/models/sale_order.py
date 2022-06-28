@@ -14,7 +14,6 @@ class SaleOrder(models.Model):
         [("b2c", "B2C"), ("b2b", "B2B")],
         required=True,
         default="b2b",
-        oldname="order_type",
         copy=False,
     )
 
