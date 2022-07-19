@@ -7,9 +7,10 @@
     "author": "Quartile Limited",
     "website": "https://www.quartile.co",
     "license": "LGPL-3",
-    "depends": ["payment"],
+    "depends": ["payment", "website_sale"],
     "data": [
         "views/payment_acquirer_views.xml",
+        "views/templates.xml",
     ],
     "installable": True,
 }

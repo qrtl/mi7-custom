@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="payment_confirmation_error_msg"
+        inherit_id="payment.transaction_status"
+    >
+        <xpath expr="//span[@t-if='tx.state_message']" position="before">
+            <t t-if="payment_tx_id.acquirer_id.sudo().error_msg">
+                <div class="alert alert-danger alert-dismissible">
+                    <span t-out="payment_tx_id.acquirer_id.sudo().error_msg" />
+                    <button
+                        class="close"
+                        data-dismiss="alert"
+                        title="Dismiss"
+                    >×</button>
+                </div>
+            </t>
+        </xpath>
+    </template>
+    <template
+        id="payment_confirmation_error_msg"
+        inherit_id="website_sale.payment_confirmation_status"
+    >
+        <xpath expr="//span[@t-esc='payment_tx_id.state_message']" position="before">
+            <t t-if="payment_tx_id.acquirer_id.sudo().error_msg">
+                <p t-out="payment_tx_id.acquirer_id.sudo().error_msg" />
+            </t>
+        </xpath>
+    </template>
+</odoo>
