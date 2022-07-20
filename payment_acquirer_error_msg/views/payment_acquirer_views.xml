@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="payment_acquirer_form" model="ir.ui.view">
+        <field name="name">payment.acquirer.form</field>
+        <field name="model">payment.acquirer</field>
+        <field name="inherit_id" ref="payment.payment_acquirer_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet[1]" position="before">
+                <field name="show_error_msg" invisible="1" />
+            </xpath>
+            <xpath expr="//page[@name='messages']/group[1]" position="inside">
+                <field
+                    name="error_msg"
+                    attrs="{'invisible': [('show_error_msg', '=', False)]}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
