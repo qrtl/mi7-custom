@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="cart_error" inherit_id="website_sale.cart">
+        <xpath expr="//t[@t-call='website_sale.cart_lines']" position="before">
+            <div t-if="error_message" class="alert alert-danger">
+                <t t-foreach="error_message" t-as="err">
+                    <t t-esc="err" />
+                    <br />
+                </t>
+            </div>
+        </xpath>
+    </template>
+</odoo>
