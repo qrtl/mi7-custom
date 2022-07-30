@@ -12,8 +12,8 @@ class WebsiteSale(WebsiteSale):
         return []
 
     @http.route()
-    def cart(self, **post):
-        res = super(WebsiteSale, self).cart(**post)
+    def cart(self, access_token=None, revive="", **post):
+        res = super().cart(access_token=access_token, revive=revive, **post)
         order = request.website.sale_get_order()
         res.qcontext.setdefault("error_message", [])
         error_message = self.cart_content_validate(order)
@@ -30,4 +30,4 @@ class WebsiteSale(WebsiteSale):
         if self.cart_content_validate(order):
             # i.e. there is some error.
             return request.redirect("/shop/cart")
-        return super(WebsiteSale, self).checkout(**post)
+        return super().checkout(**post)
