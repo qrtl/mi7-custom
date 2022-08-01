@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="payment_acquirer_cod" model="payment.acquirer">
+        <field name="name">Cash on Delivery</field>
+        <field name="provider">transfer</field>
+        <field name="is_cod">True</field>
+        <field name="support_fees_computation">True</field>
+        <field name="redirect_form_view_id" ref="payment_transfer.redirect_form" />
+        <field
+            name="pre_msg"
+        ><![CDATA[
+<p>You will be charged with additional transaction fees.</p>]]></field>
+    </record>
+</odoo>
