@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2018-2021 MI Seven Japan
 # Copyright 2022 Quartile Limited
 {
@@ -12,6 +11,9 @@
         "sale_physical_product",  # For is_physical (product.template)
         "website_sale_charge_payment_fee",  # update_fee_line()
     ],
-    "data": ["views/payment_acquirer_views.xml", "views/templates.xml",],
+    "data": [
+        "views/payment_acquirer_views.xml",
+        "views/templates.xml",
+    ],
     "installable": True,
 }

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2022 Quartile Limited
 
 from odoo import fields, models
