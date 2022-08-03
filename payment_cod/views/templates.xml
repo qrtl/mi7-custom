@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="checkout" inherit_id="payment.checkout">
+        <xpath expr="//div[@name='o_payment_option_card']" position="attributes">
+            <attribute
+                name="t-if"
+            >not acquirer.is_cod or (order and order._is_cod_available(acquirer))</attribute>
+        </xpath>
+    </template>
+</odoo>

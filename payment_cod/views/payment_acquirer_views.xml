@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="payment_acquirer_form" model="ir.ui.view">
+        <field name="name">payment.acquirer.form</field>
+        <field name="model">payment.acquirer</field>
+        <field name="inherit_id" ref="payment.payment_acquirer_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='payment_state']" position="after">
+                <group groups="base.group_no_one">
+                    <field
+                        name="is_cod"
+                        attrs="{'invisible':[('provider','!=','transfer')]}"
+                    />
+                    <field
+                        name="amount_limit"
+                        attrs="{'invisible':[('is_cod','=',False)]}"
+                    />
+                    <field name="currency_id" invisible="1" />
+                </group>
+            </xpath>
+            <xpath expr="//group[@name='payment_fees']" position="inside">
+                <field
+                    name="fee_product_id"
+                    attrs="{'invisible':['|',('is_cod','=',False),('fees_active','=','False')], 'required':[('is_cod','=',True),('fees_active','=',True)]}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
