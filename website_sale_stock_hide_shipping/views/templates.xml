@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="website_sale_stock.orders_followup_shipping" model="ir.ui.view">
-        <field name="active" eval="False"/>
+        <field name="active" eval="False" />
     </record>
 </odoo>
