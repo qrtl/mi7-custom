@@ -20,8 +20,8 @@
                     name="ship_today"
                     string="To Ship Today"
                     domain="[
-                        ('min_date', '&gt;', datetime.datetime.combine(context_today(), datetime.time(0,0,0))),
-                        ('min_date', '&lt;', datetime.datetime.combine(context_today(), datetime.time(23,59,59))),
+                        ('scheduled_date', '&gt;', datetime.datetime.combine(context_today(), datetime.time(0,0,0))),
+                        ('scheduled_date', '&lt;', datetime.datetime.combine(context_today(), datetime.time(23,59,59))),
                     ]"
                 />
                 <separator />

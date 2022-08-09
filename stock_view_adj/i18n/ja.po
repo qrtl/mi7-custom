@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* stock_view_adj
+# 	* stock_view_adj
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 10.0+e\n"
+"Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 10:00+0000\n"
-"PO-Revision-Date: 2021-04-24 10:00+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2022-08-09 09:23+0000\n"
+"PO-Revision-Date: 2022-08-09 09:23+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,7 +16,6 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: stock_view_adj
-#: model:ir.ui.view,arch_db:stock_view_adj.view_picking_internal_search
+#: model_terms:ir.ui.view,arch_db:stock_view_adj.view_picking_internal_search
 msgid "To Ship Today"
 msgstr "本日出荷予定"
-
