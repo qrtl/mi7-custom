@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="website_sale_stock.orders_followup_shipping" model="ir.ui.view">
+    <record
+        id="sale_stock.sale_order_portal_content_inherit_sale_stock"
+        model="ir.ui.view"
+    >
         <field name="active" eval="False" />
     </record>
 </odoo>
