@@ -1,0 +1,26 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_sale_total_adj
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-09 08:35+0000\n"
+"PO-Revision-Date: 2022-08-09 08:35+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: website_sale_total_adj
+#: model_terms:ir.ui.view,arch_db:website_sale_total_adj.cart_total_tax_inclusive
+msgid "<span>( Taxes Included: </span>"
+msgstr "<span>( 内消費税: </span>"
+
+#. module: website_sale_total_adj
+#: model_terms:ir.ui.view,arch_db:website_sale_total_adj.cart_total_tax_inclusive
+msgid "<span>)</span>"
+msgstr ""
