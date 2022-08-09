@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record
+        id="sale_stock.sale_order_portal_content_inherit_sale_stock"
+        model="ir.ui.view"
+    >
+        <field name="active" eval="False" />
+    </record>
+</odoo>
