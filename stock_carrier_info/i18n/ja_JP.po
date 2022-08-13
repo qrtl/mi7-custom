@@ -1,0 +1,87 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* stock_carrier_info
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-30 05:03+0000\n"
+"PO-Revision-Date: 2021-09-30 05:03+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_carrier_info
+#: model:ir.model.fields,field_description:stock_carrier_info.field_stock_carrier_info_code
+msgid "Carrier Code"
+msgstr "運送会社コード"
+
+#. module: stock_carrier_info
+#: model:ir.model.fields,field_description:stock_carrier_info.field_stock_carrier_info_name
+msgid "Carrier Name"
+msgstr "運送会社名"
+
+#. module: stock_carrier_info
+#: model:ir.model.fields,field_description:stock_carrier_info.field_stock_carrier_info_create_uid
+msgid "Created by"
+msgstr "作成者"
+
+#. module: stock_carrier_info
+#: model:ir.model.fields,field_description:stock_carrier_info.field_stock_carrier_info_create_date
+msgid "Created on"
+msgstr "作成日"
+
+#. module: stock_carrier_info
+#: model:ir.model.fields,field_description:stock_carrier_info.field_stock_carrier_info_display_name
+msgid "Display Name"
+msgstr "表示名"
+
+#. module: stock_carrier_info
+#: model:ir.model.fields,field_description:stock_carrier_info.field_stock_carrier_info_id
+msgid "ID"
+msgstr "ID"
+
+#. module: stock_carrier_info
+#: model:ir.model.fields,field_description:stock_carrier_info.field_stock_carrier_info___last_update
+msgid "Last Modified on"
+msgstr "最終更新日"
+
+#. module: stock_carrier_info
+#: model:ir.model.fields,field_description:stock_carrier_info.field_stock_carrier_info_write_uid
+msgid "Last Updated by"
+msgstr "最終更新者"
+
+#. module: stock_carrier_info
+#: model:ir.model.fields,field_description:stock_carrier_info.field_stock_carrier_info_write_date
+msgid "Last Updated on"
+msgstr "最終更新日"
+
+#. module: stock_carrier_info
+#: model:ir.actions.act_window,name:stock_carrier_info.stock_carrier_info_act
+#: model:ir.model,name:stock_carrier_info.model_stock_carrier_info
+#: model:ir.ui.menu,name:stock_carrier_info.stock_carrier_info_menu
+#: model:ir.ui.view,arch_db:stock_carrier_info.view_stock_carrier_info_form
+#: model:ir.ui.view,arch_db:stock_carrier_info.view_stock_carrier_info_tree
+#: model:res.groups,name:stock_carrier_info.group_carrier_info
+msgid "Stock Carrier Info"
+msgstr "運送会社情報"
+
+#. module: stock_carrier_info
+#: model:ir.model.fields,field_description:stock_carrier_info.field_stock_carrier_info_tracking_url
+msgid "Tracking URL"
+msgstr "追跡URL"
+
+#. module: stock_carrier_info
+#: model:ir.model,name:stock_carrier_info.model_stock_picking
+msgid "Transfer"
+msgstr "移動"
+
+#. module: stock_carrier_info
+#: model:ir.model.fields,field_description:stock_carrier_info.field_stock_picking_carrier_info_id
+msgid "Warehouse Carrier"
+msgstr "運送会社名"
+
