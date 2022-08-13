@@ -17,17 +17,14 @@
         <field name="name">stock.carrier.info.tree</field>
         <field name="model">stock.carrier.info</field>
         <field name="arch" type="xml">
-            <tree string="Stock Carrier Info">
+            <tree>
                 <field name="code" />
                 <field name="name" />
                 <field name="tracking_url" />
             </tree>
         </field>
     </record>
-    <record
-        id="stock_carrier_info_act"
-        model="ir.actions.act_window"
-    >
+    <record id="stock_carrier_info_act" model="ir.actions.act_window">
         <field name="name">Stock Carrier Info</field>
         <field name="res_model">stock.carrier.info</field>
         <field name="view_mode">tree,form</field>
