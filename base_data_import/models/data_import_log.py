@@ -12,7 +12,9 @@ class DataImportLog(models.Model):
 
     import_date = fields.Datetime("Imported On")
     import_user_id = fields.Many2one("res.users", "Imported By")
-    company_id = fields.Many2one("res.company", "Company", default=lambda self: self.env.company)
+    company_id = fields.Many2one(
+        "res.company", "Company", default=lambda self: self.env.company
+    )
     error_ids = fields.One2many("data.import.error", "log_id", string="Log Lines")
     input_file = fields.Many2one("ir.attachment", string="File")
     file_path = fields.Binary(related="input_file.datas", string="Imported File")
