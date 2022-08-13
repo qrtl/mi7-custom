@@ -27,7 +27,7 @@
                             attrs="{'invisible':[('error_ids','=',[])]}"
                         >
                             <field name="error_ids">
-                                <tree string="Error Lines">
+                                <tree>
                                     <field name="row_no" />
                                     <field name="reference" />
                                     <field name="error_message" />
@@ -44,7 +44,6 @@
         <field name="model">data.import.log</field>
         <field name="arch" type="xml">
             <tree
-                string="Import Logs"
                 create="false"
                 edit="false"
                 decoration-danger="state=='failed'"
@@ -97,7 +96,6 @@
     <record id="data_import_log_action" model="ir.actions.act_window">
         <field name="name">Data Import Logs</field>
         <field name="res_model">data.import.log</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
     <!-- This menu is to have a place to aggregate all the import history.

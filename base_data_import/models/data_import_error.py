@@ -6,6 +6,7 @@ from odoo import fields, models
 
 class DataImportError(models.Model):
     _name = "data.import.error"
+    _description = "Data Import Error"
 
     row_no = fields.Integer("Row Number")
     reference = fields.Char()
