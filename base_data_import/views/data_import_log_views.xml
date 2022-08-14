@@ -19,6 +19,10 @@
                             <field name="import_user_id" />
                             <field name="model_id" />
                             <field name="model_name" invisible="1" />
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                            />
                         </group>
                     </group>
                     <notebook string="Logs">
@@ -53,6 +57,7 @@
                 <field name="import_user_id" />
                 <field name="file_name" />
                 <field name="model_id" />
+                <field name="company_id" groups="base.group_multi_company" />
                 <field name="state" />
             </tree>
         </field>
