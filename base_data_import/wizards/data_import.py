@@ -27,7 +27,6 @@ class DataImport(models.TransientModel):
             {
                 "name": self.file_name,
                 "datas": self.import_file,
-                "datas_fname": self.file_name,
             }
         )
         import_log = self.env["data.import.log"].create(
@@ -46,7 +45,7 @@ class DataImport(models.TransientModel):
         field_defs = []
         for field in FIELD_VALS:
             field_def = {}
-            for k, v in ordered_index.iteritems():
+            for k, v in ordered_index.items():
                 field_def[v] = field[k]
             field_defs.append(field_def)
         return field_defs
@@ -59,13 +58,12 @@ class DataImport(models.TransientModel):
         sheet_fields = []
         for encoding in encodings:
             try:
-                if encoding != "utf-8":
-                    csv_data = csv_data.decode(encoding).encode("utf-8")
+                csv_data = csv_data.decode(encoding)
                 csv_iterator = csv.reader(io.StringIO(csv_data), delimiter=",")
                 sheet_fields = next(csv_iterator)
                 break
             except Exception:
-                _logger.exception("Error while encoding the data into utf-8.")
+                _logger.exception("Error while capturing sheet fields.")
         if not sheet_fields:
             raise UserError(_("Invalid file!"))
         missing_columns = list(
