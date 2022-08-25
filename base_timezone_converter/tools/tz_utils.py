@@ -1,4 +1,5 @@
 # Copyright 2022 Quartile Limited
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
 
 from datetime import datetime
 
@@ -8,12 +9,11 @@ from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as DATETIME_FORMAT
 
 
 def convert_datetime_tz(date_time, tz_from, tz_to):
-    # basestring should be replaced with str in python 3.x
-    if isinstance(date_time, basestring):
+    if isinstance(date_time, str):
         date_time = datetime.strptime(date_time, DATETIME_FORMAT)
-    if isinstance(tz_from, basestring):
+    if isinstance(tz_from, str):
         tz_from = pytz.timezone(tz_from)
-    if isinstance(tz_to, basestring):
+    if isinstance(tz_to, str):
         tz_to = pytz.timezone(tz_to)
     return tz_from.localize(date_time).astimezone(tz_to).replace(tzinfo=None)
 
