@@ -1,17 +1,16 @@
-# -*- coding: utf-8 -*-
 # Copyright 2021-2022 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Stock Picking Yamato CSV",
-    "version": "10.0.1.1.3",
+    "version": "15.0.1.0.0",
     "category": "Stock",
-    "website": "https://www.quartile.co/",
     "author": "Quartile Limited",
+    "website": "https://www.quartile.co",
     "license": "AGPL-3",
     "installable": True,
     "depends": [
         "sale_stock",
-        "company_alternative_attribute",  # alt_name (res.company)
+        # "company_alternative_attribute",  # alt_name (res.company)
         "report_csv",
         "sale_customer_order_info",  # customer_order, customer_contact
         "sale_user_type",  # For user_type

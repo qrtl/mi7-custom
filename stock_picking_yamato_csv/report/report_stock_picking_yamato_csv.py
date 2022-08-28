@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2021-2022 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
@@ -187,8 +186,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
         return val
 
     def _get_date(self, dt_date):
-        """This method converts datetime to date in user's timezone.
-        """
+        """This method converts datetime to date in user's timezone."""
         return fields.Datetime.context_timestamp(
             self, fields.Datetime.from_string(dt_date)
         ).strftime("%Y%m%d")
@@ -200,7 +198,8 @@ class StockPickingYamatoCSV(models.AbstractModel):
         if invalid_picks:
             raise UserError(
                 _(
-                    "Following records are in invalid state (draft/done/cancel) for an export.\n%s"
+                    "Following records are in invalid state (draft/done/cancel) for an "
+                    "export.\n%s"
                 )
                 % ("\n".join(invalid_picks.mapped("name")))
             )
@@ -328,7 +327,7 @@ class StockPickingYamatoCSV(models.AbstractModel):
     def csv_report_options(self):
         res = super(StockPickingYamatoCSV, self).csv_report_options()
         field_dict = self._get_field_dict()
-        for k, v in field_dict.items():
+        for _k, v in field_dict.items():
             res["fieldnames"].append(v)
         res["delimiter"] = ","
         res["quoting"] = csv.QUOTE_MINIMAL
