@@ -9,6 +9,5 @@ class ShippingTimerangeEc(models.Model):
 
     delivery_time_categ = fields.Char(
         "Delivery Time Category",
-        required=True,
         help="This field is used for shipping instruction data export.",
     )
