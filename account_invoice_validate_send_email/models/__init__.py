@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from . import account_invoice
 from . import account_payment_term
 from . import stock_carrier_info

@@ -16,10 +16,7 @@
             model="ir.model"
         />
         <field name="auto_delete" eval="False" />
-        <field
-            name="report_template"
-            ref="account.account_invoices"
-        />
+        <field name="report_template" ref="account.account_invoices" />
         <field
             name="report_name"
         >Invoice_${(object.number or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}</field>
