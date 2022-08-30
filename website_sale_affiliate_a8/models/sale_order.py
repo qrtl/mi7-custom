@@ -25,7 +25,7 @@ class SaleOrder(models.Model):
                     1 - (line.discount or 0.0) / 100.0
                 )
             item_dict = {
-                "code": str(line.product_id.default_code),
+                "code": line.product_id.default_code or "",
                 "price": unit_price_total,
                 "quantity": line.product_uom_qty,
             }
