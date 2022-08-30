@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="account_invoice_auto_dispatch_inherit" model="ir.ui.view">
-        <field name="name">account.invoice.notificaton.inherit</field>
-        <field name="model">account.invoice</field>
-        <field name="inherit_id" ref="account.invoice_form" />
+    <record id="view_move_form" model="ir.ui.view">
+        <field name="name">account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='move_id']" position="after">
-                <field name="invoice_sent" />
-                <field name="web_url" invisible="1" />
+            <xpath expr="//group[@name='sale_info_group']" position="inside">
+                <field
+                    name="invoice_sent"
+                    attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund'))]}"
+                />
             </xpath>
         </field>
     </record>

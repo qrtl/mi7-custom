@@ -1,18 +1,17 @@
 # Copyright 2021-2022 Quartile Limited
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     "name": "Account Invoice Validate Send Email",
     "category": "Accouting",
     "license": "AGPL-3",
     "author": "Quartile Limited",
     "website": "https://www.quartile.co",
-    "version": "10.0.1.2.1",
+    "version": "15.0.1.0.0",
     "depends": [
         "sale_stock",
-        # "website_portal_sale",  # We may revive this when web_url is in use.
         "sale_automatic_workflow",
-        "stock_picking_invoice_link",
         "stock_carrier_info",
+        "stock_picking_invoice_link",
     ],
     "data": [
         "data/email_templates.xml",
