@@ -1,0 +1,192 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_invoice_validate_send_email
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-31 07:53+0000\n"
+"PO-Revision-Date: 2022-08-31 07:53+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_invoice_validate_send_email
+#: model:mail.template,body_html:account_invoice_validate_send_email.email_template_customer_invoice_validated
+msgid ""
+"<div>\n"
+"    <p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">\n"
+"        <t t-out=\"object.partner_id.name\" data-oe-t-inline=\"true\"></t>\n"
+"        <t t-if=\"object.partner_id.parent_id\" data-oe-t-group-active=\"true\">\n"
+"            (<i><t t-out=\"object.partner_id.parent_id.name\" data-oe-t-inline=\"true\"></t></i>)\n"
+"        </t>様\n"
+"        <br><br>\n"
+"        お世話になっております。<br>\n"
+"        以下のとおり、請求書を送付いたしますので、ご査収の程よろしくお願いいたします。\n"
+"        <br><br>\n"
+"        <t t-out=\"object.name or 'N/A'\" data-oe-t-inline=\"true\"></t>\n"
+"        <br><br>\n"
+"        <t t-if=\"object.carrier_info_name\" data-oe-t-group-active=\"true\">\n"
+"            配送業者：<t t-out=\"object.carrier_info_name\" data-oe-t-inline=\"true\"></t>\n"
+"            <br>\n"
+"        </t>\n"
+"        <t t-if=\"object.carrier_tracking_refs\" data-oe-t-group-active=\"true\">\n"
+"            送り状お問い合わせNo: <t t-out=\"object.carrier_tracking_refs\" data-oe-t-inline=\"true\"></t>\n"
+"            <br><br>\n"
+"        </t>\n"
+"        <t t-if=\"object.carrier_tracking_url\" data-oe-t-group-active=\"true\">\n"
+"            配送状況を配達業者のWebサイトでご確認頂けます。<br>\n"
+"            <t t-out=\"object.carrier_tracking_url\" data-oe-t-inline=\"true\"></t>\n"
+"            <br><br>\n"
+"        </t>\n"
+"        宜しくお願い致します。\n"
+"        <br><br>\n"
+"        <t t-out=\"object.company_id.partner_id\" t-options=\"{'widget': 'contact', 'fields': ['address', 'name'], 'no_marker': True}\" data-oe-t-inline=\"true\"></t>\n"
+"    </p>\n"
+"</div>\n"
+"        "
+msgstr ""
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_bank_statement_line__carrier_info_name
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_move__carrier_info_name
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_payment__carrier_info_name
+msgid "Carrier Info Name"
+msgstr "運送会社情報名"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_bank_statement_line__carrier_tracking_url
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_move__carrier_tracking_url
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_payment__carrier_tracking_url
+msgid "Carrier Tracking Url"
+msgstr "運送会社追跡URL"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model,name:account_invoice_validate_send_email.model_res_company
+msgid "Companies"
+msgstr "会社"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,help:account_invoice_validate_send_email.field_account_bank_statement_line__carrier_tracking_refs
+#: model:ir.model.fields,help:account_invoice_validate_send_email.field_account_move__carrier_tracking_refs
+#: model:ir.model.fields,help:account_invoice_validate_send_email.field_account_payment__carrier_tracking_refs
+msgid "Delivery slip numbers taken from the linked deliveries."
+msgstr "運送会社から取得された追跡番号です。"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_stock_carrier_info__is_dummy
+msgid "Dummy Carrier"
+msgstr "ダミー運送会社"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,help:account_invoice_validate_send_email.field_stock_carrier_info__is_dummy
+msgid ""
+"If selected, the carrier info will be ignored in email content preparation "
+"at the invoice validation."
+msgstr "選択された場合、運送会社情報は請求書検証時のEメール内容生成にて無視されます。"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_res_company__invoice_mail_template_id
+msgid "Invoice Email Template"
+msgstr "請求書メールテンプレート"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_bank_statement_line__invoice_sent
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_move__invoice_sent
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_payment__invoice_sent
+msgid "Invoice Sent"
+msgstr "請求書送信済"
+
+#. module: account_invoice_validate_send_email
+#: model:mail.template,report_name:account_invoice_validate_send_email.email_template_customer_invoice_validated
+msgid ""
+"Invoice_{{ (object.name or '').replace('/','_') }}_{{ object.state == "
+"'draft' and 'draft' or '' }}"
+msgstr ""
+"Invoice_{{ (object.name or '').replace('/','_') }}_{{ object.state == "
+"'draft' and 'draft' or '' }}"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model,name:account_invoice_validate_send_email.model_account_move
+msgid "Journal Entry"
+msgstr "仕訳"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_payment_term__not_send_invoice
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_stock_picking__not_send_invoice
+msgid "Not Auto-send Invoice"
+msgstr "請求書自動送信対象外"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model,name:account_invoice_validate_send_email.model_account_payment_term
+msgid "Payment Terms"
+msgstr "支払条件"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model,name:account_invoice_validate_send_email.model_sale_workflow_process
+msgid "Sale Workflow Process"
+msgstr "販売ワークフロー処理"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_bank_statement_line__send_invoice
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_move__send_invoice
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_payment__send_invoice
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_sale_workflow_process__send_invoice
+msgid "Send Invoice upon Validation"
+msgstr "検証時に請求書送信"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model,name:account_invoice_validate_send_email.model_stock_carrier_info
+msgid "Stock Carrier Info"
+msgstr "運送会社情報"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_bank_statement_line__carrier_tracking_refs
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_move__carrier_tracking_refs
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_payment__carrier_tracking_refs
+msgid "Tracking References"
+msgstr "追跡参照"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model,name:account_invoice_validate_send_email.model_stock_picking
+msgid "Transfer"
+msgstr "運送"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,help:account_invoice_validate_send_email.field_account_bank_statement_line__invoice_sent
+#: model:ir.model.fields,help:account_invoice_validate_send_email.field_account_move__invoice_sent
+#: model:ir.model.fields,help:account_invoice_validate_send_email.field_account_payment__invoice_sent
+msgid ""
+"When this field is selected, no email will be automatically sent to the "
+"customer."
+msgstr "この項目が選択されている場合、検証時の自動メール送信は無効化されます。"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,help:account_invoice_validate_send_email.field_stock_picking__not_send_invoice
+msgid ""
+"When this field is selected, the invoice that is related to this picking "
+"will be outside the scope of automated invoice email despite the settings of"
+" the linked workflow process."
+msgstr "ワークフロープロセス設定にかかわらず、この項目が選択されていると、関連の請求書は自動メール送信対象外となります。"
+
+#. module: account_invoice_validate_send_email
+#: model:ir.model.fields,help:account_invoice_validate_send_email.field_account_payment_term__not_send_invoice
+msgid ""
+"When this field is selected, the invoices that use this payment term will be"
+" outside the scope of automated invoice email despite the settings of the "
+"linked workflow process."
+msgstr "ワークフロープロセス設定にかかわらず、この項目が選択されていると請求書は自動メール送信対象外となります。"
+
+#. module: account_invoice_validate_send_email
+#: model:mail.template,subject:account_invoice_validate_send_email.email_template_customer_invoice_validated
+msgid "【請求書】送付のご案内 {{ object.company_id.name }} {{ object.name or \"N/A\" }}"
+msgstr "【請求書】送付のご案内 {{ object.company_id.name }} {{ object.name or \"N/A\" }}"
+
+#. module: account_invoice_validate_send_email
+#: model:mail.template,name:account_invoice_validate_send_email.email_template_customer_invoice_validated
+msgid "請求書送付のご案内"
+msgstr "請求書送付のご案内"

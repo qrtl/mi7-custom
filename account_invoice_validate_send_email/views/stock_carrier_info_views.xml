@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="view_stock_carrier_info_form">
+        <field name="name">stock.carrier.info.form</field>
+        <field name="model">stock.carrier.info</field>
+        <field
+            name="inherit_id"
+            ref="stock_carrier_info.view_stock_carrier_info_form"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tracking_url']" position="after">
+                <field name="is_dummy" />
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_stock_carrier_info_tree">
+        <field name="name">stock.carrier.info.tree</field>
+        <field name="model">stock.carrier.info</field>
+        <field
+            name="inherit_id"
+            ref="stock_carrier_info.view_stock_carrier_info_tree"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tracking_url']" position="after">
+                <field name="is_dummy" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
