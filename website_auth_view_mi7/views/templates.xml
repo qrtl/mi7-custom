@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <template id="header_register" inherit_id="clarico_layout.clarico_header_main" name="Header Register Account">
+    <template
+        id="header_register"
+        inherit_id="clarico_layout.clarico_header_main"
+        name="Header Register Account"
+    >
         <xpath expr="//ul[@id='logout_ul']" position="before">
-            <ul id="register_ul" class="sign_in_and_administrtor_link header-main-signin">
+            <ul
+                id="register_ul"
+                class="sign_in_and_administrtor_link header-main-signin"
+            >
                 <li groups="base.group_public">
                     <a t-attf-href="/web/signup">
                         <b>Register</b>
@@ -161,9 +168,15 @@
         </xpath>
         <xpath expr="//a" position="before">
             <div class="form-check">
-                <input type="checkbox" value="accepted" id="terms" name="terms" required="required" />
+                <input
+                    type="checkbox"
+                    value="accepted"
+                    id="terms"
+                    name="terms"
+                    required="required"
+                />
                 <label class="form-check-label" for="terms" style="margin-top: 10px;">
-                    <t t-raw="website.signup_page_terms_text"/>
+                    <t t-raw="website.signup_page_terms_text" />
                 </label>
             </div>
         </xpath>
