@@ -38,5 +38,5 @@ class SaleOrder(models.Model):
             add_qty=add_qty,
             set_qty=set_qty,
             attributes=attributes,
-            **kwargs,
+            **kwargs
         )
