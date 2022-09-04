@@ -1,13 +1,20 @@
-# Copyright 2020 Quartile Limited
-# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2020-2022 Quartile Limited
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     "name": "Website Login/Signup Page Adjustments",
     "category": "Website",
-    "license": "LGPL-3",
+    "license": "AGPL-3",
     "author": "Quartile Limited",
     "website": "https://www.quartile.co",
-    "version": "10.0.1.1.0",
-    "depends": ["auth_signup", "clarico_layout", "website"],
-    "data": ["views/templates.xml", "views/website_config_settings_views.xml"],
+    "version": "15.0.1.0.0",
+    "depends": [
+        "auth_signup",
+        "website",
+    ],
+    "data": [
+        "views/res_partner_views.xml",
+        "views/templates.xml",
+        "views/website_views.xml",
+    ],
     "installable": True,
 }
