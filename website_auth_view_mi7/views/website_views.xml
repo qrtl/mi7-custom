@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_website_form" model="ir.ui.view">
+        <field name="name">website.form</field>
+        <field name="model">website</field>
+        <field name="inherit_id" ref="website.view_website_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Signup/Login Page Texts">
+                    <group name="auth_view">
+                        <field
+                            name="login_page_header_text"
+                            widget="html"
+                            class="oe-bordered-editor"
+                            options="{'style-inline': true, 'codeview': true }"
+                        />
+                        <field
+                            name="login_page_signin_bottom_text"
+                            widget="html"
+                            class="oe-bordered-editor"
+                            options="{'style-inline': true, 'codeview': true }"
+                        />
+                        <field
+                            name="login_page_signup_text"
+                            widget="html"
+                            class="oe-bordered-editor"
+                            options="{'style-inline': true, 'codeview': true }"
+                        />
+                        <field
+                            name="signup_page_header_text"
+                            widget="html"
+                            class="oe-bordered-editor"
+                            options="{'style-inline': true, 'codeview': true }"
+                        />
+                        <field
+                            name="signup_page_terms_text"
+                            widget="html"
+                            class="oe-bordered-editor"
+                            options="{'style-inline': true, 'codeview': true }"
+                        />
+                        <field
+                            name="signup_page_bottom_text"
+                            widget="html"
+                            class="oe-bordered-editor"
+                            options="{'style-inline': true, 'codeview': true }"
+                        />
+                        <field
+                            name="password_reset_page_header_text"
+                            widget="html"
+                            class="oe-bordered-editor"
+                            options="{'style-inline': true, 'codeview': true }"
+                        />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

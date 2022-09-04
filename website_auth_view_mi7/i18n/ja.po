@@ -1,0 +1,110 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_auth_view_mi7
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-04 09:31+0000\n"
+"PO-Revision-Date: 2022-09-04 09:31+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: website_auth_view_mi7
+#: model:ir.model,name:website_auth_view_mi7.model_res_partner
+msgid "Contact"
+msgstr "連絡先"
+
+#. module: website_auth_view_mi7
+#: model:ir.model.fields,help:website_auth_view_mi7.field_res_partner__terms_agreed
+#: model:ir.model.fields,help:website_auth_view_mi7.field_res_users__terms_agreed
+msgid ""
+"Indicates that the user has agreed to the terms and conditions at signup."
+msgstr "ユーザが会員規約に同意したことを示します。"
+
+#. module: website_auth_view_mi7
+#: model:ir.model.fields,field_description:website_auth_view_mi7.field_website__login_page_header_text
+msgid "Login Page Header Text"
+msgstr "ログインページヘッダーテキスト"
+
+#. module: website_auth_view_mi7
+#: model:ir.model.fields,field_description:website_auth_view_mi7.field_website__login_page_signin_bottom_text
+msgid "Login Page Signin Bottom Text"
+msgstr "ログインページログイン下部テキスト"
+
+#. module: website_auth_view_mi7
+#: model:ir.model.fields,field_description:website_auth_view_mi7.field_website__login_page_signup_text
+msgid "Login Page Signup Text"
+msgstr "ログインページ会員登録テキスト"
+
+#. module: website_auth_view_mi7
+#: model_terms:ir.ui.view,arch_db:website_auth_view_mi7.custom_login_layout
+msgid "My Page"
+msgstr "マイページ"
+
+#. module: website_auth_view_mi7
+#: model:ir.model.fields,field_description:website_auth_view_mi7.field_website__password_reset_page_header_text
+msgid "Password Reset Page Header Text"
+msgstr "パスワードリセットページヘッダーテキスト"
+
+#. module: website_auth_view_mi7
+#: model_terms:ir.ui.view,arch_db:website_auth_view_mi7.user_sign_up
+msgid "Register"
+msgstr "会員登録"
+
+#. module: website_auth_view_mi7
+#: model_terms:ir.ui.view,arch_db:website_auth_view_mi7.custom_login_layout
+#: model_terms:ir.ui.view,arch_db:website_auth_view_mi7.custom_signup_layout
+msgid "Register an account"
+msgstr "アカウントを作成"
+
+#. module: website_auth_view_mi7
+#: model_terms:ir.ui.view,arch_db:website_auth_view_mi7.custom_reset_password_layout
+msgid "Reset Password"
+msgstr "パスワード再設定"
+
+#. module: website_auth_view_mi7
+#: model_terms:ir.ui.view,arch_db:website_auth_view_mi7.custom_login_layout
+msgid "Sign in"
+msgstr "ログイン"
+
+#. module: website_auth_view_mi7
+#: model_terms:ir.ui.view,arch_db:website_auth_view_mi7.custom_login_layout
+msgid "Sign up"
+msgstr "アカウントを作成"
+
+#. module: website_auth_view_mi7
+#: model:ir.model.fields,field_description:website_auth_view_mi7.field_website__signup_page_bottom_text
+msgid "Signup Page Bottom Text"
+msgstr "サインアップページ下部テキスト"
+
+#. module: website_auth_view_mi7
+#: model:ir.model.fields,field_description:website_auth_view_mi7.field_website__signup_page_header_text
+msgid "Signup Page Header Text"
+msgstr "サインアップページヘッダーテキスト"
+
+#. module: website_auth_view_mi7
+#: model:ir.model.fields,field_description:website_auth_view_mi7.field_website__signup_page_terms_text
+msgid "Signup Page Terms Text"
+msgstr "サインアップページ会員規約テキスト"
+
+#. module: website_auth_view_mi7
+#: model_terms:ir.ui.view,arch_db:website_auth_view_mi7.view_website_form
+msgid "Signup/Login Page Texts"
+msgstr "サインアップ/ログインページテキスト"
+
+#. module: website_auth_view_mi7
+#: model:ir.model.fields,field_description:website_auth_view_mi7.field_res_partner__terms_agreed
+#: model:ir.model.fields,field_description:website_auth_view_mi7.field_res_users__terms_agreed
+msgid "Terms Agreed"
+msgstr "会員規約同意済"
+
+#. module: website_auth_view_mi7
+#: model:ir.model,name:website_auth_view_mi7.model_website
+msgid "Website"
+msgstr "ウェブサイト"
