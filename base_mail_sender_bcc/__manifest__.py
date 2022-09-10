@@ -5,7 +5,7 @@
 
 {
     "name": "Base Mail Sender Bcc",
-    "version": "10.0.1.0.0",
+    "version": "15.0.1.0.0",
     "category": "Mail",
     "license": "AGPL-3",
     "summary": "Always send a copy of the mail to the sender",
