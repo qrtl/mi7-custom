@@ -3,19 +3,33 @@
     <!-- With the JS method, you need to add script-tag to both the head tag and the body tag. -->
     <template id="website_layout_affiliate_inherit" inherit_id="web.layout">
         <xpath expr="//meta[@http-equiv='X-UA-Compatible']" position="after">
-            <script t-att-src="env['ir.config_parameter'].sudo().get_param('affiliate.script.src')"></script>
+            <script
+                t-att-src="env['ir.config_parameter'].sudo().get_param('affiliate.script.src')"
+            />
         </xpath>
     </template>
-    <template id="affiliate_script"  inherit_id="website_sale.confirmation">
-        <xpath expr="//t[@t-call='website_sale.payment_confirmation_status']" position="after">
-            <span t-att-id="env['ir.config_parameter'].sudo().get_param('affiliate.service.name')"></span>
-            <script type="text/javascript" t-att-src="env['ir.config_parameter'].sudo().get_param('affiliate.script.src')"></script>
+    <template id="affiliate_script" inherit_id="website_sale.confirmation">
+        <xpath
+            expr="//t[@t-call='website_sale.payment_confirmation_status']"
+            position="after"
+        >
+            <span
+                t-att-id="env['ir.config_parameter'].sudo().get_param('affiliate.service.name')"
+            />
+            <script
+                type="text/javascript"
+                t-att-src="env['ir.config_parameter'].sudo().get_param('affiliate.script.src')"
+            />
             <script>
-                <t t-esc="env['ir.config_parameter'].sudo().get_param('affiliate.service.name')" />({
-                "pid": "<t t-esc="env['ir.config_parameter'].sudo().get_param('affiliate.pid')" />",
+                <t
+                    t-esc="env['ir.config_parameter'].sudo().get_param('affiliate.service.name')"
+                />({
+                "pid": "<t
+                    t-esc="env['ir.config_parameter'].sudo().get_param('affiliate.pid')"
+                />",
                 "order_number": "<t t-esc="order.name" />",
                 "currency": "<t t-esc="order.currency_id.name" />",
-                "items": <t t-esc="order.affiliate_items"/>,
+                "items": <t t-esc="order.affiliate_items" />,
                 });
             </script>
         </xpath>
