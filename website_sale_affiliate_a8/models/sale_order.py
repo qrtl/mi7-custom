@@ -8,7 +8,7 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     affiliate_items = fields.Text(
-        help="Order line list for send affiliate service with js-tag.",
+        help="Order line list to be passed to A8 with JS-tag.",
         compute="_compute_affiliate_items",
     )
 

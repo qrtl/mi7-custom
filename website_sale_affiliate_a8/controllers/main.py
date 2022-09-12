@@ -6,16 +6,14 @@ from datetime import timedelta
 from odoo import fields
 from odoo.http import request, route
 
-from odoo.addons.auth_signup_verify_email.controllers.main import (  # noqa
-    SignupVerifyEmail,
-)
+from odoo.addons.auth_signup_verify_email.controllers.main import SignupVerifyEmail
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 
 
 class SignupVerifyEmail(SignupVerifyEmail):
     @route()
     def web_login(self, *args, **kw):
-        res = super(SignupVerifyEmail, self).web_login(*args, **kw)
+        res = super().web_login(*args, **kw)
         if request.httprequest.method == "POST":
             cookie_a8 = request.httprequest.cookies.get(request.website.a8_cookie_key)
             if not cookie_a8:
@@ -39,16 +37,13 @@ class SignupVerifyEmail(SignupVerifyEmail):
                 )
         return res
 
-    def passwordless_signup(self, values):
-        res = super(SignupVerifyEmail, self).passwordless_signup(values)
+    def passwordless_signup(self):
+        res = super().passwordless_signup()
         cookie_a8 = request.httprequest.cookies.get(request.website.a8_cookie_key)
         if not cookie_a8:
             return res
-        user = (
-            request.env["res.users"]
-            .sudo()
-            .search([("login", "=", values.get("login"))])
-        )
+        login = res.qcontext.get("login")
+        user = request.env["res.users"].sudo().search([("login", "=", login)])
         if user:
             # A8 param should be effective for 90 days.
             user.write(
@@ -69,13 +64,18 @@ class WebsiteSale(WebsiteSale):
         """Cookie needs to exist in user's device to be able to record the sales with
         A8.
         """
-        res = super(WebsiteSale, self).checkout(**post)
+        res = super().checkout(**post)
+        user = request.env.user
         cookie_a8 = request.httprequest.cookies.get(request.website.a8_cookie_key)
         # When the a8_param exist and cookie doesn't exist, set cookie.
         if cookie_a8:
             return res
         user = request.env.user
-        if user.a8_param and user.a8_expiry_date >= fields.Date.context_today(user):
+        if (
+            user.a8_param
+            and user.a8_expiry_date
+            and user.a8_expiry_date >= fields.Date.context_today(user)
+        ):
             res.set_cookie(
                 request.website.a8_cookie_key,
                 value=user.a8_param,
@@ -86,8 +86,8 @@ class WebsiteSale(WebsiteSale):
         return res
 
     @route()
-    def payment_confirmation(self, **post):
-        res = super(WebsiteSale, self).payment_confirmation(**post)
+    def shop_payment_confirmation(self, **post):
+        res = super().shop_payment_confirmation(**post)
         user = request.env.user
         # Existing a8_param should be deleted upon a purchase.
         if user.a8_param:
