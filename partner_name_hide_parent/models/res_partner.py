@@ -18,7 +18,8 @@ class ResPartner(models.Model):
         if partner.hide_parent:
             return name
         return "{}, {}".format(
-            partner.commercial_company_name or partner.parent_id.name, name,
+            partner.commercial_company_name or partner.parent_id.name,
+            name,
         )
 
     # Just add "hide_parent" as a trigger.
