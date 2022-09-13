@@ -370,8 +370,8 @@ ul.auto-toc {
 <p><a class="reference external" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external" href="http://www.gnu.org/licenses/lgpl-3.0-standalone.html"><img alt="License: LGPL-3" src="https://img.shields.io/badge/licence-LGPL--3-blue.png" /></a> <a class="reference external" href="https://github.com/qrtl/mi7-custom/tree/15.0/partner_name_hide_parent"><img alt="qrtl/mi7-custom" src="https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github" /></a></p>
 <p>This module does the following:</p>
 <ul class="simple">
-<li>Adds the ability to hide parent’s name from the presentation of the partners’ names according to the settings of the partners.</li>
-<li>Use when you want to enter partner in account_invoice ,sale_order or others but don’t want to display parent’s name.</li>
+<li>Adds the ability to hide parent’s name from the presentation of the partners’ names according to the settings of the partners.
+The function provided by this module is needed when you have to set up a child partner (e.g. a branch office of a company) as an ‘individual’ due to how Odoo recognizes the commercial partner (i.e. if a child partner is a ‘company’, the partner becomes the commercial partner itself), and you do not want to show the parent’s name in QWeb report or website where the partner is referenced (if the child partner is an individual, Odoo by default shows the parent’s name preceding the child’s name).</li>
 </ul>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
