@@ -17,7 +17,7 @@ class ResPartner(models.Model):
         # Following two lines are inserted. (QRTL)
         if partner.hide_parent:
             return name
-        return super()._get_contact_name(partner,name)
+        return super()._get_contact_name(partner, name)
 
     # Just add "hide_parent" as a trigger.
     @api.depends(
