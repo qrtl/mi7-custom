@@ -370,12 +370,12 @@ ul.auto-toc {
 <p><a class="reference external" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external" href="http://www.gnu.org/licenses/lgpl-3.0-standalone.html"><img alt="License: LGPL-3" src="https://img.shields.io/badge/licence-LGPL--3-blue.png" /></a> <a class="reference external" href="https://github.com/qrtl/mi7-custom/tree/15.0/account_tax_round_down"><img alt="qrtl/mi7-custom" src="https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github" /></a></p>
 <p>This module does the following:</p>
 <ul class="simple">
-<li>Provides the base function of rounding down the tax amount in the invoice depending
-on the given conditions which should be provided another module by extending the
-_need_tax_round_down() method.</li>
+<li>Provides the function of rounding down the tax amount in the invoice.</li>
 </ul>
-<p>Installing the module does not do anything by itself.</p>
-<p>Background:</p>
+<p>_need_tax_round_down() method can be extended in another module in case there is a need
+of applying the round-down based on certain conditions.</p>
+<div class="section" id="background">
+<h1>Background:</h1>
 <p>In Japan there is sometimes a tacit industry-wide convention of rounding down the tax
 amount instead of applying the default rounding (“HALF-UP”).</p>
 <p><strong>Table of contents</strong></p>
@@ -390,7 +390,7 @@ amount instead of applying the default rounding (“HALF-UP”).</p>
 </ul>
 </div>
 <div class="section" id="bug-tracker">
-<h1><a class="toc-backref" href="#id1">Bug Tracker</a></h1>
+<h2><a class="toc-backref" href="#id1">Bug Tracker</a></h2>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/qrtl/mi7-custom/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
@@ -398,17 +398,18 @@ If you spotted it first, help us smashing it by providing a detailed and welcome
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
-<h1><a class="toc-backref" href="#id2">Credits</a></h1>
+<h2><a class="toc-backref" href="#id2">Credits</a></h2>
 <div class="section" id="authors">
-<h2><a class="toc-backref" href="#id3">Authors</a></h2>
+<h3><a class="toc-backref" href="#id3">Authors</a></h3>
 <ul class="simple">
 <li>Quartile Limited</li>
 </ul>
 </div>
 <div class="section" id="maintainers">
-<h2><a class="toc-backref" href="#id4">Maintainers</a></h2>
+<h3><a class="toc-backref" href="#id4">Maintainers</a></h3>
 <p>This module is part of the <a class="reference external" href="https://github.com/qrtl/mi7-custom/tree/15.0/account_tax_round_down">qrtl/mi7-custom</a> project on GitHub.</p>
 <p>You are welcome to contribute.</p>
+</div>
 </div>
 </div>
 </div>
