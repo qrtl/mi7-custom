@@ -8,7 +8,7 @@ class AccountMove(models.Model):
     _inherit = "account.move"
 
     def _need_tax_round_down(self):
-        return False
+        return True
 
     def _recompute_tax_lines(self, recompute_tax_base_amount=False):
         if self._need_tax_round_down():
