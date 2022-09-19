@@ -1,9 +1,15 @@
 This module does the following:
 
-- Provides the function of rounding down the tax amount in the invoice.
+* Provides the function of rounding down the tax amount in the invoice, covering:
 
-_need_tax_round_down() method can be extended in another module in case there is a need
-of applying the round-down based on certain conditions.
+  * the total presentation in invoice form/print
+  * the tax amount calculation of account move line
+
+Note that, due to the structure of compute_all() method, the round-down does not work
+perfectly in case the document involves multiple taxes with different price_include
+settings (which is not expected to happen under normal circumstances in the Japanese
+business environment).
+
 
 Background:
 -----------
