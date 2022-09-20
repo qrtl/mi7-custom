@@ -37,8 +37,10 @@ class AccountTax(models.Model):
                 rounding_method = "UP"
             # This matters when currency is NOT given
             self = self.with_context(rounding_method=rounding_method)
-            # This matters when currency is given
-            currency = currency.with_context(rounding_method=rounding_method)
+            if currency:
+                # If currency is given, the context is not passed down via self,
+                # and it should be assigned here.
+                currency = currency.with_context(rounding_method=rounding_method)
         return super().compute_all(
             price_unit,
             currency=currency,
