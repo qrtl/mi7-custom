@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="sale_order_portal_template_hide_message_thread"
+        inherit_id="sale.sale_order_portal_template"
+    >
+        <!-- Hide 'Send message' -->
+        <xpath expr="//a[@href='#discussion'][1]" position="attributes">
+            <attribute name="style">display: none;</attribute>
+        </xpath>
+        <!-- Hide 'Contact us to get a new quotation' -->
+        <xpath
+            expr="//div[hasclass('alert-danger')]/a[@href='#discussion']"
+            position="attributes"
+        >
+            <attribute name="style">display: none;</attribute>
+        </xpath>
+        <xpath
+            expr="//div[hasclass('alert-warning')]/a[@href='#discussion']"
+            position="attributes"
+        >
+            <attribute name="style">display: none;</attribute>
+        </xpath>
+        <!-- Hide 'Feedback' -->
+        <xpath
+            expr="//div[hasclass('col-sm-auto')]/a[@href='#discussion']"
+            position="attributes"
+        >
+            <attribute name="style">display: none;</attribute>
+        </xpath>
+        <!-- Hide 'History' -->
+        <xpath expr="//div[@id='sale_order_communication']" position="attributes">
+            <attribute name="style">display: none;</attribute>
+        </xpath>
+    </template>
+</odoo>
