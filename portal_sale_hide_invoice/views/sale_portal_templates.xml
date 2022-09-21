@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="sale_order_portal_content_hide_invoice"
+        inherit_id="sale.sale_order_portal_content"
+    >
+        <xpath expr="//div[@t-if='invoices']" position="attributes">
+            <attribute name="style">display: none;</attribute>
+        </xpath>
+    </template>
+</odoo>
