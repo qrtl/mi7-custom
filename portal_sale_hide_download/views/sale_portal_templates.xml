@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="sale_order_portal_template"
+        name="Sales Order Portal Template"
+        inherit_id="sale.sale_order_portal_template"
+    >
+        <xpath expr="//div[hasclass('o_download_pdf')]" position="attributes">
+            <attribute name="style">display: none;</attribute>
+        </xpath>
+    </template>
+</odoo>
