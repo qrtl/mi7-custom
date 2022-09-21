@@ -6,7 +6,7 @@
         inherit_id="sale.sale_order_portal_template"
     >
         <xpath expr="//div[hasclass('o_download_pdf')]" position="attributes">
-            <attribute name="t-att-style">'display: none;'</attribute>
+            <attribute name="style">display: none;</attribute>
         </xpath>
     </template>
 </odoo>
