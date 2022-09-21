@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+    <!-- priority="100" to avoid the pylint mandatory check on "dangerous replace" -->
     <template
         id="sale_order_portal_template_hide_message_thread"
         inherit_id="sale.sale_order_portal_template"
+        priority="100"
     >
         <!-- Hide 'Send message' -->
         <xpath expr="//a[@href='#discussion'][1]" position="attributes">
@@ -29,6 +31,8 @@
             <attribute name="style">display: none;</attribute>
         </xpath>
         <!-- Hide 'History' -->
+        <!-- This 'replace' is needed to prevent sale_portal_sidebar.js from picking up this element to add in the index. -->
+        <xpath expr="//div[@id='sale_order_communication']/h2" position="replace" />
         <xpath expr="//div[@id='sale_order_communication']" position="attributes">
             <attribute name="style">display: none;</attribute>
         </xpath>
