@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="product_wishlist_disable_notification"
+        inherit_id="website_sale_stock_wishlist.product_wishlist"
+    >
+        <xpath expr="//button[hasclass('o_notify_stock')]" position="attributes">
+            <attribute name="style">display: none;</attribute>
+        </xpath>
+    </template>
+</odoo>
