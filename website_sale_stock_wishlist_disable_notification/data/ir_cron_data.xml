@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record
+        id="website_sale_stock_wishlist.ir_cron_send_availability_email"
+        model="ir.cron"
+    >
+        <field name="active" eval="False" />
+    </record>
+</odoo>
