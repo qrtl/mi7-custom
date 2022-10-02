@@ -9,7 +9,7 @@ class AccountMove(models.Model):
 
     send_invoice = fields.Boolean(related="workflow_process_id.send_invoice")
     invoice_sent = fields.Boolean(
-        readonly=True,
+        # readonly=True,
         states={"draft": [("readonly", False)]},
         copy=False,
         help="When this field is selected, no email will be automatically sent to the "

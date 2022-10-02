@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2022 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
@@ -17,10 +16,14 @@ class AccountInvoice(models.Model):
     _inherit = "account.invoice"
 
     time_delivered = fields.Datetime(
-        compute="_compute_date_delivered", string="Delivered Time", store=True,
+        compute="_compute_date_delivered",
+        string="Delivered Time",
+        store=True,
     )
     date_delivered = fields.Date(
-        compute="_compute_date_delivered", string="Delivered Date", store=True,
+        compute="_compute_date_delivered",
+        string="Delivered Date",
+        store=True,
     )
 
     @api.multi
