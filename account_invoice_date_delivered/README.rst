@@ -13,9 +13,9 @@ Account Invoice Date Delivered
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
-    :target: https://github.com/qrtl/mi7-custom/tree/10.0/account_invoice_date_delivered
-    :alt: qrtl/mi7-custom
+.. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Faccount_invoice_date_delivered-lightgray.png?logo=github
+    :target: https://github.com/qrtl/account_invoice_date_delivered/tree/15.0/account_invoice_date_delivered
+    :alt: qrtl/account_invoice_date_delivered
 
 |badge1| |badge2| |badge3| 
 
@@ -37,10 +37,10 @@ The module depends on the OCA module stock_picking_invoice_link.
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/qrtl/mi7-custom/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/qrtl/account_invoice_date_delivered/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/qrtl/mi7-custom/issues/new?body=module:%20account_invoice_date_delivered%0Aversion:%2010.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/qrtl/account_invoice_date_delivered/issues/new?body=module:%20account_invoice_date_delivered%0Aversion:%2015.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -55,6 +55,6 @@ Authors
 Maintainers
 ~~~~~~~~~~~
 
-This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/10.0/account_invoice_date_delivered>`_ project on GitHub.
+This module is part of the `qrtl/account_invoice_date_delivered <https://github.com/qrtl/account_invoice_date_delivered/tree/15.0/account_invoice_date_delivered>`_ project on GitHub.
 
 You are welcome to contribute.
