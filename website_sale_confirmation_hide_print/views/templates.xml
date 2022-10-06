@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="confirmation_hide_print"
+        priority="100"
+        inherit_id="website_sale.confirmation"
+    >
+        <!-- Adding <attribute name="style">display: none;</attribute> does not work here. -->
+        <xpath
+            expr="//div[hasclass('thanks_msg')]//a[@role='button']"
+            position="replace"
+        />
+    </template>
+</odoo>
