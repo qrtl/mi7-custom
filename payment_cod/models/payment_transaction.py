@@ -9,8 +9,12 @@ class PaymentTransaction(models.Model):
     _inherit = "payment.transaction"
 
     def _process_feedback_data(self, data):
-        super()._process_feedback_data(data)
         if not self.acquirer_id.is_cod:
+            # We need to apply this condition before super() call unlike other
+            # payment_xxx modules, since we use the 'transfer' provider, whose
+            # _process_feedback_data() would call _set_pending() which would send out
+            # a confirmation email, which we do not want here.
+            super()._process_feedback_data(data)
             return
         if self.fees and self.sale_order_ids:
             # We assume that there is only one order for a payment transaction.
