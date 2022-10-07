@@ -15,7 +15,7 @@
                 expr="//field[@name='order_line']/tree/field[@name='route_id']"
                 position="after"
             >
-                <field name="delivery_date" />
+                <field name="delivery_date" optional="hide" />
             </xpath>
         </field>
     </record>
