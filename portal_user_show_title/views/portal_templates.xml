@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="user_dropdown_show_title" inherit_id="portal.user_dropdown">
+        <xpath expr="//span[@t-if='_user_name']" position="after">
+            <span t-if="_user_name and user_id.title" t-esc="user_id.title.name" />
+        </xpath>
+    </template>
+</odoo>
