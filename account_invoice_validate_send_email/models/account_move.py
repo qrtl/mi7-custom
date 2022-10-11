@@ -26,12 +26,14 @@ class AccountMove(models.Model):
     def _get_mail_template(self):
         self.ensure_one()
         template = self.company_id.invoice_mail_template_id
+        if not template:
+            return super()._get_mail_template()
         model_data_rec = self.env["ir.model.data"].search(
             [("model", "=", "mail.template"), ("res_id", "=", template.id)]
         )
-        if model_data_rec:
-            return model_data_rec.complete_name
-        return self._get_mail_template()
+        if not model_data_rec:
+            return super()._get_mail_template()
+        return model_data_rec.complete_name
 
     def action_send_invoice(self):
         self.ensure_one()
