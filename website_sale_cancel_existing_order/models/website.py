@@ -21,7 +21,7 @@ class Website(models.Model):
             force_pricelist=force_pricelist,
         )
         public_user = self.env.ref("base.public_user", raise_if_not_found=False)
-        public_partner = public_user.partner_id
+        public_partner = public_user.sudo().partner_id
         if order and order.partner_id != public_partner:
             existing_orders = (
                 self.env["sale.order"]
