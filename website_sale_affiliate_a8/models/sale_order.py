@@ -1,18 +1,14 @@
 # Copyright 2021 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import fields, models
+from odoo import models
 
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    affiliate_items = fields.Text(
-        help="Order line list to be passed to A8 with JS-tag.",
-        compute="_compute_affiliate_items",
-    )
-
-    def _compute_affiliate_items(self):
+    def _get_affiliate_a8_items(self):
+        self.ensure_one()
         affiliate_items = []
         for line in self.order_line:
             # TODO: Not comfortable with how default_code is used to judge the delivery.
@@ -29,4 +25,4 @@ class SaleOrder(models.Model):
                 "quantity": line.product_uom_qty,
             }
             affiliate_items.append(item_dict)
-        self.affiliate_items = affiliate_items
+        return affiliate_items
