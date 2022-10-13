@@ -8,7 +8,6 @@
             />
         </xpath>
     </template>
-    <!-- TODO: this template can be cleaner -->
     <template id="affiliate_script" inherit_id="website_sale.confirmation">
         <xpath
             expr="//t[@t-call='website_sale.payment_confirmation_status']"
@@ -21,16 +20,27 @@
                 type="text/javascript"
                 t-att-src="env['ir.config_parameter'].sudo().get_param('affiliate.script.src')"
             />
+            <!-- Had trouble generating the script in Python and casting it to html with
+            quotations appearing as &#39; which would fail a8sales
+            -->
             <script>
                 <t
                     t-esc="env['ir.config_parameter'].sudo().get_param('affiliate.service.name')"
                 />({
-                "pid": "<t
+                  "pid": "<t
                     t-esc="env['ir.config_parameter'].sudo().get_param('affiliate.pid')"
                 />",
-                "order_number": "<t t-esc="order.name" />",
-                "currency": "<t t-esc="order.currency_id.name" />",
-                "items": <t t-esc="order.affiliate_items" />,
+                  "order_number": "<t t-esc="order.name" />",
+                  "currency": "<t t-esc="order.currency_id.name" />",
+                  "items": [
+                    <t t-foreach="order._get_affiliate_a8_items()" t-as="line">
+                      {
+                        "code": "<t t-esc="line['code']" />",
+                        "price": <t t-esc="line['price']" />,
+                        "quantity": <t t-esc="line['quantity']" />
+                      },
+                    </t>
+                  ],
                 });
             </script>
         </xpath>
