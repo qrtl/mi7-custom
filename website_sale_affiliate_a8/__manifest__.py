@@ -9,5 +9,9 @@
     "license": "AGPL-3",
     "installable": True,
     "depends": ["auth_signup_verify_email", "website_sale_delivery"],
-    "data": ["data/data.xml", "views/website_sale_templates.xml"],
+    "data": [
+        "data/data.xml",
+        "views/res_partner_views.xml",
+        "views/website_sale_templates.xml",
+    ],
 }

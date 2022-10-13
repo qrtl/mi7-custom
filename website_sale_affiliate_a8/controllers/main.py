@@ -1,9 +1,9 @@
 # Copyright 2021 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from datetime import timedelta
+from datetime import datetime, timedelta
 
-from odoo import fields
+from odoo import api
 from odoo.http import request, route
 
 from odoo.addons.auth_signup_verify_email.controllers.main import SignupVerifyEmail
@@ -11,6 +11,12 @@ from odoo.addons.website_sale.controllers.main import WebsiteSale
 
 
 class SignupVerifyEmail(SignupVerifyEmail):
+    @api.model
+    def _write_a8_param_to_user(self, user, cookie_a8):
+        # A8 param should be effective for 90 days.
+        expiry_date = datetime.today() + timedelta(days=90)
+        user.write({"a8_param": cookie_a8, "a8_expiry_date": expiry_date})
+
     @route()
     def web_login(self, *args, **kw):
         res = super().web_login(*args, **kw)
@@ -25,16 +31,7 @@ class SignupVerifyEmail(SignupVerifyEmail):
             )
             if uid is not False:
                 user = request.env["res.users"].sudo().search([("id", "=", uid)])
-                # A8 param should be effective for 90 days.
-                user.write(
-                    {
-                        "a8_param": cookie_a8,
-                        "a8_expiry_date": fields.Datetime.from_string(
-                            fields.Date.context_today(user)
-                        )
-                        + timedelta(days=90),
-                    }
-                )
+                self._write_a8_param_to_user(user, cookie_a8)
         return res
 
     def passwordless_signup(self):
@@ -45,16 +42,7 @@ class SignupVerifyEmail(SignupVerifyEmail):
         login = res.qcontext.get("login")
         user = request.env["res.users"].sudo().search([("login", "=", login)])
         if user:
-            # A8 param should be effective for 90 days.
-            user.write(
-                {
-                    "a8_param": cookie_a8,
-                    "a8_expiry_date": fields.Datetime.from_string(
-                        fields.Date.context_today(user)
-                    )
-                    + timedelta(days=90),
-                }
-            )
+            self._write_a8_param_to_user(user, cookie_a8)
         return res
 
 
@@ -65,22 +53,22 @@ class WebsiteSale(WebsiteSale):
         A8.
         """
         res = super().checkout(**post)
-        user = request.env.user
         cookie_a8 = request.httprequest.cookies.get(request.website.a8_cookie_key)
-        # When the a8_param exist and cookie doesn't exist, set cookie.
         if cookie_a8:
             return res
+        # If a8_param exists and cookie does not, then create a cookie.
         user = request.env.user
         if (
             user.a8_param
             and user.a8_expiry_date
-            and user.a8_expiry_date >= fields.Date.context_today(user)
+            and user.a8_expiry_date >= datetime.today()
         ):
             res.set_cookie(
                 request.website.a8_cookie_key,
                 value=user.a8_param,
-                max_age=user.a8_expiry_date,
-                expires=user.a8_expiry_date,
+                expires=datetime.strftime(
+                    user.a8_expiry_date, "%a, %d-%b-%Y %H:%M:%S GMT"
+                ),
                 path="/",
             )
         return res
