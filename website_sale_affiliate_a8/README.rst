@@ -19,15 +19,28 @@ Website Sale Affiliate A8
 
 |badge1| |badge2| |badge3| 
 
-This module adds a script at the root of the website to pass the relevant sales data to A8, an affiliate service provider.
-- Adds script page for set affiliate provider's javascript.
-- Affiliate program's info defines in system parameter.
-- Save the URL parameter (a8_param) in a cookie.
-- Save the a8_param in the partner.
-- Save the user's a8_param in a cookie at the time of checkout.
-- Clear the user's a8_param at the time of payment confirmation.
+This module adds a script in the /shop/confirmation page to pass the relevant sales data
+to A8, an affiliate service provider.
+
+- Capture a8_param from the cookie and saves it in the partner at user login.
+- Generates a cookie with A8 param based on the partner's a8_param at the time of
+  checkout.
+- Extends the template of /shop/confirmation page to set A8's JavaScript and sales
+  contents.
+- Clears a8_param of the partner with payment confirmation.
 
 Currencies supported by A8: JPY, USD, and EUR
+
+Caveats
+-------
+
+Currently the A8 affiliate sales is NOT recognized for if customer takes following
+operation sequence:
+
+#. Customer is already logged in to the eCommerce shop.
+#. Customer clicks an A8 link to arrive at the shop (no login step since already logged
+   in). When this happens, the user is not updated with the A8 param.
+#. Customer logs in to the shop from another device/browser to proceed with an order.
 
 **Table of contents**
 
@@ -37,13 +50,14 @@ Currencies supported by A8: JPY, USD, and EUR
 Configuration
 =============
 
-For the initial setup, go to *Settings > Technical > System Parameters* and update 3 parameters like below:
+For the initial setup, go to *Settings > Technical > System Parameters* and update
+following three parameters:
 
 - affiliate.service.name: Affiliate service provider's name
 - affiliate.pid: Program ID issued by affiliate vendor
 - affiliate.script.src: URL to the conversion acquisition script
 
-See https://document.a8.net/ec/trackingGuide-ja.html for hte tag specification.
+See https://document.a8.net/ec/trackingGuide-ja.html for the tag specification.
 
 Bug Tracker
 ===========
