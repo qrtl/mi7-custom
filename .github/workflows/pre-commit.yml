@@ -7,7 +7,6 @@ on:
   push:
     branches:
       - "15.0"
-      - "15.0-ocabot-*"
 
 jobs:
   pre-commit:
