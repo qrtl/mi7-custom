@@ -12,7 +12,6 @@
         "report_csv",
         "sale_customer_order_info",  # customer_order, customer_contact
         "sale_user_type",  # For user_type
-        "stock_product_availability",  # person (sale.order)
         "website_sale_delivery_date",  # For delivery_date, delivery_time_id
     ],
     "data": [
