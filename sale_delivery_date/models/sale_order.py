@@ -1,6 +1,6 @@
 # Copyright 2022 Quartile Limited
 
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 from odoo import api, fields, models
 
