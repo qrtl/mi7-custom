@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="warehouse_shipping_days" model="ir.config_parameter">
+        <field name="key">warehouse.shipping.delay</field>
+        <field name="value">5</field>
+    </record>
+</odoo>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_shipping_timerange_ec_tree" model="ir.ui.view">
+        <field name="name">view.shipping_timerange_ec.tree</field>
+        <field name="model">shipping.timerange.ec</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="start_time" widget="float_time" />
+                <field name="end_time" widget="float_time" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_shipping_timerange_ec_form" model="ir.ui.view">
+        <field name="name">view.shipping_timerange_ec.form</field>
+        <field name="model">shipping.timerange.ec</field>
+        <field name="arch" type="xml">
+            <form string="Shipping Time Range">
+                <group>
+                    <field name="name" />
+                    <field name="start_time" widget="float_time" />
+                    <field name="end_time" widget="float_time" />
+                </group>
+            </form>
+        </field>
+    </record>
+    <record id="action_view_shipping_timerange_ec" model="ir.actions.act_window">
+        <field name="name">Shipping Time Ranges</field>
+        <field name="res_model">shipping.timerange.ec</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        name="Shipping Time Ranges"
+        id="sales_shipping_timerange_ec_config"
+        parent="sale.menu_sales_config"
+        sequence="10"
+        action="action_view_shipping_timerange_ec"
+    />
+</odoo>
