@@ -12,7 +12,7 @@
         "report_csv",
         "sale_customer_order_info",  # customer_order, customer_contact
         "sale_user_type",  # For user_type
-        "website_sale_delivery_date",  # For delivery_date, delivery_time_id
+        "sale_delivery_date",  # For delivery_date, delivery_time_id
     ],
     "data": [
         "data/yamato_csv_report_data.xml",

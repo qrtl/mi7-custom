@@ -5,7 +5,7 @@
         <field name="model">shipping.timerange.ec</field>
         <field
             name="inherit_id"
-            ref="website_sale_delivery_date.view_shipping_timerange_ec_form"
+            ref="sale_delivery_date.view_shipping_timerange_ec_form"
         />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="after">
