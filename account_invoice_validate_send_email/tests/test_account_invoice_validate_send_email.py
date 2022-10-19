@@ -132,6 +132,7 @@ class TestAccountInvoiceValidateSendEmail(TransactionCase):
 
     def test_06_validate_invoice_not_send_invoice_picking(self):
         self.workflow.send_invoice = True
+        # No automatic processing of invoice validation
         self.workflow.validate_invoice = False
         self.order.action_confirm()
         picking = self.order.picking_ids
