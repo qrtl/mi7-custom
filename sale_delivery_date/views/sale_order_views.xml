@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_order']" position="after">
+                <label for="delivery_date" string="Preferred Delivery Date / Time" />
+                <div
+                    attrs="{'invisible': [('delivery_date', '=', False), ('delivery_time_id', '=', False)]}"
+                >
+                    <div class="o_row no-gutters d-flex">
+                        <field name="delivery_date" class="oe_inline" />
+                        <field name="delivery_time_id" class="oe_inline" />
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
