@@ -1,3 +1,4 @@
 git+https://github.com/qrtl/mi7-oca@15st1#subdirectory=setup/auth_signup_verify_email
 git+https://github.com/qrtl/mi7-oca@15st1#subdirectory=setup/report_csv
 git+https://github.com/qrtl/mi7-oca@15st1#subdirectory=setup/stock_picking_invoice_link
+git+https://github.com/qrtl/mi7-oca@15st1#subdirectory=setup/sale_automatic_workflow

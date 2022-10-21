@@ -1,10 +1,10 @@
 # Copyright 2021 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo.tests.common import SavepointCase
+from odoo.tests.common import TransactionCase
 
 
-class TestAccountInvoiceValidateSendEmail(SavepointCase):
+class TestAccountInvoiceValidateSendEmail(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super(TestAccountInvoiceValidateSendEmail, cls).setUpClass()
@@ -116,7 +116,7 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
         self.assertEqual(invoice.picking_ids, picking)
         self.assertEqual(invoice.invoice_sent, False)
 
-    def test_05_validate_invoice_no_picking_link(self):
+    def test_05_validate_invoices_send_invoice_picking(self):
         # Workflow send_invoice is true, picking not_send_invoice is false
         self.workflow.send_invoice = True
         # No automatic processing of invoice validation
@@ -126,13 +126,25 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
         picking.validate_picking()
         self.env["automatic.workflow.job"].run()
         invoice = self.order.invoice_ids
-        # Remove the direct link to the picking
-        invoice.picking_ids = False
-        self.assertEqual(invoice.picking_ids, self.env["stock.picking"].browse())
-        invoice.action_invoice_open()
+        self.assertEqual(invoice.picking_ids.ids, picking.ids)
+        invoice.action_post()
         self.assertEqual(invoice.invoice_sent, True)
 
-    def test_06_validate_invoice_no_picking_link(self):
+    def test_06_validate_invoice_not_send_invoice_picking(self):
+        self.workflow.send_invoice = True
+        # No automatic processing of invoice validation
+        self.workflow.validate_invoice = False
+        self.order.action_confirm()
+        picking = self.order.picking_ids
+        picking.not_send_invoice = True
+        picking.validate_picking()
+        self.env["automatic.workflow.job"].run()
+        invoice = self.order.invoice_ids
+        self.assertEqual(invoice.picking_ids.ids, picking.ids)
+        invoice.action_post()
+        self.assertEqual(invoice.invoice_sent, False)
+
+    def test_07_validate_invoice_no_picking_link(self):
         # Workflow send_invoice is true, picking not_send_invoice is true
         self.workflow.send_invoice = True
         # No automatic processing of invoice validation
@@ -146,5 +158,5 @@ class TestAccountInvoiceValidateSendEmail(SavepointCase):
         # Remove the direct link to the picking
         invoice.picking_ids = False
         self.assertEqual(invoice.picking_ids, self.env["stock.picking"].browse())
-        invoice.action_invoice_open()
+        invoice.action_post()
         self.assertEqual(invoice.invoice_sent, False)
