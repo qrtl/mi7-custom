@@ -7,9 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='date_order']" position="after">
                 <label for="delivery_date" string="Preferred Delivery Date / Time" />
-                <div
-                    attrs="{'invisible': [('delivery_date', '=', False), ('delivery_time_id', '=', False)]}"
-                >
+                <div>
                     <div class="o_row no-gutters d-flex">
                         <field name="delivery_date" class="oe_inline" />
                         <field name="delivery_time_id" class="oe_inline" />
