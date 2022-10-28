@@ -1,5 +1,5 @@
 # Copyright 2022 Quartile Limited
-# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import models
 
@@ -9,7 +9,7 @@ class PurchaseOrder(models.Model):
 
     # For purchase order amount total calculation. This affects the order total
     # presentation of orders, for example.
-    # _compute_amount() of purchase.order.line may also require the same arrangemtn in case
+    # _compute_amount() of purchase.order.line may also require the same arrangement in case
     # tax rounding is configured to be done per line, which does not apply to the use in
     # Japan.
     def _amount_all(self):

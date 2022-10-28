@@ -1,15 +1,11 @@
 # Copyright 2022 Quartile Limited
-# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import fields
 from odoo.tests.common import TransactionCase
 
 
 class TestPurchaseTaxRoundDown(TransactionCase):
-    @classmethod
-    def create_company(cls, values):
-        return cls.env["res.company"].create(values)
-
     @classmethod
     def setUpClass(cls):
         super(TestPurchaseTaxRoundDown, cls).setUpClass()
@@ -24,7 +20,7 @@ class TestPurchaseTaxRoundDown(TransactionCase):
                 "amount": 10,
             }
         )
-        cls.company_jpy = cls.create_company(
+        cls.company_jpy = cls.env["res.company"].create(
             {
                 "name": "Japan company",
                 "currency_id": cls.env.ref("base.JPY").id,
