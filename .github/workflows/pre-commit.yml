@@ -7,8 +7,9 @@ on:
       - "15st*"
   push:
     branches:
-      - "15.0"
-      - "15st"
+      - "15.0*"
+      - "15st1"
+      - "15.0-ocabot-*"
 
 jobs:
   pre-commit:
