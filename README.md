@@ -7,7 +7,7 @@
 
 <!-- /!\ do not modify above this line -->
 
-# Custom modules
+# MI7 Custom
 
 None
 
