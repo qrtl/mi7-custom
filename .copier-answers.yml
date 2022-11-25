@@ -1,5 +1,5 @@
 # Do NOT update manually; changes here will be overwritten by Copier
-_commit: v1.11.0
+_commit: v1.11.1
 _src_path: https://github.com/OCA/oca-addons-repo-template.git
 ci: GitHub
 dependency_installation_mode: OCA
@@ -15,7 +15,7 @@ org_name: Quartile Limited
 org_slug: qrtl
 rebel_module_groups: []
 repo_description: null
-repo_name: Custom modules
+repo_name: MI7 Custom
 repo_slug: mi7-custom
 repo_website: https://www.quartile.co
 travis_apt_packages: []
