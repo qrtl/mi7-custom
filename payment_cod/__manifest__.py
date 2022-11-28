@@ -4,7 +4,7 @@
 {
     "name": "Payment Cash on Delivery",
     "category": "Website",
-    "version": "15.0.1.0.0",
+    "version": "15.0.1.0.1",
     "author": "MI Seven Japan, Quartile Limited",
     "website": "https://www.quartile.co",
     "license": "LGPL-3",
