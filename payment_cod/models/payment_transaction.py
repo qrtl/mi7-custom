@@ -26,10 +26,11 @@ class PaymentTransaction(models.Model):
     def _finalize_post_processing(self):
         for tx in self:
             if not tx.acquirer_id.is_cod:
-                super(PaymentTransaction, tx)._finalize_post_processing
+                super(PaymentTransaction, tx)._finalize_post_processing()
                 continue
             # Below steps replicate the relevant parts from _reconcile_after_done() in
             # sale module.
+            # 
             sales_orders = tx.sale_order_ids.filtered(
                 lambda so: so.state in ("draft", "sent")
             )
