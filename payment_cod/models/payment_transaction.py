@@ -25,15 +25,8 @@ class PaymentTransaction(models.Model):
 
     def _finalize_post_processing(self):
         for tx in self:
-            if not tx.acquirer_id.is_cod:
-                super(PaymentTransaction, tx)._finalize_post_processing
+            if tx.acquirer_id.is_cod:
+                # We do not process payment and reconciliation by cron for COD cases.
                 continue
-            # Below steps replicate the relevant parts from _reconcile_after_done() in
-            # sale module.
-            sales_orders = tx.sale_order_ids.filtered(
-                lambda so: so.state in ("draft", "sent")
-            )
-            tx._check_amount_and_confirm_order()
-            sales_orders._send_order_confirmation_mail()
-            tx._invoice_sale_orders()
+            super(PaymentTransaction, tx)._finalize_post_processing()
         return
