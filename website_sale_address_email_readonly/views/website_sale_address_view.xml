@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="address" inherit_id="website_sale.address">
+        <xpath expr="//input[@name='email']" position="attributes">
+            <attribute name="t-att-readonly">
+                'readonly' if 'email' in checkout and checkout['email'] else None
+            </attribute>
+        </xpath>
+    </template>
+</odoo>
