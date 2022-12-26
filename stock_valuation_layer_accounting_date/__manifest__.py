@@ -1,7 +1,7 @@
 # Copyright 2022 Quartile Limited
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
-    "name": "Stock Valuation Layer Account Date",
+    "name": "Stock Valuation Layer Accounting Date",
     "category": "Stock",
     "version": "15.0.1.0.0",
     "author": "Quartile Limited",
@@ -9,7 +9,9 @@
     "license": "AGPL-3",
     "depends": ["stock_account"],
     "data": [
+        "views/stock_valuation_layer_views.xml",
         "wizard/stock_quantity_history.xml",
     ],
+    "pre_init_hook": "pre_init_hook",
     "installable": True,
 }
