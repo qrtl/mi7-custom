@@ -10,13 +10,11 @@
                     string="Product Description for Website Display"
                     name="website_display_description"
                 >
-                    <field name="can_write" invisible="1" />
                     <field
                         name="website_description"
                         widget="html"
                         class="oe-bordered-editor"
                         options="{'style-inline': true, 'codeview': true }"
-                        attrs="{'readonly': [('can_write', '=', False), ('id', '!=', False)]}"
                     />
                 </page>
             </xpath>
