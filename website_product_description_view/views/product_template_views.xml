@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="product_template_form_view" model="ir.ui.view">
+        <field name="name">product.template.common.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page
+                    string="Product Description for Website Display"
+                    name="website_display_description"
+                >
+                    <field name="can_write" invisible="1" />
+                    <field
+                        name="website_description"
+                        widget="html"
+                        class="oe-bordered-editor"
+                        options="{'style-inline': true, 'codeview': true }"
+                        attrs="{'readonly': [('can_write', '=', False), ('id', '!=', False)]}"
+                    />
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
