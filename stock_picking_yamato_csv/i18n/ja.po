@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-29 14:00+0000\n"
-"PO-Revision-Date: 2022-08-29 14:00+0000\n"
+"POT-Creation-Date: 2023-02-02 05:05+0000\n"
+"PO-Revision-Date: 2023-02-02 05:05+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -53,6 +53,12 @@ msgstr "配送指定時間帯区分"
 #: model_terms:ir.ui.view,arch_db:stock_picking_yamato_csv.view_picking_internal_search
 msgid "Exported"
 msgstr "出力済"
+
+#. module: stock_picking_yamato_csv
+#: code:addons/stock_picking_yamato_csv/report/report_stock_picking_yamato_csv.py:0
+#, python-format
+msgid "Failed to encode the value of the following field: %s"
+msgstr "次の項目の値のエンコーディングに失敗しました: %s"
 
 #. module: stock_picking_yamato_csv
 #: code:addons/stock_picking_yamato_csv/report/report_stock_picking_yamato_csv.py:0
