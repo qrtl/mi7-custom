@@ -1,6 +1,7 @@
 # Copyright 2021-2022 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+import codecs
 import csv
 
 from odoo import _, api, fields, models
@@ -241,6 +242,15 @@ class StockPickingYamatoCSV(models.AbstractModel):
                 )
         return amt_taxinc, amt_tax
 
+    @api.model
+    def is_encodable(self, key, value):
+        try:
+            codecs.encode(value, "cp932")
+        except UnicodeEncodeError as e:
+            raise UserError(
+                _("Failed to encode the value of the following field: %s") % (key)
+            ) from e
+
     def generate_csv_report(self, writer, data, pickings):
         self._check_pickings(pickings)
         today_date = self._get_date(fields.Datetime.now())
@@ -311,6 +321,8 @@ class StockPickingYamatoCSV(models.AbstractModel):
                     field_dict[128]: int(move.product_uom_qty),
                 }
                 writer.writerow(vals)
+                for k, v in vals.items():
+                    self.is_encodable(k, v)
                 item_num += 1
             picking.is_exported = True
 
