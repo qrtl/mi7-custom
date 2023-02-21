@@ -10,12 +10,11 @@
                     string="Product Description for Website Display"
                     name="website_display_description"
                 >
-                    <field
-                        name="website_description"
-                        widget="html"
-                        class="oe-bordered-editor"
-                        options="{'style-inline': true, 'codeview': true }"
-                    />
+                    <!-- style-inline option causes problems with
+                    <div> class being replaced by <table> classes .
+                    Therefore, we remove those options and give the user
+                    only the ability to edit code of HTML in this tab. -->
+                    <field name="website_description" widget="text" />
                 </page>
             </xpath>
         </field>
