@@ -117,13 +117,6 @@ class DataImport(models.TransientModel):
                         errored_type=errored_type,
                     )
                     error_list.append(message)
-                if field_type == "float" and not errored_type:
-                    if float(value) <= 0:
-                        message = _(
-                            "Column %(label)s must be greated than 0.",
-                            label=label,
-                        )
-                        error_list.append(message)
         return row_dict, error_list
 
     def _action_open_import_log(self, import_log):
