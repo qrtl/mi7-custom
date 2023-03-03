@@ -9,7 +9,7 @@
     "license": "AGPL-3",
     "depends": ["website_sale"],
     "data": [
-        "data/product_visibility_cron.xml",
+        "data/product_publish_cron.xml",
         "views/product_template_views.xml",
     ],
     "installable": True,
