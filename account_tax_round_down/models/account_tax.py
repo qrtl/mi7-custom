@@ -38,6 +38,8 @@ class AccountTax(models.Model):
             # This matters when currency is NOT given
             self = self.with_context(rounding_method=rounding_method)
             if currency:
+                # To avoid unwanted rounding down on price_unit.
+                price_unit = currency.round(price_unit)
                 # If currency is given, the context is not passed down via self,
                 # and it should be assigned here.
                 currency = currency.with_context(rounding_method=rounding_method)
