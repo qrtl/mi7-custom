@@ -372,8 +372,12 @@ ul.auto-toc {
 in description (custom input in website form).</p>
 <div class="section" id="background">
 <h1>Background</h1>
-<p>In auto reply email of records, other information is not included in the message and can’t search
-other information with base_search_mail_content module.</p>
+<p>When a visitor submits a online form, an auto-reply email is sent out to the visitor,
+however the message body does not include the custom content from the form due to the
+process sequence in _insert_record() method of WebsiteForm.</p>
+<p>This causes inconvenience when you expect to be able to search the created Odoo record by
+custom content using base_search_mail_content.  This module intends to get rid of this
+inconvenience by adding to the record a message with custom content.</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
