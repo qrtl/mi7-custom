@@ -25,22 +25,13 @@ def _new_amount_all(self):
             or order.partner_id.property_purchase_currency_id
             or self.env.company.currency_id
         )
+        # Without this, rounding_method="DOWN" may be unexpectedly applied to amount_untaxed.
         currency = currency.with_context(rounding_method="HALF-UP")
-        order.update(
-            {
-                "amount_untaxed": currency.round(amount_untaxed),
-                "amount_tax": currency.round(amount_tax),
-                "amount_total": amount_untaxed + amount_tax,
-            }
-        )
+        order.amount_untaxed = currency.round(amount_untaxed)
         if self.env.company.need_tax_round_down:
             currency = currency.with_context(rounding_method="DOWN")
-            order.update(
-                {
-                    "amount_tax": currency.round(amount_tax),
-                    "amount_total": amount_untaxed + currency.round(amount_tax),
-                }
-            )
+        order.amount_tax = currency.round(amount_tax)
+        order.amount_total = order.amount_untaxed + order.amount_tax
 
 
 def post_load_hook():
