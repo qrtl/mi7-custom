@@ -11,5 +11,6 @@
         "purchase",
         "account_tax_round_down",
     ],
+    "post_load": "post_load_hook",
     "installable": True,
 }
