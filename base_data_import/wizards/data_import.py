@@ -113,7 +113,7 @@ class DataImport(models.TransientModel):
                 if errored_type:
                     message = _(
                         "Unexpected value for %(label)s (%(errored_type)s)",
-                        lable=label,
+                        label=label,
                         errored_type=errored_type,
                     )
                     error_list.append(message)
