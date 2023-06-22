@@ -10,18 +10,19 @@ class TestSaleTaxRoundDown(TransactionCase):
         super(TestSaleTaxRoundDown, cls).setUpClass()
         cls.product = cls.env["product.product"].create({"name": "Test Product"})
         cls.partner = cls.env.ref("base.res_partner_1")
-        cls.tax = cls.env["account.tax"].create(
-            {
-                "name": "Tax 10",
-                "type_tax_use": "sale",
-                "amount": 10,
-            }
-        )
         cls.company_jpy = cls.env["res.company"].create(
             {
                 "name": "Japan company",
                 "currency_id": cls.env.ref("base.JPY").id,
                 "country_id": cls.env.ref("base.jp").id,
+            }
+        )
+        cls.tax = cls.env["account.tax"].create(
+            {
+                "name": "Tax 10",
+                "type_tax_use": "sale",
+                "amount": 10,
+                "company_id": cls.company_jpy.id,
             }
         )
 
