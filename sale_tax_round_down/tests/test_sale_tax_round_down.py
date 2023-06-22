@@ -27,6 +27,7 @@ class TestSaleTaxRoundDown(TransactionCase):
         )
 
     def test_sale_tax_round_down_with_true(self):
+        self.env.user.company_id = self.company_jpy.id
         self.assertEqual(self.company_jpy.need_tax_round_down, True)
         settings = self.env["res.config.settings"].create(
             {"tax_calculation_rounding_method": "round_globally"}
@@ -52,6 +53,7 @@ class TestSaleTaxRoundDown(TransactionCase):
         self.assertEqual(so.amount_total, 25801)
 
     def test_sale_tax_round_down_with_false(self):
+        self.env.user.company_id = self.company_jpy.id
         settings = self.env["res.config.settings"].create(
             {"need_tax_round_down": False}
         )
