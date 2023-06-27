@@ -8,4 +8,9 @@ class MailMessageSubtype(models.Model):
     _inherit = "mail.message.subtype"
 
     allow_send_model_ids = fields.Many2many("ir.model")
-    hide_allow_send_model = fields.Boolean(default=True)
+    hide_allow_send_model = fields.Boolean(compute="_compute_hide_allow_send_model")
+
+    def _compute_hide_allow_send_model(self):
+        mt_comment_id = self.env.ref("mail.mt_comment").id
+        for rec in self:
+            rec.hide_allow_send_model = rec.id != mt_comment_id
