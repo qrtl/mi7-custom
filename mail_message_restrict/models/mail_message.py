@@ -18,8 +18,8 @@ class MailMessage(models.Model):
             ):
                 raise ValidationError(
                     _(
-                        """Creating a message in this model is blocked.
-                        Please contact the system administrator as necessary."""
+                        "Creating a message in this model is blocked."
+                        "Please contact the system administrator as necessary."
                     )
                 )
         return super(MailMessage, self).create(vals)
