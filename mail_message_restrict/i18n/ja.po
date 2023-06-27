@@ -18,7 +18,7 @@ msgstr ""
 #. module: mail_message_restrict
 #: model:ir.model.fields,field_description:mail_message_restrict.field_mail_message_subtype__allow_send_model_ids
 msgid "Allow Send Model"
-msgstr "メール送信モデル"
+msgstr "メール送信可モデル"
 
 #. module: mail_message_restrict
 #: code:addons/mail_message_restrict/models/mail_message.py:0
