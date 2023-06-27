@@ -6,7 +6,12 @@
         <field name="inherit_id" ref="mail.view_mail_message_subtype_form" />
         <field name="arch" type="xml">
             <field name="res_model" position="after">
-                <field name="allow_send_model_ids" widget="many2many_tags" />
+                <field name="hide_allow_send_model" />
+                <field
+                    name="allow_send_model_ids"
+                    widget="many2many_tags"
+                    attrs="{'invisible': [('hide_allow_send_model','=',True)]}"
+                />
             </field>
         </field>
     </record>

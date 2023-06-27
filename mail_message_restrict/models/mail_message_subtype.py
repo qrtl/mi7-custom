@@ -8,3 +8,4 @@ class MailMessageSubtype(models.Model):
     _inherit = "mail.message.subtype"
 
     allow_send_model_ids = fields.Many2many("ir.model")
+    hide_allow_send_model = fields.Boolean(default=True)

@@ -17,6 +17,9 @@ class MailMessage(models.Model):
                 and not subtype.internal
             ):
                 raise ValidationError(
-                    _("You are going to send an email to external, message blocked!")
+                    _(
+                        """Creating a message in this model is blocked.
+                        Please contact the system administrator as necessary."""
+                    )
                 )
         return super(MailMessage, self).create(vals)
