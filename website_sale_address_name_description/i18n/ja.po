@@ -1,0 +1,28 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_sale_address_name_description
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-05 06:21+0000\n"
+"PO-Revision-Date: 2023-07-05 06:21+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: website_sale_address_name_description
+#: model_terms:ir.ui.view,arch_db:website_sale_address_name_description.address
+msgid "<span>(Name, Company Name)</span>"
+msgstr "<span>（お名前, 会社名）</span>"
+
+#. module: website_sale_address_name_description
+#: model_terms:ir.ui.view,arch_db:website_sale_address_name_description.address
+msgid ""
+"<span>Please enter both the company name and the\n"
+"            name of the person in charge if you are entering a company name.</span>"
+msgstr "<span>会社名の場合、ご担当者様の名前も必ず入力してください。</span>"
