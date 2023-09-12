@@ -18,7 +18,7 @@ msgstr ""
 #. module: website_sale_address_name_description
 #: model_terms:ir.ui.view,arch_db:website_sale_address_name_description.address
 msgid "<span>(Name, Company Name)</span>"
-msgstr "<span>（お名前, 会社名）</span>"
+msgstr "<span>(お名前, 会社名)</span>"
 
 #. module: website_sale_address_name_description
 #: model:ir.model.fields,field_description:website_sale_address_name_description.field_res_company__address_name_text
