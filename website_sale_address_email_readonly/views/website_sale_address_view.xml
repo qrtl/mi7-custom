@@ -6,5 +6,10 @@
                 'readonly' if 'email' in checkout and checkout['email'] else None
             </attribute>
         </xpath>
+        <xpath expr="//div[@id='div_email']" position="attributes">
+            <attribute name="t-att-style">
+                'display: none;' if mode[1] == 'shipping' else ''
+            </attribute>
+        </xpath>
     </template>
 </odoo>
