@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="address" inherit_id="website_sale.address">
+        <xpath expr="//label[@for='name']" position="after">
+            <span>(Name, Company Name)</span>
+        </xpath>
+        <xpath expr="//input[@name='name']" position="after">
+            <t t-out="request.env.company.address_name_text" />
+        </xpath>
+    </template>
+</odoo>
