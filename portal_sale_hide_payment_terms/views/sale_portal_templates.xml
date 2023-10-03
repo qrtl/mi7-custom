@@ -2,9 +2,11 @@
 <odoo>
 
     <!-- oca-hooks:disable=xml-dangerous-qweb-replace-low-priority -->
+    <!-- Add priority to 100 for safe replace -->
     <template
         id="sale_order_portal_content_hide_payment_terms"
         inherit_id="sale.sale_order_portal_content"
+        priority="100"
     >
         <xpath
             expr="//section[@t-if='sale_order.payment_term_id']"
