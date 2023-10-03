@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
+    <!-- oca-hooks:disable=xml-dangerous-qweb-replace-low-priority -->
     <template
         id="sale_order_portal_content_hide_payment_terms"
         inherit_id="sale.sale_order_portal_content"
