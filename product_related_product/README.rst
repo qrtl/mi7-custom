@@ -24,10 +24,10 @@ Product Related Product
 
 This module does the following:
 
-- Adds Related Products field in product template.
+-  Adds Related Products field in product template.
 
-This module does not contain any logic, but the related business logic is expected to
-added by modules that depend on this.
+This module does not contain any logic, but the related business logic
+is expected to added by modules that depend on this.
 
 **Table of contents**
 
@@ -48,12 +48,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/product_related_product>`_ project on GitHub.
 

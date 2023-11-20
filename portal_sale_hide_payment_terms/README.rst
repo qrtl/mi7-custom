@@ -24,7 +24,9 @@ Portal Sale Hide Payment Terms
 
 This module does the following:
 
-- Hide 'Payment Terms' buttons in quotation / sale_order of portal sidebar and payment terms content in quotation / sale_order of portal page.
+-  Hide 'Payment Terms' buttons in quotation / sale_order of portal
+   sidebar and payment terms content in quotation / sale_order of portal
+   page.
 
 **Table of contents**
 
@@ -45,12 +47,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/portal_sale_hide_payment_terms>`_ project on GitHub.
 

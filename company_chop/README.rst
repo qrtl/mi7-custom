@@ -22,7 +22,8 @@ Company Chop
 
 |badge1| |badge2| |badge3|
 
-This module adds the company_chop field to the company model for reporting purpose.
+This module adds the company_chop field to the company model for
+reporting purpose.
 
 **Table of contents**
 
@@ -43,13 +44,13 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * MI Seven Japan
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/company_chop>`_ project on GitHub.
 

@@ -24,12 +24,18 @@ Account Invoice Validate Send Email
 
 This module does the following:
 
-- When customer invoice that meets all of the following conditions is validated, Odoo will print and send the invoice to the followers of the document.
+-  When customer invoice that meets all of the following conditions is
+   validated, Odoo will print and send the invoice to the followers of
+   the document.
 
-  - 'Send Invoice upon Validation' is set in the workflow process linked to the invoice.
-  - 'Not Auto-send Invoice' of the pikcing linked to the invoice is not selected.
-  - 'Not Auto-send Invoice' of the payment term assigned to the invoice is not selected.
-  - 'Invoice Sent' is not flagged (the field is flagged when the invoice is sent by the module logic).
+   -  'Send Invoice upon Validation' is set in the workflow process
+      linked to the invoice.
+   -  'Not Auto-send Invoice' of the pikcing linked to the invoice is
+      not selected.
+   -  'Not Auto-send Invoice' of the payment term assigned to the
+      invoice is not selected.
+   -  'Invoice Sent' is not flagged (the field is flagged when the
+      invoice is sent by the module logic).
 
 The module depends on the OCA module sale_automatic_workflow.
 
@@ -41,17 +47,18 @@ The module depends on the OCA module sale_automatic_workflow.
 Configuration
 =============
 
-Go to *Sales > Settings > Automatic Workflow > Automatic Workflow*, open a
-workflow process of your concern and select 'Send Invoice upon Validation' to
-use the functions of this module.
+Go to *Sales > Settings > Automatic Workflow > Automatic Workflow*, open
+a workflow process of your concern and select 'Send Invoice upon
+Validation' to use the functions of this module.
 
-Go to *Accounting > Settings > Management > Payment Terms*, open a payment term
-and select 'Not Auto-send Invoice' in case the invoices with the payment term
-should be outside the scope of the email notification despite the workflow process settings.
+Go to *Accounting > Settings > Management > Payment Terms*, open a
+payment term and select 'Not Auto-send Invoice' in case the invoices
+with the payment term should be outside the scope of the email
+notification despite the workflow process settings.
 
 Go to *Settings > Users > companies*, open your company information page
-and select a template for 'Invoice Email Template'.
-No email will be sent out upon invoice validation if no template is set for the company.
+and select a template for 'Invoice Email Template'. No email will be
+sent out upon invoice validation if no template is set for the company.
 
 Bug Tracker
 ===========
@@ -67,17 +74,17 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* JackLe <lehoangan1988@gmail.com>
+-  JackLe <lehoangan1988@gmail.com>
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/account_invoice_validate_send_email>`_ project on GitHub.
 

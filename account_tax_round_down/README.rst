@@ -24,22 +24,23 @@ Account Tax Round Down
 
 This module does the following:
 
-* Provides the function of rounding down the tax amount in the invoice, covering:
+-  Provides the function of rounding down the tax amount in the invoice,
+   covering:
 
-  * the total presentation in invoice form/print
-  * the tax amount calculation of account move line
+   -  the total presentation in invoice form/print
+   -  the tax amount calculation of account move line
 
-Note that, due to the structure of compute_all() method, the round-down does not work
-perfectly in case the document involves multiple taxes with different price_include
-settings (which is not expected to happen under normal circumstances in the Japanese
-business environment).
-
+Note that, due to the structure of compute_all() method, the round-down
+does not work perfectly in case the document involves multiple taxes
+with different price_include settings (which is not expected to happen
+under normal circumstances in the Japanese business environment).
 
 Background:
 -----------
 
-In Japan there is sometimes a tacit industry-wide convention of rounding down the tax
-amount instead of applying the default rounding ("HALF-UP").
+In Japan there is sometimes a tacit industry-wide convention of rounding
+down the tax amount instead of applying the default rounding
+("HALF-UP").
 
 **Table of contents**
 
@@ -49,9 +50,9 @@ amount instead of applying the default rounding ("HALF-UP").
 Configuration
 =============
 
-Go to Accounting (or Invoicing) > Configuration > Settings, and select "Round-down Tax
-Amounts" for companies where tax amounts should be rownded down (selection is done by
-default).
+Go to Accounting (or Invoicing) > Configuration > Settings, and select
+"Round-down Tax Amounts" for companies where tax amounts should be
+rownded down (selection is done by default).
 
 Bug Tracker
 ===========
@@ -67,12 +68,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/account_tax_round_down>`_ project on GitHub.
 

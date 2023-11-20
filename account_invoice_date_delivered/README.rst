@@ -24,11 +24,13 @@ Account Invoice Date Delivered
 
 This module does the following:
 
-- Adds time_delivered and date_delivered fields to account.invoice, which should be
-  populated for customer invoices based on the linked pickings.
+-  Adds time_delivered and date_delivered fields to account.invoice,
+   which should be populated for customer invoices based on the linked
+   pickings.
 
-The intention of having the date_delivered field (date type) is so that it will be easy
-for users to see the date according to their timezone when the data are exported.
+The intention of having the date_delivered field (date type) is so that
+it will be easy for users to see the date according to their timezone
+when the data are exported.
 
 The module depends on the OCA module stock_picking_invoice_link.
 
@@ -51,12 +53,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/account_invoice_date_delivered>`_ project on GitHub.
 

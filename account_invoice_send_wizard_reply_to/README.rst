@@ -24,10 +24,11 @@ Account Invoice Send Reply To
 
 This module does the following:
 
-- Adds reply_to field to account.account_invoice_send_wizard_form.
+-  Adds reply_to field to account.account_invoice_send_wizard_form.
 
-This adjustment is necessary for the custom module mail_compose_message_reply_to to work as expected
-when an invoice is manually sent via the wizard.
+This adjustment is necessary for the custom module
+mail_compose_message_reply_to to work as expected when an invoice is
+manually sent via the wizard.
 
 **Table of contents**
 
@@ -48,12 +49,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/account_invoice_send_wizard_reply_to>`_ project on GitHub.
 

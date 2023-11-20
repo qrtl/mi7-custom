@@ -24,8 +24,8 @@ Sale Order Subject
 
 This module does the following:
 
-- Adds the subject field in sale.order, which is expected to show in the sales order
-  print (which should be handled in a separate module).
+-  Adds the subject field in sale.order, which is expected to show in
+   the sales order print (which should be handled in a separate module).
 
 **Table of contents**
 
@@ -46,13 +46,13 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * MI Seven Japan
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/sale_order_subject>`_ project on GitHub.
 

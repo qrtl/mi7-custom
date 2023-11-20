@@ -24,8 +24,10 @@ Website Login/Signup Page Adjustments
 
 This module does the following:
 
-* Changes the presentation of the signup, login and password reset pages (for the better).
-* Adds custom message fields in the website to show them in the above-mentioned pages.
+-  Changes the presentation of the signup, login and password reset
+   pages (for the better).
+-  Adds custom message fields in the website to show them in the
+   above-mentioned pages.
 
 **Table of contents**
 
@@ -46,12 +48,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/website_auth_view_mi7>`_ project on GitHub.
 

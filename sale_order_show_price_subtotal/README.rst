@@ -24,7 +24,8 @@ Sale Order Show Price Subtotal
 
 This module does the following:
 
-- Displays the subtotal price in sale order line in sales order form view regardless of the "Tax Display" setting.
+-  Displays the subtotal price in sale order line in sales order form
+   view regardless of the "Tax Display" setting.
 
 **Table of contents**
 
@@ -45,12 +46,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/sale_order_show_price_subtotal>`_ project on GitHub.
 

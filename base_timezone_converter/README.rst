@@ -22,8 +22,8 @@ Base Timezone Converter
 
 |badge1| |badge2| |badge3|
 
-This module provides methods to convert a datetime from a timezone to UTC and vice
-versa.
+This module provides methods to convert a datetime from a timezone to
+UTC and vice versa.
 
 **Table of contents**
 
@@ -44,12 +44,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/base_timezone_converter>`_ project on GitHub.
 

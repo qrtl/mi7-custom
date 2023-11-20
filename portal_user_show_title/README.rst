@@ -22,8 +22,9 @@ Portal User Show Title
 
 |badge1| |badge2| |badge3|
 
-This module makes adjustments to the name presetation of the user in portal account
-dropdown to show the title of the user along with its name.
+This module makes adjustments to the name presetation of the user in
+portal account dropdown to show the title of the user along with its
+name.
 
 **Table of contents**
 
@@ -44,12 +45,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/portal_user_show_title>`_ project on GitHub.
 

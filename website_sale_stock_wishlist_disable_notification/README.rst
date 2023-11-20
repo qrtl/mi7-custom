@@ -24,14 +24,15 @@ Website Sale Stock Wishlist Disable Notification
 
 This module does the following:
 
-- Hides 'Be notified when back in stock' button in the wishlist
-- Disables the cron 'Wishlist: send email regarding products availability'.
-- Adjusts the logic to not select stock_notification when a product is added to the
-  wishlist (to avoid the situation of notificaton emails accidentally shooting out when
-  the cron is re-enabled).
+-  Hides 'Be notified when back in stock' button in the wishlist
+-  Disables the cron 'Wishlist: send email regarding products
+   availability'.
+-  Adjusts the logic to not select stock_notification when a product is
+   added to the wishlist (to avoid the situation of notificaton emails
+   accidentally shooting out when the cron is re-enabled).
 
-Note that when the module is uninstalled, the disabled cron should manually be set back
-to active as necessary.
+Note that when the module is uninstalled, the disabled cron should
+manually be set back to active as necessary.
 
 **Table of contents**
 
@@ -52,12 +53,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/website_sale_stock_wishlist_disable_notification>`_ project on GitHub.
 

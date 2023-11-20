@@ -22,15 +22,17 @@ Stock Valuation Layer Accounting Date
 
 |badge1| |badge2| |badge3|
 
-This module adds Accounting Date field in stock.valuation.layer, enabling the report
-output based on this field.
+This module adds Accounting Date field in stock.valuation.layer,
+enabling the report output based on this field.
 
-Accounting Date is computed (and stored in the record) based on the following logic:
+Accounting Date is computed (and stored in the record) based on the
+following logic:
 
-* If a journal entry linked to the stock.valuation.layer record, take the date of the
-  journal entry.
-* Otherwise, convert create_date (datetime) of the stock.valuation.layer record to date,
-  with consideration to user's timezone.
+-  If a journal entry linked to the stock.valuation.layer record, take
+   the date of the journal entry.
+-  Otherwise, convert create_date (datetime) of the
+   stock.valuation.layer record to date, with consideration to user's
+   timezone.
 
 **Table of contents**
 
@@ -40,10 +42,11 @@ Accounting Date is computed (and stored in the record) based on the following lo
 Usage
 =====
 
-#. Go to *Inventory > Reporting > Inventory Valuation* and click 'Inventory at Date'.
-#. In the wizard, select a date in 'Inventory at Date', and click 'Valuation as of
-   Accounting Date' (note that 'hh:mm:ss' part of the selection in 'Inventory at Date'
-   is ignored in this context).
+1. Go to *Inventory > Reporting > Inventory Valuation* and click
+   'Inventory at Date'.
+2. In the wizard, select a date in 'Inventory at Date', and click
+   'Valuation as of Accounting Date' (note that 'hh:mm:ss' part of the
+   selection in 'Inventory at Date' is ignored in this context).
 
 Bug Tracker
 ===========
@@ -59,19 +62,20 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* `Quartile Limited <info@quartile.co>`_:
-  * Aung Ko Ko lin
-  * Yoshi Tashiro
+-  `Quartile Limited <info@quartile.co>`__:
+
+   -  Aung Ko Ko lin
+   -  Yoshi Tashiro
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/stock_valuation_layer_accounting_date>`_ project on GitHub.
 

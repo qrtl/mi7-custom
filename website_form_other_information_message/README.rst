@@ -22,19 +22,21 @@ Website Form Other Information Message
 
 |badge1| |badge2| |badge3|
 
-This module sends new separate mail for the entire description if there is other information
-in description (custom input in website form).
+This module sends new separate mail for the entire description if there
+is other information in description (custom input in website form).
 
 Background
-~~~~~~~~~~
+----------
 
-When a visitor submits a online form, an auto-reply email is sent out to the visitor,
-however the message body does not include the custom content from the form due to the
-process sequence in _insert_record() method of WebsiteForm.
+When a visitor submits a online form, an auto-reply email is sent out to
+the visitor, however the message body does not include the custom
+content from the form due to the process sequence in \_insert_record()
+method of WebsiteForm.
 
-This causes inconvenience when you expect to be able to search the created Odoo record by
-custom content using base_search_mail_content.  This module intends to get rid of this
-inconvenience by adding to the record a message with custom content.
+This causes inconvenience when you expect to be able to search the
+created Odoo record by custom content using base_search_mail_content.
+This module intends to get rid of this inconvenience by adding to the
+record a message with custom content.
 
 **Table of contents**
 
@@ -55,12 +57,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/website_form_other_information_message>`_ project on GitHub.
 

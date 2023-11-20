@@ -22,11 +22,11 @@ Payment Cash on Delivery
 
 |badge1| |badge2| |badge3|
 
-This module adds Cash on Delivery acquirer record, and make it available for
-orders that require physical deliveries.
+This module adds Cash on Delivery acquirer record, and make it available
+for orders that require physical deliveries.
 
-Cash on Delivery acquirer is a subtype of the transfer provider to make the most of the
-existing logic from the provider.
+Cash on Delivery acquirer is a subtype of the transfer provider to make
+the most of the existing logic from the provider.
 
 **Table of contents**
 
@@ -38,20 +38,22 @@ Configuration
 
 Open Cash on Delivery acquirer and update the following settings:
 
-- Amount Limit: threshold amount - the acquirer is available when order amount is equal
-  to or lower than the set amount.
-- Add Extra Fees and related fields: if set, additional line will be created in the
-  order according to the configuration.
+-  Amount Limit: threshold amount - the acquirer is available when order
+   amount is equal to or lower than the set amount.
+-  Add Extra Fees and related fields: if set, additional line will be
+   created in the order according to the configuration.
 
 Usage
 =====
 
-When Cash on Delivery is selected as a payment method for the order and user proceeds
-to confim the order in eCommerce/portal, it does the following:
+When Cash on Delivery is selected as a payment method for the order and
+user proceeds to confim the order in eCommerce/portal, it does the
+following:
 
-- Adds a transaction fee line to the sales order (if configured to do so).
-- Set the payment transaction to done state.
-- Confirm the sales order.
+-  Adds a transaction fee line to the sales order (if configured to do
+   so).
+-  Set the payment transaction to done state.
+-  Confirm the sales order.
 
 Bug Tracker
 ===========
@@ -67,13 +69,13 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * MI Seven Japan
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/payment_cod>`_ project on GitHub.
 

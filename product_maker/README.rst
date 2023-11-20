@@ -24,8 +24,8 @@ Product Maker
 
 This module does the following:
 
-- Adds product.maker model which can be referenced from product.template, for product
-  categorization purpose.
+-  Adds product.maker model which can be referenced from
+   product.template, for product categorization purpose.
 
 **Table of contents**
 
@@ -46,13 +46,13 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * MI Seven Japan
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/product_maker>`_ project on GitHub.
 

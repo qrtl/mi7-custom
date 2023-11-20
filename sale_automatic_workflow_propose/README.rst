@@ -24,7 +24,8 @@ Sale Automatic Workflow Propose
 
 This module does the following:
 
-- Proposes Automatic Workflow in sales orders according to the order type (B2B/B2C).
+-  Proposes Automatic Workflow in sales orders according to the order
+   type (B2B/B2C).
 
 **Table of contents**
 
@@ -34,8 +35,9 @@ This module does the following:
 Configuration
 =============
 
-Go to *Sale > Settings > Automatic Workflow > Automatic Workflow* and update 'Apply To'
-for the ones that should to be proposed to the sales orders with selected order type.
+Go to *Sale > Settings > Automatic Workflow > Automatic Workflow* and
+update 'Apply To' for the ones that should to be proposed to the sales
+orders with selected order type.
 
 Bug Tracker
 ===========
@@ -51,12 +53,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/sale_automatic_workflow_propose>`_ project on GitHub.
 

@@ -24,17 +24,19 @@ Sale Tax Round Down
 
 This module does the following:
 
-* Provides the function of rounding down the tax amount in the sales order, covering:
+-  Provides the function of rounding down the tax amount in the sales
+   order, covering:
 
-  * the total presentation in sales order form/print is covered.
+   -  the total presentation in sales order form/print is covered.
 
 The module depends on the account_tax_round_down module.
 
 Background:
 -----------
 
-In Japan there is sometimes a tacit industry-wide convention of rounding down the tax
-amount instead of applying the default rounding ("HALF-UP").
+In Japan there is sometimes a tacit industry-wide convention of rounding
+down the tax amount instead of applying the default rounding
+("HALF-UP").
 
 **Table of contents**
 
@@ -55,12 +57,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/sale_tax_round_down>`_ project on GitHub.
 

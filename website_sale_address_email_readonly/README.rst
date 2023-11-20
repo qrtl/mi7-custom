@@ -24,8 +24,10 @@ Website Sale Address Email Readonly
 
 This module does the following:
 
-- Makes the address form email field in eCommerce checkout read-only if the user has email address.
-- Hide the address form email field in eCommerce checkout if shipping mode.
+-  Makes the address form email field in eCommerce checkout read-only if
+   the user has email address.
+-  Hide the address form email field in eCommerce checkout if shipping
+   mode.
 
 **Table of contents**
 
@@ -46,12 +48,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/website_sale_address_email_readonly>`_ project on GitHub.
 

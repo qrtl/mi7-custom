@@ -24,7 +24,8 @@ Website Sale Total Adj
 
 This module does the following:
 
-- Adjusts the cart total presentation depending on the tax exclusive/inclusive setting.
+-  Adjusts the cart total presentation depending on the tax
+   exclusive/inclusive setting.
 
 **Table of contents**
 
@@ -45,13 +46,13 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * MI Seven Japan
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/website_sale_total_adj>`_ project on GitHub.
 

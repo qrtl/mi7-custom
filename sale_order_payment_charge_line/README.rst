@@ -24,10 +24,10 @@ Sale Order Payment Charge Line
 
 This module does the following:
 
-- Adds is_payment_charge field in product.template and sale.order.line.
+-  Adds is_payment_charge field in product.template and sale.order.line.
 
-The module does not contain any business logic per se, but is expected to be depended
-upon by other modules with business logic.
+The module does not contain any business logic per se, but is expected
+to be depended upon by other modules with business logic.
 
 **Table of contents**
 
@@ -48,12 +48,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/sale_order_payment_charge_line>`_ project on GitHub.
 

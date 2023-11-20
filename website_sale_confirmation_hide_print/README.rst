@@ -24,7 +24,7 @@ Portal Sale Confirmation Hide Print
 
 This module does the following:
 
-- Hides 'Print' button in the order confirmation page in eCommerce.
+-  Hides 'Print' button in the order confirmation page in eCommerce.
 
 **Table of contents**
 
@@ -45,12 +45,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/website_sale_confirmation_hide_print>`_ project on GitHub.
 

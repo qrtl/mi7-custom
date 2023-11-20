@@ -24,9 +24,10 @@ Sale Delivery Date
 
 This module does the following:
 
-- Adds the delivery date and time fields in sale.order.
-- Updates commitment_date of the order when delivery date is selected, based on the delivery date
-  and the warehouse.shipping.delay parameter setting, so that the delivery schedule is adjusted accordingly.
+-  Adds the delivery date and time fields in sale.order.
+-  Updates commitment_date of the order when delivery date is selected,
+   based on the delivery date and the warehouse.shipping.delay parameter
+   setting, so that the delivery schedule is adjusted accordingly.
 
 **Table of contents**
 
@@ -47,12 +48,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/sale_delivery_date>`_ project on GitHub.
 

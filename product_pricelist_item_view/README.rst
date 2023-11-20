@@ -24,7 +24,7 @@ Sale Pricelist Item View
 
 This module does the following:
 
-- Adds a menu item for pricelist items.
+-  Adds a menu item for pricelist items.
 
 **Table of contents**
 
@@ -45,12 +45,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/product_pricelist_item_view>`_ project on GitHub.
 

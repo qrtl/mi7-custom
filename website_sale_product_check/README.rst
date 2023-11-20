@@ -22,11 +22,12 @@ Website Sale Product Check
 
 |badge1| |badge2| |badge3|
 
-This module adds a generic function to show an error message alert in the /shop/product
-page.
+This module adds a generic function to show an error message alert in
+the /shop/product page.
 
-This module does not do anything by itself, and product_validate() method must be
-extended by the inheriting module to add custom checking on the cart content.
+This module does not do anything by itself, and product_validate()
+method must be extended by the inheriting module to add custom checking
+on the cart content.
 
 Note that stay-on-page way of adding to cart is currently not supported.
 
@@ -38,9 +39,10 @@ Note that stay-on-page way of adding to cart is currently not supported.
 Configuration
 =============
 
-Go to the website settings (Website > Configuration > Settings) and unselect 'Stay on
-page after adding to cart', which makes sure that pressing 'Add to Cart' button forces
-the user to go through cart_update() method where the checks on the product is done.
+Go to the website settings (Website > Configuration > Settings) and
+unselect 'Stay on page after adding to cart', which makes sure that
+pressing 'Add to Cart' button forces the user to go through
+cart_update() method where the checks on the product is done.
 
 Bug Tracker
 ===========
@@ -56,12 +58,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/website_sale_product_check>`_ project on GitHub.
 

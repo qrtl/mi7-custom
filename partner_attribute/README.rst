@@ -24,7 +24,7 @@ Partner Attribute
 
 This module does the following:
 
-- Adds fields to res.partner for CRM purposes.
+-  Adds fields to res.partner for CRM purposes.
 
 **Table of contents**
 
@@ -45,13 +45,13 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * MI Seven Japan
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/partner_attribute>`_ project on GitHub.
 

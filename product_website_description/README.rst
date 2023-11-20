@@ -24,12 +24,13 @@ Product Website Description
 
 This module does the following:
 
-- Adds "Product Description for Website Display" tab to the product form,
-  to give users the ability to edit the product description to show on the
-  eCommerce product page.
+-  Adds "Product Description for Website Display" tab to the product
+   form, to give users the ability to edit the product description to
+   show on the eCommerce product page.
 
-This feature is in response to the situation where it was not possible to edit
-the product description on the shop frontend for a technical glitch.
+This feature is in response to the situation where it was not possible
+to edit the product description on the shop frontend for a technical
+glitch.
 
 **Table of contents**
 
@@ -50,12 +51,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/product_website_description>`_ project on GitHub.
 

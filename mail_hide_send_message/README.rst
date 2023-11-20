@@ -22,8 +22,8 @@ Mail Hide Send Message
 
 |badge1| |badge2| |badge3|
 
-This module hides 'Send message' button in chatter to prevent internal users from
-accidentally sending messages to clients.
+This module hides 'Send message' button in chatter to prevent internal
+users from accidentally sending messages to clients.
 
 **Table of contents**
 
@@ -44,12 +44,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/mail_hide_send_message>`_ project on GitHub.
 

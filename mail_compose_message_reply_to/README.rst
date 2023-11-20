@@ -24,10 +24,12 @@ Mail Compose Message Reply To
 
 This module does the following:
 
-- Respects the 'reply-to' setting of the email template unless the value was otherwise specified.
+-  Respects the 'reply-to' setting of the email template unless the
+   value was otherwise specified.
 
-This is to "fix" the standard behavior which we suspect to be a bug - even when 'reply-to' is set in the template.
-it does not seem to be respected.
+This is to "fix" the standard behavior which we suspect to be a bug -
+even when 'reply-to' is set in the template. it does not seem to be
+respected.
 
 **Table of contents**
 
@@ -48,12 +50,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/mail_compose_message_reply_to>`_ project on GitHub.
 

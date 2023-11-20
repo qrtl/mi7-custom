@@ -24,8 +24,9 @@ Sale Order Line Delivery Date
 
 This module does the following:
 
-- Adds Delivery Date field to sale.order.line, which is used just to record the expected
-  date of delivery for internal use (no logic added around this field).
+-  Adds Delivery Date field to sale.order.line, which is used just to
+   record the expected date of delivery for internal use (no logic added
+   around this field).
 
 **Table of contents**
 
@@ -46,13 +47,13 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * MI Seven Japan
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/sale_order_line_delivery_date>`_ project on GitHub.
 

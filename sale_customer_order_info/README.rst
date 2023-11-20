@@ -24,7 +24,7 @@ Sale Customer Order Info
 
 This module does the following:
 
-- Adds fields on customer order information in sale.order.
+-  Adds fields on customer order information in sale.order.
 
 **Table of contents**
 
@@ -45,13 +45,13 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * MI Seven Japan
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/sale_customer_order_info>`_ project on GitHub.
 

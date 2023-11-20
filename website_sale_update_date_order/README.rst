@@ -24,9 +24,9 @@ Website Sale Update Date Order
 
 This module does the following:
 
-* Updates date_order of the eCommerce order to the current date when the cart is
-  updated, to make sure that the latest pricing is applied when adding a product to the
-  cart.
+-  Updates date_order of the eCommerce order to the current date when
+   the cart is updated, to make sure that the latest pricing is applied
+   when adding a product to the cart.
 
 **Table of contents**
 
@@ -47,12 +47,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/website_sale_update_date_order>`_ project on GitHub.
 

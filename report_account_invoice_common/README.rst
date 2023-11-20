@@ -24,8 +24,8 @@ Report Account Invoice Common
 
 This module does the following:
 
-- Adds common fields/functions to be used in account report print functions, which
-  should be provided by other modules.
+-  Adds common fields/functions to be used in account report print
+   functions, which should be provided by other modules.
 
 **Table of contents**
 
@@ -46,13 +46,13 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * MI Seven Japan
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/report_account_invoice_common>`_ project on GitHub.
 

@@ -24,7 +24,7 @@ Website Sale Address Name Description
 
 This module does the following:
 
-- Add the description to address form name field in eCommerce checkout.
+-  Add the description to address form name field in eCommerce checkout.
 
 **Table of contents**
 
@@ -45,12 +45,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/website_sale_address_name_description>`_ project on GitHub.
 

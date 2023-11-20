@@ -24,7 +24,8 @@ Portal Sale Hide Download
 
 This module does the following:
 
-- Hide 'Download' and 'Print' buttons in quatation / sale_order of portal page.
+-  Hide 'Download' and 'Print' buttons in quatation / sale_order of
+   portal page.
 
 **Table of contents**
 
@@ -45,12 +46,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/portal_sale_hide_download>`_ project on GitHub.
 

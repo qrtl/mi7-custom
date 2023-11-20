@@ -22,9 +22,9 @@ Stock Carrier Info
 
 |badge1| |badge2| |badge3|
 
-This module does the following:
-- Adds a new model stock.carrier.info to keep the carrier name and the tracking URL against the carrier code.
-- Adds carrier_info_id field in stock.picking.
+This module does the following: - Adds a new model stock.carrier.info to
+keep the carrier name and the tracking URL against the carrier code. -
+Adds carrier_info_id field in stock.picking.
 
 The module does not contain any business logic per se.
 
@@ -47,12 +47,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/stock_carrier_info>`_ project on GitHub.
 

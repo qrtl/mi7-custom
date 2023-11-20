@@ -24,8 +24,8 @@ Sale User Type
 
 This module does the following:
 
-- Adds the user type fields to the relevant models to distinguish records between b2b
-  and b2c.
+-  Adds the user type fields to the relevant models to distinguish
+   records between b2b and b2c.
 
 **Table of contents**
 
@@ -46,13 +46,13 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * MI Seven Japan
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/sale_user_type>`_ project on GitHub.
 

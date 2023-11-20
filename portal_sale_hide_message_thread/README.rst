@@ -24,7 +24,8 @@ Portal Sale Hide Message Thread
 
 This module does the following:
 
-- Hides the message thread and links to it in the portal quotation / sales order page.
+-  Hides the message thread and links to it in the portal quotation /
+   sales order page.
 
 **Table of contents**
 
@@ -45,12 +46,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/portal_sale_hide_message_thread>`_ project on GitHub.
 

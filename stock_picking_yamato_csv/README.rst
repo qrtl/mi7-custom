@@ -24,7 +24,8 @@ Stock Picking Yamato CSV
 
 This module does the following:
 
-- Let users export delivery instruction data in CSV format to be uploaded to the Yamato WMS.
+-  Let users export delivery instruction data in CSV format to be
+   uploaded to the Yamato WMS.
 
 This module depends on report_csv module from OCA.
 
@@ -38,19 +39,19 @@ Configuration
 
 Following settings should be updated:
 
-- Shipper Code (in warehouse)
-- Carrier Code (in warehouse)
-- Delivery Time Category (in delivery time)
+-  Shipper Code (in warehouse)
+-  Carrier Code (in warehouse)
+-  Delivery Time Category (in delivery time)
 
-Carrier Code can also be set in the shipping partner - when a delivery is created,
-Carrier Code in the delivery is defaulted from the shipping partner if there is a value
-set, otherwise from the warehouse.
+Carrier Code can also be set in the shipping partner - when a delivery
+is created, Carrier Code in the delivery is defaulted from the shipping
+partner if there is a value set, otherwise from the warehouse.
 
 Usage
 =====
 
-Select deliveries that should be included in the delivery instruction data,
-and then go to *Print > Yamato CSV* to export the data.
+Select deliveries that should be included in the delivery instruction
+data, and then go to *Print > Yamato CSV* to export the data.
 
 Bug Tracker
 ===========
@@ -66,12 +67,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/stock_picking_yamato_csv>`_ project on GitHub.
 

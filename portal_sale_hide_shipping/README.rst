@@ -24,7 +24,7 @@ Portal Sale Hide Shipping
 
 This module does the following:
 
-- Hides the shipping information in the order form in the portal.
+-  Hides the shipping information in the order form in the portal.
 
 **Table of contents**
 
@@ -45,13 +45,13 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * MI Seven Japan
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/portal_sale_hide_shipping>`_ project on GitHub.
 

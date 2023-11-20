@@ -22,14 +22,14 @@ Stock Picking Invoice Link Edit
 
 |badge1| |badge2| |badge3|
 
-This module makes adjustments to the implemention of stock_picking_invoice_link_edit
-to enable the following:
+This module makes adjustments to the implemention of
+stock_picking_invoice_link_edit to enable the following:
 
-- Shows related stock moves of the invoice line in the customer invoice form and let
-  the user adjust the linkage as necessary.
+-  Shows related stock moves of the invoice line in the customer invoice
+   form and let the user adjust the linkage as necessary.
 
-This function comes in handy when there are partially delivered (and invoiced) sales
-orders at installation of stock_picking_invoice_link.
+This function comes in handy when there are partially delivered (and
+invoiced) sales orders at installation of stock_picking_invoice_link.
 
 **Table of contents**
 
@@ -50,12 +50,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/mi7-custom <https://github.com/qrtl/mi7-custom/tree/15.0/stock_picking_invoice_link_edit>`_ project on GitHub.
 
