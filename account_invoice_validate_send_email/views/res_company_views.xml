@@ -12,6 +12,10 @@
                             name="invoice_mail_template_id"
                             domain="[('model', '=', 'account.move')]"
                         />
+                        <field
+                            name="receipt_mail_template_id"
+                            domain="[('model', '=', 'account.move')]"
+                        />
                     </group>
                 </group>
             </xpath>

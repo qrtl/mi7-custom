@@ -25,7 +25,10 @@ class AccountMove(models.Model):
 
     def _get_mail_template(self):
         self.ensure_one()
-        template = self.company_id.invoice_mail_template_id
+        if self.partner_id.user_type == "b2b":
+            template = self.company_id.invoice_mail_template_id
+        elif self.partner_id.user_type == "b2c":
+            template = self.company_id.receipt_mail_template_id
         if not template:
             return super()._get_mail_template()
         model_data_rec = self.env["ir.model.data"].search(
