@@ -28,7 +28,7 @@ class AccountMove(models.Model):
         if self.partner_id.user_type == "b2b":
             template = self.company_id.invoice_mail_template_id
         elif self.partner_id.user_type == "b2c":
-            template = self.company_id.receipt_mail_template_id
+            template = self.company_id.invoice_mail_template_b2c_id
         if not template:
             return super()._get_mail_template()
         model_data_rec = self.env["ir.model.data"].search(

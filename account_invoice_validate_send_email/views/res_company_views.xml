@@ -13,7 +13,7 @@
                             domain="[('model', '=', 'account.move')]"
                         />
                         <field
-                            name="receipt_mail_template_id"
+                            name="invoice_mail_template_b2c_id"
                             domain="[('model', '=', 'account.move')]"
                         />
                     </group>
