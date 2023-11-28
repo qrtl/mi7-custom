@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-31 07:53+0000\n"
-"PO-Revision-Date: 2022-08-31 07:53+0000\n"
+"POT-Creation-Date: 2023-11-28 06:48+0000\n"
+"PO-Revision-Date: 2023-11-28 06:48+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,38 +16,110 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: account_invoice_validate_send_email
-#: model:mail.template,body_html:account_invoice_validate_send_email.email_template_customer_invoice_validated
+#: model:mail.template,body_html:account_invoice_validate_send_email.email_template_customer_receipt_validated
 msgid ""
 "<div>\n"
+"    <p>\n"
+"        <t t-out=\"object.partner_id.name\" data-oe-t-inline=\"true\" contenteditable=\"false\" oe-keep-contenteditable=\"\"/>\n"
+"        <t t-if=\"object.partner_id.parent_id\" data-oe-t-group-active=\"true\" data-oe-t-group=\"0\" data-oe-t-inline=\"true\">\n"
+"            (<i><t t-out=\"object.partner_id.parent_id.name\" data-oe-t-inline=\"true\" contenteditable=\"false\" oe-keep-contenteditable=\"\"/></i>)\n"
+"        </t>様\n"
+"        <br/><br/>\n"
+"        お世話になっております。<br/>\n"
+"        以下のとおり、納品書を送付いたしますので、ご査収の程よろしくお願いいたします。\n"
+"        <br/><br/>\n"
+"        <t t-out=\"object.name or 'N/A'\" data-oe-t-inline=\"true\" contenteditable=\"false\" oe-keep-contenteditable=\"\"/>\n"
+"        <br/><br/>\n"
+"        <t t-if=\"object.carrier_info_name\" data-oe-t-group-active=\"true\" data-oe-t-group=\"1\">\n"
+"            配送業者：<t t-out=\"object.carrier_info_name\" data-oe-t-inline=\"true\" contenteditable=\"false\" oe-keep-contenteditable=\"\"/>\n"
+"            <br/>\n"
+"        </t>\n"
+"        <t t-if=\"object.carrier_tracking_refs\" data-oe-t-group-active=\"true\" data-oe-t-group=\"2\">\n"
+"            送り状お問い合わせNo: <t t-out=\"object.carrier_tracking_refs\" data-oe-t-inline=\"true\" contenteditable=\"false\" oe-keep-contenteditable=\"\"/>\n"
+"            <br/><br/>\n"
+"        </t>\n"
+"        <t t-if=\"object.carrier_tracking_url\" data-oe-t-group-active=\"true\" data-oe-t-group=\"3\">\n"
+"            配送状況を配達業者のWebサイトでご確認頂けます。<br/>\n"
+"            <t t-out=\"object.carrier_tracking_url\" data-oe-t-inline=\"true\" contenteditable=\"false\" oe-keep-contenteditable=\"\"/>\n"
+"            <br/><br/>\n"
+"        </t>\n"
+"        宜しくお願い致します。\n"
+"        <br/><br/>\n"
+"        <t t-out=\"object.company_id.partner_id\" t-options=\"{'widget': 'contact', 'fields': ['address', 'name'], 'no_marker': True}\" data-oe-t-inline=\"true\" contenteditable=\"false\"/>\n"
+"    </p>\n"
+"</div>\n"
+"        "
+msgstr ""
+"<div>\n"
 "    <p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">\n"
-"        <t t-out=\"object.partner_id.name\" data-oe-t-inline=\"true\"></t>\n"
-"        <t t-if=\"object.partner_id.parent_id\" data-oe-t-group-active=\"true\">\n"
-"            (<i><t t-out=\"object.partner_id.parent_id.name\" data-oe-t-inline=\"true\"></t></i>)\n"
+"        <t t-out=\"object.partner_id.name\"></t>\n"
+"        <t t-if=\"object.partner_id.parent_id\">\n"
+"            (<i><t t-out=\"object.partner_id.parent_id.name\"></t></i>)\n"
 "        </t>様\n"
 "        <br><br>\n"
 "        お世話になっております。<br>\n"
-"        以下のとおり、請求書を送付いたしますので、ご査収の程よろしくお願いいたします。\n"
+"        以下のとおり、納品書を送付いたしますので、ご査収の程よろしくお願いいたします。\n"
 "        <br><br>\n"
-"        <t t-out=\"object.name or 'N/A'\" data-oe-t-inline=\"true\"></t>\n"
+"        <t t-out=\"object.name or 'N/A'\"></t>\n"
 "        <br><br>\n"
-"        <t t-if=\"object.carrier_info_name\" data-oe-t-group-active=\"true\">\n"
-"            配送業者：<t t-out=\"object.carrier_info_name\" data-oe-t-inline=\"true\"></t>\n"
+"        <t t-if=\"object.carrier_info_name\">\n"
+"            配送業者：<t t-out=\"object.carrier_info_name\"></t>\n"
 "            <br>\n"
 "        </t>\n"
-"        <t t-if=\"object.carrier_tracking_refs\" data-oe-t-group-active=\"true\">\n"
-"            送り状お問い合わせNo: <t t-out=\"object.carrier_tracking_refs\" data-oe-t-inline=\"true\"></t>\n"
+"        <t t-if=\"object.carrier_tracking_refs\">\n"
+"            送り状お問い合わせNo: <t t-out=\"object.carrier_tracking_refs\"></t>\n"
 "            <br><br>\n"
 "        </t>\n"
-"        <t t-if=\"object.carrier_tracking_url\" data-oe-t-group-active=\"true\">\n"
+"        <t t-if=\"object.carrier_tracking_url\">\n"
 "            配送状況を配達業者のWebサイトでご確認頂けます。<br>\n"
-"            <t t-out=\"object.carrier_tracking_url\" data-oe-t-inline=\"true\"></t>\n"
+"            <t t-out=\"object.carrier_tracking_url\"></t>\n"
 "            <br><br>\n"
 "        </t>\n"
 "        宜しくお願い致します。\n"
 "        <br><br>\n"
-"        <t t-out=\"object.company_id.partner_id\" t-options=\"{'widget': 'contact', 'fields': ['address', 'name'], 'no_marker': True}\" data-oe-t-inline=\"true\"></t>\n"
+"        <t t-out=\"object.company_id.partner_id\" t-options=\"{'widget': 'contact', 'fields': ['address', 'name'], 'no_marker': True}\"></t>\n"
 "    </p>\n"
 "</div>\n"
+"        "
+
+#. module: account_invoice_validate_send_email
+#: model:mail.template,body_html:account_invoice_validate_send_email.email_template_customer_invoice_validated
+msgid ""
+"<p style=\"margin:0px 0px 9px 0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\"><t t-out=\"object.partner_id.name\" contenteditable=\"false\" data-oe-t-inline=\"true\"></t>\n"
+"<t t-if=\"object.partner_id.parent_id\" data-oe-t-group=\"0\" data-oe-t-group-active=\"true\" data-oe-t-inline=\"true\">\n"
+"    (<i><t t-out=\"object.partner_id.parent_id.name\" contenteditable=\"false\" data-oe-t-inline=\"true\"></t></i>)\n"
+"</t>\n"
+"様</p>\n"
+"<p style=\"margin:0px 0px 9px 0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">\n"
+"お世話になっております。<br>\n"
+"以下のとおり、請求書を送付いたしますので、ご査収の程よろしくお願いいたします。\n"
+"</p>\n"
+"<p style=\"margin:0px 0px 9px 0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">\n"
+"<t t-out=\"object.name or 'N/A'\" contenteditable=\"false\" data-oe-t-inline=\"true\"></t>\n"
+"</p>\n"
+"<t t-if=\"object.carrier_info_name\" data-oe-t-group=\"1\" data-oe-t-group-active=\"true\">\n"
+"<p style=\"margin:0px 0px 9px 0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">\n"
+"配送業者：<t t-out=\"object.carrier_info_name\" contenteditable=\"false\" data-oe-t-inline=\"true\"></t>\n"
+"</p>\n"
+"</t>\n"
+"<t t-if=\"object.carrier_tracking_refs\" data-oe-t-group=\"2\" data-oe-t-group-active=\"true\">\n"
+"<p style=\"margin:0px 0px 9px 0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">\n"
+"送り状お問い合わせNo：<t t-out=\"object.carrier_tracking_refs\" contenteditable=\"false\" data-oe-t-inline=\"true\"></t>\n"
+"</p>\n"
+"</t>\n"
+"<t t-if=\"object.carrier_tracking_url\" data-oe-t-group=\"3\" data-oe-t-group-active=\"true\">\n"
+"<p style=\"margin:0px 0px 9px 0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">\n"
+"配送状況を配達業者のWebサイトでご確認頂けます。<br>\n"
+"<t t-out=\"object.carrier_tracking_url\" contenteditable=\"false\" data-oe-t-inline=\"true\"></t>\n"
+"</p>\n"
+"</t>\n"
+"<p style=\"margin:0px 0px 9px 0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">\n"
+"宜しくお願い致します。\n"
+"</p>\n"
+"<p style=\"margin:0px 0px 9px 0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">\n"
+"<t t-out=\"object.company_id.name\" contenteditable=\"false\" data-oe-t-inline=\"true\"></t><br>\n"
+"</p>\n"
+"\n"
 "        "
 msgstr ""
 
@@ -95,6 +167,11 @@ msgid "Invoice Email Template"
 msgstr "請求書メールテンプレート"
 
 #. module: account_invoice_validate_send_email
+#: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_res_company__invoice_mail_template_b2c_id
+msgid "Invoice Mail Template (B2C)"
+msgstr "請求書メールテンプレート(B2C)"
+
+#. module: account_invoice_validate_send_email
 #: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_bank_statement_line__invoice_sent
 #: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_move__invoice_sent
 #: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_payment__invoice_sent
@@ -107,8 +184,13 @@ msgid ""
 "Invoice_{{ (object.name or '').replace('/','_') }}_{{ object.state == "
 "'draft' and 'draft' or '' }}"
 msgstr ""
-"Invoice_{{ (object.name or '').replace('/','_') }}_{{ object.state == "
-"'draft' and 'draft' or '' }}"
+
+#. module: account_invoice_validate_send_email
+#: model:mail.template,report_name:account_invoice_validate_send_email.email_template_customer_receipt_validated
+msgid ""
+"Invoice_{{ (object.name or '').replace('/','_') }}{{ object.state == 'draft'"
+" and '_draft' or '' }}"
+msgstr ""
 
 #. module: account_invoice_validate_send_email
 #: model:ir.model,name:account_invoice_validate_send_email.model_account_move
@@ -129,7 +211,7 @@ msgstr "支払条件"
 #. module: account_invoice_validate_send_email
 #: model:ir.model,name:account_invoice_validate_send_email.model_sale_workflow_process
 msgid "Sale Workflow Process"
-msgstr "販売ワークフロー処理"
+msgstr ""
 
 #. module: account_invoice_validate_send_email
 #: model:ir.model.fields,field_description:account_invoice_validate_send_email.field_account_bank_statement_line__send_invoice
@@ -182,11 +264,21 @@ msgid ""
 msgstr "ワークフロープロセス設定にかかわらず、この項目が選択されていると請求書は自動メール送信対象外となります。"
 
 #. module: account_invoice_validate_send_email
+#: model:mail.template,subject:account_invoice_validate_send_email.email_template_customer_receipt_validated
+msgid "【納品書】送付のご案内 {{ object.company_id.name }} {{ object.name or \"N/A\" }}"
+msgstr ""
+
+#. module: account_invoice_validate_send_email
 #: model:mail.template,subject:account_invoice_validate_send_email.email_template_customer_invoice_validated
-msgid "【請求書】送付のご案内 {{ object.company_id.name }} {{ object.name or \"N/A\" }}"
-msgstr "【請求書】送付のご案内 {{ object.company_id.name }} {{ object.name or \"N/A\" }}"
+msgid "【請求書】送付のご案内　{{ object.company_id.name }}　{{ object.name or \"N/A\" }}"
+msgstr ""
 
 #. module: account_invoice_validate_send_email
 #: model:mail.template,name:account_invoice_validate_send_email.email_template_customer_invoice_validated
-msgid "請求書送付のご案内"
-msgstr "請求書送付のご案内"
+msgid "請求書送付のご案内_Master"
+msgstr ""
+
+#. module: account_invoice_validate_send_email
+#: model:mail.template,name:account_invoice_validate_send_email.email_template_customer_receipt_validated
+msgid "領収書送付のご案内"
+msgstr ""
