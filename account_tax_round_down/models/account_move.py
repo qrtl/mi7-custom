@@ -8,12 +8,15 @@ class AccountMove(models.Model):
     _inherit = "account.move"
 
     # For journal entries
-    def _recompute_tax_lines(self, recompute_tax_base_amount=False):
+    def _recompute_tax_lines(
+        self, recompute_tax_base_amount=False, tax_rep_lines_to_recompute=None
+    ):
         self.ensure_one()
         if self.company_id.need_tax_round_down:
             self = self.with_context(rounding_method="DOWN")
         return super()._recompute_tax_lines(
-            recompute_tax_base_amount=recompute_tax_base_amount
+            recompute_tax_base_amount=recompute_tax_base_amount,
+            tax_rep_lines_to_recompute=tax_rep_lines_to_recompute,
         )
 
     # For invoice form and print total presentation.
