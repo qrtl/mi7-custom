@@ -1,0 +1,31 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* payment_cod_payment_term
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-12 05:43+0000\n"
+"PO-Revision-Date: 2023-12-12 05:43+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: payment_cod_payment_term
+#: model:account.payment.term,name:payment_cod_payment_term.account_payment_term_cod
+msgid "Cash on Delivery"
+msgstr "代金引換"
+
+#. module: payment_cod_payment_term
+#: model_terms:account.payment.term,note:payment_cod_payment_term.account_payment_term_cod
+msgid "Payment terms: Cash on Delivery"
+msgstr "支払条件:代金引換"
+
+#. module: payment_cod_payment_term
+#: model:ir.model,name:payment_cod_payment_term.model_sale_order
+msgid "Sales Order"
+msgstr "販売オーダ"

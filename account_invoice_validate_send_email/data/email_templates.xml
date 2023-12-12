@@ -104,7 +104,7 @@
     </record>
 
     <record id="email_template_customer_receipt_validated" model="mail.template">
-        <field name="name">領収書送付のご案内</field>
+        <field name="name">納品書送付のご案内</field>
         <field name="model_id" ref="account.model_account_move" />
         <field
             name="email_from"
@@ -121,88 +121,83 @@
         <field name="lang">{{ object.partner_id.lang }}</field>
         <field name="auto_delete" eval="False" />
         <field name="body_html" type="html">
-<div>
-    <p>
-        <t
+            <div>
+                <p>
+                    <t
                         t-out="object.partner_id.name"
                         data-oe-t-inline="true"
                         contenteditable="false"
                         oe-keep-contenteditable=""
                     />
-        <t
+                    <t
                         t-if="object.partner_id.parent_id"
                         data-oe-t-group-active="true"
                         data-oe-t-group="0"
                         data-oe-t-inline="true"
                     >
-            (<i><t
+                        (<i><t
                                 t-out="object.partner_id.parent_id.name"
                                 data-oe-t-inline="true"
                                 contenteditable="false"
                                 oe-keep-contenteditable=""
                             /></i>)
-        </t>様
-        <br /><br />
-        お世話になっております。<br />
-        以下のとおり、納品書を送付いたしますので、ご査収の程よろしくお願いいたします。
-        <br /><br />
-        <t
+                    </t>様
+                    <br /><br />
+                    MUSIC EcoSystems STOREです。<br />
+                    この度は商品をお買い上げ頂き誠にありがとうございます。<br />
+                    ご注文頂きました商品の発送が完了しましたのでご連絡致します。<br />
+                    添付の納品書をご確認ください。
+                    <br /><br />
+                    <t
                         t-out="object.name or 'N/A'"
                         data-oe-t-inline="true"
                         contenteditable="false"
                         oe-keep-contenteditable=""
                     />
-        <br /><br />
-        <t
+                    <br /><br />
+                    <t
                         t-if="object.carrier_info_name"
                         data-oe-t-group-active="true"
                         data-oe-t-group="1"
                     >
-            配送業者：<t
+                        配送業者：<t
                             t-out="object.carrier_info_name"
                             data-oe-t-inline="true"
                             contenteditable="false"
                             oe-keep-contenteditable=""
                         />
-            <br />
-        </t>
-        <t
+                        <br />
+                    </t>
+                    <t
                         t-if="object.carrier_tracking_refs"
                         data-oe-t-group-active="true"
                         data-oe-t-group="2"
                     >
-            送り状お問い合わせNo: <t
+                        送り状お問い合わせNo: <t
                             t-out="object.carrier_tracking_refs"
                             data-oe-t-inline="true"
                             contenteditable="false"
                             oe-keep-contenteditable=""
                         />
-            <br /><br />
-        </t>
-        <t
+                        <br /><br />
+                    </t>
+                    <t
                         t-if="object.carrier_tracking_url"
                         data-oe-t-group-active="true"
                         data-oe-t-group="3"
                     >
-            配送状況を配達業者のWebサイトでご確認頂けます。<br />
-            <t
+                        配送状況を配達業者のWebサイトでご確認頂けます。<br />
+                        <t
                             t-out="object.carrier_tracking_url"
                             data-oe-t-inline="true"
                             contenteditable="false"
                             oe-keep-contenteditable=""
                         />
-            <br /><br />
-        </t>
-        宜しくお願い致します。
-        <br /><br />
-        <t
-                        t-out="object.company_id.partner_id"
-                        t-options="{'widget': 'contact', 'fields': ['address', 'name'], 'no_marker': True}"
-                        data-oe-t-inline="true"
-                        contenteditable="false"
-                    />
-    </p>
-</div>
+                        <br /><br />
+                    </t>
+                    <br /><br />
+                </p>
+            </div>
         </field>
     </record>
 

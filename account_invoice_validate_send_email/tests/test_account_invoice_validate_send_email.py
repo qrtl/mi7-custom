@@ -31,6 +31,7 @@ class TestAccountInvoiceValidateSendEmail(TransactionCase):
                 "name": "Test Partner",
                 "email": "test01@gmail.com",
                 "property_account_receivable_id": acc_receivable.id,
+                "user_type": "b2b",
             }
         )
         cls.workflow = cls.env["sale.workflow.process"].create(
