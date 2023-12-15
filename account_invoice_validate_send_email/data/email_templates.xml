@@ -160,6 +160,7 @@
                         data-oe-t-group-active="true"
                         data-oe-t-group="1"
                     >
+                        お客様のお荷物番号はこちらとなります。<br />
                         配送業者：<t
                             t-out="object.carrier_info_name"
                             data-oe-t-inline="true"
@@ -192,9 +193,14 @@
                             data-oe-t-inline="true"
                             contenteditable="false"
                             oe-keep-contenteditable=""
+                        /><br />
+                        ※配送日時は配送先地域によってはご希望に沿えない場合がありますことを予めご了承ください。<br
                         />
                         <br /><br />
                     </t>
+                    またのご利用を心よりお待ちしております。<br />
+                    MUSIC EcoSystems STORE | 株式会社エムアイセブンジャパン<br />
+                    URL: https://www.musicecosystems.jp/
                     <br /><br />
                 </p>
             </div>
