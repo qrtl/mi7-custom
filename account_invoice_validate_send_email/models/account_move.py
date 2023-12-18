@@ -26,9 +26,9 @@ class AccountMove(models.Model):
     def _get_mail_template(self):
         self.ensure_one()
         template = False
-        if self.partner_id.user_type == "b2b":
+        if self.commercial_partner_id.user_type == "b2b":
             template = self.company_id.invoice_mail_template_id
-        elif self.partner_id.user_type == "b2c":
+        elif self.commercial_partner_id.user_type == "b2c":
             template = self.company_id.invoice_mail_template_b2c_id
         if not template:
             return super()._get_mail_template()
@@ -57,19 +57,19 @@ class AccountMove(models.Model):
                 continue
             if not move.send_invoice or move.invoice_sent:
                 continue
-            # Skip sending invoice if the invoice is not physical and the customer is B2C.
-            if (
-                move.partner_id.user_type == "b2c"
-                and not move.invoice_line_ids.filtered(
-                    lambda x: x.product_id.is_physical
-                )
-            ):
-                continue
             term = move.invoice_payment_term_id
             if term and term.not_send_invoice:
                 continue
             pickings = move.picking_ids
             if not pickings or pickings.filtered(lambda x: x.not_send_invoice):
+                continue
+            # Skip sending invoice if the invoice is not physical and the customer is B2C.
+            if (
+                move.commercial_partner_id.user_type == "b2c"
+                and not move.invoice_line_ids.filtered(
+                    lambda x: x.product_id.is_physical
+                )
+            ):
                 continue
             move.action_send_invoice()
         return res
