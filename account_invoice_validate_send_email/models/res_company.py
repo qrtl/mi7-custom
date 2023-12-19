@@ -10,3 +10,6 @@ class ResCompany(models.Model):
     invoice_mail_template_id = fields.Many2one(
         "mail.template", string="Invoice Email Template"
     )
+    invoice_mail_template_b2c_id = fields.Many2one(
+        "mail.template", string="Invoice Mail Template (B2C)"
+    )
