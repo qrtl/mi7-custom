@@ -1,0 +1,1 @@
+This module adds the functionality to include a sale description in each sale order line, controlled by the 'use_sale_description' field in the product. By default, this field is set to false. Users can modify this default behavior through the system parameter 'product_description_without_description_sale.default_use_description_sale'.
