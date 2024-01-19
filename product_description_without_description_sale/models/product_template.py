@@ -9,7 +9,7 @@ class ProductTemplate(models.Model):
 
     use_description_sale = fields.Boolean(
         "Use Sales Description",
-        help="If selected, Sales Description will be appended"
+        help="If selected, Sales Description will be appended "
         "to the sales order line description.",
         default=lambda self: self._default_use_description_sale(),
     )

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-19 06:42+0000\n"
-"PO-Revision-Date: 2024-01-19 06:42+0000\n"
+"POT-Creation-Date: 2024-01-19 08:57+0000\n"
+"PO-Revision-Date: 2024-01-19 08:57+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,9 +19,9 @@ msgstr ""
 #: model:ir.model.fields,help:product_description_without_description_sale.field_product_product__use_description_sale
 #: model:ir.model.fields,help:product_description_without_description_sale.field_product_template__use_description_sale
 msgid ""
-"If selected, Sales Description will be appendedto the sales order line "
+"If selected, Sales Description will be appended to the sales order line "
 "description."
-msgstr "選択された場合、販売説明欄は販売オーダの行に追加されます。"
+msgstr "選択した場合、販売説明は販売オーダ明細の説明に使用されます。"
 
 #. module: product_description_without_description_sale
 #: model:ir.model,name:product_description_without_description_sale.model_product_product
@@ -37,4 +37,4 @@ msgstr "プロダクトテンプレート"
 #: model:ir.model.fields,field_description:product_description_without_description_sale.field_product_product__use_description_sale
 #: model:ir.model.fields,field_description:product_description_without_description_sale.field_product_template__use_description_sale
 msgid "Use Sales Description"
-msgstr "販売説明欄を利用"
+msgstr "販売説明を使用"
