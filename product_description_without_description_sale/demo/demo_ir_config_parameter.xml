@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="param_default_use_description_sale" model="ir.config_parameter">
+        <field
+            name="key"
+        >product_description_without_description_sale.default_use_description_sale</field>
+        <field name="value">1</field> <!-- True for tests -->
+    </record>
+</odoo>
