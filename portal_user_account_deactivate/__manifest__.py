@@ -10,6 +10,7 @@
     "depends": ["portal"],
     "data": [
         "views/portal_templates.xml",
+        "views/res_company_views.xml",
     ],
     "installable": True,
 }
