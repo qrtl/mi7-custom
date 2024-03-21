@@ -1,0 +1,46 @@
+<odoo>
+    <template
+        id="portal_account_deactivate"
+        name="Portal hook"
+        inherit_id="portal.portal_my_security"
+    >
+        <xpath
+            expr="//div[@class='o_portal_security_body']/section[last()]"
+            position="after"
+        >
+            <section>
+                <h3>Deactivate Account</h3>
+                <div class="alert alert-danger" role="alert">
+                    <span t-field="request.env.company.account_delete_caution_text" />
+                </div>
+                <form action="/my/deactivate" method="post">
+                    <div class="form-check mt-3">
+                        <!-- Make the checkbox required -->
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="accountDeactivateCheck"
+                            name="account_deactivate_confirm"
+                            required="required"
+                        />
+                        <label class="form-check-label" for="accountDeactivateCheck">
+                            I understand the consequences of deactivating my account.
+                        </label>
+                    </div>
+                    <div class="mt-3">
+                        <input
+                            type="hidden"
+                            name="csrf_token"
+                            t-att-value="request.csrf_token()"
+                        />
+                        <!-- The button is always visible, but the form can't be submitted unless the checkbox is checked -->
+                        <button
+                            type="submit"
+                            class="btn btn-danger"
+                        >Deactivate Account</button>
+                    </div>
+                </form>
+            </section>
+        </xpath>
+    </template>
+</odoo>
