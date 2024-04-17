@@ -22,7 +22,7 @@ class ResPartner(models.Model):
     )
     newsletter = fields.Selection(
         [("subscribe", "Subscribe"), ("unsubscribe", "Unsubscribe")],
-        default="subscribe",
+        default="unsubscribe",
     )
     department = fields.Char()
 
