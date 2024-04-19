@@ -9,6 +9,7 @@
             position="after"
         >
             <section>
+                <div style="margin-top: 120px;" />
                 <h3>Deactivate Account</h3>
                 <div class="alert alert-danger" role="alert">
                     <span t-field="request.env.company.account_delete_caution_text" />
