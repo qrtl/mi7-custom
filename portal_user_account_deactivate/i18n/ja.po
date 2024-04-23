@@ -1,0 +1,47 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* portal_user_account_deactivate
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-19 06:24+0000\n"
+"PO-Revision-Date: 2024-04-19 06:24+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: portal_user_account_deactivate
+#: model_terms:ir.ui.view,arch_db:portal_user_account_deactivate.view_company_form
+msgid "Account Delete Caution"
+msgstr "アカウント無効化警告"
+
+#. module: portal_user_account_deactivate
+#: model:ir.model.fields,field_description:portal_user_account_deactivate.field_res_company__account_delete_caution_text
+msgid "Account Delete Caution Text"
+msgstr "アカウント無効化警告文"
+
+#. module: portal_user_account_deactivate
+#: model:ir.model,name:portal_user_account_deactivate.model_res_company
+msgid "Companies"
+msgstr "会社"
+
+#. module: portal_user_account_deactivate
+#: model_terms:ir.ui.view,arch_db:portal_user_account_deactivate.portal_account_deactivate
+msgid "Deactivate Account"
+msgstr "アカウント無効化"
+
+#. module: portal_user_account_deactivate
+#: model_terms:ir.ui.view,arch_db:portal_user_account_deactivate.portal_account_deactivate
+msgid "I understand the consequences of deactivating my account."
+msgstr "アカウント無効化後の結果を理解しました。"
+
+#. module: portal_user_account_deactivate
+#: model:ir.model.fields,help:portal_user_account_deactivate.field_res_company__account_delete_caution_text
+msgid ""
+"This text shows in the Deactivate Account section of /my/security page."
+msgstr "このテキストは/my/securityのアカウント無効化セクションに表示されます。"
