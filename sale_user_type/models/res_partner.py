@@ -9,7 +9,7 @@ class ResPartner(models.Model):
 
     user_type = fields.Selection(
         [("b2c", "B2C"), ("b2b", "B2B")],
-        default="b2c",
+        default="b2b",
         help="The setting of the parent is used for the sales order if there is a "
         "parent.",
     )
