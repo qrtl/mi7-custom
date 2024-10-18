@@ -71,6 +71,10 @@ class AccountMove(models.Model):
                 )
             ):
                 continue
+            if move.message_follower_ids.mapped("partner_id").filtered(
+                lambda x: (not x.user_ids or x.user_ids.share) and not x.email
+            ):
+                continue
             move.action_send_invoice()
         return res
 
