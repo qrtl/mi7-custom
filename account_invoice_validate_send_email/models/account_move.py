@@ -71,6 +71,13 @@ class AccountMove(models.Model):
                 )
             ):
                 continue
+            # No message should be created when none of the non-internal followers has an email,
+            # since having the message log in the chatter is confusing (one would assume that
+            # the message has actually been delivered to the followers).
+            if not move.message_follower_ids.mapped("partner_id").filtered(
+                lambda x: (not x.user_ids or x.user_ids.share) and x.email
+            ):
+                continue
             move.action_send_invoice()
         return res
 
