@@ -16,7 +16,7 @@ class WebsiteForm(form.WebsiteForm):
                 values = {
                     "body": record[default_field.name],
                     "model": model.model,
-                    "message_type": "comment",
+                    "message_type": "auto_comment",
                     "res_id": record.id,
                 }
                 request.env["mail.message"].with_user(SUPERUSER_ID).create(values)
