@@ -14,9 +14,9 @@
                     </group>
                     <group>
                         <field
-                            name="product_ids"
+                            name="product_template_ids"
                             widget="many2many_tags"
-                            attrs="{'invisible':[('product_ids','=',[])]}"
+                            attrs="{'invisible':[('product_template_ids','=',[])]}"
                         />
                     </group>
                 </sheet>

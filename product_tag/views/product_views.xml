@@ -10,36 +10,6 @@
                     name="options"
                 >{'no_open': True, 'color_field': 'color'}</attribute>
             </field>
-            <field name="product_tag_ids" position="after">
-                <field
-                    name="additional_product_tag_ids"
-                    widget="many2many_tags"
-                    options="{'no_open': True, 'color_field': 'color'}"
-                />
-            </field>
-        </field>
-    </record>
-    <record id="product_variant_easy_edit_view_inherit" model="ir.ui.view">
-        <field name="name">product.product.form</field>
-        <field name="model">product.product</field>
-        <field name="inherit_id" ref="product.product_variant_easy_edit_view" />
-        <field name="arch" type="xml">
-            <group name="weight" position="after">
-                <group name="tags" string="Tags">
-                    <field
-                        name="product_tag_ids"
-                        string="Product Template Tags"
-                        widget="many2many_tags"
-                        readonly="1"
-                        options="{'no_open': True, 'color_field': 'color'}"
-                    />
-                    <field
-                        name="additional_product_tag_ids"
-                        widget="many2many_tags"
-                        options="{'no_open': True, 'color_field': 'color'}"
-                    />
-                </group>
-            </group>
         </field>
     </record>
     <record id="product_product_tree_view_inherit" model="ir.ui.view">
@@ -49,7 +19,7 @@
         <field name="arch" type="xml">
             <field name="categ_id" position="after">
                 <field
-                    name="all_product_tag_ids"
+                    name="product_tag_ids"
                     widget="many2many_tags"
                     options="{'color_field': 'color', 'no_edit_color': 1}"
                     optional="hide"

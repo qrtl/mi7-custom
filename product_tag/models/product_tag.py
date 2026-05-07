@@ -2,8 +2,7 @@
 
 from random import randint
 
-from odoo import api, fields, models
-from odoo.osv import expression
+from odoo import fields, models
 
 
 class ProductTag(models.Model):
@@ -18,32 +17,7 @@ class ProductTag(models.Model):
     product_template_ids = fields.Many2many(
         "product.template", "product_tag_product_template_rel"
     )
-    product_product_ids = fields.Many2many(
-        "product.product", "product_tag_product_product_rel"
-    )
-    product_ids = fields.Many2many(
-        "product.product", compute="_compute_product_ids", search="_search_product_ids"
-    )
 
     _sql_constraints = [
         ("name_uniq", "unique (name)", "Tag name already exists !"),
     ]
-
-    @api.depends("product_template_ids", "product_product_ids")
-    def _compute_product_ids(self):
-        for tag in self:
-            tag.product_ids = (
-                tag.product_template_ids.product_variant_ids | tag.product_product_ids
-            )
-
-    def _search_product_ids(self, operator, operand):
-        if operator in expression.NEGATIVE_TERM_OPERATORS:
-            return [
-                ("product_template_ids.product_variant_ids", operator, operand),
-                ("product_product_ids", operator, operand),
-            ]
-        return [
-            "|",
-            ("product_template_ids.product_variant_ids", operator, operand),
-            ("product_product_ids", operator, operand),
-        ]
