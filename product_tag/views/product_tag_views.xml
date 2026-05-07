@@ -42,7 +42,7 @@
     <menuitem
         id="product_tag_menu"
         name="Product Tags"
-        parent="sale.product_menu_catalog"
+        parent="sale.prod_config_main"
         action="product_tag_action"
         sequence="20"
     />

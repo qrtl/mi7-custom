@@ -37,7 +37,7 @@ products to be classified with tags in Odoo 15.
 Configuration
 =============
 
--  Go to *Sales → Products → Product Tags*.
+-  Go to *Sales → Configuration → Product Tags*.
 -  Create a tag by setting its *Name* and *Color*.
 
 Usage

@@ -1,2 +1,2 @@
-- Go to *Sales → Products → Product Tags*.
+- Go to *Sales → Configuration → Product Tags*.
 - Create a tag by setting its *Name* and *Color*.
