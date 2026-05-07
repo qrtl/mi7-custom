@@ -1,4 +1,4 @@
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
+# Part of Odoo.
 {
     "name": "Product Tag",
     "category": "Product",
