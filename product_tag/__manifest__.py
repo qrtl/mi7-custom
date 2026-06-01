@@ -1,4 +1,6 @@
-# Part of Odoo.
+# Copyright Odoo S.A.
+# Copyright 2026 Quartile (https://www.quartile.co)
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
 {
     "name": "Product Tag",
     "category": "Product",
