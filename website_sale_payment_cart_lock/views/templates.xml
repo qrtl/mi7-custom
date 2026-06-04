@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="website_sale_cart_payment_lock_message" inherit_id="website_sale.cart">
+        <xpath expr="//t[@t-call='website_sale.cart_lines']" position="before">
+            <div
+                t-if="cart_locked_message"
+                id="data_warning"
+                class="alert alert-warning"
+                role="alert"
+            >
+                <span t-esc="cart_locked_message" />
+            </div>
+        </xpath>
+        <xpath expr="//a[@href='/shop/checkout?express=1']" position="attributes">
+            <attribute name="t-if">website_sale_order and website_sale_order.website_order_line and not website_sale_order.website_cart_locked</attribute>
+        </xpath>
+    </template>
+
+    <template id="website_sale_cart_lines_payment_lock" inherit_id="website_sale.cart_lines">
+        <xpath expr="//a[contains(@class, 'js_add_cart_json') and .//i[contains(@class, 'fa-minus')]]" position="attributes">
+            <attribute name="t-if">not website_sale_order.website_cart_locked</attribute>
+        </xpath>
+        <xpath expr="//a[contains(@class, 'js_add_cart_json') and .//i[contains(@class, 'fa-plus')]]" position="attributes">
+            <attribute name="t-if">not website_sale_order.website_cart_locked</attribute>
+        </xpath>
+        <xpath expr="//input[contains(@class, 'js_quantity') and @type='text']" position="attributes">
+            <attribute name="t-att-disabled">'disabled' if website_sale_order.website_cart_locked else None</attribute>
+        </xpath>
+        <xpath expr="//a[contains(@class, 'js_delete_product')]" position="attributes">
+            <attribute name="t-if">not website_sale_order.website_cart_locked</attribute>
+        </xpath>
+    </template>
+
+    <template id="website_sale_short_cart_summary_payment_lock" inherit_id="website_sale.short_cart_summary">
+        <xpath expr="//a[@href='/shop/checkout?express=1']" position="attributes">
+            <attribute name="t-if">website_sale_order and website_sale_order.website_order_line and not website_sale_order.website_cart_locked</attribute>
+        </xpath>
+    </template>
+</odoo>
