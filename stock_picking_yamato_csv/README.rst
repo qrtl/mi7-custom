@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ========================
 Stock Picking Yamato CSV
 ========================
@@ -13,7 +17,7 @@ Stock Picking Yamato CSV
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
@@ -24,8 +28,8 @@ Stock Picking Yamato CSV
 
 This module does the following:
 
--  Let users export delivery instruction data in CSV format to be
-   uploaded to the Yamato WMS.
+- Let users export delivery instruction data in CSV format to be
+  uploaded to the Yamato WMS.
 
 This module depends on report_csv module from OCA.
 
@@ -39,9 +43,9 @@ Configuration
 
 Following settings should be updated:
 
--  Shipper Code (in warehouse)
--  Carrier Code (in warehouse)
--  Delivery Time Category (in delivery time)
+- Shipper Code (in warehouse)
+- Carrier Code (in warehouse)
+- Delivery Time Category (in delivery time)
 
 Carrier Code can also be set in the shipping partner - when a delivery
 is created, Carrier Code in the delivery is defaulted from the shipping

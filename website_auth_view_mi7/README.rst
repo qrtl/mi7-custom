@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =====================================
 Website Login/Signup Page Adjustments
 =====================================
@@ -13,7 +17,7 @@ Website Login/Signup Page Adjustments
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
@@ -24,10 +28,10 @@ Website Login/Signup Page Adjustments
 
 This module does the following:
 
--  Changes the presentation of the signup, login and password reset
-   pages (for the better).
--  Adds custom message fields in the website to show them in the
-   above-mentioned pages.
+- Changes the presentation of the signup, login and password reset pages
+  (for the better).
+- Adds custom message fields in the website to show them in the
+  above-mentioned pages.
 
 **Table of contents**
 

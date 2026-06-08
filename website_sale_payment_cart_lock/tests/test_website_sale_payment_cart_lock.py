@@ -1,9 +1,9 @@
 # Copyright 2026 Quartile Limited
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
 
+from odoo.exceptions import UserError, ValidationError
 from odoo.fields import Command
 from odoo.tests.common import tagged
-from odoo.exceptions import UserError, ValidationError
 
 from odoo.addons.payment.tests.common import PaymentCommon
 from odoo.addons.website.tools import MockRequest
@@ -152,7 +152,9 @@ class TestWebsiteSalePaymentCartLock(PaymentCommon):
         order.invalidate_cache()
         self.assertTrue(order.website_cart_locked)
         self.assertTrue(order.transaction_ids)
-        self.assertEqual(processing_values["reference"], order.transaction_ids[:1].reference)
+        self.assertEqual(
+            processing_values["reference"], order.transaction_ids[:1].reference
+        )
 
     def test_shop_payment_transaction_rejects_locked_order(self):
         order = self._create_website_order()

@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ========================
 Payment Cash on Delivery
 ========================
@@ -13,7 +17,7 @@ Payment Cash on Delivery
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-LGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-LGPL--3-blue.png
     :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
     :alt: License: LGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
@@ -38,10 +42,10 @@ Configuration
 
 Open Cash on Delivery acquirer and update the following settings:
 
--  Amount Limit: threshold amount - the acquirer is available when order
-   amount is equal to or lower than the set amount.
--  Add Extra Fees and related fields: if set, additional line will be
-   created in the order according to the configuration.
+- Amount Limit: threshold amount - the acquirer is available when order
+  amount is equal to or lower than the set amount.
+- Add Extra Fees and related fields: if set, additional line will be
+  created in the order according to the configuration.
 
 Usage
 =====
@@ -50,10 +54,10 @@ When Cash on Delivery is selected as a payment method for the order and
 user proceeds to confim the order in eCommerce/portal, it does the
 following:
 
--  Adds a transaction fee line to the sales order (if configured to do
-   so).
--  Set the payment transaction to done state.
--  Confirm the sales order.
+- Adds a transaction fee line to the sales order (if configured to do
+  so).
+- Set the payment transaction to done state.
+- Confirm the sales order.
 
 Bug Tracker
 ===========

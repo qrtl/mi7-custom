@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =====================
 Sale Physical Product
 =====================
@@ -13,7 +17,7 @@ Sale Physical Product
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-LGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-LGPL--3-blue.png
     :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
     :alt: License: LGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
@@ -24,10 +28,10 @@ Sale Physical Product
 
 This module does the following:
 
--  Adds a field in product.template to indicate whether the product is
-   physical (i.e. an object of logistics) or not.
--  Adds a field in sale.order to indicate whether the sales order
-   includes a physical product.
+- Adds a field in product.template to indicate whether the product is
+  physical (i.e. an object of logistics) or not.
+- Adds a field in sale.order to indicate whether the sales order
+  includes a physical product.
 
 This module is expected to be inherited by a few other modules.
 

@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =============================
 Account Invoice Send Reply To
 =============================
@@ -13,7 +17,7 @@ Account Invoice Send Reply To
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
@@ -24,7 +28,7 @@ Account Invoice Send Reply To
 
 This module does the following:
 
--  Adds reply_to field to account.account_invoice_send_wizard_form.
+- Adds reply_to field to account.account_invoice_send_wizard_form.
 
 This adjustment is necessary for the custom module
 mail_compose_message_reply_to to work as expected when an invoice is

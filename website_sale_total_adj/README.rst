@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ======================
 Website Sale Total Adj
 ======================
@@ -13,7 +17,7 @@ Website Sale Total Adj
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-LGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-LGPL--3-blue.png
     :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
     :alt: License: LGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
@@ -24,8 +28,8 @@ Website Sale Total Adj
 
 This module does the following:
 
--  Adjusts the cart total presentation depending on the tax
-   exclusive/inclusive setting.
+- Adjusts the cart total presentation depending on the tax
+  exclusive/inclusive setting.
 
 **Table of contents**
 

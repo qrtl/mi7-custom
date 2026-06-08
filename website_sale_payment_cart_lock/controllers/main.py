@@ -1,14 +1,14 @@
 # Copyright 2026 Quartile Limited
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
 
-from odoo import _, fields, http, tools
+from odoo import _, fields, http
 from odoo.exceptions import AccessError, MissingError, ValidationError
-from odoo.fields import Command
 from odoo.http import request
 
-from odoo.addons.payment.controllers.post_processing import PaymentPostProcessing
-from odoo.addons.website_sale.controllers.main import PaymentPortal as WebsiteSalePaymentPortal
-from odoo.addons.website_sale.controllers.main import WebsiteSale as WebsiteSaleController
+from odoo.addons.website_sale.controllers.main import (
+    PaymentPortal as WebsiteSalePaymentPortal,
+    WebsiteSale as WebsiteSaleController,
+)
 
 
 class WebsiteSale(WebsiteSaleController):
@@ -22,7 +22,9 @@ class WebsiteSale(WebsiteSaleController):
         message = self._get_cart_lock_message(order)
         quantity = 0
         if line_id:
-            order_line = order.order_line.filtered(lambda line: line.id == int(line_id))[:1]
+            order_line = order.order_line.filtered(
+                lambda line: line.id == int(line_id)
+            )[:1]
             quantity = order_line.product_uom_qty if order_line else 0
         return {
             "quantity": quantity,
@@ -36,7 +38,9 @@ class WebsiteSale(WebsiteSaleController):
                     "suggested_products": order._cart_accessories(),
                 },
             ),
-            "website_sale.short_cart_summary": request.env["ir.ui.view"]._render_template(
+            "website_sale.short_cart_summary": request.env[
+                "ir.ui.view"
+            ]._render_template(
                 "website_sale.short_cart_summary",
                 {
                     "website_sale_order": order,
@@ -49,7 +53,9 @@ class WebsiteSale(WebsiteSaleController):
         response = super().cart(access_token=access_token, revive=revive, **post)
         order = request.website.sale_get_order()
         if hasattr(response, "qcontext") and self._is_cart_locked(order):
-            response.qcontext["cart_locked_message"] = self._get_cart_lock_message(order)
+            response.qcontext["cart_locked_message"] = self._get_cart_lock_message(
+                order
+            )
         return response
 
     @http.route()
@@ -91,50 +97,21 @@ class WebsiteSale(WebsiteSaleController):
 
 
 class PaymentPortal(WebsiteSalePaymentPortal):
-    @http.route("/shop/payment/transaction/<int:order_id>", type="json", auth="public", website=True)
+    @http.route()
     def shop_payment_transaction(self, order_id, access_token, **kwargs):
         try:
-            order_sudo = self._document_check_access("sale.order", order_id, access_token)
-        except MissingError as error:
-            raise error
+            order_sudo = self._document_check_access(
+                "sale.order", order_id, access_token
+            )
+        except MissingError:
+            raise
         except AccessError:
-            raise ValidationError(_("The access token is invalid."))
-
+            raise ValidationError(_("The access token is invalid.")) from None
         if order_sudo._is_website_cart_locked():
             raise ValidationError(order_sudo._get_website_cart_lock_message())
-
-        if order_sudo.state == "cancel":
-            raise ValidationError(_("The order has been canceled."))
-
-        if tools.float_compare(
-            kwargs["amount"],
-            order_sudo.amount_total,
-            precision_rounding=order_sudo.currency_id.rounding,
-        ):
-            raise ValidationError(_("The cart has been updated. Please refresh the page."))
-
-        kwargs.update(
-            {
-                "reference_prefix": None,
-                "sale_order_id": order_id,
-            }
-        )
-        kwargs.pop("custom_create_values", None)
-
         order_sudo.action_lock_website_cart()
         try:
-            tx_sudo = self._create_transaction(
-                custom_create_values={"sale_order_ids": [Command.set([order_id])]},
-                **kwargs,
-            )
-
-            last_tx_id = request.session.get("__website_sale_last_tx_id")
-            last_tx = request.env["payment.transaction"].browse(last_tx_id).sudo().exists()
-            if last_tx:
-                PaymentPostProcessing.remove_transactions(last_tx)
-            request.session["__website_sale_last_tx_id"] = tx_sudo.id
-
-            return tx_sudo._get_processing_values()
+            return super().shop_payment_transaction(order_id, access_token, **kwargs)
         except Exception:
             order_sudo.action_unlock_website_cart()
             raise

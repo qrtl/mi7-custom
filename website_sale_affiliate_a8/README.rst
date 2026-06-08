@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =========================
 Website Sale Affiliate A8
 =========================
@@ -13,7 +17,7 @@ Website Sale Affiliate A8
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
@@ -25,13 +29,13 @@ Website Sale Affiliate A8
 This module adds a script in the /shop/confirmation page to pass the
 relevant sales data to A8, an affiliate service provider.
 
--  Capture a8_param from the cookie and saves it in the partner at user
-   login.
--  Generates a cookie with A8 param based on the partner's a8_param at
-   the time of checkout.
--  Extends the template of /shop/confirmation page to set A8's
-   JavaScript and sales contents.
--  Clears a8_param of the partner with payment confirmation.
+- Capture a8_param from the cookie and saves it in the partner at user
+  login.
+- Generates a cookie with A8 param based on the partner's a8_param at
+  the time of checkout.
+- Extends the template of /shop/confirmation page to set A8's JavaScript
+  and sales contents.
+- Clears a8_param of the partner with payment confirmation.
 
 Currencies supported by A8: JPY, USD, and EUR
 
@@ -59,9 +63,9 @@ Configuration
 For the initial setup, go to *Settings > Technical > System Parameters*
 and update following three parameters:
 
--  affiliate.service.name: Affiliate service provider's name
--  affiliate.pid: Program ID issued by affiliate vendor
--  affiliate.script.src: URL to the conversion acquisition script
+- affiliate.service.name: Affiliate service provider's name
+- affiliate.pid: Program ID issued by affiliate vendor
+- affiliate.script.src: URL to the conversion acquisition script
 
 See https://document.a8.net/ec/trackingGuide-ja.html for the tag
 specification.

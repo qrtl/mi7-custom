@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ===================================
 Account Invoice Validate Send Email
 ===================================
@@ -13,7 +17,7 @@ Account Invoice Validate Send Email
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
@@ -24,18 +28,18 @@ Account Invoice Validate Send Email
 
 This module does the following:
 
--  When customer invoice that meets all of the following conditions is
-   validated, Odoo will print and send the invoice to the followers of
-   the document.
+- When customer invoice that meets all of the following conditions is
+  validated, Odoo will print and send the invoice to the followers of
+  the document.
 
-   -  'Send Invoice upon Validation' is set in the workflow process
-      linked to the invoice.
-   -  'Not Auto-send Invoice' of the pikcing linked to the invoice is
-      not selected.
-   -  'Not Auto-send Invoice' of the payment term assigned to the
-      invoice is not selected.
-   -  'Invoice Sent' is not flagged (the field is flagged when the
-      invoice is sent by the module logic).
+  - 'Send Invoice upon Validation' is set in the workflow process linked
+    to the invoice.
+  - 'Not Auto-send Invoice' of the pikcing linked to the invoice is not
+    selected.
+  - 'Not Auto-send Invoice' of the payment term assigned to the invoice
+    is not selected.
+  - 'Invoice Sent' is not flagged (the field is flagged when the invoice
+    is sent by the module logic).
 
 The module depends on the OCA module sale_automatic_workflow.
 
@@ -81,7 +85,7 @@ Authors
 Contributors
 ------------
 
--  JackLe <lehoangan1988@gmail.com>
+- JackLe <lehoangan1988@gmail.com>
 
 Maintainers
 -----------

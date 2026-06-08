@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ==============================
 Account Invoice Date Delivered
 ==============================
@@ -13,7 +17,7 @@ Account Invoice Date Delivered
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
@@ -24,9 +28,9 @@ Account Invoice Date Delivered
 
 This module does the following:
 
--  Adds time_delivered and date_delivered fields to account.invoice,
-   which should be populated for customer invoices based on the linked
-   pickings.
+- Adds time_delivered and date_delivered fields to account.invoice,
+  which should be populated for customer invoices based on the linked
+  pickings.
 
 The intention of having the date_delivered field (date type) is so that
 it will be easy for users to see the date according to their timezone

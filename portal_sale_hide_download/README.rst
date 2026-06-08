@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =========================
 Portal Sale Hide Download
 =========================
@@ -13,7 +17,7 @@ Portal Sale Hide Download
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-LGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-LGPL--3-blue.png
     :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
     :alt: License: LGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
@@ -24,8 +28,8 @@ Portal Sale Hide Download
 
 This module does the following:
 
--  Hide 'Download' and 'Print' buttons in quatation / sale_order of
-   portal page.
+- Hide 'Download' and 'Print' buttons in quatation / sale_order of
+  portal page.
 
 **Table of contents**
 

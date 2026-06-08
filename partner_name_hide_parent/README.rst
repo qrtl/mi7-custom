@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ========================
 Partner Name Hide Parent
 ========================
@@ -13,7 +17,7 @@ Partner Name Hide Parent
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-LGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-LGPL--3-blue.png
     :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
     :alt: License: LGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
@@ -24,16 +28,16 @@ Partner Name Hide Parent
 
 This module does the following:
 
--  Adds the ability to hide parent's name from the presentation of the
-   partners' names according to the settings of the partners. The
-   function provided by this module is needed when you have to set up a
-   child partner (e.g. a branch office of a company) as an 'individual'
-   due to how Odoo recognizes the commercial partner (i.e. if a child
-   partner is a 'company', the partner becomes the commercial partner
-   itself), and you do not want to show the parent's name in QWeb report
-   or website where the partner is referenced (if the child partner is
-   an individual, Odoo by default shows the parent's name preceding the
-   child's name).
+- Adds the ability to hide parent's name from the presentation of the
+  partners' names according to the settings of the partners. The
+  function provided by this module is needed when you have to set up a
+  child partner (e.g. a branch office of a company) as an 'individual'
+  due to how Odoo recognizes the commercial partner (i.e. if a child
+  partner is a 'company', the partner becomes the commercial partner
+  itself), and you do not want to show the parent's name in QWeb report
+  or website where the partner is referenced (if the child partner is an
+  individual, Odoo by default shows the parent's name preceding the
+  child's name).
 
 **Table of contents**
 

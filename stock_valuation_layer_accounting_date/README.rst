@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =====================================
 Stock Valuation Layer Accounting Date
 =====================================
@@ -13,7 +17,7 @@ Stock Valuation Layer Accounting Date
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
@@ -28,11 +32,10 @@ enabling the report output based on this field.
 Accounting Date is computed (and stored in the record) based on the
 following logic:
 
--  If a journal entry linked to the stock.valuation.layer record, take
-   the date of the journal entry.
--  Otherwise, convert create_date (datetime) of the
-   stock.valuation.layer record to date, with consideration to user's
-   timezone.
+- If a journal entry linked to the stock.valuation.layer record, take
+  the date of the journal entry.
+- Otherwise, convert create_date (datetime) of the stock.valuation.layer
+  record to date, with consideration to user's timezone.
 
 **Table of contents**
 
@@ -69,10 +72,10 @@ Authors
 Contributors
 ------------
 
--  `Quartile Limited <info@quartile.co>`__:
+- `Quartile Limited <info@quartile.co>`__:
 
-   -  Aung Ko Ko lin
-   -  Yoshi Tashiro
+  - Aung Ko Ko lin
+  - Yoshi Tashiro
 
 Maintainers
 -----------

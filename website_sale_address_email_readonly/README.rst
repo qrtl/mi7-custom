@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ===================================
 Website Sale Address Email Readonly
 ===================================
@@ -13,7 +17,7 @@ Website Sale Address Email Readonly
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
@@ -24,10 +28,10 @@ Website Sale Address Email Readonly
 
 This module does the following:
 
--  Makes the address form email field in eCommerce checkout read-only if
-   the user has email address.
--  Hide the address form email field in eCommerce checkout if shipping
-   mode.
+- Makes the address form email field in eCommerce checkout read-only if
+  the user has email address.
+- Hide the address form email field in eCommerce checkout if shipping
+  mode.
 
 **Table of contents**
 

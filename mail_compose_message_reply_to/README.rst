@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =============================
 Mail Compose Message Reply To
 =============================
@@ -13,7 +17,7 @@ Mail Compose Message Reply To
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
@@ -24,8 +28,8 @@ Mail Compose Message Reply To
 
 This module does the following:
 
--  Respects the 'reply-to' setting of the email template unless the
-   value was otherwise specified.
+- Respects the 'reply-to' setting of the email template unless the value
+  was otherwise specified.
 
 This is to "fix" the standard behavior which we suspect to be a bug -
 even when 'reply-to' is set in the template. it does not seem to be

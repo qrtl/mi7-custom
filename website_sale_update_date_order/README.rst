@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ==============================
 Website Sale Update Date Order
 ==============================
@@ -13,7 +17,7 @@ Website Sale Update Date Order
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
@@ -24,9 +28,9 @@ Website Sale Update Date Order
 
 This module does the following:
 
--  Updates date_order of the eCommerce order to the current date when
-   the cart is updated, to make sure that the latest pricing is applied
-   when adding a product to the cart.
+- Updates date_order of the eCommerce order to the current date when the
+  cart is updated, to make sure that the latest pricing is applied when
+  adding a product to the cart.
 
 **Table of contents**
 

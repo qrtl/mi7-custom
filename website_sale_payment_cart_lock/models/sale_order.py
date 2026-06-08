@@ -8,15 +8,14 @@ from odoo.exceptions import UserError
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    website_cart_locked = fields.Boolean(string="Website Cart Locked", copy=False)
-    website_cart_lock_date = fields.Datetime(
-        string="Website Cart Lock Date", copy=False, readonly=True
-    )
+    website_cart_locked = fields.Boolean(copy=False)
+    website_cart_lock_date = fields.Datetime(copy=False, readonly=True)
 
     def _get_website_cart_lock_message(self):
         self.ensure_one()
         return _(
-            "This cart is currently being processed for payment. Please wait for the payment result before making changes."
+            "This cart is currently being processed for payment. ",
+            "Please wait for the payment result before making changes.",
         )
 
     def _is_website_cart_locked(self):
@@ -24,7 +23,9 @@ class SaleOrder(models.Model):
         return self.website_cart_locked and self.state == "draft"
 
     def action_lock_website_cart(self):
-        orders = self.filtered(lambda so: so.state == "draft" and not so.website_cart_locked)
+        orders = self.filtered(
+            lambda so: so.state == "draft" and not so.website_cart_locked
+        )
         if orders:
             orders.write(
                 {
@@ -42,9 +43,6 @@ class SaleOrder(models.Model):
                     "website_cart_lock_date": False,
                 }
             )
-
-    def action_unlock_website_cart_manually(self):
-        self.action_unlock_website_cart()
 
     def _cart_update(
         self,

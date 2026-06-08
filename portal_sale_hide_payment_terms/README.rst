@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ==============================
 Portal Sale Hide Payment Terms
 ==============================
@@ -13,7 +17,7 @@ Portal Sale Hide Payment Terms
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-LGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-LGPL--3-blue.png
     :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
     :alt: License: LGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
@@ -24,9 +28,9 @@ Portal Sale Hide Payment Terms
 
 This module does the following:
 
--  Hide 'Payment Terms' buttons in quotation / sale_order of portal
-   sidebar and payment terms content in quotation / sale_order of portal
-   page.
+- Hide 'Payment Terms' buttons in quotation / sale_order of portal
+  sidebar and payment terms content in quotation / sale_order of portal
+  page.
 
 **Table of contents**
 

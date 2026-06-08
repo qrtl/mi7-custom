@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ===========================
 Product Website Description
 ===========================
@@ -13,7 +17,7 @@ Product Website Description
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fmi7--custom-lightgray.png?logo=github
@@ -24,9 +28,9 @@ Product Website Description
 
 This module does the following:
 
--  Adds "Product Description for Website Display" tab to the product
-   form, to give users the ability to edit the product description to
-   show on the eCommerce product page.
+- Adds "Product Description for Website Display" tab to the product
+  form, to give users the ability to edit the product description to
+  show on the eCommerce product page.
 
 This feature is in response to the situation where it was not possible
 to edit the product description on the shop frontend for a technical
