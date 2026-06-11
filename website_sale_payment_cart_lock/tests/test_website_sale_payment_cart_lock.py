@@ -1,6 +1,9 @@
 # Copyright 2026 Quartile Limited
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
 
+from datetime import timedelta
+
+from odoo import fields as odoo_fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.fields import Command
 from odoo.tests.common import tagged
@@ -11,6 +14,7 @@ from odoo.addons.website_sale_payment_cart_lock.controllers.main import (
     PaymentPortal,
     WebsiteSale,
 )
+from odoo.addons.website_sale_payment_cart_lock.models.sale_order import LOCK_TIMEOUT
 
 
 @tagged("post_install", "-at_install")
@@ -67,9 +71,26 @@ class TestWebsiteSalePaymentCartLock(PaymentCommon):
             order._portal_ensure_token()
         return order.sudo()
 
+    def _create_live_transaction(self, order):
+        return self.create_transaction(
+            "redirect",
+            amount=order.amount_total,
+            currency_id=order.currency_id.id,
+            partner_id=order.partner_id.id,
+            sale_order_ids=[Command.set([order.id])],
+        )
+
+    def test_draft_order_with_live_tx_is_locked(self):
+        order = self._create_backend_order()
+        self.assertFalse(order.website_cart_locked)
+        self._create_live_transaction(order)
+        order.invalidate_cache()
+        self.assertTrue(order.website_cart_locked)
+
     def test_cart_update_is_blocked_when_order_is_locked(self):
         order = self._create_backend_order()
-        order.action_lock_website_cart()
+        self._create_live_transaction(order)
+        order.invalidate_cache()
 
         with self.assertRaises(UserError):
             order._cart_update(
@@ -80,7 +101,8 @@ class TestWebsiteSalePaymentCartLock(PaymentCommon):
 
     def test_cart_update_json_returns_warning_for_locked_cart(self):
         order = self._create_website_order()
-        order.action_lock_website_cart()
+        self._create_live_transaction(order)
+        order.invalidate_cache()
         initial_qty = order.order_line.product_uom_qty
 
         website = self.website.with_user(self.public_user)
@@ -99,37 +121,48 @@ class TestWebsiteSalePaymentCartLock(PaymentCommon):
 
     def test_done_transaction_unlocks_cart(self):
         order = self._create_backend_order()
-        order.action_lock_website_cart()
-        tx = self.create_transaction(
-            "redirect",
-            amount=order.amount_total,
-            currency_id=order.currency_id.id,
-            partner_id=order.partner_id.id,
-            sale_order_ids=[Command.set([order.id])],
-        )
+        tx = self._create_live_transaction(order)
+        order.invalidate_cache()
+        self.assertTrue(order.website_cart_locked)
 
         tx._set_done()
         order.invalidate_cache()
-
         self.assertFalse(order.website_cart_locked)
-        self.assertFalse(order.website_cart_lock_date)
 
     def test_error_transaction_unlocks_cart(self):
         order = self._create_backend_order()
-        order.action_lock_website_cart()
-        tx = self.create_transaction(
-            "redirect",
-            amount=order.amount_total,
-            currency_id=order.currency_id.id,
-            partner_id=order.partner_id.id,
-            sale_order_ids=[Command.set([order.id])],
-        )
+        tx = self._create_live_transaction(order)
+        order.invalidate_cache()
+        self.assertTrue(order.website_cart_locked)
 
         tx._set_error("test error")
         order.invalidate_cache()
-
         self.assertFalse(order.website_cart_locked)
-        self.assertFalse(order.website_cart_lock_date)
+
+    def test_canceled_transaction_unlocks_cart(self):
+        order = self._create_backend_order()
+        tx = self._create_live_transaction(order)
+        order.invalidate_cache()
+        self.assertTrue(order.website_cart_locked)
+
+        tx._set_canceled()
+        order.invalidate_cache()
+        self.assertFalse(order.website_cart_locked)
+
+    def test_stale_pending_transaction_does_not_lock_cart(self):
+        order = self._create_backend_order()
+        tx = self._create_live_transaction(order)
+        order.invalidate_cache()
+        self.assertTrue(order.website_cart_locked)
+
+        stale_date = odoo_fields.Datetime.now() - timedelta(seconds=LOCK_TIMEOUT + 1)
+        self.env.cr.execute(
+            "UPDATE payment_transaction SET create_date = %s WHERE id = %s",
+            (stale_date, tx.id),
+        )
+        tx.invalidate_cache()
+        order.invalidate_cache()
+        self.assertFalse(order.website_cart_locked)
 
     def test_shop_payment_transaction_locks_order(self):
         order = self._create_website_order()
@@ -158,7 +191,8 @@ class TestWebsiteSalePaymentCartLock(PaymentCommon):
 
     def test_shop_payment_transaction_rejects_locked_order(self):
         order = self._create_website_order()
-        order.action_lock_website_cart()
+        self._create_live_transaction(order)
+        order.invalidate_cache()
         website = self.website.with_user(self.public_user)
         product = self.product.with_user(self.public_user)
 

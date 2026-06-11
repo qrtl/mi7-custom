@@ -16,7 +16,7 @@ class WebsiteSale(WebsiteSaleController):
         return order._get_website_cart_lock_message()
 
     def _is_cart_locked(self, order):
-        return bool(order and order._is_website_cart_locked())
+        return bool(order and order.website_cart_locked)
 
     def _get_locked_cart_response(self, order, line_id=None):
         message = self._get_cart_lock_message(order)
@@ -107,11 +107,6 @@ class PaymentPortal(WebsiteSalePaymentPortal):
             raise
         except AccessError:
             raise ValidationError(_("The access token is invalid.")) from None
-        if order_sudo._is_website_cart_locked():
+        if order_sudo.website_cart_locked:
             raise ValidationError(order_sudo._get_website_cart_lock_message())
-        order_sudo.action_lock_website_cart()
-        try:
-            return super().shop_payment_transaction(order_id, access_token, **kwargs)
-        except Exception:
-            order_sudo.action_unlock_website_cart()
-            raise
+        return super().shop_payment_transaction(order_id, access_token, **kwargs)

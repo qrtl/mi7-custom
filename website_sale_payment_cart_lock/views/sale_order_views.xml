@@ -5,21 +5,12 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
-            <xpath expr="//form/header/field[@name='state']" position="before">
-                <button
-                    name="action_unlock_website_cart"
-                    type="object"
-                    string="Unlock Website Cart"
-                    attrs="{'invisible': ['|', ('website_cart_locked', '=', False), ('state', '!=', 'draft')]}"
-                />
-            </xpath>
             <xpath
                 expr="//page[@name='other_information']/group/group[@name='sale_reporting']"
                 position="after"
             >
                 <group string="Website Checkout">
                     <field name="website_cart_locked" readonly="1" />
-                    <field name="website_cart_lock_date" readonly="1" />
                 </group>
             </xpath>
         </field>
