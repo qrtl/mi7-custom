@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- 'auth_signup.fields' is also used to set a password from an emailed
+         token ('only_passwords'), where the attributes below are neither asked
+         for nor posted. -->
+    <template id="fields" inherit_id="auth_signup.fields">
+        <xpath expr="//div[hasclass('field-name')]/label" position="attributes">
+            <attribute name="class">o_signup_person_label</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('field-name')]/label" position="after">
+            <label
+                t-if="not only_passwords"
+                class="o_signup_company_label d-none"
+                for="name"
+            >Company Name</label>
+        </xpath>
+        <xpath expr="//div[hasclass('field-name')]" position="after">
+            <!-- The posted values are read back from the request because they
+                 are not part of SIGN_UP_REQUEST_PARAMS, and would otherwise be
+                 lost every time the form is re-rendered with an error. -->
+            <t t-set="company_type" t-value="request.params.get('company_type')" />
+            <div t-if="not only_passwords" class="form-group field-company_type">
+                <label>Customer Type</label>
+                <div class="o_signup_company_type">
+                    <div class="form-check form-check-inline">
+                        <input
+                            type="radio"
+                            class="form-check-input"
+                            id="company_type_person"
+                            name="company_type"
+                            value="person"
+                            t-att-checked="'checked' if company_type != 'company' else None"
+                        />
+                        <label
+                            class="form-check-label"
+                            for="company_type_person"
+                        >Individual</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input
+                            type="radio"
+                            class="form-check-input"
+                            id="company_type_company"
+                            name="company_type"
+                            value="company"
+                            t-att-checked="'checked' if company_type == 'company' else None"
+                        />
+                        <label
+                            class="form-check-label"
+                            for="company_type_company"
+                        >Company</label>
+                    </div>
+                </div>
+            </div>
+            <div t-if="not only_passwords" class="form-group field-birthday">
+                <label for="birthday">Date of Birth</label>
+                <input
+                    type="date"
+                    class="form-control form-control-sm"
+                    id="birthday"
+                    name="birthday"
+                    required="required"
+                    min="1900-01-01"
+                    t-att-value="request.params.get('birthday')"
+                />
+                <div
+                    class="form-text text-muted small"
+                >Used to confirm your registration details.</div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>
