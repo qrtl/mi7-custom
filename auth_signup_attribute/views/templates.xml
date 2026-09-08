@@ -60,14 +60,27 @@
                     class="form-control form-control-sm"
                     id="birthday"
                     name="birthday"
-                    required="required"
                     min="1900-01-01"
+                    t-att-max="datetime.date.today().strftime('%Y-%m-%d')"
                     t-att-value="request.params.get('birthday')"
                 />
                 <div
                     class="form-text text-muted small"
                 >Used to confirm your registration details.</div>
             </div>
+        </xpath>
+    </template>
+
+    <!-- The signup controller may reject the form through a generic error
+         handler that discards the message raised by the model. The reason is
+         recovered here from the posted values so that it is not lost. -->
+    <template id="signup" inherit_id="auth_signup.signup">
+        <xpath expr="//p[hasclass('alert-danger')]" position="before">
+            <t
+                t-if="error and not request.params.get('token') and request.params.get('company_type') != 'company' and not request.params.get('birthday')"
+            >
+                <t t-set="error">Please enter your date of birth.</t>
+            </t>
         </xpath>
     </template>
 

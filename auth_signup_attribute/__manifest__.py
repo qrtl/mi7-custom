@@ -10,7 +10,7 @@
     "website": "https://www.quartile.co",
     "license": "AGPL-3",
     "depends": [
-        "auth_signup_verify_email",
+        "auth_signup",
         "partner_attribute",
     ],
     "data": [
@@ -18,7 +18,7 @@
     ],
     "assets": {
         "web.assets_frontend": [
-            "auth_signup_attribute/static/src/js/signup_attribute.js",
+            "auth_signup_attribute/static/src/scss/signup_attribute.scss",
         ],
     },
     "installable": True,

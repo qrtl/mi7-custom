@@ -1,0 +1,12 @@
+.oe_signup_form:has(#company_type_company:checked) {
+    .field-birthday,
+    .o_signup_person_label {
+        display: none;
+    }
+}
+
+.oe_signup_form:not(:has(#company_type_company:checked)) {
+    .o_signup_company_label {
+        display: none;
+    }
+}
