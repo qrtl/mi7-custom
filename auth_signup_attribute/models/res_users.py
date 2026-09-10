@@ -24,7 +24,12 @@ class ResUsers(models.Model):
                 # 'fields.Date' does not override 'convert_to_column'.
                 values.pop("birthday", None)
             elif not params.get("birthday"):
-                raise UserError(_("Please enter your date of birth."))
+                # The signup controller may discard the message through a
+                # generic error handler, so it is also left on the request for
+                # the template to pick the reason back up.
+                error = _("Please enter your date of birth.")
+                params["signup_attribute_error"] = error
+                raise UserError(error)
             else:
                 values["birthday"] = params["birthday"]
         return super()._signup_create_user(values)

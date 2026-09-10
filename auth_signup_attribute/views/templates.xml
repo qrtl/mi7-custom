@@ -8,10 +8,15 @@
         <xpath expr="//div[hasclass('field-name')]/label" position="attributes">
             <attribute name="class">o_signup_person_label</attribute>
         </xpath>
+        <!-- The single name field takes a company name as well, so the
+             example covers both instead of being switched around. -->
+        <xpath expr="//div[hasclass('field-name')]/input" position="attributes">
+            <attribute name="placeholder">e.g. John Doe / Example Inc.</attribute>
+        </xpath>
         <xpath expr="//div[hasclass('field-name')]/label" position="after">
             <label
                 t-if="not only_passwords"
-                class="o_signup_company_label d-none"
+                class="o_signup_company_label"
                 for="name"
             >Company Name</label>
         </xpath>
@@ -72,14 +77,17 @@
     </template>
 
     <!-- The signup controller may reject the form through a generic error
-         handler that discards the message raised by the model. The reason is
-         recovered here from the posted values so that it is not lost. -->
+         handler that discards the message raised by the model, so the message
+         is picked back up from the request. Only what the model itself decided
+         is used, or an unrelated failure would be reported as a missing date
+         of birth. -->
     <template id="signup" inherit_id="auth_signup.signup">
         <xpath expr="//p[hasclass('alert-danger')]" position="before">
-            <t
-                t-if="error and not request.params.get('token') and request.params.get('company_type') != 'company' and not request.params.get('birthday')"
-            >
-                <t t-set="error">Please enter your date of birth.</t>
+            <t t-if="error and request.params.get('signup_attribute_error')">
+                <t
+                    t-set="error"
+                    t-value="request.params.get('signup_attribute_error')"
+                />
             </t>
         </xpath>
     </template>

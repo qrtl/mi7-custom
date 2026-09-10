@@ -71,6 +71,21 @@ class TestAuthSignupAttribute(HttpCase):
             doc.xpath('//p[@class="alert alert-danger"]')[0].text_content(),
         )
 
+    def test_signup_other_error_keeps_its_message(self):
+        """A failure that is not about the date of birth keeps its own message.
+
+        The message of the model is recovered in the template, so it must not
+        be applied to a rejection that happened for another reason.
+        """
+        self.data["confirm_password"] = "Different!"
+        self.data["birthday"] = ""
+        doc = self._signup()
+        self.assertFalse(self._get_partner())
+        self.assertIn(
+            "Passwords do not match",
+            doc.xpath('//p[@class="alert alert-danger"]')[0].text_content(),
+        )
+
     def test_signup_invited(self):
         """An invited signup carries no attributes and must not be blocked."""
         partner = self.env["res.partner"].create({"name": "Invited"})
