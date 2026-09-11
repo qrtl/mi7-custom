@@ -58,7 +58,7 @@ Credits
 Authors
 -------
 
-* Quartile Limited
+* Quartile
 
 Maintainers
 -----------

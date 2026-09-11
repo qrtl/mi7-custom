@@ -5,7 +5,7 @@
     "summary": "Ask for the customer type and the date of birth at signup",
     "category": "Authentication",
     "version": "15.0.1.0.0",
-    "author": "Quartile Limited",
+    "author": "Quartile",
     "maintainers": ["smorita7749"],
     "website": "https://www.quartile.co",
     "license": "AGPL-3",
