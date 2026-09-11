@@ -11,25 +11,26 @@ class ResUsers(models.Model):
 
     @api.model
     def _signup_create_user(self, values):
-        # Standard signup keeps only login, name and password, so the values
-        # posted by this module are read back from the request. They are absent
-        # for a signup that does not come from its form, such as an invitation
-        # or an OAuth provider, which is then left untouched.
+        # Standard signup keeps only login, name and password, so the posted
+        # attributes are read back from the request. They are absent for an
+        # invitation or an OAuth signup, which is then left untouched.
         params = request.params if request else {}
+        birthday = False
         if "company_type" in params:
             values["company_type"] = params["company_type"]
-            if params["company_type"] == "company":
-                # A company has no date of birth. The key is dropped rather than
-                # emptied because an empty string reaches the database as is:
-                # 'fields.Date' does not override 'convert_to_column'.
-                values.pop("birthday", None)
-            elif not params.get("birthday"):
-                # The signup controller may discard the message through a
-                # generic error handler, so it is also left on the request for
-                # the template to pick the reason back up.
-                error = _("Please enter your date of birth.")
-                params["signup_attribute_error"] = error
-                raise UserError(error)
-            else:
-                values["birthday"] = params["birthday"]
-        return super()._signup_create_user(values)
+            if params["company_type"] != "company":
+                if not params.get("birthday"):
+                    error = _("Please enter your date of birth.")
+                    # The controller discards the message, so the template
+                    # picks the reason back up from here.
+                    params["signup_attribute_error"] = error
+                    raise UserError(error)
+                birthday = params["birthday"]
+        # 'hr' redefines 'birthday' on res.users as a related field of the
+        # employee, shadowing the one delegated from the partner and discarding
+        # the value without error, so the partner is written directly.
+        values.pop("birthday", None)
+        user = super()._signup_create_user(values)
+        if birthday:
+            user.partner_id.birthday = birthday
+        return user
