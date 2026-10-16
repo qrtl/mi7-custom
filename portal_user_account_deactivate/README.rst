@@ -33,7 +33,8 @@ On deactivation, the user is archived and then deleted, and the personal
 data of the user's partner and its child contacts (e.g. delivery
 addresses) is erased:
 
-- The name is replaced with "退会済み ", as a contact requires a name.
+- The name is replaced with ``退会済み <partner ID>`` (e.g.
+  ``退会済み 12345``), as a contact requires a name.
 - Email, phone, mobile, address, furigana, gender, birthday and image
   are cleared, and the partners are archived.
 - The chatter of these partners (messages including tracking values,
