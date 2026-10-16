@@ -13,3 +13,5 @@ class TestPartnerBirthMonth(TransactionCase):
             {"name": "Test Partner", "birthday": "2000-03-05"}
         )
         self.assertEqual(partner.birth_month, 3)
+        partner.write({"birthday": False})
+        self.assertEqual(partner.birth_month, 0)
