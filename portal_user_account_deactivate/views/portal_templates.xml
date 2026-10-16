@@ -5,7 +5,7 @@
         inherit_id="portal.portal_my_security"
     >
         <xpath
-            expr="//div[@class='o_portal_security_body']/section[last()]"
+            expr="//div[hasclass('o_portal_security_body')]/section[last()]"
             position="after"
         >
             <section>
