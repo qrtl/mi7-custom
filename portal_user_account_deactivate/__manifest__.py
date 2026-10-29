@@ -3,7 +3,7 @@
 {
     "name": "Portal User Account Deactivate",
     "category": "Portal",
-    "version": "15.0.1.1.0",
+    "version": "15.0.1.0.0",
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "website": "https://www.quartile.co",

@@ -3,20 +3,6 @@
 
 from odoo import models
 
-# A fixed value regardless of the language, so that staff can search for it.
-ANONYMIZED_NAME = "退会済み %s"
-
-PAYMENT_TRANSACTION_PERSONAL_FIELDS = [
-    "partner_name",
-    "partner_email",
-    "partner_phone",
-    "partner_address",
-    "partner_zip",
-    "partner_city",
-    "partner_state_id",
-    "partner_country_id",
-]
-
 
 class ResPartner(models.Model):
     _inherit = "res.partner"
@@ -39,12 +25,24 @@ class ResPartner(models.Model):
             "active": False,
         }
 
-    def _anonymize_for_account_deletion(self):
-        """Erase the personal data of the partners and their child contacts.
+    def _get_payment_transaction_deletion_vals(self):
+        return {
+            "partner_name": False,
+            "partner_email": False,
+            "partner_phone": False,
+            "partner_address": False,
+            "partner_zip": False,
+            "partner_city": False,
+            "partner_state_id": False,
+            "partner_country_id": False,
+        }
 
-        The parent company and sibling contacts of a B2B user are left untouched.
-        Sales orders, invoices and their chatter are not modified, but the payment
-        transactions keep only the amount, date, state and links to documents.
+    def _anonymize_for_account_deletion(self):
+        """Anonymize the partners and their child contacts.
+
+        Clear their personal data, rename them to "退会済み <ID>", clear the
+        customer details on their payment transactions, and delete their messages,
+        followers, activities and attachments.
         """
         # Archived child contacts are included, but active_test must not stay False
         # on write, or the archived user would block archiving the partner.
@@ -57,10 +55,11 @@ class ResPartner(models.Model):
         )
         vals = self._get_account_deletion_vals()
         for partner in partners:
-            partner.write(dict(vals, name=ANONYMIZED_NAME % partner.id))
+            # Not translated, so that staff can search for it in any language.
+            partner.write(dict(vals, name="退会済み %s" % partner.id))
         self.env["payment.transaction"].sudo().search(
             [("partner_id", "in", partners.ids)]
-        ).write(dict.fromkeys(PAYMENT_TRANSACTION_PERSONAL_FIELDS, False))
+        ).write(self._get_payment_transaction_deletion_vals())
         record_domain = [("res_id", "in", partners.ids)]
         self.env["mail.message"].sudo().search(
             [("model", "=", "res.partner")] + record_domain
