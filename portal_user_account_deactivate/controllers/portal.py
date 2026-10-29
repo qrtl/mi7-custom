@@ -12,13 +12,5 @@ class CustomerPortal(Portal):
     def deactivate_account(self, **post):
         user = request.env.user
         if user:
-            user.with_user(SUPERUSER_ID).write({"active": False})
-            user.partner_id.with_user(SUPERUSER_ID).write(
-                {
-                    "active": False,
-                    "email": False,
-                    "phone": False,
-                }
-            )
-            user.with_user(SUPERUSER_ID).unlink()
+            user.with_user(SUPERUSER_ID)._deactivate_portal_account()
             return request.redirect("/web")
