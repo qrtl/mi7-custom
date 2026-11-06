@@ -11,6 +11,10 @@
             <section>
                 <div style="margin-top: 120px;" />
                 <h3>Deactivate Account</h3>
+                <t
+                    t-set="can_deactivate_account"
+                    t-value="request.env.user._can_deactivate_portal_account()"
+                />
                 <div t-if="not can_deactivate_account" class="alert alert-info">
                     If you wish to deactivate your account, please contact us.
                 </div>
