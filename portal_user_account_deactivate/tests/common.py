@@ -33,6 +33,7 @@ class AccountDeactivateCommon:
             dict(
                 cls.address_vals,
                 name="Taro Yamada",
+                user_type="b2c",
                 email="taro@example.com",
                 phone="03-0000-0000",
                 mobile="090-0000-0000",

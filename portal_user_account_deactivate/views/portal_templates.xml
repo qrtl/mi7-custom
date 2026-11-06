@@ -11,10 +11,21 @@
             <section>
                 <div style="margin-top: 120px;" />
                 <h3>Deactivate Account</h3>
-                <div class="alert alert-danger" role="alert">
+                <div t-if="not can_deactivate_account" class="alert alert-info">
+                    If you wish to deactivate your account, please contact us.
+                </div>
+                <div
+                    t-if="can_deactivate_account"
+                    class="alert alert-danger"
+                    role="alert"
+                >
                     <span t-field="request.env.company.account_delete_caution_text" />
                 </div>
-                <form action="/my/deactivate" method="post">
+                <form
+                    t-if="can_deactivate_account"
+                    action="/my/deactivate"
+                    method="post"
+                >
                     <div class="form-check mt-3">
                         <!-- Make the checkbox required -->
                         <input

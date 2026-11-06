@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import Command
+from odoo.exceptions import UserError
 from odoo.tests import tagged
 from odoo.tests.common import TransactionCase, new_test_user
 
@@ -11,6 +12,8 @@ from .common import AccountDeactivateCommon
 # post_install, so that the link to sales orders is tested when sale is installed.
 @tagged("post_install", "-at_install")
 class TestAccountDeactivate(AccountDeactivateCommon, TransactionCase):
+    _kept_fields = ["name", "email", "phone", "street", "zip", "city", "active"]
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -98,9 +101,18 @@ class TestAccountDeactivate(AccountDeactivateCommon, TransactionCase):
         self.assertEqual(self.partner.comment, "<p>Note kept after deactivation</p>")
 
     def test_child_contacts_anonymized(self):
+        grandchild = self.env["res.partner"].create(
+            dict(
+                self.address_vals,
+                name="Taro Yamada (Office)",
+                parent_id=self.delivery.id,
+                type="other",
+            )
+        )
         self.user._deactivate_portal_account()
         self._assert_anonymized(self.delivery)
         self._assert_anonymized(self.archived_delivery)
+        self._assert_anonymized(grandchild)
 
     def test_chatter_deleted(self):
         partners = self.partner | self.delivery
@@ -180,11 +192,129 @@ class TestAccountDeactivate(AccountDeactivateCommon, TransactionCase):
             self.env, login="deactivate_b2b", groups="base.group_portal"
         )
         partner = user.partner_id
-        partner.write({"parent_id": company.id, "email": "b2b@example.com"})
+        partner.write(
+            {"parent_id": company.id, "email": "b2b@example.com", "user_type": "b2c"}
+        )
+        partner_delivery = self.env["res.partner"].create(
+            dict(
+                self.address_vals,
+                name="Hiroshi Tanaka (Home)",
+                parent_id=partner.id,
+                type="delivery",
+            )
+        )
         untouched = company | colleague | company_delivery
-        fields = ["name", "email", "phone", "street", "zip", "city", "active"]
-        before = untouched.read(fields)
+        before = untouched.read(self._kept_fields)
         user._deactivate_portal_account()
         self._assert_anonymized(partner)
+        self._assert_anonymized(partner_delivery)
         self.assertEqual(partner.parent_id, company)
-        self.assertEqual(untouched.read(fields), before)
+        self.assertEqual(untouched.read(self._kept_fields), before)
+
+    def test_company_partner_without_contacts(self):
+        # is_company does not tell a company from a person, so it does not block.
+        self.partner.is_company = True
+        self.assertTrue(self.user._can_deactivate_portal_account())
+        self.user._deactivate_portal_account()
+        self._assert_anonymized(self.partner)
+        self._assert_anonymized(self.delivery)
+
+    def _assert_not_deactivatable(self, user):
+        partners = (
+            self.env["res.partner"]
+            .with_context(active_test=False)
+            .search([("id", "child_of", user.partner_id.commercial_partner_id.id)])
+        )
+        before = partners.read(self._kept_fields)
+        self.assertFalse(user._can_deactivate_portal_account())
+        with self.assertRaises(UserError):
+            user._deactivate_portal_account()
+        self.assertTrue(user.active)
+        self.assertEqual(partners.read(self._kept_fields), before)
+
+    def test_b2b_blocked(self):
+        self.partner.user_type = "b2b"
+        self._assert_not_deactivatable(self.user)
+
+    def test_company_with_contacts_blocked(self):
+        company = self.env["res.partner"].create(
+            dict(
+                self.address_vals,
+                name="Portal Company",
+                is_company=True,
+                user_type="b2c",
+            )
+        )
+        user = new_test_user(
+            self.env,
+            login="deactivate_company",
+            groups="base.group_portal",
+            partner_id=company.id,
+        )
+        self.env["res.partner"].create(
+            {"name": "Hanako Suzuki", "parent_id": company.id}
+        )
+        self.env["res.partner"].create(
+            dict(
+                self.address_vals,
+                name="Portal Company Warehouse",
+                parent_id=company.id,
+                type="delivery",
+            )
+        )
+        self._assert_not_deactivatable(user)
+
+    def test_archived_contact_blocked(self):
+        self.env["res.partner"].create(
+            {
+                "name": "Hanako Yamada",
+                "parent_id": self.partner.id,
+                "active": False,
+            }
+        )
+        self._assert_not_deactivatable(self.user)
+
+    def test_contact_under_address_blocked(self):
+        self.env["res.partner"].create(
+            {"name": "Hanako Yamada", "parent_id": self.delivery.id}
+        )
+        self._assert_not_deactivatable(self.user)
+
+    def test_address_with_user_blocked(self):
+        new_test_user(
+            self.env,
+            login="deactivate_delivery",
+            groups="base.group_portal",
+            partner_id=self.delivery.id,
+        )
+        self._assert_not_deactivatable(self.user)
+
+    def test_other_user_on_partner_blocked(self):
+        new_test_user(
+            self.env,
+            login="deactivate_same_partner",
+            groups="base.group_portal",
+            partner_id=self.partner.id,
+        )
+        self._assert_not_deactivatable(self.user)
+
+    def test_address_account_blocked(self):
+        company = self.env["res.partner"].create(
+            dict(self.address_vals, name="Test Company", is_company=True)
+        )
+        warehouse = self.env["res.partner"].create(
+            dict(
+                self.address_vals,
+                name="Company Warehouse",
+                parent_id=company.id,
+                type="delivery",
+                user_type="b2c",
+            )
+        )
+        user = new_test_user(
+            self.env,
+            login="deactivate_warehouse",
+            groups="base.group_portal",
+            partner_id=warehouse.id,
+        )
+        self._assert_not_deactivatable(user)

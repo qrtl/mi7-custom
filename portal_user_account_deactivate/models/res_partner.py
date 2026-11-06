@@ -38,13 +38,13 @@ class ResPartner(models.Model):
         }
 
     def _anonymize_for_account_deletion(self):
-        """Anonymize the partners and their child contacts.
+        """Anonymize the partners and their child addresses.
 
         Clear their personal data, rename them to "退会済み <ID>", clear the
         customer details on their payment transactions, and delete their messages,
         followers, activities and attachments.
         """
-        # Archived child contacts are included, but active_test must not stay False
+        # Archived child addresses are included, but active_test must not stay False
         # on write, or the archived user would block archiving the partner.
         partners = (
             self.env["res.partner"]
