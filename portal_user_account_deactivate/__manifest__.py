@@ -7,7 +7,7 @@
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "website": "https://www.quartile.co",
-    "depends": ["portal"],
+    "depends": ["partner_attribute", "payment", "portal", "sale_user_type"],
     "data": [
         "views/portal_templates.xml",
         "views/res_company_views.xml",

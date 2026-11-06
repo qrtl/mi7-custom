@@ -5,16 +5,31 @@
         inherit_id="portal.portal_my_security"
     >
         <xpath
-            expr="//div[@class='o_portal_security_body']/section[last()]"
+            expr="//div[hasclass('o_portal_security_body')]/section[last()]"
             position="after"
         >
             <section>
                 <div style="margin-top: 120px;" />
                 <h3>Deactivate Account</h3>
-                <div class="alert alert-danger" role="alert">
+                <t
+                    t-set="can_deactivate_account"
+                    t-value="request.env.user._can_deactivate_portal_account()"
+                />
+                <div t-if="not can_deactivate_account" class="alert alert-info">
+                    If you wish to deactivate your account, please contact us.
+                </div>
+                <div
+                    t-if="can_deactivate_account"
+                    class="alert alert-danger"
+                    role="alert"
+                >
                     <span t-field="request.env.company.account_delete_caution_text" />
                 </div>
-                <form action="/my/deactivate" method="post">
+                <form
+                    t-if="can_deactivate_account"
+                    action="/my/deactivate"
+                    method="post"
+                >
                     <div class="form-check mt-3">
                         <!-- Make the checkbox required -->
                         <input

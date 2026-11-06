@@ -11,14 +11,7 @@ class CustomerPortal(Portal):
     @route("/my/deactivate", type="http", auth="user", website=True, methods=["POST"])
     def deactivate_account(self, **post):
         user = request.env.user
-        if user:
-            user.with_user(SUPERUSER_ID).write({"active": False})
-            user.partner_id.with_user(SUPERUSER_ID).write(
-                {
-                    "active": False,
-                    "email": False,
-                    "phone": False,
-                }
-            )
-            user.with_user(SUPERUSER_ID).unlink()
-            return request.redirect("/web")
+        if not user._can_deactivate_portal_account():
+            return request.redirect("/my/security")
+        user.with_user(SUPERUSER_ID)._deactivate_portal_account()
+        return request.redirect("/web")
