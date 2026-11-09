@@ -46,12 +46,6 @@ msgid "If you wish to deactivate your account, please contact us."
 msgstr "退会をご希望の場合はお問い合わせください。"
 
 #. module: portal_user_account_deactivate
-#: code:addons/portal_user_account_deactivate/models/res_users.py:0
-#, python-format
-msgid "This account cannot be deactivated."
-msgstr "このアカウントは退会できません。"
-
-#. module: portal_user_account_deactivate
 #: model:ir.model.fields,help:portal_user_account_deactivate.field_res_company__account_delete_caution_text
 msgid ""
 "This text shows in the Deactivate Account section of /my/security page."

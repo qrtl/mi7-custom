@@ -1,8 +1,7 @@
 # Copyright 2026 Quartile Limited
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import _, models
-from odoo.exceptions import UserError
+from odoo import models
 
 
 class ResUsers(models.Model):
@@ -38,8 +37,6 @@ class ResUsers(models.Model):
         )
 
     def _deactivate_portal_account(self):
-        if not all(user._can_deactivate_portal_account() for user in self):
-            raise UserError(_("This account cannot be deactivated."))
         # The user must be archived first, as a partner linked to an active user
         # cannot be archived.
         self.write({"active": False})

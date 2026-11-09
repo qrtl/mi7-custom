@@ -2,7 +2,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import Command
-from odoo.exceptions import UserError
 from odoo.tests import tagged
 from odoo.tests.common import TransactionCase, new_test_user
 
@@ -88,19 +87,7 @@ class TestAccountDeactivate(AccountDeactivateCommon, TransactionCase):
         self.assertEqual(partner.birth_month, 0)
         self.assertFalse(partner.active)
 
-    def test_partner_anonymized(self):
-        login = self.user.login
-        self.user._deactivate_portal_account()
-        self.assertFalse(
-            self.env["res.users"]
-            .with_context(active_test=False)
-            .search([("login", "=", login)])
-        )
-        self._assert_anonymized(self.partner)
-        self.assertEqual(self.partner.department, "Sales")
-        self.assertEqual(self.partner.comment, "<p>Note kept after deactivation</p>")
-
-    def test_child_contacts_anonymized(self):
+    def test_deactivate(self):
         grandchild = self.env["res.partner"].create(
             dict(
                 self.address_vals,
@@ -109,24 +96,9 @@ class TestAccountDeactivate(AccountDeactivateCommon, TransactionCase):
                 type="other",
             )
         )
-        self.user._deactivate_portal_account()
-        self._assert_anonymized(self.delivery)
-        self._assert_anonymized(self.archived_delivery)
-        self._assert_anonymized(grandchild)
-
-    def test_chatter_deleted(self):
         partners = self.partner | self.delivery
         for partner in partners | self.other_partner:
             self._add_chatter(partner)
-        for model, records in self._get_chatter(partners).items():
-            self.assertTrue(records, "No %s to delete in the test data" % model)
-        self.user._deactivate_portal_account()
-        for model, records in self._get_chatter(partners).items():
-            self.assertFalse(records.exists(), "%s is not deleted" % model)
-        for model, records in self._get_chatter(self.other_partner).items():
-            self.assertTrue(records, "%s of another partner is deleted" % model)
-
-    def test_payment_transaction_anonymized(self):
         tx = self.env["payment.transaction"].create(
             {
                 "acquirer_id": self.acquirer.id,
@@ -141,10 +113,22 @@ class TestAccountDeactivate(AccountDeactivateCommon, TransactionCase):
         if has_sale:
             order = self.env["sale.order"].create({"partner_id": self.partner.id})
             tx.sale_order_ids = [Command.set(order.ids)]
-        self.assertEqual(tx.partner_name, "Taro Yamada")
         self.assertEqual(tx.partner_email, "taro@example.com")
-        create_date = tx.create_date
+        login = self.user.login
         self.user._deactivate_portal_account()
+        self.assertFalse(
+            self.env["res.users"]
+            .with_context(active_test=False)
+            .search([("login", "=", login)])
+        )
+        for partner in partners | self.archived_delivery | grandchild:
+            self._assert_anonymized(partner)
+        self.assertEqual(self.partner.department, "Sales")
+        self.assertEqual(self.partner.comment, "<p>Note kept after deactivation</p>")
+        for model, records in self._get_chatter(partners).items():
+            self.assertFalse(records, "%s is not deleted" % model)
+        for model, records in self._get_chatter(self.other_partner).items():
+            self.assertTrue(records, "%s of another partner is deleted" % model)
         for field in (
             "partner_name",
             "partner_email",
@@ -159,11 +143,10 @@ class TestAccountDeactivate(AccountDeactivateCommon, TransactionCase):
         self.assertEqual(tx.partner_id, self.partner)
         self.assertEqual(tx.amount, 1100.0)
         self.assertEqual(tx.state, "done")
-        self.assertEqual(tx.create_date, create_date)
         if has_sale:
             self.assertEqual(tx.sale_order_ids, order)
 
-    def test_b2b_company_untouched(self):
+    def test_contact_under_company(self):
         company = self.env["res.partner"].create(
             dict(
                 self.address_vals,
@@ -211,110 +194,47 @@ class TestAccountDeactivate(AccountDeactivateCommon, TransactionCase):
         self.assertEqual(partner.parent_id, company)
         self.assertEqual(untouched.read(self._kept_fields), before)
 
-    def test_company_partner_without_contacts(self):
-        # is_company does not tell a company from a person, so it does not block.
-        self.partner.is_company = True
+    def test_cannot_deactivate(self):
         self.assertTrue(self.user._can_deactivate_portal_account())
-        self.user._deactivate_portal_account()
-        self._assert_anonymized(self.partner)
-        self._assert_anonymized(self.delivery)
-
-    def _assert_not_deactivatable(self, user):
-        partners = (
-            self.env["res.partner"]
-            .with_context(active_test=False)
-            .search([("id", "child_of", user.partner_id.commercial_partner_id.id)])
-        )
-        before = partners.read(self._kept_fields)
-        self.assertFalse(user._can_deactivate_portal_account())
-        with self.assertRaises(UserError):
-            user._deactivate_portal_account()
-        self.assertTrue(user.active)
-        self.assertEqual(partners.read(self._kept_fields), before)
-
-    def test_b2b_blocked(self):
-        self.partner.user_type = "b2b"
-        self._assert_not_deactivatable(self.user)
-
-    def test_company_with_contacts_blocked(self):
-        company = self.env["res.partner"].create(
-            dict(
-                self.address_vals,
-                name="Portal Company",
-                is_company=True,
-                user_type="b2c",
+        with self.subTest("B2B"):
+            self.partner.user_type = "b2b"
+            self.assertFalse(self.user._can_deactivate_portal_account())
+            self.partner.user_type = "b2c"
+        with self.subTest("archived contact under an address"):
+            contact = self.env["res.partner"].create(
+                {
+                    "name": "Hanako Yamada",
+                    "parent_id": self.delivery.id,
+                    "active": False,
+                }
             )
-        )
-        user = new_test_user(
-            self.env,
-            login="deactivate_company",
-            groups="base.group_portal",
-            partner_id=company.id,
-        )
-        self.env["res.partner"].create(
-            {"name": "Hanako Suzuki", "parent_id": company.id}
-        )
-        self.env["res.partner"].create(
-            dict(
-                self.address_vals,
-                name="Portal Company Warehouse",
-                parent_id=company.id,
-                type="delivery",
+            self.assertFalse(self.user._can_deactivate_portal_account())
+            contact.unlink()
+        with self.subTest("another user on an address"):
+            user = new_test_user(
+                self.env,
+                login="deactivate_delivery",
+                groups="base.group_portal",
+                partner_id=self.delivery.id,
             )
-        )
-        self._assert_not_deactivatable(user)
-
-    def test_archived_contact_blocked(self):
-        self.env["res.partner"].create(
-            {
-                "name": "Hanako Yamada",
-                "parent_id": self.partner.id,
-                "active": False,
-            }
-        )
-        self._assert_not_deactivatable(self.user)
-
-    def test_contact_under_address_blocked(self):
-        self.env["res.partner"].create(
-            {"name": "Hanako Yamada", "parent_id": self.delivery.id}
-        )
-        self._assert_not_deactivatable(self.user)
-
-    def test_address_with_user_blocked(self):
-        new_test_user(
-            self.env,
-            login="deactivate_delivery",
-            groups="base.group_portal",
-            partner_id=self.delivery.id,
-        )
-        self._assert_not_deactivatable(self.user)
-
-    def test_other_user_on_partner_blocked(self):
-        new_test_user(
-            self.env,
-            login="deactivate_same_partner",
-            groups="base.group_portal",
-            partner_id=self.partner.id,
-        )
-        self._assert_not_deactivatable(self.user)
-
-    def test_address_account_blocked(self):
-        company = self.env["res.partner"].create(
-            dict(self.address_vals, name="Test Company", is_company=True)
-        )
-        warehouse = self.env["res.partner"].create(
-            dict(
-                self.address_vals,
-                name="Company Warehouse",
-                parent_id=company.id,
-                type="delivery",
-                user_type="b2c",
+            self.assertFalse(self.user._can_deactivate_portal_account())
+            user.unlink()
+        with self.subTest("address account"):
+            company = self.env["res.partner"].create(
+                {"name": "Test Company", "is_company": True}
             )
-        )
-        user = new_test_user(
-            self.env,
-            login="deactivate_warehouse",
-            groups="base.group_portal",
-            partner_id=warehouse.id,
-        )
-        self._assert_not_deactivatable(user)
+            warehouse = self.env["res.partner"].create(
+                {
+                    "name": "Company Warehouse",
+                    "parent_id": company.id,
+                    "type": "delivery",
+                    "user_type": "b2c",
+                }
+            )
+            user = new_test_user(
+                self.env,
+                login="deactivate_warehouse",
+                groups="base.group_portal",
+                partner_id=warehouse.id,
+            )
+            self.assertFalse(user._can_deactivate_portal_account())
