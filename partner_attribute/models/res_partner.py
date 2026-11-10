@@ -35,3 +35,5 @@ class ResPartner(models.Model):
                         str(partner.birthday), DEFAULT_SERVER_DATE_FORMAT
                     ).strftime("%m")
                 )
+            else:
+                partner.birth_month = 0
