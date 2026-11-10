@@ -3,12 +3,14 @@
 
     <!-- Website header: show the signup link next to the login link -->
     <template id="user_sign_up" inherit_id="portal.user_sign_in" name="User Sign Up">
-        <xpath expr="//a" position="before">
-            <a
-                t-attf-href="/web/signup"
-                t-attf-class="#{_link_class}"
-                style="margin-right: 8px;"
-            >Register</a>
+        <xpath expr="//li" position="before">
+            <li
+                groups="base.group_public"
+                t-attf-class="#{_item_class} o_no_autohide_item"
+            >
+                <a t-attf-href="/web/signup" t-attf-class="#{_link_class}">Register</a>
+            </li>
+            <t t-set="_item_class" t-valuef="nav-item" />
         </xpath>
     </template>
 
