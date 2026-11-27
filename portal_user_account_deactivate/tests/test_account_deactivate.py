@@ -3,7 +3,9 @@
 
 import importlib.util
 import re
+from datetime import timedelta
 
+from odoo import fields
 from odoo.modules.module import get_module_resource
 from odoo.tests import HttpCase, tagged
 from odoo.tests.common import TransactionCase, new_test_user
@@ -33,7 +35,8 @@ class AccountDeactivateCommon:
                 "street": "4-5-6 Test",
             }
         )
-        (cls.partner | cls.delivery).signup_prepare()
+        cls.expiration = fields.Datetime.now() + timedelta(days=1)
+        (cls.partner | cls.delivery).signup_prepare(expiration=cls.expiration)
 
 
 class TestAccountDeactivate(AccountDeactivateCommon, TransactionCase):
@@ -110,7 +113,7 @@ class TestAccountDeactivate(AccountDeactivateCommon, TransactionCase):
         archived = self.env["res.partner"].create(
             {"name": "Old Customer", "active": False}
         )
-        archived.signup_prepare()
+        archived.signup_prepare(expiration=self.expiration)
         path = get_module_resource(
             "portal_user_account_deactivate",
             "migrations",
@@ -124,8 +127,11 @@ class TestAccountDeactivate(AccountDeactivateCommon, TransactionCase):
         self.env["res.partner"].invalidate_cache()
         partners = self.delivery | self.partner | archived
         self.assertEqual(
-            [(bool(p.signup_token), bool(p.signup_type)) for p in partners],
-            [(False, False), (True, True), (True, True)],
+            [
+                (bool(p.signup_token), bool(p.signup_type), bool(p.signup_expiration))
+                for p in partners
+            ],
+            [(False, False, False), (True, True, True), (True, True, True)],
         )
 
     def test_contact_under_company(self):
