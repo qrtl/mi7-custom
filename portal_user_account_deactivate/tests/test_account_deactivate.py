@@ -1,8 +1,12 @@
 # Copyright 2026 Quartile Limited
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+import importlib.util
 import re
+from datetime import timedelta
 
+from odoo import fields
+from odoo.modules.module import get_module_resource
 from odoo.tests import HttpCase, tagged
 from odoo.tests.common import TransactionCase, new_test_user
 
@@ -31,6 +35,8 @@ class AccountDeactivateCommon:
                 "street": "4-5-6 Test",
             }
         )
+        cls.expiration = fields.Datetime.now() + timedelta(days=1)
+        (cls.partner | cls.delivery).signup_prepare(expiration=cls.expiration)
 
 
 class TestAccountDeactivate(AccountDeactivateCommon, TransactionCase):
@@ -42,6 +48,9 @@ class TestAccountDeactivate(AccountDeactivateCommon, TransactionCase):
                     "name": "退会済み %s" % partner.id,
                     "email": False,
                     "street": False,
+                    "signup_token": False,
+                    "signup_type": False,
+                    "signup_expiration": False,
                     "active": False,
                 }
                 for partner in partners
@@ -96,6 +105,34 @@ class TestAccountDeactivate(AccountDeactivateCommon, TransactionCase):
                 [(model_field, "=", "res.partner"), ("res_id", "in", partners.ids)]
             )
             self.assertEqual(set(records.mapped("res_id")), set(other.ids), model)
+
+    def test_migration_clears_signup_token(self):
+        # Only partners anonymized by this module lose their token.
+        self.delivery.write({"name": "退会済み %s" % self.delivery.id, "active": False})
+        self.partner.name = "退会済み %s" % self.partner.id
+        archived = self.env["res.partner"].create(
+            {"name": "Old Customer", "active": False}
+        )
+        archived.signup_prepare(expiration=self.expiration)
+        path = get_module_resource(
+            "portal_user_account_deactivate",
+            "migrations",
+            "15.0.1.0.1",
+            "post-migration.py",
+        )
+        spec = importlib.util.spec_from_file_location("post_migration", path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        module.migrate(self.env.cr, "15.0.1.0.0")
+        self.env["res.partner"].invalidate_cache()
+        partners = self.delivery | self.partner | archived
+        self.assertEqual(
+            [
+                (bool(p.signup_token), bool(p.signup_type), bool(p.signup_expiration))
+                for p in partners
+            ],
+            [(False, False, False), (True, True, True), (True, True, True)],
+        )
 
     def test_contact_under_company(self):
         company = self.env["res.partner"].create(

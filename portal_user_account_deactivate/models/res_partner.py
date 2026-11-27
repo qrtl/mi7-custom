@@ -22,6 +22,9 @@ class ResPartner(models.Model):
             "gender": False,
             "birthday": False,
             "image_1920": False,
+            "signup_token": False,
+            "signup_type": False,
+            "signup_expiration": False,
             "active": False,
         }
 
